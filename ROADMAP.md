@@ -90,3 +90,5 @@ How every phase below gets done. Details in [AGENTS.md](AGENTS.md).
 - [x] Prioritize the next talent/rank and put full reasoning behind a details toggle
 - [ ] Live-client visual check after maintenance: wrapping, menus, tooltips, scrolling,
       title dragging and Escape at the player's UI scale
+
+- [x] Remove duplicated explanation tooltips; preserve captured-detail tooltips

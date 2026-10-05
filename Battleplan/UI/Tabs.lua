@@ -28,7 +28,7 @@ local function header(rows, text) rows[#rows + 1] = { kind = "header", text = te
 local function row(rows, text, value, tip, indent)
   rows[#rows + 1] = { kind = "row", text = text, value = value, tip = tip, indent = indent }
 end
-local function note(rows, text, indent) rows[#rows + 1] = { kind = "note", text = text, tip = text, indent = indent or 1 } end
+local function note(rows, text, indent) rows[#rows + 1] = { kind = "note", text = text, indent = indent or 1 } end
 local function blank(rows) rows[#rows + 1] = { kind = "blank" } end
 
 local function amountText(stat, amount)

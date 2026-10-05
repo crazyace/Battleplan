@@ -154,3 +154,7 @@ control work defer or return during combat. `tests/ui_test.py` checks wrapping,
 scroll bounds, menus, details, role/class fallback and combat deferral with mock
 geometry; the existing allocation tests exercise the new list. Mock geometry is
 not a live-client render and must not be used to claim pixel-perfect compatibility.
+
+Explanation rows wrap inline and have no hover tooltip. List hover also suppresses
+identical title/body text defensively; tooltips with extra captured data retain a
+wrapped heading and one body. The UI tests cover both paths.
