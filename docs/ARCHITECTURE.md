@@ -136,3 +136,21 @@ rank's text without changing the cached expanded order. The UI attaches it to th
 next-point tooltip, including the observed level and a scaling caveat. Other classes
 continue to plan without this catalog. `tests/talent_effects_test.py` checks exact Lua
 text round trips, regeneration, import rejection cases and every Protection level.
+
+
+### Readable planner presentation
+
+The 640x620 window uses reusable texture-backed controls, a fixed context header,
+role-aware tabs and direct spec/situation menus. Settings go through `Planner.Queue`;
+no additional game data reads are introduced. The provisional status is a compact
+badge with an explanation on hover. `BuildRows` can omit the banner for this fixed
+header and include optional talent details. Errors remain visible in the content.
+
+`UI/List.lua` measures wrapped labels and values when data or width changes, stores
+row tops/heights, and rebinds a fixed viewport pool during pixel scrolling. The
+viewport clips partial rows; the thumb tracks total text height. No fonts, tables,
+frames or measurement work are created by scrolling. Size changes, opening and
+control work defer or return during combat. `tests/ui_test.py` checks wrapping,
+scroll bounds, menus, details, role/class fallback and combat deferral with mock
+geometry; the existing allocation tests exercise the new list. Mock geometry is
+not a live-client render and must not be used to claim pixel-perfect compatibility.

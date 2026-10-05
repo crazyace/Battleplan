@@ -64,7 +64,7 @@ end
 
 local build = {}
 
-function build.talents(s, rows)
+function build.talents(s, rows, details)
   if not s.build then
     note(rows, "No recommended build for this spec yet: its build advice is still being developed.", 0)
     return
@@ -98,13 +98,23 @@ function build.talents(s, rows)
   elseif p.available == 0 then
     note(rows, "Your first talent point comes at level 10.")
   end
+  local nextRow
+  for _, r in ipairs(rows) do if r.text == "Next point" then nextRow = r end end
+  if nextRow then nextRow.emphasis = true end
+  if p.upcoming then
+    row(rows, "Target rank", tostring(p.upcoming.rank), nil, 1)
+    local reason = s.build.why and s.build.why[p.upcoming.name]
+    if reason then header(rows, "Why this point"); note(rows, reason, 0) end
+  elseif p.onPlan and p.spent == p.total then
+    note(rows, "Your talent plan is complete.", 0)
+  end
   if not p.onPlan then
     blank(rows)
     header(rows, "Different from the plan")
     for _, m in ipairs(p.missing) do row(rows, m.name, ("%d / %d"):format(m.have, m.want), "The plan wants more points here.", 1) end
     for _, x in ipairs(p.extra) do row(rows, x.name, ("%d (plan: %d)"):format(x.have, x.want), "Points the plan puts elsewhere.", 1) end
   end
-  if s.build.why then
+  if details and s.build.why then
     blank(rows)
     header(rows, "Why")
     local names = {}
@@ -268,10 +278,11 @@ function build.tanking(s, rows)
 end
 
 -- All rows for one tab.
-function UI.BuildRows(tab, state)
-  local rows = UI.Banner(state)
+function UI.BuildRows(tab, state, contentOnly, details)
+  local rows = contentOnly and state.ready and state.supported and {} or UI.Banner(state)
   if not state.ready or not state.supported then return rows end
+  if contentOnly and state.error then note(rows, state.error, 0) end
   local fn = build[tab]
-  if fn then fn(state, rows) end
+  if fn then fn(state, rows, details) end
   return rows
 end

@@ -77,3 +77,12 @@ with the item name and amount, e.g. `+15 agility`).
 | Elixir buff names | | |
 | Threat readable out of combat? In combat? | | |
 | Warrior spec group IDs | 11650 / 11657 / 11670 | `2026-10-05-warrior-12-talents.json` |
+
+
+## Planner UI after maintenance
+
+- [ ] `/bplan`: explanations wrap without overlap at your UI scale.
+- [ ] Spec/Situation menus update advice; Auto follows your character.
+- [ ] Show/Hide build details works; the next talent and rank stay easy to find.
+- [ ] Scroll to the end of Rotation/Tanking/Healing; no missing bottom rows.
+- [ ] Hover Next point for captured rank text, drag the title bar, and close with Escape.

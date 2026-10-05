@@ -42,6 +42,17 @@ local function fontString()
   local fs = stub()
   fs.SetText = function(self, t) self.text = t end
   fs.GetText = function(self) return self.text end
+  fs.SetWidth = function(self, w) self.width = w end
+  fs.SetWordWrap = function(self, w) self.wrap = w end
+  fs.GetStringHeight = function(self)
+    local text = (self.text or ""):gsub("|c%x%x%x%x%x%x%x%x", ""):gsub("|r", "")
+    local chars = math.max(1, math.floor((self.width or 200) / 7))
+    local lines = 0
+    for line in (text .. "\n"):gmatch("([^\n]*)\n") do
+      lines = lines + (self.wrap and math.max(1, math.ceil(#line / chars)) or 1)
+    end
+    return lines * 16
+  end
   return fs
 end
 local function animGroup(owner)
@@ -71,11 +82,21 @@ function CreateFrame(kind, name, parent)
   f.Hide = function(self) self._shown = false end
   f.SetShown = function(self, v) if v then self:Show() else self:Hide() end end
   f.GetHeight = function(self) return self._height end
+  f.GetWidth = function(self) return rawget(self, "_width") or 600 end
+  f.SetSize = function(self, w, h) self._width, self._height = w, h end
+  f.SetWidth = function(self, w) self._width = w end
   f.SetHeight = function(self, h) self._height = h end
   f.SetText = function(self, t) self.text = t end
   f.GetPoint = function() return "CENTER", nil, "CENTER", 0, 0 end
   f.CreateFontString = function() return fontString() end
-  f.CreateTexture = function() return stub() end
+  f.CreateTexture = function()
+    local t = stub()
+    t._shown = true
+    t.Show = function(self) self._shown = true end
+    t.Hide = function(self) self._shown = false end
+    t.SetShown = function(self, v) self._shown = v end
+    return t
+  end
   f.CreateAnimationGroup = function(self) return animGroup(self) end
   f.LockHighlight = function(self) self.highlit = true end
   f.UnlockHighlight = function(self) self.highlit = false end
