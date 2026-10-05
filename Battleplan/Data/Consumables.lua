@@ -1,9 +1,10 @@
 -- Consumables every class draws from. Each entry gives one stat so the
 -- engine can score it with the spec's weights.
 --
--- PROVISIONAL: item IDs, amounts and levels are Classic values. Professions
--- were reworked for Forever, so confirm each one with the probe
--- (python tools/consumable_ids.py prints the /bpp items commands).
+-- Item IDs, names, required levels and tooltip amounts are confirmed on the
+-- beta (data/probe/2026-10-05-warrior-12.json; python tools/capture_check.py
+-- re-checks them). Still PROVISIONAL: the aura names (foodAura, elixir buffs)
+-- and potion tiers. Brilliant Wizard Oil's +1% spell crit isn't modelled.
 --
 -- kind: elixir | weapon | food | potion
 -- stat: a key from Data/Stats.lua; amount: how much of it
@@ -23,18 +24,18 @@ ns.Data.Consumables = {
   { itemID = 9187, name = "Elixir of Greater Agility", kind = "elixir", stat = "AGILITY", amount = 25, minLevel = 38 },
   { itemID = 13452, name = "Elixir of the Mongoose", kind = "elixir", stat = "AGILITY", amount = 25, minLevel = 46,
     extra = { CRIT_PCT = 2 } },
-  { itemID = 2454, name = "Elixir of Lion's Strength", kind = "elixir", stat = "STRENGTH", amount = 4, minLevel = 1 },
-  { itemID = 3391, name = "Elixir of Ogre's Strength", kind = "elixir", stat = "STRENGTH", amount = 8, minLevel = 20 },
-  { itemID = 9206, name = "Elixir of Giants", kind = "elixir", stat = "STRENGTH", amount = 25, minLevel = 46 },
-  { itemID = 3383, name = "Elixir of Wisdom", kind = "elixir", stat = "INTELLECT", amount = 6, minLevel = 15 },
+  { itemID = 2454, name = "Elixir of Minor Strength", kind = "elixir", stat = "STRENGTH", amount = 4, minLevel = 1 },
+  { itemID = 3391, name = "Elixir of Ogre Strength", kind = "elixir", stat = "STRENGTH", amount = 8, minLevel = 20 },
+  { itemID = 9206, name = "Elixir of Greater Strength", kind = "elixir", stat = "STRENGTH", amount = 25, minLevel = 48 },
+  { itemID = 3383, name = "Elixir of Wisdom", kind = "elixir", stat = "INTELLECT", amount = 6, minLevel = 10 },
   { itemID = 9179, name = "Elixir of Greater Intellect", kind = "elixir", stat = "INTELLECT", amount = 25, minLevel = 37 },
-  { itemID = 20007, name = "Mageblood Potion", kind = "elixir", stat = "MP5", amount = 12, minLevel = 40 },
+  { itemID = 20007, name = "Mageblood Elixir", kind = "elixir", stat = "MP5", amount = 12, minLevel = 40 },
   { itemID = 2458, name = "Elixir of Minor Fortitude", kind = "elixir", stat = "HEALTH", amount = 27, minLevel = 2 },
-  { itemID = 3825, name = "Elixir of Fortitude", kind = "elixir", stat = "HEALTH", amount = 120, minLevel = 25 },
+  { itemID = 3825, name = "Elixir of Lesser Fortitude", kind = "elixir", stat = "HEALTH", amount = 120, minLevel = 25 },
   { itemID = 5997, name = "Elixir of Minor Defense", kind = "elixir", stat = "ARMOR", amount = 50, minLevel = 1 },
-  { itemID = 3389, name = "Elixir of Defense", kind = "elixir", stat = "ARMOR", amount = 150, minLevel = 16 },
-  { itemID = 8951, name = "Elixir of Greater Defense", kind = "elixir", stat = "ARMOR", amount = 250, minLevel = 29 },
-  { itemID = 13445, name = "Elixir of Superior Defense", kind = "elixir", stat = "ARMOR", amount = 450, minLevel = 43 },
+  { itemID = 3389, name = "Elixir of Lesser Defense", kind = "elixir", stat = "ARMOR", amount = 150, minLevel = 16 },
+  { itemID = 8951, name = "Elixir of Defense", kind = "elixir", stat = "ARMOR", amount = 250, minLevel = 29 },
+  { itemID = 13445, name = "Elixir of Greater Defense", kind = "elixir", stat = "ARMOR", amount = 450, minLevel = 43 },
 
   -- Weapon: sharpening stones (edged), weightstones (blunt), oils (any)
   { itemID = 2862, name = "Rough Sharpening Stone", kind = "weapon", weapon = "edged", stat = "WEAPON_DAMAGE", amount = 2, minLevel = 1 },
@@ -48,24 +49,30 @@ ns.Data.Consumables = {
   { itemID = 3241, name = "Heavy Weightstone", kind = "weapon", weapon = "blunt", stat = "WEAPON_DAMAGE", amount = 4, minLevel = 15 },
   { itemID = 7965, name = "Solid Weightstone", kind = "weapon", weapon = "blunt", stat = "WEAPON_DAMAGE", amount = 6, minLevel = 25 },
   { itemID = 12643, name = "Dense Weightstone", kind = "weapon", weapon = "blunt", stat = "WEAPON_DAMAGE", amount = 8, minLevel = 35 },
-  { itemID = 20744, name = "Minor Wizard Oil", kind = "weapon", weapon = "any", stat = "SPELL_POWER", amount = 8, minLevel = 5 },
-  { itemID = 20746, name = "Lesser Wizard Oil", kind = "weapon", weapon = "any", stat = "SPELL_POWER", amount = 16, minLevel = 30 },
-  { itemID = 20749, name = "Brilliant Wizard Oil", kind = "weapon", weapon = "any", stat = "SPELL_POWER", amount = 36, minLevel = 45 },
-  { itemID = 20745, name = "Minor Mana Oil", kind = "weapon", weapon = "any", stat = "MP5", amount = 4, minLevel = 20 },
-  { itemID = 20747, name = "Lesser Mana Oil", kind = "weapon", weapon = "any", stat = "MP5", amount = 8, minLevel = 40 },
-  { itemID = 20748, name = "Brilliant Mana Oil", kind = "weapon", weapon = "any", stat = "MP5", amount = 12, minLevel = 45,
-    extra = { HEALING = 25 } },
+  { itemID = 20744, name = "Minor Wizard Oil", kind = "weapon", weapon = "any", stat = "SPELL_POWER", amount = 8, minLevel = 5,
+    extra = { HEALING = 8 } },
+  { itemID = 20746, name = "Lesser Wizard Oil", kind = "weapon", weapon = "any", stat = "SPELL_POWER", amount = 16, minLevel = 30,
+    extra = { HEALING = 16 } },
+  { itemID = 20749, name = "Brilliant Wizard Oil", kind = "weapon", weapon = "any", stat = "SPELL_POWER", amount = 36, minLevel = 45,
+    extra = { HEALING = 36 } },
+  { itemID = 20745, name = "Minor Mana Oil", kind = "weapon", weapon = "any", stat = "MP5", amount = 5, minLevel = 20,
+    extra = { HEALING = 10 } },
+  { itemID = 20747, name = "Lesser Mana Oil", kind = "weapon", weapon = "any", stat = "MP5", amount = 10, minLevel = 40,
+    extra = { HEALING = 20 } },
+  { itemID = 20748, name = "Brilliant Mana Oil", kind = "weapon", weapon = "any", stat = "MP5", amount = 15, minLevel = 45,
+    extra = { HEALING = 30 } },
 
-  -- Food (the buff is always "Well Fed")
-  { itemID = 2680, name = "Spiced Wolf Meat", kind = "food", stat = "STAMINA", amount = 2, minLevel = 1, extra = { SPIRIT = 2 } },
-  { itemID = 724, name = "Goretusk Liver Pie", kind = "food", stat = "STAMINA", amount = 4, minLevel = 5, extra = { SPIRIT = 4 } },
-  { itemID = 3662, name = "Crocolisk Steak", kind = "food", stat = "STAMINA", amount = 4, minLevel = 15, extra = { SPIRIT = 4 } },
-  { itemID = 12209, name = "Lean Wolf Steak", kind = "food", stat = "STAMINA", amount = 8, minLevel = 25, extra = { SPIRIT = 8 } },
-  { itemID = 12218, name = "Monster Omelet", kind = "food", stat = "STAMINA", amount = 12, minLevel = 35, extra = { SPIRIT = 12 } },
-  { itemID = 13928, name = "Grilled Squid", kind = "food", stat = "AGILITY", amount = 10, minLevel = 35 },
+  -- Food: one stat each on Forever, for 15 minutes after 10 s of eating (2026-10-05-warrior-12)
+  { itemID = 2680, name = "Spiced Wolf Meat", kind = "food", stat = "AGILITY", amount = 1, minLevel = 1 },
+  { itemID = 724, name = "Goretusk Liver Pie", kind = "food", stat = "STRENGTH", amount = 3, minLevel = 5 },
+  { itemID = 3662, name = "Crocolisk Steak", kind = "food", stat = "AGILITY", amount = 3, minLevel = 5 },
+  { itemID = 12209, name = "Lean Wolf Steak", kind = "food", stat = "AGILITY", amount = 5, minLevel = 15 },
+  { itemID = 12218, name = "Monster Omelet", kind = "food", stat = "STAMINA", amount = 15, minLevel = 35 },
+  { itemID = 13928, name = "Grilled Squid", kind = "food", stat = "CRIT_PCT", amount = 1, minLevel = 35 },
   { itemID = 20452, name = "Smoked Desert Dumplings", kind = "food", stat = "STRENGTH", amount = 20, minLevel = 45 },
-  { itemID = 13931, name = "Nightfin Soup", kind = "food", stat = "MP5", amount = 8, minLevel = 35 },
-  { itemID = 18254, name = "Runn Tum Tuber Surprise", kind = "food", stat = "INTELLECT", amount = 10, minLevel = 45 },
+  -- "Spell Damage" only, not healing
+  { itemID = 13931, name = "Nightfin Soup", kind = "food", stat = "SPELL_POWER", amount = 22, minLevel = 35 },
+  { itemID = 18254, name = "Runn Tum Tuber Surprise", kind = "food", stat = "INTELLECT", amount = 15, minLevel = 35 },
 
   -- Potions: amount is a tier (bigger is better), scored on its own
   { itemID = 118, name = "Minor Healing Potion", kind = "potion", stat = "HEAL_POTION", amount = 1, minLevel = 1 },

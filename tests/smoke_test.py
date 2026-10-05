@@ -76,7 +76,7 @@ has(gear, "Chest: Living Stats (+4 All stats) | |cff9d9d9denchanted|r",
 cons = screen(L, ns, "consumables")
 print("---- Rogue: Consumables ----\n" + cons)
 has(cons, "Best for leveling at level 30", "Elixir: Elixir of Agility (+15 Agility) | 3 in bags",
-    "Weapon: Solid Sharpening Stone (+6 Weapon damage)", "Food: Lean Wolf Steak (+8 Stamina)",
+    "Weapon: Solid Sharpening Stone (+6 Weapon damage)", "Food: Lean Wolf Steak (+5 Agility)",
     "Healing potion: Greater Healing Potion", "Missing right now", "Elixir | ", "Weapon | ")
 check("Mana potion" not in cons, "no mana potions for a Rogue")
 check("Food | " not in cons, "Well Fed is up, so food isn't missing")
@@ -162,7 +162,9 @@ check(healing.index("Lesser Heal (Rank 3)") < healing.index("Flash Heal (Rank 3)
 
 cons = screen(L, ns, "consumables")
 print("---- Priest: Consumables ----\n" + cons)
-has(cons, "Elixir: Mageblood Potion (+12 Mana per 5 s)", "Weapon: Lesser Mana Oil", "Mana potion: Greater Mana Potion")
+# Names, amounts and levels from the beta capture (data/probe/2026-10-05-warrior-12.json).
+has(cons, "Elixir: Mageblood Elixir (+12 Mana per 5 s)", "Weapon: Lesser Mana Oil (+10 Mana per 5 s)",
+    "Food: Runn Tum Tuber Surprise (+15 Intellect)", "Mana potion: Greater Mana Potion")
 check("Elixir | " not in cons, "Mageblood is up: elixir not missing")
 has(screen(L, ns, "rotation"), "Shadow Word: Pain", "Mind Blast", "Smite")
 
@@ -209,5 +211,11 @@ check(len(data["statlab"]) == 2 and data["statlab"][1]["label"] == "+10 agility"
 check(data["statlab"][0]["unreadable"]["haste"] == "secret", "secret stats recorded as secret")
 check(data["captures"]["spells"][0]["data"]["spells"][0]["bookName"] == "Sinister Strike", "export has spells")
 check(data["captures"]["items"][0]["data"]["items"][0]["spellName"] == "Agility", "export has item buffs")
+
+# The beta client lacks these Classic globals (data/probe/2026-10-05-warrior-12.json, env), so the
+# mock must too: Battleplan and the probe have to work from the C_* APIs alone.
+for name in ("UnitBuff", "GetItemSpell", "GetSpellPowerCost", "GetNumSpellTabs", "GetSpellTabInfo",
+             "GetSpellBookItemName", "GetSpellBookItemInfo", "UnitDefense"):
+    check(L.eval(name) is None, f"mock has no {name}, like the beta client")
 
 print(f"\nsmoke test passed: {checks} checks")

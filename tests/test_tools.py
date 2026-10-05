@@ -129,6 +129,11 @@ assert not capture_check.states(tip, "STRENGTH", 8), "right amount, wrong stat"
 food = "Use: If you spend at least 10 sec eating, you will become well fed and gain 15 Intellect for 15 min."
 assert capture_check.states(food, "INTELLECT", 15) and not capture_check.states(food, "INTELLECT", 10)
 
+# The committed beta capture agrees with Data/Consumables.lua and the Warrior guide.
+real = Path(__file__).resolve().parent.parent / "data" / "probe" / "2026-10-05-warrior-12.json"
+lines, flagged = capture_check.report([str(real)])
+assert flagged == 0, "\n".join(lines)
+
 # A clean capture exits 0; an empty export says what to run.
 clean = tmp / "clean.json"
 one_item = probe["captures"]["items"][0]["data"]["items"][0]
