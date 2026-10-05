@@ -1,0 +1,70 @@
+{
+  "generated": "2026-10-05 21:42 UTC",
+  "sources": [
+    "2026-10-05-statlab-warrior-12.json"
+  ],
+  "entries": [
+    {
+      "class": "WARRIOR",
+      "race": "Human",
+      "level": 12,
+      "input": "strength",
+      "amount": 3.0,
+      "per_point": {
+        "ap_base": 2.0,
+        "block_value": 0.333333,
+        "mh_max": 0.357143,
+        "mh_min": 0.357143,
+        "strength": 1.0
+      },
+      "at": "2026-10-05 16:41:07",
+      "source": "2026-10-05-statlab-warrior-12.json",
+      "confounded": [
+        "armor"
+      ]
+    }
+  ],
+  "skipped": [],
+  "conversions": [
+    {
+      "class": "WARRIOR",
+      "input": "strength",
+      "output": "ap_base",
+      "levels": {
+        "12": 2.0
+      }
+    },
+    {
+      "class": "WARRIOR",
+      "input": "strength",
+      "output": "block_value",
+      "levels": {
+        "12": 0.333333
+      }
+    },
+    {
+      "class": "WARRIOR",
+      "input": "strength",
+      "output": "mh_max",
+      "levels": {
+        "12": 0.357143
+      }
+    },
+    {
+      "class": "WARRIOR",
+      "input": "strength",
+      "output": "mh_min",
+      "levels": {
+        "12": 0.357143
+      }
+    },
+    {
+      "class": "WARRIOR",
+      "input": "strength",
+      "output": "strength",
+      "levels": {
+        "12": 1.0
+      }
+    }
+  ]
+}

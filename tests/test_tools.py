@@ -15,8 +15,8 @@ import capture_check  # noqa: E402
 import probe_files  # noqa: E402
 
 
-def snap(at, level, label, values, auras=("Well Fed",)):
-    return {"at": at, "label": label, "values": values,
+def snap(at, level, label, values, auras=("Well Fed",), gear=None):
+    return {"at": at, "label": label, "values": values, "gear": gear or {},
             "who": {"character": "Sassy-Beta", "class": "ROGUE", "race": "Gnome", "level": level},
             "auras": [{"name": a} for a in auras]}
 
@@ -53,6 +53,28 @@ assert first["per_point"]["ap_base"] == 1 and first["per_point"]["armor"] == 2
 crit = next(c for c in result["conversions"] if c["output"] == "crit_melee")
 assert crit["levels"] == {"19": 0.131, "29": 0.1}
 assert abs(crit["fit"]["per_level"] - (-0.0031)) < 1e-9, crit["fit"]
+
+# Gear swaps: what the item carries by itself (armor, weapon damage, shield block) is
+# not the stat's effect, so it is left out and listed as confounded.
+pants = "|cnIQ2:|Hitem:6084::::::::12:1491::11:::::::|h[Stormwind Guard Leggings]|h|r"
+shield = "|cnIQ1:|Hitem:1201::::::::12:1491::14:::::::|h[Dull Heater Shield]|h|r"
+swaps = list(stat_lab.steps([
+    snap("t1", 12, "", {"strength": 39, "ap_base": 94, "armor": 572, "block_value": 3}, gear={"17": shield}),
+    snap("t2", 12, "+3 strength", {"strength": 42, "ap_base": 100, "armor": 685, "block_value": 4},
+         gear={"7": pants, "17": shield}),
+    snap("t3", 12, "+5 stamina", {"health_max": 200, "armor": 600, "block_value": 9}, gear={"7": pants}),
+], "swaps.json"))
+assert swaps[0]["per_point"] == {"strength": 1, "ap_base": 2, "block_value": 0.333333}, swaps[0]
+assert swaps[0]["confounded"] == ["armor"]
+assert "armor" not in swaps[1]["per_point"] and "block_value" not in swaps[1]["per_point"]
+assert set(swaps[1]["confounded"]) == {"armor", "block", "block_value", "oh_max", "oh_min", "oh_speed"}
+assert "confounded" not in first, "same gear: nothing left out"
+
+# The committed Warrior 12 pair (Stormwind Guard Leggings, +3 Strength) gives 2 AP per Strength, no armor.
+warrior, skipped_w, _ = stat_lab.build([str(Path(__file__).resolve().parent.parent
+                                            / "data" / "probe" / "2026-10-05-statlab-warrior-12.json")])
+assert len(warrior) == 1 and not skipped_w, (warrior, skipped_w)
+assert warrior[0]["per_point"]["ap_base"] == 2 and "armor" not in warrior[0]["per_point"], warrior[0]
 
 # Consumable commands: every ID, each line short enough for chat.
 ids = consumable_ids.item_ids((consumable_ids.DATA).read_text())

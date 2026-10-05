@@ -182,7 +182,9 @@ level, spec, and equipped gear.
 1. Snapshot naked (no gear, no buffs).
 2. Equip one item with a single known stat (e.g. +10 Agility), snapshot, diff. That
    gives the conversion (Agility → attack power, crit, armor, dodge) for that class and
-   level.
+   level. An item also brings its own armor (or weapon damage, or shield
+   block), so `stat_lab.py` leaves out whatever the swapped slot carries by itself and
+   lists it as `confounded`; measure those outputs with a buff or a jewelry slot.
 3. Repeat for each primary and secondary stat, then for one enchant, one elixir, one
    weapon stone, and one food buff.
 4. Repeat at several levels (e.g. 10, 20, 30), because conversion rates in WoW usually

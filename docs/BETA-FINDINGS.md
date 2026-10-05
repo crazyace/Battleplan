@@ -48,6 +48,7 @@ plus a screenshot of the same character's Defense tooltip.
 | Weapon oils | Wizard oils: spell damage and healing +8 / 16 / 36 (Brilliant also +1% spell crit). Mana oils: 5 / 10 / 15 mana per 5 s and healing +10 / 20 / 30 | W12 items |
 | Item tooltips | The first `/bpp items` read has names and levels but no "Use:" line; the second, seconds later, has the full text | W12 items |
 | Warrior level 12 stats | Blessing of Kings landed between the two snapshots (+10% every stat). From it: 1 Stamina = 10 health; 2 Agility = +0.357% melee crit and dodge and +4 armor (about 5.6 Agility per 1% crit); 3 Strength = +6 melee AP. One-off pair, not a stat lab measurement | W12 stat lab |
+| Warrior level 12 Strength (stat lab) | First proper pair: Stormwind Guard Leggings off and on with Kings on throughout, 39 -> 42 Strength. 1 Strength = 2 melee AP, and +6 AP added 1.07 damage to a 2.5 s main hand (14 AP = 1 DPS). Block value went 3 -> 4 as Strength passed 40, which fits Strength / 20 rounded down (inferred; one pair). The leggings' own 113 armor is left out by `stat_lab.py` | [W12 stat lab export](../data/probe/2026-10-05-statlab-warrior-12.json), `data/stats/conversions.json` |
 
 ## References
 

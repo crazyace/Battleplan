@@ -18,6 +18,12 @@ what one point of it changed (crit, attack power, armor, dodge...), plus a
 straight-line fit over level wherever several levels were measured.
 Snapshots whose buffs differ from the one before are skipped, because a
 buff falling off in between would be counted as the stat's effect.
+
+An item carries more than its stat: armor, a weapon's damage, a shield's block.
+When the gear differs between two snapshots, the outputs the swapped slots can
+carry on their own are left out of that measurement and listed under
+"confounded", so a +3 Strength pair of leggings doesn't read as 37 armor per
+Strength. Measure those outputs with a buff, an enchant or a slot that has none.
 """
 import argparse
 import json
@@ -51,6 +57,28 @@ def parse_label(label):
     return amount, name
 
 
+# Inventory slot -> outputs an item in that slot changes by itself (slot numbers
+# are the client's INVSLOT_*). Neck, shirt, rings, trinkets and tabard add none.
+ARMOR_SLOTS = ("1", "3", "5", "6", "7", "8", "9", "10", "15", "17")
+SLOT_OUTPUTS = {
+    "16": ("mh_min", "mh_max", "mh_speed"),
+    "17": ("oh_min", "oh_max", "oh_speed", "block", "block_value"),
+    "18": ("ranged_speed",),
+}
+
+
+def confounded(before, after):
+    """Outputs the gear swapped between two snapshots can change on its own."""
+    ga, gb = before.get("gear") or {}, after.get("gear") or {}
+    slots = [slot for slot in set(ga) | set(gb) if ga.get(slot) != gb.get(slot)]
+    outputs = set()
+    for slot in slots:
+        if slot in ARMOR_SLOTS:
+            outputs.add("armor")
+        outputs.update(SLOT_OUTPUTS.get(slot, ()))
+    return outputs
+
+
 def aura_names(snap):
     return sorted(str(a.get("name")) for a in snap.get("auras", []) if isinstance(a, dict))
 
@@ -69,17 +97,22 @@ def steps(snapshots, source):
         if aura_names(before) != aura_names(after):
             yield {"skipped": "buffs changed between snapshots", "label": after.get("label"), "source": source}
             continue
-        per_point = {}
+        per_point, mixed = {}, confounded(before, after)
         va, vb = before.get("values", {}), after.get("values", {})
         for key in sorted(set(va) | set(vb)):
             x, y = va.get(key), vb.get(key)
+            if key in mixed:
+                continue
             if isinstance(x, (int, float)) and isinstance(y, (int, float)) and abs(y - x) > 1e-9:
                 per_point[key] = round((y - x) / amount, 6)
-        yield {
+        entry = {
             "class": who_b.get("class"), "race": who_b.get("race"), "level": who_b.get("level"),
             "input": stat, "amount": amount, "per_point": per_point,
             "at": after.get("at"), "source": source,
         }
+        if mixed:
+            entry["confounded"] = sorted(mixed)
+        yield entry
 
 
 def fit(points):
@@ -140,6 +173,10 @@ def main(argv=None):
     print(f"{len(entries)} measurements, {len(skipped)} skipped -> {out}")
     for s in skipped:
         print(f"  skipped '{s['label']}' ({s['source']}): {s['skipped']}")
+    for e in entries:
+        if e.get("confounded"):
+            print(f"  +{e['amount']:g} {e['input']} at {e['at']}: gear changed, so not measured: "
+                  + ", ".join(e["confounded"]))
     for row in fits:
         levels = ", ".join(f"L{l} {v:g}" for l, v in row["levels"].items())
         line = f"  {row['class']} {row['input']} -> {row['output']}: {levels}"
