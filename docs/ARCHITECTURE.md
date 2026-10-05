@@ -52,3 +52,34 @@
 2. Add `Weights`, `Talents`, `Rotations`, `Gear` (and `Healing` / `Tanking`), marked
    `provisional`.
 3. Add the files to `Battleplan.toc` and a character to `tests/wowmock.py`.
+
+## Refresh and failure handling
+
+`ns.Refresh` checks combat both when requested and when its coalesced timer fires.
+Cached callbacks avoid allocations in frequent event handlers. Bag events update
+counts separately; aura checks invalidate the UI only when the missing-buff list
+changes. Item-data completion events trigger another plan.
+
+`Jobs:Run(fn, label, onFailure)` releases failed jobs and invokes the owner's cleanup
+callback before reporting the error. Planner computes into a separate table and
+publishes only complete results, preserving the stable `ns.state` identity. Failure
+releases the running flag, keeps the previous plan and exposes a retry message.
+
+`API.EquippedItemStats` returns `false` for an equipped slot whose stats are unreadable;
+an absent slot is genuinely empty. Gear comparisons skip the former and use zero
+only for the latter.
+
+## Imported structural talent data
+
+`data/talents/catalog.json` retains source URL, build, collection date, original-source
+SHA-256, numeric talent/spell IDs, layout and prerequisite metadata. It contains facts
+extracted from the previously collected ForeverDB snapshot, not source-site code or
+tooltip prose. `tools/import_talent_catalog.py` emits `Data/TalentRules.lua`; edit the
+snapshot and regenerate, never hand-edit the output.
+
+The pure talent engine validates all planned points and checks actual prerequisites
+before recommending the next point. Only the gate's source-reported tree-point
+threshold is interpreted; raw gate metadata stays in JSON. Extra prerequisite
+conditions are preserved but fail closed until their semantics are confirmed (one
+Druid record currently has such a condition). Imported data stays `provisional` and
+does not establish live availability or supersede probe captures.

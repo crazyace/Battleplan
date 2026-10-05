@@ -74,3 +74,24 @@ value as `provisional`:
 - [x] Is threat readable out of combat? Yes (W12)
 - [ ] Is threat readable in combat?
 - [ ] Frame-time comparison with Battleplan on and off
+
+## External talent snapshot used for validation (provisional)
+
+The 2026-10-05 collected ForeverDB `data/classes.json` snapshot reports client build
+1.60.1.70205. Structural facts for 466 talents across nine classes are recorded in
+`data/talents/catalog.json`, with the URL and SHA-256 of the original collected source.
+These are imported leads, **not new verified beta captures**.
+
+It reports Riposte requiring Deflection rank 3, Renewed Hope requiring Soul Warding
+rank 1, and Prayer of Mending requiring Spirit of Redemption rank 1. Existing build
+orders have been rearranged to satisfy those rules and still spend 51 points; the
+orders and imported catalog remain provisional pending a talent-tree capture.
+
+Nature's Splendor has an additional prerequisite field whose semantics are not
+confirmed. The field is preserved; the runtime rejects such a condition rather than
+interpreting it as a verified rule. No Druid build is introduced by this import.
+
+The regression suite confirms code behavior against the mock, including delayed timer
+races and item-data completion. It does not claim those synthetic scenarios are new
+observations from the live client. Bag and item-data events are feature-detected;
+missing event names are skipped through the existing event wrapper.

@@ -18,11 +18,11 @@ ns.Data.ROGUE.Talents = {
       title = "Combat Swords/Axes",
       summary = "Sustained damage with any weapon. The easiest Rogue to level and the default before you pick a spec.",
       order = {
-        { "Improved Sinister Strike", 2 }, { "Lightning Reflexes", 3 }, { "Precision", 3 }, { "Deflection", 2 },
-        { "Riposte", 1 }, { "Endurance", 2 }, { "Improved Sprint", 2 }, { "Dual Wield Specialization", 5 },
+        { "Improved Sinister Strike", 2 }, { "Lightning Reflexes", 3 }, { "Precision", 3 }, { "Deflection", 3 },
+        { "Riposte", 1 }, { "Endurance", 1 }, { "Improved Sprint", 2 }, { "Dual Wield Specialization", 5 },
         { "Blade Flurry", 1 }, { "Hack and Slash", 5 }, { "Weapon Expertise", 2 }, { "Aggression", 3 },
-        { "Adrenaline Rush", 1 }, { "Lightning Reflexes", 5 }, { "Improved Eviscerate", 3 },
-        { "Puncturing Wounds", 3 }, { "Deflection", 3 }, { "Improved Kick", 2 }, { "Flawless Execution", 1 },
+        { "Adrenaline Rush", 1 }, { "Endurance", 2 }, { "Lightning Reflexes", 5 }, { "Improved Eviscerate", 3 },
+        { "Puncturing Wounds", 3 }, { "Improved Kick", 2 }, { "Flawless Execution", 1 },
         { "Malice", 5 }, { "Remorseless Attacks", 2 },
       },
       why = {

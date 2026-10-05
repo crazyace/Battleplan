@@ -65,14 +65,25 @@ end
 
 -- Refresh: coalesced out of combat; in combat, remembered and run once on
 -- PLAYER_REGEN_ENABLED. This is the path every refresh trigger takes.
-local dirty = {}
+local dirty, refreshFns, refreshCallbacks = {}, {}, {}
 
 function ns.Refresh(key, delay, fn)
   if ns.InCombat() then
     dirty[key] = fn
     return
   end
-  ns.Coalesce(key, delay, fn)
+  refreshFns[key] = fn
+  local cb = refreshCallbacks[key]
+  if not cb then
+    cb = function()
+      local f = refreshFns[key]
+      refreshFns[key] = nil
+      if ns.InCombat() then dirty[key] = dirty[key] or f
+      elseif f then f() end
+    end
+    refreshCallbacks[key] = cb
+  end
+  ns.Coalesce(key, delay, cb)
 end
 
 -- Run fn now if out of combat, else after combat (for frame changes).
@@ -86,7 +97,7 @@ end
 Events:On("PLAYER_REGEN_ENABLED", function()
   for key, fn in pairs(dirty) do
     dirty[key] = nil
-    ns.Coalesce(key, 0, fn)
+    ns.Refresh(key, 0, fn)
   end
   for i = 1, #afterCombat do
     local fn = afterCombat[i]

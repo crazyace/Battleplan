@@ -73,9 +73,19 @@ def allocations(L, ns):
     # UNIT_AURA with the window closed: the handler returns at once.
     aura = L.eval("function() fire('UNIT_AURA', 'player') end")
     report(f"UNIT_AURA x{n}, window closed: memory", measure(aura, n), ALLOC_BUDGET_KB, "KB")
+    # Real timers are asynchronous. The mock's default immediate timer recursively
+    # runs the whole refresh inside the event and measures Lua stack growth instead.
+    L.execute("SAVED_TIMER = C_Timer.After; C_Timer.After = function(_, fn) BAG_TIMER = fn end")
+    bag = L.eval("function() fire('BAG_UPDATE', 0); fire('BAG_UPDATE_DELAYED') end")
+    bag()
+    report(f"bag events x{n}, coalesced: memory", measure(bag, n), ALLOC_BUDGET_KB, "KB")
+    L.execute("BAG_TIMER(); C_Timer.After = SAVED_TIMER")
+    count = L.eval("function() BattleplanNS.Planner.CheckCounts() end")
+    L.globals().BattleplanNS = ns
+    report(f"bag counts x{n}, unchanged: memory", measure(count, n), ALLOC_BUDGET_KB, "KB")
     # In combat every refresh trigger only marks the plan dirty.
     L.execute("IN_COMBAT = true")
-    combat = L.eval("function() fire('PLAYER_EQUIPMENT_CHANGED'); fire('SPELLS_CHANGED') end")
+    combat = L.eval("function() fire('PLAYER_EQUIPMENT_CHANGED'); fire('SPELLS_CHANGED'); fire('BAG_UPDATE', 0) end")
     report(f"gear/spell events x{n} in combat: memory", measure(combat, n), ALLOC_BUDGET_KB, "KB")
     L.execute("IN_COMBAT = false")
     L.globals().fire("PLAYER_REGEN_ENABLED")
