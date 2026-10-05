@@ -296,7 +296,18 @@ def check_talents(capture):
     head = f"talents: {(capture.get('who') or {}).get('class')} ({capture['source']}, {len(nodes)} nodes)"
     if not data.get("complete") or not nodes:
         return head, [f"incomplete capture: {data.get('reason', 'unknown')}; retry /bpp talents out of combat"], []
-    return head, [], ["raw groups, ranks, definitions and conditions captured; validate rules before promoting data"]
+    good = ["raw groups, ranks, definitions and conditions captured; validate rules before promoting data"]
+    if "tooltipReadsComplete" in data:
+        summary = (f"rank tooltip reads: {data.get('tooltipReads', 0)}/{data.get('tooltipExpected', 0)}; "
+                   f"{data.get('tooltipFailures', 0)} without readable text")
+        if not data["tooltipReadsComplete"]:
+            return head, [summary + "; structural capture is usable, rank effects still need a retry"], good
+        good.append(summary + "; inspect the text before promoting effect data")
+    else:
+        descriptions = sum(bool(text(e.get("spell", {}).get("description")))
+                           for n in nodes for e in n.get("entries", []))
+        good.append(f"{descriptions} readable generic spell descriptions; no rank-tooltip capture in this export")
+    return head, [], good
 
 
 def report(files, verbose=False, class_root=DATA, consumables_path=DATA / "Consumables.lua", api_path=API_LUA):

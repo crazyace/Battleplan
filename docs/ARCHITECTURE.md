@@ -101,3 +101,25 @@ ID and attach reference text only when both spell name and rank match the catalo
 The tooltip labels the captured level; it is not live damage or a live resource quote.
 Learning levels and base cooldowns are never inferred from this catalog. Rotation
 choices remain independently provisional, and the UI states the starter guide's scope.
+
+## Rank-specific talent effects
+
+The probe queues a second phase after node metadata: four rank-tooltip calls per
+timer, never mixed with node batches. Every valid entry requests ranks `1..maxRanks`
+through `C_TooltipInfo.GetTraitEntry(entryID, rank)`. The signature is documented by
+Forever's generated API docs and used by its own talent UI. The implementation is
+original and feature-detected, with no frame creation or production API changes.
+When available, `C_Spell.RequestLoadSpellData` primes each entry's spell once before
+the tooltip phase.
+
+Per-entry `tooltips` keep requested rank, status, error and left/right lines.
+`tooltipExpected`, `tooltipReads`, `tooltipFailures`, and `tooltipReadsComplete`
+summarize the second phase without conflating missing effects with unreadable trait
+structure. Old captures remain supported by `tools/capture_check.py`; new captures
+report tooltip gaps separately. Neither readable text nor a complete structure
+promotes talent effects or build choices automatically.
+
+The Warrior spec map now uses captured groups rather than inferred layouts.
+`tests/trait_capture_test.py` replays the unchanged 52-node export through the API
+wrapper and verifies tree membership, point totals and Protection detection. It also
+checks isolated rank-call batches, missing/error/secret text and combat interruption.

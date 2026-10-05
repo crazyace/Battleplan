@@ -306,11 +306,11 @@ PRIEST_40 = r'''{
 WARRIOR_20 = r'''{
   class = "WARRIOR", className = "Warrior", level = 20,
   nodes = {
-    -- Uncaptured tree: groups 3001/3002/3003 left to right, points in the third
-    { 3001, "Deflection", 0, 1000 }, { 3001, "Tactical Mastery", 0, 1500 },
-    { 3002, "Cruelty", 0, 5000 }, { 3002, "Unbridled Wrath", 0, 5500 },
-    { 3003, "Shield Specialization", 5, 9000 }, { 3003, "Anticipation", 5, 9500 },
-    { 3003, "Toughness", 1, 9800 },
+    -- Confirmed spec groups; synthetic level-20 allocation in Protection.
+    { 11650, "Deflection", 0, 1000 }, { 11650, "Improved Tactical Mastery", 0, 1500 },
+    { 11657, "Cruelty", 0, 5000 }, { 11657, "Unbridled Wrath", 0, 5500 },
+    { 11670, "Shield Specialization", 5, 9000 }, { 11670, "Anticipation", 5, 9500 },
+    { 11670, "Improved Revenge", 1, 9800 },
   },
   book = {
     { "Heroic Strike", 3, 285 }, { "Sunder Armor", 2, 7386 }, { "Revenge", 1, 6572 },

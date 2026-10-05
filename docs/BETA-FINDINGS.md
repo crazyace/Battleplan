@@ -69,7 +69,8 @@ value as `provisional`:
 - [x] Consumable item IDs, names, levels and amounts (W12)
 - [ ] Consumable buff (aura) names, and potion amounts
 - [ ] Does `GetWeaponEnchantInfo` see stones and oils?
-- [ ] Warrior talent tree and spec group IDs
+- [x] Warrior talent tree and spec group IDs (native W12 talent capture)
+- [ ] Rank-specific Warrior talent effect text, then modeled build orders
 - [x] Confirm `UnitDefenseSkill` in a probe export: 57 / 0 at level 12 (`2026-10-05-warrior-12-defense.json`)
 - [x] Is threat readable out of combat? Yes (W12)
 - [ ] Is threat readable in combat?
@@ -117,3 +118,38 @@ The latest snapshot records defense base 58, bonus 0. The export contains no tal
 or performance captures, and both threat captures are out of combat. Those tasks
 remain open. Native `/bpp talents` is now implemented defensively; its optional
 condition API and raw field semantics still need a live capture before promotion.
+
+## Native Warrior talent capture (2026-10-05 17:50)
+
+Source: [2026-10-05-warrior-12-talents.json](../data/probe/2026-10-05-warrior-12-talents.json),
+committed unchanged from Jeff's export. Client 1.60.1.70205, level-12 Human Warrior.
+The capture completed with zero structural failures: tree `1117`, 52 nodes.
+
+| Tree | Spec group | Talents | Purchased points |
+|---|---:|---:|---:|
+| Arms | 11650 | 17 | 0 |
+| Fury | 11657 | 17 | 0 |
+| Protection | 11670 | 18 | 3 |
+
+All three points are Shield Specialization (3/5). All 52 names, node IDs, spell IDs
+and maximum ranks match the external catalog, as do its seven prerequisite node
+links. Exact prerequisite rank semantics remain provisional where this one allocation
+cannot distinguish them. Global `TalentRules` status is unchanged.
+
+`GetConditionInfo.spentAmountRequired` is the remaining amount in this capture,
+not an absolute threshold: Protection row two reports 2 after three points spent,
+row three 7, and Shield Slam 27. Arms/Fury, with zero points, report 5, 10 and 30.
+The checker/replay never substitutes these remaining values for absolute gate rules.
+
+Only 11 generic talent spell descriptions are readable; 41 are `<nil>`. The generic
+Shield Specialization text says 5% block and 100% chance to generate 5 Rage while
+its node has only three ranks purchased. Other zero-rank talents return zero-valued
+text. These reads do not establish each rank's effect.
+
+**Tooltip lead, not yet live-verified:** the Forever UI calls
+`GetTraitEntry(entryID, rank)` for talent descriptions. Its generated API documentation
+lists the same two arguments. The probe now uses this API defensively for every rank;
+Jeff's next capture must confirm returned text before effects are promoted.
+
+- [Forever talent display source](https://github.com/Gethe/wow-ui-source/blob/forever/Interface/AddOns/Blizzard_SharedTalentUI/Blizzard_TalentDisplay.lua)
+- [Forever tooltip API documentation](https://github.com/Gethe/wow-ui-source/blob/forever/Interface/AddOns/Blizzard_APIDocumentationGenerated/TooltipInfoDocumentation.lua)

@@ -48,7 +48,11 @@ with the item name and amount, e.g. `+15 agility`).
 
 ## Tanking
 
-- [ ] Warrior talent tree with points in each spec: `/bpp talents`, wait for completion, then `/bpp export`, for `traitTabGroups`. GearwrightProbe `/gwp talents` also works.
+- [x] Warrior talent tree and spec groups: native capture has 52 nodes, Arms 11650,
+      Fury 11657, Protection 11670; three points in Shield Specialization.
+- [ ] Update BattleplanProbe, run `/bpp talents` outside combat, wait for both structural
+      and rank-tooltip summaries, then `/bpp export`. Confirm text for every rank,
+      especially passive talents that returned nil or zero-valued generic descriptions.
 - [ ] Target a mob, `/bpp threat` out of combat; and once in combat if you can type it:
       is threat readable or secret?
 
@@ -71,4 +75,4 @@ with the item name and amount, e.g. `+15 agility`).
 | Does `GetWeaponEnchantInfo` see stones and oils? | | |
 | Elixir buff names | | |
 | Threat readable out of combat? In combat? | | |
-| Warrior spec group IDs | | |
+| Warrior spec group IDs | 11650 / 11657 / 11670 | `2026-10-05-warrior-12-talents.json` |

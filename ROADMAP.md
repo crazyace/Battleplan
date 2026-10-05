@@ -30,7 +30,8 @@ How every phase below gets done. Details in [AGENTS.md](AGENTS.md).
 - [ ] Stat lab at levels 10, 20, 30 for Rogue, Priest and Warrior ([docs/BETA-CHECKLIST.md](docs/BETA-CHECKLIST.md))
 - [ ] Spell ranks and costs (`/bpp spells`), Priest and Warrior trainers
 - [ ] Consumables checked in game (`tools/consumable_ids.py`)
-- [ ] Warrior talent tree captured; fill `Data/WARRIOR/Specs.lua` and write Warrior builds
+- [x] Warrior talent tree captured; fill `Data/WARRIOR/Specs.lua` with confirmed groups
+- [ ] Capture rank-specific Warrior effects and model Warrior builds
 
 ## Phase 1: theorycraft from real numbers (Oct - launch)
 
@@ -67,6 +68,9 @@ How every phase below gets done. Details in [AGENTS.md](AGENTS.md).
 - [ ] Confirm imported prerequisite rules against each class's beta talent capture
 - [ ] Interpret additional gate/prerequisite condition fields after client verification
 - [x] Add native `/bpp talents` with batched reads, raw prerequisites and explicit incomplete captures
+- [x] Confirm Warrior spec groups and replay the 52-node live capture in tests
+- [x] Add a separately batched per-rank talent tooltip collector
+- [ ] Confirm native rank-tooltip results in the live client before promoting effects
 - [x] Import captured Warrior spell ranks/costs/text with build and source hashes; CI checks regeneration
 - [x] Add provisional known-spell starter rotations for Arms, Fury and Protection
 - [ ] Extend Warrior rotations to higher-level/talent abilities after captures and modeling

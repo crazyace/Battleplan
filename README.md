@@ -102,7 +102,7 @@ docs work as written in PowerShell.
 | `/bplan buffcheck` | Turn the dungeon/raid zone-in reminder on or off |
 | `/bplan perf [on\|off\|reset]` | Handler timings; anything over budget shows in red |
 | `/bpp stats [label]` | Probe: stat lab snapshot ([docs/BETA-CHECKLIST.md](docs/BETA-CHECKLIST.md)) |
-| `/bpp talents` | Probe: capture trait nodes, ranks, definitions and prerequisite metadata outside combat |
+| `/bpp talents` | Probe: capture trait structure and a separate tooltip for each talent rank outside combat |
 | `/bpp spells` | Probe: capture learned spell ranks, costs and descriptions |
 | `/bpp all` | Probe: environment, spells, talents, auras and stats; wait for talent completion before exporting |
 | `/bpp export` | Probe: copyable JSON of everything recorded |
@@ -153,6 +153,18 @@ Warrior talent builds remain on the roadmap.
 
 For the next live capture, update **BattleplanProbe** too, then run `/bpp talents`
 outside combat. Wait for the completion message and run `/bpp export`. Reads are
-batched; combat or a config change produces an explicitly incomplete capture that
-can be retried. Raw conditions and edges are retained for validation, not interpreted
+batched; metadata and per-rank tooltip reads run in separate batches of four. Combat
+or a config change produces an explicitly incomplete capture that can be retried. Raw conditions and edges are retained for validation, not interpreted
 as confirmed spending rules automatically.
+
+Warrior spec detection now uses the captured group IDs directly: Arms `11650`, Fury
+`11657`, Protection `11670`, all in tree `1117`. The live level-12 allocation replays
+as three points in Shield Specialization and selects Protection.
+
+`/bpp talents` requests `C_TooltipInfo.GetTraitEntry(entryID, rank)` for every rank,
+so passive talents no longer depend solely on generic spell descriptions. The export
+stores each rank's left/right tooltip lines and status separately. `complete` covers
+structural reads; `tooltipReadsComplete` covers readable rank text. A missing tooltip
+API or empty/secret/error result preserves the usable structure and reports the gap.
+The new tooltip path remains unconfirmed until its first live export; readable text
+still needs review before it can support optimized builds.
