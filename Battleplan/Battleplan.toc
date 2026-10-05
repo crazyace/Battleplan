@@ -31,6 +31,8 @@ Data\PRIEST\Rotations.lua
 Data\PRIEST\Healing.lua
 Data\PRIEST\Gear.lua
 Data\WARRIOR\Specs.lua
+Data\WARRIOR\Spells.lua
+Data\WARRIOR\Rotations.lua
 Data\WARRIOR\Weights.lua
 Data\WARRIOR\Talents.lua
 Data\WARRIOR\Tanking.lua

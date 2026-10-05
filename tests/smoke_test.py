@@ -179,7 +179,7 @@ print("---- Warrior: Tanking ----\n" + tank)
 has(tank, "One target", "1. Revenge", "2. Sunder Armor", "3. Heroic Strike | Rank 3", "A pack", "Thunder Clap",
     "Shield Block", "Pull plan", "Mark a kill target", "Setup", "Coming up", "Shield Slam | talent",
     "Demoralizing Shout | |cff40ff40train now|r", "Shield Wall | level 28")
-has(screen(L, ns, "rotation"), "No rotation for this spec yet.")
+has(screen(L, ns, "rotation"), "Starter guide", "Sunder Armor", "Heroic Strike | Rank 3", "Taunt")
 
 # Unsupported class ---------------------------------------------------------------------------
 L = runtime(MAGE_20)

@@ -99,7 +99,7 @@ local function compute()
 
   -- Rotation
   s.known = API.KnownSpells()
-  s.rotation = data.Rotations and E.Rotation.Build(data.Rotations, s.spec, s.situation, s.known, s.level) or nil
+  s.rotation = data.Rotations and E.Rotation.Build(data.Rotations, s.spec, s.situation, s.known, s.level, data.Spells) or nil
   local changes
   if oldRotation and s.rotation and oldSpec == s.spec then
     changes = E.Rotation.Changes(oldRotation, s.rotation)

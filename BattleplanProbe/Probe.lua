@@ -7,11 +7,12 @@
 --   /bpp stats list      the snapshots taken so far
 --   /bpp stats clear     forget all stat lab snapshots
 --   /bpp spells          every spell and rank you know: ID, cost, cast time, text
+--   /bpp talents         trait nodes, entries, definitions and prerequisite metadata
 --   /bpp auras           your buffs and weapon enchants, right now
 --   /bpp items <ids>     what consumables do (item spell + tooltip), by item ID
 --   /bpp threat          is threat readable (have a target, out of combat)
 --   /bpp perf [seconds]  frame times for a while (default 30 s)
---   /bpp all             env + spells + auras + stats
+--   /bpp all             env + spells + talents + auras + stats
 --   /bpp export          copyable JSON of everything recorded
 --
 -- Everything lands in BattleplanProbeDB (SavedVariables persist on the Forever
@@ -99,6 +100,8 @@ end
 
 -- Environment ----------------------------------------------------------------------------
 local API_PATHS = {
+  "C_ClassTalents.GetActiveConfigID", "C_Traits.GetConfigInfo", "C_Traits.GetTreeNodes",
+  "C_Traits.GetNodeInfo", "C_Traits.GetEntryInfo", "C_Traits.GetDefinitionInfo", "C_Traits.GetConditionInfo",
   "issecretvalue", "canaccessvalue", "InCombatLockdown",
   "C_SpellBook.GetNumSpellBookSkillLines", "C_SpellBook.GetSpellBookSkillLineInfo",
   "C_SpellBook.GetSpellBookItemInfo", "C_SpellBook.IsSpellKnown",
@@ -377,6 +380,122 @@ function P.spells()
   say("spellbook (%s): %d entries, %d with a rank in the name, %d with a cost", how, #list, ranked, withCost)
 end
 
+-- Talents: raw API results retain unknown gates and prerequisite fields. -------------------------
+-- Capture each record separately so sanitize's depth limit does not flatten the whole tree.
+-- This is a manual developer command, never an event handler or a production dependency.
+local talentRun
+local function firstValue(result)
+  return result.status == "ok" and result.values and result.values[1] or nil
+end
+local function readableID(id) return type(id) == "number" and id > 0 and id % 1 == 0 end
+
+local function finishTalents(run, reason)
+  run.data.complete = reason == nil and run.data.failures == 0
+  run.data.reason = reason or (run.data.failures > 0 and "unreadable-records" or nil)
+  talentRun = nil
+  record("talents", run.data)
+  say("talents: %d nodes, %d unreadable records (%s); /bpp export",
+    #run.data.nodes, run.data.failures, run.data.complete and "complete" or "incomplete")
+end
+
+local function unreadableField(value)
+  if value == "<secret>" or value == "<table>" then return true end
+  if type(value) == "table" then
+    for _, field in pairs(value) do if unreadableField(field) then return true end end
+  end
+  return false
+end
+
+local function traitRead(run, path, ...)
+  local result = capture(path, ...)
+  local value = firstValue(result)
+  if result.status ~= "ok" or value == nil or value == "<nil>" or unreadableField(value)
+    or (path ~= "C_ClassTalents.GetActiveConfigID" and type(value) ~= "table") then
+    run.data.failures = run.data.failures + 1
+  end
+  return result
+end
+
+local talentBatch
+local function queueTalentBatch() C_Timer.After(0, talentBatch) end
+
+talentBatch = function()
+  local run = talentRun
+  if not run then return end
+  if InCombatLockdown() then return finishTalents(run, "combat-interrupted") end
+  local active = firstValue(capture("C_ClassTalents.GetActiveConfigID"))
+  if active ~= run.data.configID then return finishTalents(run, "config-changed") end
+  for _ = 1, 4 do
+    local pending = run.pending[run.index]
+    if not pending then return finishTalents(run) end
+    run.index = run.index + 1
+    local node = { nodeID = pending.nodeID, treeID = pending.treeID, entries = {}, conditions = {} }
+    node.info = traitRead(run, "C_Traits.GetNodeInfo", run.data.configID, node.nodeID)
+    local info = firstValue(node.info)
+    if type(info) == "table" then
+      for _, entryID in ipairs(type(info.entryIDs) == "table" and info.entryIDs or {}) do
+        if readableID(entryID) then
+          local entry = { entryID = entryID }
+          entry.info = traitRead(run, "C_Traits.GetEntryInfo", run.data.configID, entryID)
+          local value = firstValue(entry.info)
+          if type(value) == "table" and readableID(value.definitionID) then
+            entry.definition = traitRead(run, "C_Traits.GetDefinitionInfo", value.definitionID)
+            local def = firstValue(entry.definition)
+            if type(def) == "table" and readableID(def.spellID) then
+              entry.spell = spellDetails(def.spellID)
+              entry.spell.name = entry.spell.name or firstValue(capture("C_Spell.GetSpellName", def.spellID))
+            end
+          else run.data.failures = run.data.failures + 1 end
+          node.entries[#node.entries + 1] = entry
+        else run.data.failures = run.data.failures + 1 end
+      end
+      for _, conditionID in ipairs(type(info.conditionIDs) == "table" and info.conditionIDs or {}) do
+        if readableID(conditionID) then
+          node.conditions[#node.conditions + 1] = {
+            conditionID = conditionID,
+            info = traitRead(run, "C_Traits.GetConditionInfo", run.data.configID, conditionID),
+          }
+        else run.data.failures = run.data.failures + 1 end
+      end
+    end
+    run.data.nodes[#run.data.nodes + 1] = node
+  end
+  queueTalentBatch()
+end
+
+function P.talents()
+  if InCombatLockdown() then return say("leave combat first: /bpp talents") end
+  if talentRun then return say("talent capture already running") end
+  local run = { data = { how = "C_Traits", trees = {}, nodes = {}, failures = 0 }, pending = {}, index = 1 }
+  run.data.activeConfig = traitRead(run, "C_ClassTalents.GetActiveConfigID")
+  local configID = firstValue(run.data.activeConfig)
+  if not readableID(configID) then return finishTalents(run, "no-talent-config") end
+  run.data.configID = configID
+  run.data.config = traitRead(run, "C_Traits.GetConfigInfo", configID)
+  local config = firstValue(run.data.config)
+  if type(config) ~= "table" or type(config.treeIDs) ~= "table" then
+    return finishTalents(run, "no-talent-trees")
+  end
+  for _, treeID in ipairs(config.treeIDs) do
+    if readableID(treeID) then
+      local tree = { treeID = treeID, info = traitRead(run, "C_Traits.GetTreeNodes", treeID) }
+      run.data.trees[#run.data.trees + 1] = tree
+      local ids = firstValue(tree.info)
+      if type(ids) == "table" then
+        for _, nodeID in ipairs(ids) do
+          if readableID(nodeID) then run.pending[#run.pending + 1] = { treeID = treeID, nodeID = nodeID }
+          else run.data.failures = run.data.failures + 1 end
+        end
+      else run.data.failures = run.data.failures + 1 end
+    else run.data.failures = run.data.failures + 1 end
+  end
+  if #run.pending == 0 then return finishTalents(run, "no-talent-nodes") end
+  run.data.build = capture("GetBuildInfo")
+  talentRun = run
+  say("capturing %d talent nodes in batches; stay out of combat", #run.pending)
+  queueTalentBatch()
+end
+
 -- Auras ----------------------------------------------------------------------------------------
 function P.auras()
   local list = auraList()
@@ -492,8 +611,10 @@ end
 
 -- Everything at once -------------------------------------------------------------------------------
 function P.all()
+  if InCombatLockdown() then return say("leave combat first: /bpp all") end
   P.env()
   P.spells()
+  P.talents()
   P.auras()
   if not InCombatLockdown() then P.stats("all") end
 end
@@ -564,6 +685,7 @@ end
 P.toJSON = toJSON
 
 function P.export()
+  if talentRun then return say("talent capture is still running; wait for its completion message, then /bpp export") end
   local buf = {}
   toJSON(db(), buf)
   local text = table.concat(buf)
@@ -606,16 +728,17 @@ local HELP = {
   "/bpp stats [label]  - stat lab snapshot (label = what you changed, e.g. +10 agility)",
   "/bpp stats diff | list | clear",
   "/bpp spells  - spellbook: every rank, cost, cast time, description",
+  "/bpp talents  - trait tree, ranks and prerequisite metadata (out of combat)",
   "/bpp auras  - current buffs and weapon enchants",
   "/bpp items <ids>  - consumable effects by item ID",
   "/bpp threat  - is threat readable (with a target)",
   "/bpp perf [seconds]  - frame times",
-  "/bpp all  - env, spells, auras, stats",
+  "/bpp all  - env, spells, talents, auras, stats",
   "/bpp export  - copyable JSON",
 }
 
 local COMMANDS = {
-  stats = P.stats, spells = P.spells, auras = P.auras, items = P.items, threat = P.threat,
+  stats = P.stats, spells = P.spells, talents = P.talents, auras = P.auras, items = P.items, threat = P.threat,
   perf = P.perf, all = P.all, export = P.export, env = P.env,
 }
 

@@ -46,7 +46,7 @@
 
 ## Adding a class
 
-1. Capture its talent tree (`/gwp talents` from GearwrightProbe) and add
+1. Capture its talent tree (`/bpp talents`; GearwrightProbe `/gwp talents` also works) and add
    `Data/<CLASS>/Specs.lua` with `traitTabGroups`. Until then `Core/API.lua` works the
    spec tabs out from the tree layout.
 2. Add `Weights`, `Talents`, `Rotations`, `Gear` (and `Healing` / `Tanking`), marked
@@ -83,3 +83,21 @@ threshold is interpreted; raw gate metadata stays in JSON. Extra prerequisite
 conditions are preserved but fail closed until their semantics are confirmed (one
 Druid record currently has such a condition). Imported data stays `provisional` and
 does not establish live availability or supersede probe captures.
+
+## Native talent captures and observed spell catalog
+
+BattleplanProbe `/bpp talents` feature-detects the trait APIs and records config,
+per-tree node IDs, raw node/entry/definition returns, condition metadata and spell
+text. Node work runs in batches of four through zero-delay timers. Missing, errored,
+secret or truncated required reads remain inspectable and mark the capture incomplete.
+Combat interrupts it; a changed active config aborts it. `complete` means the required
+records were readable, not that imported talent rules or gate semantics are verified.
+There is no production dependency on the probe.
+
+`tools/import_spell_catalog.py` generates `Data/WARRIOR/Spells.lua` directly from an
+unchanged dated probe export. Observations are keyed by exact spell ID, with captured
+rank, costs, level, timestamp, build and source SHA-256. Rotation rows carry the learned
+ID and attach reference text only when both spell name and rank match the catalog.
+The tooltip labels the captured level; it is not live damage or a live resource quote.
+Learning levels and base cooldowns are never inferred from this catalog. Rotation
+choices remain independently provisional, and the UI states the starter guide's scope.

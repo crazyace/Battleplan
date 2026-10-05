@@ -22,7 +22,7 @@ next" prompt can't be made reliable. Battleplan does its work between pulls and 
 nothing in combat.
 
 > **Status: pre-alpha.** v1 covers **Rogue** (DPS), **Priest** (healer and Shadow) and
-> **Warrior** (tank). Spec detection, talent names and rating rates are confirmed on the
+> **Warrior** (tank, plus starter Arms/Fury rotation guides). Spec detection, talent names and rating rates are confirmed on the
 > beta; builds, rotations and consumable values are first drafts until the stat lab has
 > real numbers. The window says so while anything is provisional. See [ROADMAP.md](ROADMAP.md).
 
@@ -102,6 +102,9 @@ docs work as written in PowerShell.
 | `/bplan buffcheck` | Turn the dungeon/raid zone-in reminder on or off |
 | `/bplan perf [on\|off\|reset]` | Handler timings; anything over budget shows in red |
 | `/bpp stats [label]` | Probe: stat lab snapshot ([docs/BETA-CHECKLIST.md](docs/BETA-CHECKLIST.md)) |
+| `/bpp talents` | Probe: capture trait nodes, ranks, definitions and prerequisite metadata outside combat |
+| `/bpp spells` | Probe: capture learned spell ranks, costs and descriptions |
+| `/bpp all` | Probe: environment, spells, talents, auras and stats; wait for talent completion before exporting |
 | `/bpp export` | Probe: copyable JSON of everything recorded |
 
 ## Related
@@ -134,3 +137,22 @@ cannot produce an upgrade comparison until item data arrives.
 
 `python scripts/check.py` now includes `tests/regression_test.py`, which covers these
 behaviors and checks that the generated catalog matches its snapshot.
+
+## Warrior capture integration
+
+`python tools/import_spell_catalog.py` regenerates `Data/WARRIOR/Spells.lua` from
+`data/probe/2026-10-05-warrior-12-followup.json`; `--check` detects stale output in CI.
+The catalog records observed ranks, costs, text, build and source hash. A spell known
+at level 12 is not proof of its trainer level. Current cooldown duration is not a
+base cooldown, so neither becomes a learning requirement or cooldown model.
+
+Arms, Fury and Protection have provisional starter rotation guides filtered to your
+learned spells and highest ranks. Hover a captured spell row for its dated reference
+text; a new rank never inherits an older rank's text. Higher-level abilities and
+Warrior talent builds remain on the roadmap.
+
+For the next live capture, update **BattleplanProbe** too, then run `/bpp talents`
+outside combat. Wait for the completion message and run `/bpp export`. Reads are
+batched; combat or a config change produces an explicitly incomplete capture that
+can be retried. Raw conditions and edges are retained for validation, not interpreted
+as confirmed spending rules automatically.
