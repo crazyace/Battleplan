@@ -35,8 +35,8 @@ plus a screenshot of the same character's Defense tooltip.
 | Fact | Value | Source |
 |---|---|---|
 | Classic globals missing | `UnitBuff`, `GetItemSpell`, `GetSpellPowerCost`, `GetNumSpellTabs`, `GetSpellTabInfo`, `GetSpellBookItemName`, `GetSpellBookItemInfo`, `UnitDefense`. All but `UnitDefense` have a `C_*` version, and Battleplan only uses the old ones as fallbacks | W12 env, stat lab |
-| Defense skill | The character sheet shows it (57 / 60 at level 12), but `UnitDefense` is missing, so the API behind it is still unknown. At 57 it adds 0.00% dodge, block and parry | W12 stat lab, [defense tooltip](../data/probe/2026-10-05-warrior-12-defense-tooltip.png) |
-| Defense cap | 440 Defense: can't be critically hit by raid bosses (the tooltip says that is -5.60% crit chance from 57). Crits do 200%; creatures 3+ levels above you can crush for 150% | [defense tooltip](../data/probe/2026-10-05-warrior-12-defense-tooltip.png) |
+| Defense skill | The character sheet shows it (57 / 60 at level 12). It reads `UnitDefenseSkill(unit)` -> base, modifier (`UnitDefense` is gone); the probe now records it, so the next export confirms it. Max is 5 x level; each point above max is 0.04% dodge, block, parry and less chance to be hit or crit, hence 0.00% at 57 | [Blizzard UI source](https://github.com/Gethe/wow-ui-source/tree/forever/Interface/AddOns/Blizzard_UIPanels_Game/Camelot), `Camelot/PaperDollFrameStats.lua`,  W12 stat lab, [defense tooltip](../data/probe/2026-10-05-warrior-12-defense-tooltip.png) |
+| Defense cap | 440 Defense: can't be critically hit by raid bosses (the tooltip calls it -5.60% crit chance: 140 points above the level 60 max of 300, at 0.04% each). It matches the UI's formula: enemy crit = 5% + 0.04% x (5 x enemy level - defense), and a level 63 boss has 315 skill. Crits do 200%; creatures 3+ levels above you can crush for 150% | [defense tooltip](../data/probe/2026-10-05-warrior-12-defense-tooltip.png), [Blizzard UI source](https://github.com/Gethe/wow-ui-source/tree/forever/Interface/AddOns/Blizzard_UIPanels_Game/Camelot), `Camelot/PaperDollFrameStats.lua` |
 | Spell ranks in the spellbook | `subName` is "Rank N" (Heroic Strike and Rend Rank 2 at 12), one entry per spell: only the highest rank is listed. Whether lower ranks can be cast is still open | W12 spells |
 | Spell costs and text | `C_Spell.GetSpellPowerCost` gives rage costs (Heroic Strike 15, Thunder Clap 20, Sunder Armor 15); descriptions include the numbers | W12 spells |
 | Warrior spells known at 12 | Battle Stance, Charge, Hamstring, Heroic Strike, Rend, Thunder Clap, Battle Shout, Bloodrage, Defensive Stance, Sunder Armor, Taunt | W12 spells |
@@ -48,6 +48,15 @@ plus a screenshot of the same character's Defense tooltip.
 | Weapon oils | Wizard oils: spell damage and healing +8 / 16 / 36 (Brilliant also +1% spell crit). Mana oils: 5 / 10 / 15 mana per 5 s and healing +10 / 20 / 30 | W12 items |
 | Item tooltips | The first `/bpp items` read has names and levels but no "Use:" line; the second, seconds later, has the full text | W12 items |
 | Warrior level 12 stats | Blessing of Kings landed between the two snapshots (+10% every stat). From it: 1 Stamina = 10 health; 2 Agility = +0.357% melee crit and dodge and +4 armor (about 5.6 Agility per 1% crit); 3 Strength = +6 melee AP. One-off pair, not a stat lab measurement | W12 stat lab |
+
+## References
+
+- Blizzard's own UI code for Forever ("Camelot") is mirrored at
+  [Gethe/wow-ui-source, branch `forever`](https://github.com/Gethe/wow-ui-source/tree/forever).
+  It shows which functions the client's character sheet calls (`Camelot/PaperDollFrame*.lua`).
+  Read it to find APIs; confirm each with the probe before relying on it, and don't copy it.
+- ExtraStats 3.0.0 for Forever (CurseForge project 803163, MIT, by Wuild)
+  pointed there: it reuses the native `PAPERDOLL_STATINFO` stat functions rather than its own reads.
 
 ## Still to find out
 
@@ -61,7 +70,7 @@ value as `provisional`:
 - [ ] Consumable buff (aura) names, and potion amounts
 - [ ] Does `GetWeaponEnchantInfo` see stones and oils?
 - [ ] Warrior talent tree and spec group IDs
-- [ ] Which API the character sheet reads Defense from (`UnitDefense` is gone)
+- [ ] Confirm `UnitDefenseSkill` in a probe export (the Blizzard UI source says the sheet uses it)
 - [x] Is threat readable out of combat? Yes (W12)
 - [ ] Is threat readable in combat?
 - [ ] Frame-time comparison with Battleplan on and off

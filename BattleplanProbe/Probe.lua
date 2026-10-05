@@ -111,7 +111,7 @@ local API_PATHS = {
   "C_Item.RequestLoadItemDataByID",
   "UnitDetailedThreatSituation", "UnitThreatSituation",
   "C_AddOnProfiler.GetAddOnMetric", "C_AddOnProfiler.GetOverallMetric", "GetFramerate",
-  "debugprofilestop", "IsInInstance", "GetInstanceInfo",
+  "debugprofilestop", "IsInInstance", "GetInstanceInfo", "UnitDefense", "UnitDefenseSkill",
 }
 
 function P.env()
@@ -148,7 +148,9 @@ local LAB = {
   { "haste_spell", "UnitSpellHaste", { "player" }, 1 },
   { "dodge", "GetDodgeChance", {}, 1 }, { "parry", "GetParryChance", {}, 1 },
   { "block", "GetBlockChance", {}, 1 }, { "block_value", "GetShieldBlock", {}, 1 },
-  { "defense_base", "UnitDefense", { "player" }, 1 }, { "defense_bonus", "UnitDefense", { "player" }, 2 },
+  -- UnitDefense is gone on Forever; the character sheet reads UnitDefenseSkill -> base, modifier
+  -- (Blizzard UI source, Camelot/PaperDollFrameStats.lua).
+  { "defense_base", "UnitDefenseSkill", { "player" }, 1 }, { "defense_bonus", "UnitDefenseSkill", { "player" }, 2 },
   { "spell_damage_holy", "GetSpellBonusDamage", { 2 }, 1 },
   { "spell_damage_fire", "GetSpellBonusDamage", { 3 }, 1 },
   { "spell_damage_nature", "GetSpellBonusDamage", { 4 }, 1 },

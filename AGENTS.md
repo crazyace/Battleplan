@@ -140,6 +140,9 @@ These are tested, and a failing perf test blocks the commit:
   credit. "All Rights Reserved" addons (Gear Journey, TrainerSpells, Auctionator) may be
   read to learn which APIs exist, never copied.
 - Wowhead's Forever database is a lead to confirm, not ground truth.
+- Blizzard's Forever UI source ([Gethe/wow-ui-source](https://github.com/Gethe/wow-ui-source/tree/forever),
+  `Camelot/` folders) shows which functions the client's own UI calls: the best lead for a new
+  `Core/API.lua` read. Confirm with the probe; read it, don't copy it.
 
 ## Commits and pushes
 

@@ -211,6 +211,7 @@ check(len(data["statlab"]) == 2 and data["statlab"][1]["label"] == "+10 agility"
 check(data["statlab"][0]["unreadable"]["haste"] == "secret", "secret stats recorded as secret")
 check(data["captures"]["spells"][0]["data"]["spells"][0]["bookName"] == "Sinister Strike", "export has spells")
 check(data["captures"]["items"][0]["data"]["items"][0]["spellName"] == "Agility", "export has item buffs")
+check("defense_base" in data["statlab"][0]["values"], "stat lab reads defense through UnitDefenseSkill")
 
 # The beta client lacks these Classic globals (data/probe/2026-10-05-warrior-12.json, env), so the
 # mock must too: Battleplan and the probe have to work from the C_* APIs alone.
