@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+# Runs every check before a push leaves this computer (CI minutes are
+# limited, so this is the main gate). Turn it on once per clone:
+#
+#   git config core.hooksPath .githooks
+#
+# Skip it in an emergency with: git push --no-verify
+exec sh "$(git rev-parse --show-toplevel)/scripts/check.sh"

@@ -9,7 +9,14 @@ Run this before every commit. A change that fails any step isn't done.
 
 ## 1. Run the checks
 
-From the repo root:
+From the repo root, one command runs everything:
+
+```
+sh scripts/check.sh
+```
+
+Make sure the pre-push hook is on for this clone (`git config core.hooksPath .githooks`).
+To run one check alone:
 
 ```
 python tests/smoke_test.py
@@ -60,4 +67,5 @@ New behaviour needs a test, bug fixes a regression test, new facts a line in
 ## 4. Commit and push
 
 One logical change per commit, imperative subject under 72 characters, a body with what
-and why. Then `git push`. CI runs the same checks; if it fails, fixing it is the next task.
+and why. Then `git push`: the hook runs check.sh again and blocks the push if anything
+fails. CI minutes are limited, so the local check is the real gate; CI is a backup.

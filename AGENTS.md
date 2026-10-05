@@ -33,7 +33,18 @@ python tests/test_rules.py       # architecture rules below (API boundary, pure 
 luacheck .                       # lint (luarocks install luacheck)
 ```
 
-All five must pass before every commit. CI runs the same five on every push.
+All five must pass before every commit. One command runs them all:
+
+```
+sh scripts/check.sh              # all five; prints ok / FAIL per check
+git config core.hooksPath .githooks   # once per clone: runs check.sh before every push
+```
+
+**The local check is the gate.** GitHub Actions minutes are limited on this account, so
+CI is a backup: one job, skipped for docs-only pushes, runnable by hand from the Actions
+tab. Never push with `--no-verify` except to recover from a broken hook, and say so in
+the commit message if you do. If luacheck isn't installed locally, check.sh skips it with
+a warning; install it (`luarocks install luacheck`) rather than living with the skip.
 
 ## Repository map
 
@@ -133,8 +144,8 @@ These are tested, and a failing perf test blocks the commit:
 - One logical change per commit. Subject in the imperative, under 72 characters
   ("Add Druid healing guide"); body says what and why, and which capture any new fact
   came from.
-- Run all five checks before committing. Push to `main` when they pass; CI must stay
-  green. If CI fails, fixing it is the next task.
+- Run `sh scripts/check.sh` before committing; the pre-push hook runs it again. Push to
+  `main` when it passes. If CI runs and fails, fixing it is the next task.
 - Never commit secrets, personal data from other players (names in captures are fine
   only when the client shows them publicly, and AH seller names are never recorded),
   or `__pycache__`.

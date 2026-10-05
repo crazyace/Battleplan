@@ -77,16 +77,15 @@ definition of done. Step-by-step procedures are in [.claude/skills/](.claude/ski
 
 3. In game, `/reload` after edits.
 
-Before committing:
+Once per clone:
 
 ```
 pip install "lupa>=2.0"
-python tests/smoke_test.py
-python tests/perf_test.py
-python tests/test_tools.py
-python tests/test_rules.py
-luacheck .
+luarocks install luacheck            # optional locally, but recommended
+git config core.hooksPath .githooks  # runs every check before each push
 ```
+
+Before committing: `sh scripts/check.sh` (on Windows, from Git Bash).
 
 ## Commands
 

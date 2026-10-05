@@ -1,27 +1,29 @@
 name: CI
 
+# Minutes are limited, so the main gate is local: scripts/check.sh, run by
+# the pre-push hook (.githooks/pre-push). CI repeats it as one job, skips
+# pushes that only touch docs, and can be run by hand from the Actions tab.
 on:
   push:
+    paths-ignore: ["**.md", "docs/**", ".claude/**", "data/probe/**"]
   pull_request:
+    paths-ignore: ["**.md", "docs/**", ".claude/**", "data/probe/**"]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  lint:
-    name: luacheck
+  check:
+    name: scripts/check.sh
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: lunarmodules/luacheck@v1
-
-  tests:
-    name: smoke, perf, tools and rules tests
-    runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - run: pip install "lupa>=2.0"
-      - run: python tests/smoke_test.py
-      - run: python tests/perf_test.py
-      - run: python tests/test_tools.py
-      - run: python tests/test_rules.py
+      - run: sudo apt-get install -y -q luarocks && sudo luarocks install luacheck
+      - run: BATTLEPLAN_REQUIRE_LUACHECK=1 sh scripts/check.sh
