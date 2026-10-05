@@ -8,6 +8,34 @@ the addon must never cause a hitch in game.**
 
 ---
 
+## 0. Dev workflow
+
+- **Ask questions only when absolutely necessary; work autonomously.** If the answer is in
+  the repo, the docs or a probe capture, or a reasonable default exists and a wrong guess
+  is cheap to fix, decide and keep going. Write the decision in the commit message and the
+  doc it affects. Stop and ask only for things that are costly or hard to undo.
+- **Do things properly: this is production grade, not a hack project.** Every change has
+  tests, passes lint and the perf budgets, keeps the architecture rules, updates the docs,
+  and is committed and pushed with CI green. No temporary shortcuts.
+- **[AGENTS.md](../AGENTS.md) holds the concrete development guidelines**: commands,
+  repository map, Lua and performance rules, testing, data provenance, commits, and the
+  definition of done. `CLAUDE.md` points to it.
+- **Skills in [.claude/skills/](../.claude/skills/) cover the recurring jobs** step by step:
+
+  | Skill | When |
+  |---|---|
+  | `verify-change` | Before every commit |
+  | `import-probe-capture` | A `/bpp export` or `/gwp export` arrives |
+  | `add-class` | A new class or role guide |
+  | `add-game-api` | Reading something new from the client |
+  | `update-data` | Changing builds, rotations, weights, consumables, enchants |
+
+- **The architecture rules are enforced, not just written down**: `tests/test_rules.py`
+  fails CI on game reads outside `Core/API.lua`, WoW calls in `Engine/`, data files
+  without `_status`, files missing from a `.toc`, and stray `OnUpdate` scripts.
+
+---
+
 ## 1. What this addon does
 
 An **out-of-combat build planner**. It tells the player how to set up their character
@@ -748,6 +776,7 @@ the report. Anything whose **max** breaks the section 4 budget is a bug.
 
 - [ ] `python tests/smoke_test.py` passes
 - [ ] `python tests/perf_test.py` passes (time budget + no memory growth)
+- [ ] `python tests/test_tools.py` and `python tests/test_rules.py` pass, and `luacheck .` is clean
 - [ ] No game data API calls outside `Core/API.lua`
 - [ ] No OnUpdate script left running while idle
 - [ ] No frame work during combat that isn't deferred through `ns.OutOfCombat`

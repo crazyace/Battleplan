@@ -3,6 +3,23 @@
 Built around Forever's schedule: beta until **Oct 22** (level 30 cap), launch **Nov 4**,
 first raids **Dec 9**.
 
+## Dev workflow
+
+How every phase below gets done. Details in [AGENTS.md](AGENTS.md).
+
+- **Work autonomously.** Ask questions only when absolutely necessary: when the answer
+  isn't in the repo, the docs or a capture, and a wrong guess would be costly or hard to
+  undo. Otherwise decide, note the decision, and keep going.
+- **Production grade, not a hack.** Every change is tested, linted, documented, reviewed
+  against the definition of done, committed with a clear message, and pushed with CI green.
+- **AGENTS.md and skills** hold the concrete guidelines: coding and performance rules,
+  testing, data provenance, commits, and step-by-step procedures in
+  [.claude/skills/](.claude/skills/) for verifying a change, importing a probe capture,
+  adding a class, adding a game API read, and updating data.
+- [x] AGENTS.md with development guidelines and the definition of done
+- [x] Skills: verify-change, import-probe-capture, add-class, add-game-api, update-data
+- [x] Architecture rules enforced in CI (`tests/test_rules.py`)
+
 ## Phase 0: stat lab and beta data (now - Oct 22)
 
 - [x] BattleplanProbe: stat snapshots and diffs, spellbook ranks and costs, auras,

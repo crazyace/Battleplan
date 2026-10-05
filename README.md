@@ -51,13 +51,20 @@ Battleplan/          The addon players install
 BattleplanProbe/     Dev-only addon: stat lab, spellbook ranks and costs, auras,
                      consumable effects, frame times
 tools/               stat_lab.py (snapshots -> conversion table), consumable_ids.py
-tests/               smoke_test.py, perf_test.py, test_tools.py (mocked client, Lua 5.1)
+tests/               smoke, perf, tools and rules tests (mocked client, Lua 5.1)
 data/probe/          Probe captures (raw research data)
 data/stats/          conversions.json from the stat lab
 docs/                BUILD-GUIDE, ARCHITECTURE, BETA-CHECKLIST, BETA-FINDINGS
+AGENTS.md            Dev workflow and guidelines (CLAUDE.md points here)
+.claude/skills/      Procedures: verify-change, import-probe-capture, add-class,
+                     add-game-api, update-data
 ```
 
 ## Development setup
+
+Read [AGENTS.md](AGENTS.md) first: how we work, coding and testing guidelines, and the
+definition of done. Step-by-step procedures are in [.claude/skills/](.claude/skills/).
+
 
 1. Clone the repo.
 2. Link both addon folders into Forever's AddOns folder, which is
@@ -77,6 +84,7 @@ pip install "lupa>=2.0"
 python tests/smoke_test.py
 python tests/perf_test.py
 python tests/test_tools.py
+python tests/test_rules.py
 luacheck .
 ```
 
