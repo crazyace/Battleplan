@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Tests for tools/stat_lab.py, tools/consumable_ids.py and tools/capture_check.py.
+"""Tests for tools/stat_lab.py, consumable_ids.py, capture_check.py and probe_files.py.
 
     python tests/test_tools.py
 """
@@ -12,6 +12,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "tools"))
 import stat_lab  # noqa: E402
 import consumable_ids  # noqa: E402
 import capture_check  # noqa: E402
+import probe_files  # noqa: E402
 
 
 def snap(at, level, label, values, auras=("Well Fed",)):
@@ -124,5 +125,26 @@ empty = tmp / "empty.json"
 empty.write_text("{}")
 lines, flagged = capture_check.report([str(empty)])
 assert flagged == 0 and lines[0].startswith("nothing captured"), lines
+
+# Wildcards: PowerShell hands them to Python unexpanded, so the tools expand them.
+wild = tmp / "wild"
+wild.mkdir()
+a, b, c = (wild / n for n in ("a.json", "b1.json", "b2.json"))
+for f in (a, b, c):
+    f.write_text("{}")
+assert probe_files.expand([str(wild / "*.json")]) == [str(a), str(b), str(c)]
+assert probe_files.expand([str(c), str(wild / "b*.json")]) == [str(c), str(b)], "in order, no duplicates"
+for bad in (str(wild / "nothing*.json"), str(wild / "missing.json")):
+    try:
+        probe_files.expand([bad])
+        raise AssertionError(f"{bad} should fail")
+    except SystemExit as e:
+        assert "no" in str(e)
+statlab_dir = tmp / "probe"
+statlab_dir.mkdir()
+(statlab_dir / "2026-10-05-statlab-rogue.json").write_text(json.dumps(export))
+out2 = tmp / "conversions2.json"
+assert stat_lab.main([str(statlab_dir / "*statlab*.json"), "--out", str(out2)]) == 0
+assert json.loads(out2.read_text())["sources"] == ["2026-10-05-statlab-rogue.json"]
 
 print("tools tests passed")

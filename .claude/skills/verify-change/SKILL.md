@@ -12,7 +12,7 @@ Run this before every commit. A change that fails any step isn't done.
 From the repo root, one command runs everything:
 
 ```
-sh scripts/check.sh
+python scripts/check.py      # any shell; sh scripts/check.sh does the same
 ```
 
 Make sure the pre-push hook is on for this clone (`git config core.hooksPath .githooks`).

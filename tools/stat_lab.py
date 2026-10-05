@@ -27,6 +27,8 @@ from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
+from probe_files import expand
+
 ROOT = Path(__file__).resolve().parent.parent
 LABEL = re.compile(r"^\s*([+-]?\d+(?:\.\d+)?)\s+([A-Za-z][A-Za-z _%-]*?)\s*$")
 ALIASES = {
@@ -123,11 +125,12 @@ def main(argv=None):
     ap.add_argument("files", nargs="+", help="BattleplanProbe export JSON files")
     ap.add_argument("--out", default=str(ROOT / "data" / "stats" / "conversions.json"))
     args = ap.parse_args(argv)
+    files = expand(args.files)
 
-    entries, skipped, fits = build(args.files)
+    entries, skipped, fits = build(files)
     result = {
         "generated": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
-        "sources": sorted({Path(f).name for f in args.files}),
+        "sources": sorted({Path(f).name for f in files}),
         "entries": entries, "skipped": skipped, "conversions": fits,
     }
     out = Path(args.out)

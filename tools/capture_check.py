@@ -27,6 +27,8 @@ import re
 import sys
 from pathlib import Path
 
+from probe_files import expand
+
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "Battleplan" / "Data"
 API_LUA = ROOT / "Battleplan" / "Core" / "API.lua"
@@ -293,7 +295,10 @@ def main(argv=None):
     ap.add_argument("files", nargs="+", help="BattleplanProbe export JSON files")
     ap.add_argument("-v", "--verbose", action="store_true", help="also list what checked out")
     args = ap.parse_args(argv)
-    lines, flagged = report(args.files, args.verbose)
+    lines, flagged = report(expand(args.files), args.verbose)
+    # Tooltips can hold characters a Windows console code page can't print.
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(errors="replace")
     print("\n".join(lines))
     return 1 if flagged else 0
 
