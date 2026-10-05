@@ -28,7 +28,7 @@ Forever addon. Read this before changing anything. The design is in
 pip install "lupa>=2.0"          # once; the tests run real Lua 5.1 through it
 python tests/smoke_test.py       # behaviour: every tab, every class, combat dormancy, probe
 python tests/perf_test.py        # budgets: slice time, row building, zero allocation
-python tests/test_tools.py       # tools/stat_lab.py and tools/consumable_ids.py
+python tests/test_tools.py       # tools/stat_lab.py, consumable_ids.py and capture_check.py
 python tests/test_rules.py       # architecture rules below (API boundary, pure engine, _status, .toc)
 luacheck .                       # lint (luarocks install luacheck)
 ```
