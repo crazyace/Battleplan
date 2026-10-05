@@ -177,3 +177,12 @@ level. All 52 Warrior talents / 150 ranks are imported from the live client; the
 order still needs play testing. Arms/Fury builds and optimized raid allocations remain
 unfinished. Rebuild the text catalog with `python tools/import_talent_effects.py`; use
 `--check` to detect stale generated data. No additional in-game command is needed.
+
+### Planner window
+
+Open `/bplan` outside combat. Use the **Spec** and **Situation** controls to change
+advice directly; **Auto** shows the resolved choice and follows your talents/level.
+The Talents tab highlights the next point and its target rank, then explains that
+choice. **Show build details** expands the remaining talent reasons. Explanations
+and item names wrap instead of being cut off; scroll for longer guides and hover
+for captured spell/rank text. Drag the title bar to move the window; Escape closes it.

@@ -80,3 +80,13 @@ How every phase below gets done. Details in [AGENTS.md](AGENTS.md).
       preserving source/build labels and availability evidence
 - [ ] Use models and captures to account for caps, procs, set bonuses, weapon restrictions
       and consumable stacking before expanding upgrade or best-consumable claims
+
+
+### Planner usability
+
+- [x] Replace the cramped window with a larger, calmer layout and clear selected tabs
+- [x] Wrap advice/item text in measured, reusable rows without scroll allocations
+- [x] Add direct spec/situation controls and compact provisional status
+- [x] Prioritize the next talent/rank and put full reasoning behind a details toggle
+- [ ] Live-client visual check after maintenance: wrapping, menus, tooltips, scrolling,
+      title dragging and Escape at the player's UI scale

@@ -1,22 +1,14 @@
--- A recycled list: only as many row frames as fit on screen, rebound to new
--- data as you scroll. Long lists cost the same as short ones, and rows are
--- made once, not on every refresh.
---
--- Row data: { kind = "header"|"row"|"note"|"blank", text=, value=, tip=, indent= }
+-- Wrapped, variable-height rows. Measure on data/size changes; scrolling only
+-- rebinds a fixed pool and never builds tables or frames.
 local _, ns = ...
-
 local UI = ns.UI
-local ROW_HEIGHT = 18
-local FONTS = { header = "GameFontNormal", row = "GameFontHighlightSmall", note = "GameFontDisableSmall" }
-
+local MIN_HEIGHT, LINE_HEIGHT = 26, 16
+local FONTS = { header = "GameFontNormal", row = "GameFontHighlightSmall", note = "GameFontHighlightSmall" }
 local List = {}
 List.__index = List
 
 local function setText(fs, text)
-  if fs.last ~= text then
-    fs.last = text
-    fs:SetText(text)
-  end
+  if fs.last ~= text then fs.last = text; fs:SetText(text) end
 end
 
 local function onEnter(row)
@@ -27,101 +19,149 @@ local function onEnter(row)
   GameTooltip:AddLine(d.tip, 1, 1, 1, true)
   GameTooltip:Show()
 end
-
 local function onLeave() GameTooltip:Hide() end
 
 local function makeRow(list)
   local row = CreateFrame("Button", nil, list)
-  row:SetHeight(ROW_HEIGHT)
   row.left = row:CreateFontString(nil, "OVERLAY", FONTS.row)
-  row.left:SetPoint("LEFT", 4, 0)
-  row.left:SetJustifyH("LEFT")
-  row.left:SetWordWrap(false)
   row.right = row:CreateFontString(nil, "OVERLAY", FONTS.row)
-  row.right:SetPoint("RIGHT", -4, 0)
+  row.left:SetJustifyH("LEFT")
   row.right:SetJustifyH("RIGHT")
-  row.left:SetPoint("RIGHT", row.right, "LEFT", -8, 0)
+  row.left:SetJustifyV("TOP")
+  row.right:SetJustifyV("TOP")
+  row.left:SetWordWrap(true)
+  row.right:SetWordWrap(true)
+  row.accent = row:CreateTexture(nil, "BACKGROUND")
+  row.accent:SetAllPoints()
+  row.accent:SetColorTexture(0.18, 0.24, 0.31, 0.65)
   row:SetScript("OnEnter", onEnter)
   row:SetScript("OnLeave", onLeave)
   return row
 end
 
-local function bind(row, d)
+local function measure(fs, value, width)
+  fs:SetWidth(width)
+  fs:SetText(value or "")
+  return math.max(LINE_HEIGHT, fs:GetStringHeight())
+end
+
+function List:Measure()
+  local width = math.max(200, self:GetWidth() or 200) - 20
+  self.width = width
+  local y = 0
+  for i, d in ipairs(self.data) do
+    local kind = d.kind or "row"
+    local indent = (d.indent or 0) * 12 + 8
+    local rightWidth = d.value and d.value ~= "" and math.floor(width * 0.40) or 0
+    local leftWidth = width - indent - (rightWidth > 0 and rightWidth + 14 or 0)
+    self.measure:SetFontObject(FONTS[kind] or FONTS.row)
+    local height = math.max(measure(self.measure, d.text, leftWidth),
+      rightWidth > 0 and measure(self.measure, d.value, rightWidth) or 0) + 10
+    if kind == "blank" then height = 10
+    elseif kind == "header" then height = height + 8
+    elseif d.emphasis then height = height + 10 end
+    self.tops[i], self.heights[i] = y, math.max(kind == "blank" and 10 or MIN_HEIGHT, height)
+    y = y + self.heights[i]
+  end
+  self.totalHeight = y
+end
+
+local function bind(row, d, list, index)
   row.data = d
   local kind = d.kind or "row"
   if row.kind ~= kind then
     row.kind = kind
     row.left:SetFontObject(FONTS[kind] or FONTS.row)
   end
-  local indent = (d.indent or 0) * 12 + 4
-  if row.indent ~= indent then
-    row.indent = indent
-    row.left:SetPoint("LEFT", indent, 0)
-  end
+  local indent = (d.indent or 0) * 12 + 8
+  local rightWidth = d.value and d.value ~= "" and math.floor(list.width * 0.40) or 0
+  local top = d.emphasis and -10 or -5
+  row.left:ClearAllPoints()
+  row.left:SetPoint("TOPLEFT", indent, top)
+  row.left:SetWidth(list.width - indent - (rightWidth > 0 and rightWidth + 14 or 0))
+  row.right:ClearAllPoints()
+  row.right:SetPoint("TOPRIGHT", -12, top)
+  row.right:SetWidth(math.max(1, rightWidth))
+  row.left:SetTextColor(kind == "note" and 0.70 or 1, kind == "note" and 0.76 or 0.84, kind == "note" and 0.82 or 0.64)
+  if kind == "row" then row.left:SetTextColor(0.94, 0.95, 0.97) end
+  row.right:SetTextColor(0.94, 0.95, 0.97)
+  row.accent:SetShown(d.emphasis == true)
+  row:SetHeight(list.heights[index])
   setText(row.left, d.text or "")
   setText(row.right, d.value or "")
 end
 
 function List:Layout()
-  local height = self:GetHeight() or 0
-  local fit = math.max(1, math.floor(height / ROW_HEIGHT))
-  for i = #self.rows + 1, fit do
-    local row = makeRow(self)
-    row:SetPoint("TOPLEFT", 0, -(i - 1) * ROW_HEIGHT)
-    row:SetPoint("RIGHT", self, "RIGHT", -8, 0)
-    self.rows[i] = row
-  end
+  local fit = math.max(1, math.ceil((self:GetHeight() or 0) / 10) + 1)
+  for i = #self.rows + 1, fit do self.rows[i] = makeRow(self) end
   self.fit = fit
+  self:Measure()
   self:Rebind()
 end
 
 function List:Rebind()
-  local maxOffset = math.max(0, #self.data - (self.fit or 0))
+  local height = self:GetHeight() or 0
+  local maxOffset = math.max(0, self.totalHeight - height)
   self.offset = ns.util.clamp(self.offset, 0, maxOffset)
-  for i, row in ipairs(self.rows) do
-    local d = (i <= (self.fit or 0)) and self.data[self.offset + i] or nil
-    if d then bind(row, d) else row.data = nil end
-    row:SetShown(d ~= nil)
+  local index = 1
+  while index <= #self.data and self.tops[index] + self.heights[index] <= self.offset do index = index + 1 end
+  for _, row in ipairs(self.rows) do
+    local d = self.data[index]
+    local y = d and self.tops[index] - self.offset or height
+    if d and y < height then
+      bind(row, d, self, index)
+      row:ClearAllPoints()
+      row:SetPoint("TOPLEFT", 0, -y)
+      row:SetPoint("TOPRIGHT", self, "TOPRIGHT", -8, -y)
+      row:Show()
+      index = index + 1
+    else
+      row.data = nil
+      row:Hide()
+    end
   end
-  -- Scroll position marker
-  local thumb = self.thumb
-  if maxOffset == 0 then
-    thumb:Hide()
+  if maxOffset == 0 then self.thumb:Hide()
   else
-    local h = self:GetHeight() or 0
-    local size = math.max(16, h * self.fit / #self.data)
-    thumb:SetHeight(size)
-    thumb:ClearAllPoints()
-    thumb:SetPoint("TOPRIGHT", 0, -(h - size) * self.offset / maxOffset)
-    thumb:Show()
+    local size = math.max(20, height * height / self.totalHeight)
+    self.thumb:SetHeight(size)
+    self.thumb:ClearAllPoints()
+    self.thumb:SetPoint("TOPRIGHT", 0, -(height - size) * self.offset / maxOffset)
+    self.thumb:Show()
   end
 end
 
 function List:SetData(rows)
+  GameTooltip:Hide()
   self.data = rows
+  self:Measure()
   self:Rebind()
 end
-
 function List:Scroll(delta)
-  self.offset = self.offset + delta
+  if ns.InCombat() then return end
+  GameTooltip:Hide()
+  self.offset = self.offset + delta * MIN_HEIGHT
   self:Rebind()
 end
-
-function List:ScrollToTop()
-  self.offset = 0
-  self:Rebind()
-end
+function List:ScrollToTop() self.offset = 0; self:Rebind() end
 
 function UI.CreateList(parent)
   local list = CreateFrame("Frame", nil, parent)
   for k, v in pairs(List) do if k ~= "__index" then list[k] = v end end
-  list.rows, list.data, list.offset, list.fit = {}, {}, 0, 0
+  list.rows, list.data, list.tops, list.heights = {}, {}, {}, {}
+  list.offset, list.fit, list.totalHeight = 0, 0, 0
+  list:SetClipsChildren(true)
+  list.measure = list:CreateFontString(nil, "OVERLAY", FONTS.row)
+  list.measure:SetWordWrap(true)
+  list.measure:Hide()
   list.thumb = list:CreateTexture(nil, "OVERLAY")
-  list.thumb:SetWidth(4)
-  list.thumb:SetColorTexture(1, 0.82, 0, 0.5)
+  list.thumb:SetWidth(3)
+  list.thumb:SetColorTexture(1, 0.76, 0.36, 0.8)
   list.thumb:Hide()
   list:EnableMouseWheel(true)
   list:SetScript("OnMouseWheel", function(self, delta) self:Scroll(-delta * 3) end)
-  list:SetScript("OnSizeChanged", function(self) self:Layout() end)
+  list.layoutCallback = function() list:Layout() end
+  list:SetScript("OnSizeChanged", function(self)
+    if ns.InCombat() then ns.Refresh("ui-layout", 0, self.layoutCallback) else self:Layout() end
+  end)
   return list
 end
