@@ -1,8 +1,9 @@
 name: CI
 
-# Minutes are limited, so the main gate is local: scripts/check.sh, run by
-# the pre-push hook (.githooks/pre-push). CI repeats it as one job, skips
-# pushes that only touch docs, and can be run by hand from the Actions tab.
+# The repo is public, so Actions minutes are free. scripts/check.sh is still
+# run locally by the pre-push hook for fast feedback; CI runs the same script
+# on every push and pull request, skips docs-only changes, and can be started
+# by hand from the Actions tab.
 on:
   push:
     paths-ignore: ["**.md", "docs/**", ".claude/**", "data/probe/**"]
@@ -17,7 +18,8 @@ concurrency:
 jobs:
   check:
     name: scripts/check.sh
-    runs-on: ubuntu-latest
+    # Pinned: ubuntu-latest moves to Ubuntu 26 on 2026-10-19 (actions/runner-images#14748).
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4

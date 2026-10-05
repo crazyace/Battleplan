@@ -19,7 +19,7 @@ How every phase below gets done. Details in [AGENTS.md](AGENTS.md).
 - [x] AGENTS.md with development guidelines and the definition of done
 - [x] Skills: verify-change, import-probe-capture, add-class, add-game-api, update-data
 - [x] Architecture rules enforced in CI (`tests/test_rules.py`)
-- [x] Local gate: `scripts/check.sh` + pre-push hook; CI trimmed to one job, skips docs-only pushes
+- [x] Local gate: `scripts/check.sh` + pre-push hook; CI runs the same script (repo is public, so Actions is free)
 
 ## Phase 0: stat lab and beta data (now - Oct 22)
 

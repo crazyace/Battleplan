@@ -68,4 +68,5 @@ New behaviour needs a test, bug fixes a regression test, new facts a line in
 
 One logical change per commit, imperative subject under 72 characters, a body with what
 and why. Then `git push`: the hook runs check.sh again and blocks the push if anything
-fails. CI minutes are limited, so the local check is the real gate; CI is a backup.
+fails. CI runs the same script on GitHub; check it went green
+(`gh run list -R crazyace/Battleplan --limit 1`), and if it's red, fixing it is next.

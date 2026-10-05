@@ -40,9 +40,9 @@ sh scripts/check.sh              # all five; prints ok / FAIL per check
 git config core.hooksPath .githooks   # once per clone: runs check.sh before every push
 ```
 
-**The local check is the gate.** GitHub Actions minutes are limited on this account, so
-CI is a backup: one job, skipped for docs-only pushes, runnable by hand from the Actions
-tab. Never push with `--no-verify` except to recover from a broken hook, and say so in
+**Two gates.** The pre-push hook runs check.sh before anything leaves your machine, and
+CI runs the same script on GitHub for every push and pull request (docs-only changes
+skip it). CI must be green; a red run is the next thing to fix. Never push with `--no-verify` except to recover from a broken hook, and say so in
 the commit message if you do. If luacheck isn't installed locally, check.sh skips it with
 a warning; install it (`luarocks install luacheck`) rather than living with the skip.
 
