@@ -144,7 +144,7 @@ function Planner.CheckBuffs()
   local s = state
   if not s.consumables or ns.InCombat() then return end
   local mh = API.WeaponEnchants()
-  if GetInventoryItemLink("player", 16) == nil then mh = nil end -- no weapon, nothing to check
+  if not API.HasMainHand() then mh = nil end -- no weapon, nothing to check
   s.missing = E.Consumables.BuffCheck(s.consumables, API.PlayerAuras(), elixirAuraNames(), mh,
     ns.Data.Consumables.foodAura)
 end

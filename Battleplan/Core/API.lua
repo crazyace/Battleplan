@@ -156,6 +156,11 @@ function API.PlayerAuras()
   return out
 end
 
+-- Whether a main-hand weapon is equipped.
+function API.HasMainHand()
+  return type(API.clean(GetInventoryItemLink("player", 16))) == "string"
+end
+
 -- hasMainHand, hasOffHand temporary enchants (stones, oils, poisons).
 function API.WeaponEnchants()
   if not GetWeaponEnchantInfo then return nil, nil end

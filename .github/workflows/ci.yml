@@ -13,7 +13,7 @@ jobs:
       - uses: lunarmodules/luacheck@v1
 
   tests:
-    name: smoke, perf and tools tests
+    name: smoke, perf, tools and rules tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,3 +24,4 @@ jobs:
       - run: python tests/smoke_test.py
       - run: python tests/perf_test.py
       - run: python tests/test_tools.py
+      - run: python tests/test_rules.py
