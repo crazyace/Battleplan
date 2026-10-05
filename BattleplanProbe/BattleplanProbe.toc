@@ -1,0 +1,11 @@
+## Interface: 16001
+## Title: Battleplan Probe
+## Notes: Beta data collector for Battleplan: stat lab, spellbook ranks and costs, auras, consumables, frame times. Dev tool, not for release.
+## Author: Jeff
+## Version: 0.1.0
+## SavedVariables: BattleplanProbeDB
+
+# Interface 16001 confirmed on the Forever beta (client 1.60.1, build 70205)
+# by GearwrightProbe: /dump select(4, GetBuildInfo())
+
+Probe.lua

@@ -1,0 +1,53 @@
+## Interface: 16001
+## Title: Battleplan
+## Notes: Plan your build before the pull: talents by situation, rotation for your level, gear, enchants, consumables, and healer and tank guides for World of Warcraft: Forever.
+## Author: Jeff
+## Version: 0.1.0-dev
+## SavedVariables: BattleplanDB
+## IconTexture: Interface\Icons\INV_Misc_Map_01
+
+# Interface 16001 confirmed on the Forever beta (client 1.60.1, build 70205).
+# Load order: Core -> Data -> Engine -> UI -> Commands.
+
+Core\Init.lua
+Core\Util.lua
+Core\Perf.lua
+Core\Events.lua
+Core\Scheduler.lua
+Core\API.lua
+
+Data\Stats.lua
+Data\Consumables.lua
+Data\ROGUE\Specs.lua
+Data\ROGUE\Weights.lua
+Data\ROGUE\Talents.lua
+Data\ROGUE\Rotations.lua
+Data\ROGUE\Gear.lua
+Data\PRIEST\Specs.lua
+Data\PRIEST\Weights.lua
+Data\PRIEST\Talents.lua
+Data\PRIEST\Rotations.lua
+Data\PRIEST\Healing.lua
+Data\PRIEST\Gear.lua
+Data\WARRIOR\Specs.lua
+Data\WARRIOR\Weights.lua
+Data\WARRIOR\Talents.lua
+Data\WARRIOR\Tanking.lua
+
+Engine\Score.lua
+Engine\Spec.lua
+Engine\Talents.lua
+Engine\Rotation.lua
+Engine\Gear.lua
+Engine\Consumables.lua
+Engine\Healing.lua
+Engine\Tanking.lua
+
+Core\Planner.lua
+
+UI\Animations.lua
+UI\List.lua
+UI\Tabs.lua
+UI\MainWindow.lua
+
+Core\Commands.lua
