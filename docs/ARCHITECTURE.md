@@ -123,3 +123,16 @@ The Warrior spec map now uses captured groups rather than inferred layouts.
 `tests/trait_capture_test.py` replays the unchanged 52-node export through the API
 wrapper and verifies tree membership, point totals and Protection detection. It also
 checks isolated rank-call batches, missing/error/secret text and combat interruption.
+
+
+### Captured talent effects
+
+`tools/import_talent_effects.py` generates the Warrior `TalentEffects.lua` text catalog
+from the latest complete rank capture in an unchanged probe export. It fails closed
+on incomplete reads, missing/duplicate ranks, unreadable text or mismatched totals.
+The catalog is loaded before builds and includes source/build/hash/level provenance.
+`Engine.Talents.Plan` accepts this optional plain table and returns the upcoming
+rank's text without changing the cached expanded order. The UI attaches it to the
+next-point tooltip, including the observed level and a scaling caveat. Other classes
+continue to plan without this catalog. `tests/talent_effects_test.py` checks exact Lua
+text round trips, regeneration, import rejection cases and every Protection level.

@@ -82,7 +82,7 @@ function Talents.Validate(build, rules)
 end
 
 -- build: a Data talent build (with .order); current: { [name] = rank }.
-function Talents.Plan(build, level, current, rules)
+function Talents.Plan(build, level, current, rules, effects)
   if rules then
     local errors = Talents.Validate(build, rules)
     if #errors > 0 then return { invalid = true, errors = errors } end
@@ -125,7 +125,11 @@ function Talents.Plan(build, level, current, rules)
   table.sort(missing, function(a, b) return a.name < b.name end)
   table.sort(extra, function(a, b) return a.name < b.name end)
 
+  local reference = effects and nextPoint and effects[nextPoint.name]
+  local rankText = reference and reference.ranks[nextPoint.rank]
+
   return {
+    rankText = rankText, observedAtLevel = rankText and effects.observedAtLevel or nil,
     available = available, spent = spent, unspent = available - spent, total = #points,
     next = (spent < available and not blocked) and nextPoint or nil, nextIndex = nextIndex,
     blocked = blocked,

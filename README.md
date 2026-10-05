@@ -22,7 +22,7 @@ next" prompt can't be made reliable. Battleplan does its work between pulls and 
 nothing in combat.
 
 > **Status: pre-alpha.** v1 covers **Rogue** (DPS), **Priest** (healer and Shadow) and
-> **Warrior** (tank, plus starter Arms/Fury rotation guides). Spec detection, talent names and rating rates are confirmed on the
+> **Warrior** (provisional shield leveling build, tank guide, and starter Arms/Fury rotations). Spec detection, talent names and rating rates are confirmed on the
 > beta; builds, rotations and consumable values are first drafts until the stat lab has
 > real numbers. The window says so while anything is provisional. See [ROADMAP.md](ROADMAP.md).
 
@@ -168,3 +168,12 @@ structural reads; `tooltipReadsComplete` covers readable rank text. A missing to
 API or empty/secret/error result preserves the usable structure and reports the gap.
 The new tooltip path remains unconfirmed until its first live export; readable text
 still needs review before it can support optimized builds.
+
+### Warrior talent effects
+
+Protection has a provisional 51-point shield leveling path, with Shield Slam planned
+at level 40. The next-point tooltip shows the exact captured rank text and the capture
+level. All 52 Warrior talents / 150 ranks are imported from the live client; the point
+order still needs play testing. Arms/Fury builds and optimized raid allocations remain
+unfinished. Rebuild the text catalog with `python tools/import_talent_effects.py`; use
+`--check` to detect stale generated data. No additional in-game command is needed.
