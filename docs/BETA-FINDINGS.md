@@ -29,12 +29,14 @@ that repo's `data/probe/`). Battleplan's own captures go in this repo's `data/pr
 ## Battleplan's own captures
 
 `W12` = [data/probe/2026-10-05-warrior-12.json](../data/probe/2026-10-05-warrior-12.json): Human
-Warrior level 12, `/bpp all` twice, `/bpp threat` out of combat, `/bpp items` for every consumable.
+Warrior level 12, `/bpp all` twice, `/bpp threat` out of combat, `/bpp items` for every consumable;
+plus a screenshot of the same character's Defense tooltip.
 
 | Fact | Value | Source |
 |---|---|---|
-| Classic globals missing | `UnitBuff`, `GetItemSpell`, `GetSpellPowerCost`, `GetNumSpellTabs`, `GetSpellTabInfo`, `GetSpellBookItemName`, `GetSpellBookItemInfo`, `UnitDefense`. Their `C_*` versions are present, and Battleplan only uses the old ones as fallbacks | W12 env, stat lab |
-| Defense skill | `UnitDefense` is missing, so the character sheet's defense can't be read; a defense cap has to come from tooltips | W12 stat lab |
+| Classic globals missing | `UnitBuff`, `GetItemSpell`, `GetSpellPowerCost`, `GetNumSpellTabs`, `GetSpellTabInfo`, `GetSpellBookItemName`, `GetSpellBookItemInfo`, `UnitDefense`. All but `UnitDefense` have a `C_*` version, and Battleplan only uses the old ones as fallbacks | W12 env, stat lab |
+| Defense skill | The character sheet shows it (57 / 60 at level 12), but `UnitDefense` is missing, so the API behind it is still unknown. At 57 it adds 0.00% dodge, block and parry | W12 stat lab, [defense tooltip](../data/probe/2026-10-05-warrior-12-defense-tooltip.png) |
+| Defense cap | 440 Defense: can't be critically hit by raid bosses (the tooltip says that is -5.60% crit chance from 57). Crits do 200%; creatures 3+ levels above you can crush for 150% | [defense tooltip](../data/probe/2026-10-05-warrior-12-defense-tooltip.png) |
 | Spell ranks in the spellbook | `subName` is "Rank N" (Heroic Strike and Rend Rank 2 at 12), one entry per spell: only the highest rank is listed. Whether lower ranks can be cast is still open | W12 spells |
 | Spell costs and text | `C_Spell.GetSpellPowerCost` gives rage costs (Heroic Strike 15, Thunder Clap 20, Sunder Armor 15); descriptions include the numbers | W12 spells |
 | Warrior spells known at 12 | Battle Stance, Charge, Hamstring, Heroic Strike, Rend, Thunder Clap, Battle Shout, Bloodrage, Defensive Stance, Sunder Armor, Taunt | W12 spells |
@@ -59,6 +61,7 @@ value as `provisional`:
 - [ ] Consumable buff (aura) names, and potion amounts
 - [ ] Does `GetWeaponEnchantInfo` see stones and oils?
 - [ ] Warrior talent tree and spec group IDs
+- [ ] Which API the character sheet reads Defense from (`UnitDefense` is gone)
 - [x] Is threat readable out of combat? Yes (W12)
 - [ ] Is threat readable in combat?
 - [ ] Frame-time comparison with Battleplan on and off
