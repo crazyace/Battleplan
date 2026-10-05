@@ -50,7 +50,8 @@ Battleplan/          The addon players install
   UI/                Window, tabs, recycled row list, animations
 BattleplanProbe/     Dev-only addon: stat lab, spellbook ranks and costs, auras,
                      consumable effects, frame times
-tools/               stat_lab.py (snapshots -> conversion table), consumable_ids.py
+tools/               stat_lab.py (snapshots -> conversion table), consumable_ids.py,
+                     capture_check.py (probe export vs Battleplan's data)
 tests/               smoke, perf, tools and rules tests (mocked client, Lua 5.1)
 data/probe/          Probe captures (raw research data)
 data/stats/          conversions.json from the stat lab

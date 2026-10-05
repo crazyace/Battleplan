@@ -27,6 +27,16 @@ print("perf runs:", len(d.get("perf", [])))
 EOF
 ```
 
+Then run the checker, which compares spells, consumables, missing APIs and threat with
+Battleplan's data and prints one `FIX` line per mismatch (`-v` also lists what matched):
+
+```
+python tools/capture_check.py data/probe/<file>.json
+```
+
+Work through its `FIX` lines in step 3. It only reports; the fixes, findings and `_status`
+changes are still yours to make.
+
 ## 3. Act on each part
 
 | Part | What to do |

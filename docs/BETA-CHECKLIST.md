@@ -32,6 +32,8 @@ with the item name and amount, e.g. `+15 agility`).
 - [ ] `/bpp spells` on a Priest with several heals learned: do lower ranks still exist
       (downranking), and do costs and descriptions come through?
 - [ ] Same on a Rogue and a Warrior: spell names match `Data/*/Rotations.lua`?
+- After any export: `python tools/capture_check.py data/probe/<file>.json` lists every
+  spell name, level, item and API that doesn't match Battleplan's data.
 - [ ] A Priest trainer and a Warrior trainer with GearwrightProbe (`/gwp trainer`):
       confirms the `minLevel` values marked Classic.
 

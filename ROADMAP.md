@@ -26,6 +26,7 @@ How every phase below gets done. Details in [AGENTS.md](AGENTS.md).
 - [x] BattleplanProbe: stat snapshots and diffs, spellbook ranks and costs, auras,
       consumable effects, threat check, frame times, JSON export
 - [x] `tools/stat_lab.py`: snapshots -> `data/stats/conversions.json`
+- [x] `tools/capture_check.py`: probe export vs Battleplan's data (spells, items, APIs, threat)
 - [ ] Stat lab at levels 10, 20, 30 for Rogue, Priest and Warrior ([docs/BETA-CHECKLIST.md](docs/BETA-CHECKLIST.md))
 - [ ] Spell ranks and costs (`/bpp spells`), Priest and Warrior trainers
 - [ ] Consumables checked in game (`tools/consumable_ids.py`)
