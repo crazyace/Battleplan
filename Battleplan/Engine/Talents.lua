@@ -38,8 +38,55 @@ function Talents.Expand(order)
   return points
 end
 
+-- Imported structural rules are provisional. Fail closed on unknown conditions.
+function Talents.CanSpend(rules, name, rank, current, level)
+  local rule = rules and rules[name]
+  if not rule then return false, "Talent missing from the imported catalog." end
+  if rank < 1 or rank > rule.maxRank then return false, "Rank exceeds the talent's maximum." end
+  if (current[name] or 0) + 1 ~= rank then return false, "Earlier ranks are required first." end
+  if level < rule.minLevel then return false, ("Requires level %d."):format(rule.minLevel) end
+  local treePoints = 0
+  for talent, spent in pairs(current) do
+    if rules[talent] and rules[talent].tree == rule.tree then treePoints = treePoints + spent end
+  end
+  if treePoints < rule.treePoints then
+    return false, ("Requires %d points in %s."):format(rule.treePoints, rule.tree)
+  end
+  for _, pre in ipairs(rule.requires) do
+    if #pre ~= 2 then return false, "Prerequisite condition needs in-game confirmation." end
+    if (current[pre[1]] or 0) < pre[2] then
+      return false, ("Requires %s rank %d."):format(pre[1], pre[2])
+    end
+  end
+  return true
+end
+
+local validations = setmetatable({}, { __mode = "k" })
+
+-- Validate every planned point, including future levels, before advising it.
+function Talents.Validate(build, rules)
+  local cached = validations[build.order]
+  if cached and cached.rules == rules then return cached.errors end
+  local current, errors = {}, {}
+  local points = Talents.Expand(build.order)
+  if #points ~= Talents.MAX_POINTS then
+    errors[#errors + 1] = { reason = "The build must allocate exactly 51 points." }
+  end
+  for i, point in ipairs(points) do
+    local ok, reason = Talents.CanSpend(rules, point.name, point.rank, current, Talents.LevelOfPoint(i))
+    if not ok then errors[#errors + 1] = { point = i, name = point.name, reason = reason } end
+    current[point.name] = point.rank
+  end
+  validations[build.order] = { rules = rules, errors = errors }
+  return errors
+end
+
 -- build: a Data talent build (with .order); current: { [name] = rank }.
-function Talents.Plan(build, level, current)
+function Talents.Plan(build, level, current, rules)
+  if rules then
+    local errors = Talents.Validate(build, rules)
+    if #errors > 0 then return { invalid = true, errors = errors } end
+  end
   local points = Talents.Expand(build.order)
   local available = Talents.Points(level)
   local spent = 0
@@ -60,6 +107,12 @@ function Talents.Plan(build, level, current)
     end
   end
 
+  local blocked
+  if rules and nextPoint and spent < available then
+    local ok, reason = Talents.CanSpend(rules, nextPoint.name, nextPoint.rank, current, level)
+    if not ok then blocked = reason end
+  end
+
   local missing, extra = {}, {}
   for name, want in pairs(target) do
     local have = current[name] or 0
@@ -74,7 +127,8 @@ function Talents.Plan(build, level, current)
 
   return {
     available = available, spent = spent, unspent = available - spent, total = #points,
-    next = (spent < available) and nextPoint or nil, nextIndex = nextIndex,
+    next = (spent < available and not blocked) and nextPoint or nil, nextIndex = nextIndex,
+    blocked = blocked,
     upcoming = nextPoint, -- the next step even when no point is free yet
     missing = missing, extra = extra, target = target, onPlan = #missing == 0 and #extra == 0,
   }

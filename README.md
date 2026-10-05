@@ -52,8 +52,9 @@ BattleplanProbe/     Dev-only addon: stat lab, spellbook ranks and costs, auras,
                      consumable effects, frame times
 tools/               stat_lab.py (snapshots -> conversion table), consumable_ids.py,
                      capture_check.py (probe export vs Battleplan's data)
-tests/               smoke, perf, tools and rules tests (mocked client, Lua 5.1)
+tests/               smoke, perf, regression, tools and rules tests (mocked client, Lua 5.1)
 data/probe/          Probe captures (raw research data)
+data/talents/        Dated structural talent snapshot used to validate build orders
 data/stats/          conversions.json from the stat lab
 docs/                BUILD-GUIDE, ARCHITECTURE, BETA-CHECKLIST, BETA-FINDINGS
 AGENTS.md            Dev workflow and guidelines (CLAUDE.md points here)
@@ -112,3 +113,24 @@ Gearwright's beta findings.
 ## License
 
 MIT - see [LICENSE](LICENSE).
+
+## Talent catalog and refresh validation
+
+`python tools/import_talent_catalog.py` generates `Data/TalentRules.lua` from
+`data/talents/catalog.json`. `--check` detects stale generated output. The imported
+ForeverDB snapshot (build 1.60.1.70205) contains structural rules for all nine classes;
+it remains provisional. It does not add recommended builds for unsupported classes.
+
+Every Rogue/Priest build order is checked for rank limits, minimum levels, points in
+its tree and prerequisites. Invalid plans are withheld with a reason. The engine also
+checks the next point against the character's actual talents. The current Combat,
+Holy and Discipline orders place their prerequisites before Riposte, Prayer of Mending
+and Renewed Hope while retaining 51 total points.
+
+Aura changes and bag changes refresh their displayed values out of combat. Timers
+recheck combat before executing. Failed plans keep the last completed result and can
+retry on the next refresh. Unavailable equipped stats show a waiting message and
+cannot produce an upgrade comparison until item data arrives.
+
+`python scripts/check.py` now includes `tests/regression_test.py`, which covers these
+behaviors and checks that the generated catalog matches its snapshot.

@@ -8,15 +8,16 @@ ns.Jobs = Jobs
 
 Jobs.BUDGET_MS = 2
 
-local queue, labels, head, tail = {}, {}, 1, 0
+local queue, labels, failures, head, tail = {}, {}, {}, 1, 0
 local runner = CreateFrame("Frame")
 runner:Hide()
 Jobs.runner = runner -- the offline tests drive it by hand
 
-function Jobs:Run(fn, label)
+function Jobs:Run(fn, label, onFailure)
   tail = tail + 1
   queue[tail] = coroutine.create(fn)
   labels[tail] = "job:" .. (label or "job")
+  failures[tail] = onFailure
   runner:Show()
 end
 
@@ -34,10 +35,18 @@ local function step(self)
     local sliceStart = clock()
     local ok, err = coroutine.resume(co)
     if ns.Perf.Enabled() then ns.Perf.Note(labels[head], clock() - sliceStart) end
-    if not ok then geterrorhandler()(err) end
+    local onFailure = failures[head]
     if coroutine.status(co) == "dead" then
-      queue[head], labels[head] = nil, nil
+      queue[head], labels[head], failures[head] = nil, nil, nil
       head = head + 1
+    end
+    if not ok then
+      -- Release the owner before reporting: the next event must be able to retry.
+      if onFailure then
+        local cleaned, cleanupError = pcall(onFailure, err)
+        if not cleaned then geterrorhandler()(cleanupError) end
+      end
+      geterrorhandler()(err)
     end
     if clock() - start > Jobs.BUDGET_MS then return end
   end

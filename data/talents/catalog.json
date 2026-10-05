@@ -1,0 +1,6693 @@
+{
+  "_status": "provisional",
+  "source": "https://foreverdb.net/data/classes.json",
+  "sourceBuild": "1.60.1.70205",
+  "retrievedAt": "2026-10-05",
+  "sourceSha256": "c6f079376966af3a51f3e909a5aa90b1ceb705db68adaeee9d40953b55cfb05f",
+  "classes": {
+    "WARRIOR": {
+      "Improved Heroic Strike": {
+        "id": 105958,
+        "spellID": 12282,
+        "tree": "Arms",
+        "maxRank": 3,
+        "minLevel": 10,
+        "row": 0,
+        "col": 0,
+        "gate": [],
+        "requires": []
+      },
+      "Deflection": {
+        "id": 105957,
+        "spellID": 16462,
+        "tree": "Arms",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 1,
+        "gate": [],
+        "requires": []
+      },
+      "Improved Rend": {
+        "id": 105956,
+        "spellID": 12286,
+        "tree": "Arms",
+        "maxRank": 3,
+        "minLevel": 10,
+        "row": 0,
+        "col": 2,
+        "gate": [],
+        "requires": []
+      },
+      "Improved Charge": {
+        "id": 105955,
+        "spellID": 12285,
+        "tree": "Arms",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 0,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Improved Tactical Mastery": {
+        "id": 105954,
+        "spellID": 12295,
+        "tree": "Arms",
+        "maxRank": 5,
+        "minLevel": 15,
+        "row": 1,
+        "col": 1,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Improved Overpower": {
+        "id": 105952,
+        "spellID": 12290,
+        "tree": "Arms",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 3,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Anger Management": {
+        "id": 105951,
+        "spellID": 12296,
+        "tree": "Arms",
+        "maxRank": 1,
+        "minLevel": 20,
+        "row": 2,
+        "col": 1,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": [
+          [
+            105954,
+            5
+          ]
+        ]
+      },
+      "Deep Wounds": {
+        "id": 105950,
+        "spellID": 12834,
+        "tree": "Arms",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 2,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": [
+          [
+            105956,
+            3
+          ]
+        ]
+      },
+      "Spearing Strike": {
+        "id": 105949,
+        "spellID": 1310222,
+        "tree": "Arms",
+        "maxRank": 1,
+        "minLevel": 25,
+        "row": 3,
+        "col": 0,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Two-Handed Weapon Specialization": {
+        "id": 105948,
+        "spellID": 12163,
+        "tree": "Arms",
+        "maxRank": 3,
+        "minLevel": 25,
+        "row": 3,
+        "col": 1,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Impale": {
+        "id": 105947,
+        "spellID": 16493,
+        "tree": "Arms",
+        "maxRank": 2,
+        "minLevel": 25,
+        "row": 3,
+        "col": 2,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Bloodthrill": {
+        "id": 110524,
+        "spellID": 1289682,
+        "tree": "Arms",
+        "maxRank": 5,
+        "minLevel": 30,
+        "row": 4,
+        "col": 0,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Sweeping Strikes": {
+        "id": 105945,
+        "spellID": 12292,
+        "tree": "Arms",
+        "maxRank": 1,
+        "minLevel": 30,
+        "row": 4,
+        "col": 1,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Weaponmaster": {
+        "id": 105944,
+        "spellID": 1290261,
+        "tree": "Arms",
+        "maxRank": 5,
+        "minLevel": 30,
+        "row": 4,
+        "col": 2,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Improved Slam": {
+        "id": 110858,
+        "spellID": 12862,
+        "tree": "Arms",
+        "maxRank": 2,
+        "minLevel": 35,
+        "row": 5,
+        "col": 0,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": []
+      },
+      "Improved Hamstring": {
+        "id": 105942,
+        "spellID": 12289,
+        "tree": "Arms",
+        "maxRank": 3,
+        "minLevel": 35,
+        "row": 5,
+        "col": 2,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": []
+      },
+      "Mortal Strike": {
+        "id": 105941,
+        "spellID": 12294,
+        "tree": "Arms",
+        "maxRank": 1,
+        "minLevel": 40,
+        "row": 6,
+        "col": 1,
+        "gate": [
+          30,
+          6
+        ],
+        "requires": [
+          [
+            105945,
+            1
+          ]
+        ]
+      },
+      "Booming Voice": {
+        "id": 105938,
+        "spellID": 12321,
+        "tree": "Fury",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 1,
+        "gate": [],
+        "requires": []
+      },
+      "Cruelty": {
+        "id": 105939,
+        "spellID": 12320,
+        "tree": "Fury",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 2,
+        "gate": [],
+        "requires": []
+      },
+      "Lingering Rage": {
+        "id": 110857,
+        "spellID": 1323964,
+        "tree": "Fury",
+        "maxRank": 5,
+        "minLevel": 15,
+        "row": 1,
+        "col": 1,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Unbridled Wrath": {
+        "id": 105937,
+        "spellID": 12322,
+        "tree": "Fury",
+        "maxRank": 5,
+        "minLevel": 15,
+        "row": 1,
+        "col": 2,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Furious Precision": {
+        "id": 105953,
+        "spellID": 1323963,
+        "tree": "Fury",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 0,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Piercing Howl": {
+        "id": 105935,
+        "spellID": 12323,
+        "tree": "Fury",
+        "maxRank": 1,
+        "minLevel": 20,
+        "row": 2,
+        "col": 1,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Blood Craze": {
+        "id": 105934,
+        "spellID": 16487,
+        "tree": "Fury",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 2,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Dual Wield Specialization": {
+        "id": 105933,
+        "spellID": 23584,
+        "tree": "Fury",
+        "maxRank": 5,
+        "minLevel": 25,
+        "row": 3,
+        "col": 0,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Raging Blows": {
+        "id": 105977,
+        "spellID": 1310315,
+        "tree": "Fury",
+        "maxRank": 1,
+        "minLevel": 25,
+        "row": 3,
+        "col": 1,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Enrage": {
+        "id": 105931,
+        "spellID": 12317,
+        "tree": "Fury",
+        "maxRank": 5,
+        "minLevel": 25,
+        "row": 3,
+        "col": 2,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Improved Execute": {
+        "id": 105932,
+        "spellID": 20502,
+        "tree": "Fury",
+        "maxRank": 2,
+        "minLevel": 25,
+        "row": 3,
+        "col": 3,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Improved Berserker Rage": {
+        "id": 105978,
+        "spellID": 20500,
+        "tree": "Fury",
+        "maxRank": 2,
+        "minLevel": 30,
+        "row": 4,
+        "col": 0,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Death Wish": {
+        "id": 105927,
+        "spellID": 12328,
+        "tree": "Fury",
+        "maxRank": 1,
+        "minLevel": 30,
+        "row": 4,
+        "col": 1,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Improved Intercept": {
+        "id": 105926,
+        "spellID": 20504,
+        "tree": "Fury",
+        "maxRank": 2,
+        "minLevel": 30,
+        "row": 4,
+        "col": 3,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Flurry": {
+        "id": 105928,
+        "spellID": 12319,
+        "tree": "Fury",
+        "maxRank": 5,
+        "minLevel": 35,
+        "row": 5,
+        "col": 1,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": [
+          [
+            105927,
+            1
+          ]
+        ]
+      },
+      "Gore Drinker": {
+        "id": 113569,
+        "spellID": 1323967,
+        "tree": "Fury",
+        "maxRank": 2,
+        "minLevel": 35,
+        "row": 5,
+        "col": 2,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": [
+          [
+            105931,
+            5
+          ]
+        ]
+      },
+      "Bloodthirst": {
+        "id": 105930,
+        "spellID": 23881,
+        "tree": "Fury",
+        "maxRank": 1,
+        "minLevel": 40,
+        "row": 6,
+        "col": 1,
+        "gate": [
+          30,
+          6
+        ],
+        "requires": []
+      },
+      "Improved Bloodrage": {
+        "id": 105974,
+        "spellID": 12301,
+        "tree": "Protection",
+        "maxRank": 2,
+        "minLevel": 10,
+        "row": 0,
+        "col": 0,
+        "gate": [],
+        "requires": []
+      },
+      "Shield Specialization": {
+        "id": 105976,
+        "spellID": 12298,
+        "tree": "Protection",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 1,
+        "gate": [],
+        "requires": []
+      },
+      "Iron Will": {
+        "id": 113570,
+        "spellID": 12962,
+        "tree": "Protection",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 2,
+        "gate": [],
+        "requires": []
+      },
+      "Anticipation": {
+        "id": 105975,
+        "spellID": 12297,
+        "tree": "Protection",
+        "maxRank": 5,
+        "minLevel": 15,
+        "row": 1,
+        "col": 0,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Improved Revenge": {
+        "id": 105969,
+        "spellID": 12797,
+        "tree": "Protection",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 2,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Improved Thunder Clap": {
+        "id": 105972,
+        "spellID": 12287,
+        "tree": "Protection",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 3,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Last Stand": {
+        "id": 105970,
+        "spellID": 12975,
+        "tree": "Protection",
+        "maxRank": 1,
+        "minLevel": 20,
+        "row": 2,
+        "col": 0,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Master of Defense": {
+        "id": 105971,
+        "spellID": 1310316,
+        "tree": "Protection",
+        "maxRank": 2,
+        "minLevel": 20,
+        "row": 2,
+        "col": 1,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": [
+          [
+            105976,
+            5
+          ]
+        ]
+      },
+      "Improved Disarm": {
+        "id": 105967,
+        "spellID": 12313,
+        "tree": "Protection",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 2,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Defiance": {
+        "id": 110856,
+        "spellID": 12792,
+        "tree": "Protection",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 3,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Improved Sunder Armor": {
+        "id": 105968,
+        "spellID": 12308,
+        "tree": "Protection",
+        "maxRank": 3,
+        "minLevel": 25,
+        "row": 3,
+        "col": 0,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Vanguard": {
+        "id": 105966,
+        "spellID": 1310317,
+        "tree": "Protection",
+        "maxRank": 1,
+        "minLevel": 25,
+        "row": 3,
+        "col": 1,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Improved Shield Bash": {
+        "id": 105963,
+        "spellID": 12311,
+        "tree": "Protection",
+        "maxRank": 2,
+        "minLevel": 25,
+        "row": 3,
+        "col": 2,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Improved Shield Wall": {
+        "id": 105964,
+        "spellID": 12312,
+        "tree": "Protection",
+        "maxRank": 2,
+        "minLevel": 30,
+        "row": 4,
+        "col": 0,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Concussion Blow": {
+        "id": 105965,
+        "spellID": 12809,
+        "tree": "Protection",
+        "maxRank": 1,
+        "minLevel": 30,
+        "row": 4,
+        "col": 1,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Focused Rage": {
+        "id": 105961,
+        "spellID": 29787,
+        "tree": "Protection",
+        "maxRank": 3,
+        "minLevel": 30,
+        "row": 4,
+        "col": 2,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Bastion": {
+        "id": 105962,
+        "spellID": 16538,
+        "tree": "Protection",
+        "maxRank": 5,
+        "minLevel": 35,
+        "row": 5,
+        "col": 2,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": []
+      },
+      "Shield Slam": {
+        "id": 105959,
+        "spellID": 23922,
+        "tree": "Protection",
+        "maxRank": 1,
+        "minLevel": 40,
+        "row": 6,
+        "col": 1,
+        "gate": [
+          30,
+          6
+        ],
+        "requires": [
+          [
+            105965,
+            1
+          ]
+        ]
+      }
+    },
+    "PALADIN": {
+      "Divine Strength": {
+        "id": 105639,
+        "spellID": 20262,
+        "tree": "Holy",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 1,
+        "gate": [],
+        "requires": []
+      },
+      "Divine Intellect": {
+        "id": 105332,
+        "spellID": 20257,
+        "tree": "Holy",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 2,
+        "gate": [],
+        "requires": []
+      },
+      "Healing Light": {
+        "id": 105333,
+        "spellID": 20237,
+        "tree": "Holy",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 0,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Spiritual Focus": {
+        "id": 105335,
+        "spellID": 20205,
+        "tree": "Holy",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 1,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Improved Seals": {
+        "id": 105334,
+        "spellID": 20224,
+        "tree": "Holy",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 2,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Unyielding Faith": {
+        "id": 105331,
+        "spellID": 9453,
+        "tree": "Holy",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 3,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Voice of Truth": {
+        "id": 105330,
+        "spellID": 1310897,
+        "tree": "Holy",
+        "maxRank": 1,
+        "minLevel": 20,
+        "row": 2,
+        "col": 0,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Reverence": {
+        "id": 110871,
+        "spellID": 1310899,
+        "tree": "Holy",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 1,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Purifying Power": {
+        "id": 105327,
+        "spellID": 429144,
+        "tree": "Holy",
+        "maxRank": 2,
+        "minLevel": 20,
+        "row": 2,
+        "col": 2,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Infusion of Light": {
+        "id": 110873,
+        "spellID": 426065,
+        "tree": "Holy",
+        "maxRank": 2,
+        "minLevel": 25,
+        "row": 3,
+        "col": 0,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Illumination": {
+        "id": 105329,
+        "spellID": 20210,
+        "tree": "Holy",
+        "maxRank": 5,
+        "minLevel": 25,
+        "row": 3,
+        "col": 1,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": [
+          [
+            110871,
+            3
+          ]
+        ]
+      },
+      "Divine Favor": {
+        "id": 105325,
+        "spellID": 20216,
+        "tree": "Holy",
+        "maxRank": 1,
+        "minLevel": 25,
+        "row": 3,
+        "col": 2,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Divine Precision": {
+        "id": 105324,
+        "spellID": 1310904,
+        "tree": "Holy",
+        "maxRank": 3,
+        "minLevel": 30,
+        "row": 4,
+        "col": 0,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": [
+          [
+            105323,
+            1
+          ]
+        ]
+      },
+      "Holy Shock": {
+        "id": 105323,
+        "spellID": 1311606,
+        "tree": "Holy",
+        "maxRank": 1,
+        "minLevel": 30,
+        "row": 4,
+        "col": 1,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Consecrated Ground": {
+        "id": 110872,
+        "spellID": 1310905,
+        "tree": "Holy",
+        "maxRank": 2,
+        "minLevel": 30,
+        "row": 4,
+        "col": 2,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Holy Power": {
+        "id": 105321,
+        "spellID": 5923,
+        "tree": "Holy",
+        "maxRank": 5,
+        "minLevel": 35,
+        "row": 5,
+        "col": 2,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": []
+      },
+      "Light's Vigil": {
+        "id": 105320,
+        "spellID": 1310911,
+        "tree": "Holy",
+        "maxRank": 1,
+        "minLevel": 40,
+        "row": 6,
+        "col": 1,
+        "gate": [
+          30,
+          6
+        ],
+        "requires": [
+          [
+            105323,
+            1
+          ]
+        ]
+      },
+      "Toughness": {
+        "id": 105630,
+        "spellID": 20143,
+        "tree": "Protection",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 1,
+        "gate": [],
+        "requires": []
+      },
+      "Redoubt": {
+        "id": 105626,
+        "spellID": 20127,
+        "tree": "Protection",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 2,
+        "gate": [],
+        "requires": []
+      },
+      "Precision": {
+        "id": 105638,
+        "spellID": 20189,
+        "tree": "Protection",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 0,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Guardian's Favor": {
+        "id": 105637,
+        "spellID": 20174,
+        "tree": "Protection",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 1,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Anticipation": {
+        "id": 105636,
+        "spellID": 20096,
+        "tree": "Protection",
+        "maxRank": 5,
+        "minLevel": 15,
+        "row": 1,
+        "col": 3,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Improved Seal of Fury": {
+        "id": 110875,
+        "spellID": 1314103,
+        "tree": "Protection",
+        "maxRank": 1,
+        "minLevel": 20,
+        "row": 2,
+        "col": 0,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Improved Righteous Fury": {
+        "id": 105634,
+        "spellID": 20468,
+        "tree": "Protection",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 1,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Shield Specialization": {
+        "id": 110874,
+        "spellID": 20150,
+        "tree": "Protection",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 2,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": [
+          [
+            105626,
+            5
+          ]
+        ]
+      },
+      "Sacred Duty": {
+        "id": 105632,
+        "spellID": 1224697,
+        "tree": "Protection",
+        "maxRank": 2,
+        "minLevel": 20,
+        "row": 2,
+        "col": 3,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Swift Judgement": {
+        "id": 110878,
+        "spellID": 1310994,
+        "tree": "Protection",
+        "maxRank": 1,
+        "minLevel": 25,
+        "row": 3,
+        "col": 0,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": [
+          [
+            110875,
+            1
+          ]
+        ]
+      },
+      "One-Handed Weapon Specialization": {
+        "id": 105629,
+        "spellID": 20196,
+        "tree": "Protection",
+        "maxRank": 3,
+        "minLevel": 25,
+        "row": 3,
+        "col": 1,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Improved Hammer of Justice": {
+        "id": 105633,
+        "spellID": 20487,
+        "tree": "Protection",
+        "maxRank": 3,
+        "minLevel": 25,
+        "row": 3,
+        "col": 2,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Templar's Bulwark": {
+        "id": 105625,
+        "spellID": 1311015,
+        "tree": "Protection",
+        "maxRank": 1,
+        "minLevel": 30,
+        "row": 4,
+        "col": 1,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Reckoning": {
+        "id": 105627,
+        "spellID": 20177,
+        "tree": "Protection",
+        "maxRank": 5,
+        "minLevel": 30,
+        "row": 4,
+        "col": 2,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Iron Creed": {
+        "id": 110879,
+        "spellID": 1311034,
+        "tree": "Protection",
+        "maxRank": 5,
+        "minLevel": 35,
+        "row": 5,
+        "col": 2,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": []
+      },
+      "Holy Shield": {
+        "id": 105628,
+        "spellID": 20925,
+        "tree": "Protection",
+        "maxRank": 1,
+        "minLevel": 40,
+        "row": 6,
+        "col": 1,
+        "gate": [
+          30,
+          6
+        ],
+        "requires": [
+          [
+            105625,
+            1
+          ]
+        ]
+      },
+      "Deflection": {
+        "id": 105707,
+        "spellID": 20060,
+        "tree": "Retribution",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 1,
+        "gate": [],
+        "requires": []
+      },
+      "Benediction": {
+        "id": 105706,
+        "spellID": 20101,
+        "tree": "Retribution",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 2,
+        "gate": [],
+        "requires": []
+      },
+      "Improved Judgement": {
+        "id": 105705,
+        "spellID": 25956,
+        "tree": "Retribution",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 0,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Holy Conduit": {
+        "id": 105704,
+        "spellID": 1237268,
+        "tree": "Retribution",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 1,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Conviction": {
+        "id": 105703,
+        "spellID": 20117,
+        "tree": "Retribution",
+        "maxRank": 5,
+        "minLevel": 15,
+        "row": 1,
+        "col": 2,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Vindication": {
+        "id": 105702,
+        "spellID": 9452,
+        "tree": "Retribution",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 0,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Sanctified Judgement": {
+        "id": 105701,
+        "spellID": 1311074,
+        "tree": "Retribution",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 1,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Seal of Command": {
+        "id": 105696,
+        "spellID": 20375,
+        "tree": "Retribution",
+        "maxRank": 1,
+        "minLevel": 20,
+        "row": 2,
+        "col": 2,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Pursuit of Justice": {
+        "id": 105699,
+        "spellID": 26022,
+        "tree": "Retribution",
+        "maxRank": 2,
+        "minLevel": 20,
+        "row": 2,
+        "col": 3,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Eye for an Eye": {
+        "id": 105698,
+        "spellID": 9799,
+        "tree": "Retribution",
+        "maxRank": 2,
+        "minLevel": 25,
+        "row": 3,
+        "col": 0,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Sacred Arbiter": {
+        "id": 105700,
+        "spellID": 1311087,
+        "tree": "Retribution",
+        "maxRank": 1,
+        "minLevel": 25,
+        "row": 3,
+        "col": 2,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Two-Handed Weapon Specialization": {
+        "id": 105697,
+        "spellID": 20111,
+        "tree": "Retribution",
+        "maxRank": 3,
+        "minLevel": 30,
+        "row": 4,
+        "col": 0,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Vengeance": {
+        "id": 105693,
+        "spellID": 20049,
+        "tree": "Retribution",
+        "maxRank": 3,
+        "minLevel": 30,
+        "row": 4,
+        "col": 1,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": [
+          [
+            105701,
+            3
+          ]
+        ]
+      },
+      "Repentance": {
+        "id": 105694,
+        "spellID": 20066,
+        "tree": "Retribution",
+        "maxRank": 1,
+        "minLevel": 30,
+        "row": 4,
+        "col": 2,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Champion of the Light": {
+        "id": 110882,
+        "spellID": 1311084,
+        "tree": "Retribution",
+        "maxRank": 3,
+        "minLevel": 35,
+        "row": 5,
+        "col": 1,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": []
+      },
+      "Instrument of Law": {
+        "id": 110880,
+        "spellID": 1311085,
+        "tree": "Retribution",
+        "maxRank": 2,
+        "minLevel": 35,
+        "row": 5,
+        "col": 2,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": []
+      },
+      "Twist of Light": {
+        "id": 105692,
+        "spellID": 1310735,
+        "tree": "Retribution",
+        "maxRank": 1,
+        "minLevel": 40,
+        "row": 6,
+        "col": 1,
+        "gate": [
+          30,
+          6
+        ],
+        "requires": []
+      }
+    },
+    "HUNTER": {
+      "Deadly Aspects": {
+        "id": 104960,
+        "spellID": 19552,
+        "tree": "Beast Mastery",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 1,
+        "gate": [],
+        "requires": []
+      },
+      "Endurance Training": {
+        "id": 104976,
+        "spellID": 19583,
+        "tree": "Beast Mastery",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 2,
+        "gate": [],
+        "requires": []
+      },
+      "Focused Fire": {
+        "id": 104975,
+        "spellID": 1223755,
+        "tree": "Beast Mastery",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 0,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Improved Aspect of the Monkey": {
+        "id": 104974,
+        "spellID": 19549,
+        "tree": "Beast Mastery",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 1,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Pathfinding": {
+        "id": 104973,
+        "spellID": 19559,
+        "tree": "Beast Mastery",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 2,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Improved Revive Pet": {
+        "id": 104972,
+        "spellID": 24443,
+        "tree": "Beast Mastery",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 3,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Bestial Swiftness": {
+        "id": 104970,
+        "spellID": 19596,
+        "tree": "Beast Mastery",
+        "maxRank": 1,
+        "minLevel": 20,
+        "row": 2,
+        "col": 1,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Unleashed Fury": {
+        "id": 104969,
+        "spellID": 19616,
+        "tree": "Beast Mastery",
+        "maxRank": 5,
+        "minLevel": 20,
+        "row": 2,
+        "col": 2,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Improved Mend Pet": {
+        "id": 104968,
+        "spellID": 19572,
+        "tree": "Beast Mastery",
+        "maxRank": 2,
+        "minLevel": 25,
+        "row": 3,
+        "col": 0,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Ferocity": {
+        "id": 104967,
+        "spellID": 19598,
+        "tree": "Beast Mastery",
+        "maxRank": 5,
+        "minLevel": 25,
+        "row": 3,
+        "col": 2,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Summon Hawk": {
+        "id": 104966,
+        "spellID": 1293241,
+        "tree": "Beast Mastery",
+        "maxRank": 1,
+        "minLevel": 25,
+        "row": 3,
+        "col": 3,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Spirit Bond": {
+        "id": 104965,
+        "spellID": 19578,
+        "tree": "Beast Mastery",
+        "maxRank": 2,
+        "minLevel": 30,
+        "row": 4,
+        "col": 0,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Intimidation": {
+        "id": 104964,
+        "spellID": 19577,
+        "tree": "Beast Mastery",
+        "maxRank": 1,
+        "minLevel": 30,
+        "row": 4,
+        "col": 1,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": [
+          [
+            104970,
+            1
+          ],
+          [
+            104961,
+            1
+          ]
+        ]
+      },
+      "Bestial Discipline": {
+        "id": 104963,
+        "spellID": 19590,
+        "tree": "Beast Mastery",
+        "maxRank": 2,
+        "minLevel": 30,
+        "row": 4,
+        "col": 3,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Frenzy": {
+        "id": 104962,
+        "spellID": 19621,
+        "tree": "Beast Mastery",
+        "maxRank": 5,
+        "minLevel": 35,
+        "row": 5,
+        "col": 2,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": [
+          [
+            104967,
+            5
+          ]
+        ]
+      },
+      "Bestial Wrath": {
+        "id": 104961,
+        "spellID": 19574,
+        "tree": "Beast Mastery",
+        "maxRank": 1,
+        "minLevel": 40,
+        "row": 6,
+        "col": 1,
+        "gate": [
+          30,
+          6
+        ],
+        "requires": [
+          [
+            104964,
+            1
+          ]
+        ]
+      },
+      "Hawk Eye": {
+        "id": 105013,
+        "spellID": 19498,
+        "tree": "Marksmanship",
+        "maxRank": 3,
+        "minLevel": 10,
+        "row": 0,
+        "col": 0,
+        "gate": [],
+        "requires": []
+      },
+      "Improved Concussive Shot": {
+        "id": 105012,
+        "spellID": 19407,
+        "tree": "Marksmanship",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 1,
+        "gate": [],
+        "requires": []
+      },
+      "Lethal Attacks": {
+        "id": 105011,
+        "spellID": 19426,
+        "tree": "Marksmanship",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 2,
+        "gate": [],
+        "requires": []
+      },
+      "Improved Stings": {
+        "id": 110870,
+        "spellID": 1310661,
+        "tree": "Marksmanship",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 0,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Efficiency": {
+        "id": 105009,
+        "spellID": 19416,
+        "tree": "Marksmanship",
+        "maxRank": 5,
+        "minLevel": 15,
+        "row": 1,
+        "col": 1,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Careful Aim": {
+        "id": 105008,
+        "spellID": 1223984,
+        "tree": "Marksmanship",
+        "maxRank": 5,
+        "minLevel": 15,
+        "row": 1,
+        "col": 2,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Rapid Killing": {
+        "id": 105005,
+        "spellID": 415405,
+        "tree": "Marksmanship",
+        "maxRank": 2,
+        "minLevel": 20,
+        "row": 2,
+        "col": 0,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Improved Arcane Shot": {
+        "id": 105006,
+        "spellID": 19454,
+        "tree": "Marksmanship",
+        "maxRank": 5,
+        "minLevel": 20,
+        "row": 2,
+        "col": 1,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Lone Wolf": {
+        "id": 105007,
+        "spellID": 415370,
+        "tree": "Marksmanship",
+        "maxRank": 1,
+        "minLevel": 20,
+        "row": 2,
+        "col": 3,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Trueshot Aura": {
+        "id": 105004,
+        "spellID": 1299346,
+        "tree": "Marksmanship",
+        "maxRank": 1,
+        "minLevel": 25,
+        "row": 3,
+        "col": 1,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Mortal Shots": {
+        "id": 105002,
+        "spellID": 19485,
+        "tree": "Marksmanship",
+        "maxRank": 5,
+        "minLevel": 25,
+        "row": 3,
+        "col": 2,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": [
+          [
+            105008,
+            5
+          ]
+        ]
+      },
+      "Rapid Recuperation": {
+        "id": 104999,
+        "spellID": 1223987,
+        "tree": "Marksmanship",
+        "maxRank": 2,
+        "minLevel": 30,
+        "row": 4,
+        "col": 0,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": [
+          [
+            105005,
+            2
+          ]
+        ]
+      },
+      "Barrage": {
+        "id": 105001,
+        "spellID": 19461,
+        "tree": "Marksmanship",
+        "maxRank": 3,
+        "minLevel": 30,
+        "row": 4,
+        "col": 2,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Scatter Shot": {
+        "id": 105000,
+        "spellID": 19503,
+        "tree": "Marksmanship",
+        "maxRank": 1,
+        "minLevel": 30,
+        "row": 4,
+        "col": 3,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Ranged Weapon Specialization": {
+        "id": 104998,
+        "spellID": 19507,
+        "tree": "Marksmanship",
+        "maxRank": 5,
+        "minLevel": 35,
+        "row": 5,
+        "col": 2,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": []
+      },
+      "Sniper Shot": {
+        "id": 104997,
+        "spellID": 1310687,
+        "tree": "Marksmanship",
+        "maxRank": 1,
+        "minLevel": 40,
+        "row": 6,
+        "col": 1,
+        "gate": [
+          30,
+          6
+        ],
+        "requires": [
+          [
+            105004,
+            1
+          ]
+        ]
+      },
+      "Improved Tracking": {
+        "id": 104996,
+        "spellID": 24293,
+        "tree": "Survival",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 1,
+        "gate": [],
+        "requires": []
+      },
+      "Deflection": {
+        "id": 104995,
+        "spellID": 19295,
+        "tree": "Survival",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 2,
+        "gate": [],
+        "requires": []
+      },
+      "Entrapment": {
+        "id": 104994,
+        "spellID": 19184,
+        "tree": "Survival",
+        "maxRank": 5,
+        "minLevel": 15,
+        "row": 1,
+        "col": 0,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Savage Strikes": {
+        "id": 104993,
+        "spellID": 19159,
+        "tree": "Survival",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 1,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Survivalist": {
+        "id": 104992,
+        "spellID": 19255,
+        "tree": "Survival",
+        "maxRank": 5,
+        "minLevel": 15,
+        "row": 1,
+        "col": 2,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Improved Wing Clip": {
+        "id": 104990,
+        "spellID": 19228,
+        "tree": "Survival",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 3,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Clever Traps": {
+        "id": 104991,
+        "spellID": 19239,
+        "tree": "Survival",
+        "maxRank": 2,
+        "minLevel": 20,
+        "row": 2,
+        "col": 0,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Surefooted": {
+        "id": 104987,
+        "spellID": 19290,
+        "tree": "Survival",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 1,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Deterrence": {
+        "id": 104986,
+        "spellID": 19263,
+        "tree": "Survival",
+        "maxRank": 1,
+        "minLevel": 20,
+        "row": 2,
+        "col": 2,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Survival Tactics": {
+        "id": 104988,
+        "spellID": 19376,
+        "tree": "Survival",
+        "maxRank": 2,
+        "minLevel": 25,
+        "row": 3,
+        "col": 0,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Predator's Edge": {
+        "id": 110861,
+        "spellID": 1310627,
+        "tree": "Survival",
+        "maxRank": 5,
+        "minLevel": 25,
+        "row": 3,
+        "col": 1,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Counterattack": {
+        "id": 104989,
+        "spellID": 19306,
+        "tree": "Survival",
+        "maxRank": 1,
+        "minLevel": 25,
+        "row": 3,
+        "col": 2,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": [
+          [
+            104986,
+            1
+          ]
+        ]
+      },
+      "Resourcefulness": {
+        "id": 104983,
+        "spellID": 440529,
+        "tree": "Survival",
+        "maxRank": 2,
+        "minLevel": 30,
+        "row": 4,
+        "col": 0,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Expose Prey": {
+        "id": 104985,
+        "spellID": 1310532,
+        "tree": "Survival",
+        "maxRank": 2,
+        "minLevel": 30,
+        "row": 4,
+        "col": 1,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Survivalist's Discipline": {
+        "id": 110860,
+        "spellID": 1310496,
+        "tree": "Survival",
+        "maxRank": 2,
+        "minLevel": 30,
+        "row": 4,
+        "col": 2,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Strider Kick": {
+        "id": 104981,
+        "spellID": 1317257,
+        "tree": "Survival",
+        "maxRank": 1,
+        "minLevel": 30,
+        "row": 4,
+        "col": 3,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Lightning Reflexes": {
+        "id": 110859,
+        "spellID": 19168,
+        "tree": "Survival",
+        "maxRank": 5,
+        "minLevel": 35,
+        "row": 5,
+        "col": 2,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": []
+      },
+      "Lacerating Strikes": {
+        "id": 104984,
+        "spellID": 1310533,
+        "tree": "Survival",
+        "maxRank": 1,
+        "minLevel": 40,
+        "row": 6,
+        "col": 1,
+        "gate": [
+          30,
+          6
+        ],
+        "requires": [
+          [
+            104985,
+            2
+          ]
+        ]
+      }
+    },
+    "ROGUE": {
+      "Improved Gouge": {
+        "id": 105742,
+        "spellID": 13741,
+        "tree": "Assassination",
+        "maxRank": 3,
+        "minLevel": 10,
+        "row": 0,
+        "col": 0,
+        "gate": [],
+        "requires": []
+      },
+      "Remorseless Attacks": {
+        "id": 105723,
+        "spellID": 14144,
+        "tree": "Assassination",
+        "maxRank": 2,
+        "minLevel": 10,
+        "row": 0,
+        "col": 1,
+        "gate": [],
+        "requires": []
+      },
+      "Malice": {
+        "id": 105722,
+        "spellID": 14138,
+        "tree": "Assassination",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 2,
+        "gate": [],
+        "requires": []
+      },
+      "Ruthlessness": {
+        "id": 105721,
+        "spellID": 14156,
+        "tree": "Assassination",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 0,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Murder": {
+        "id": 105720,
+        "spellID": 14158,
+        "tree": "Assassination",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 1,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Improved Slice and Dice": {
+        "id": 105739,
+        "spellID": 14165,
+        "tree": "Assassination",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 3,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Relentless Strikes": {
+        "id": 105759,
+        "spellID": 14179,
+        "tree": "Assassination",
+        "maxRank": 1,
+        "minLevel": 20,
+        "row": 2,
+        "col": 0,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Improved Expose Armor": {
+        "id": 105717,
+        "spellID": 14168,
+        "tree": "Assassination",
+        "maxRank": 2,
+        "minLevel": 20,
+        "row": 2,
+        "col": 1,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Lethality": {
+        "id": 105716,
+        "spellID": 14128,
+        "tree": "Assassination",
+        "maxRank": 5,
+        "minLevel": 20,
+        "row": 2,
+        "col": 2,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": [
+          [
+            105722,
+            5
+          ]
+        ]
+      },
+      "Vile Poisons": {
+        "id": 105714,
+        "spellID": 16513,
+        "tree": "Assassination",
+        "maxRank": 5,
+        "minLevel": 25,
+        "row": 3,
+        "col": 0,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Cold Blood": {
+        "id": 105715,
+        "spellID": 14177,
+        "tree": "Assassination",
+        "maxRank": 1,
+        "minLevel": 25,
+        "row": 3,
+        "col": 1,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Improved Poisons": {
+        "id": 105713,
+        "spellID": 14113,
+        "tree": "Assassination",
+        "maxRank": 5,
+        "minLevel": 25,
+        "row": 3,
+        "col": 2,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Vigor": {
+        "id": 105718,
+        "spellID": 14983,
+        "tree": "Assassination",
+        "maxRank": 2,
+        "minLevel": 30,
+        "row": 4,
+        "col": 0,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Mutilate": {
+        "id": 105709,
+        "spellID": 1310707,
+        "tree": "Assassination",
+        "maxRank": 1,
+        "minLevel": 30,
+        "row": 4,
+        "col": 1,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Improved Kidney Shot": {
+        "id": 105711,
+        "spellID": 14174,
+        "tree": "Assassination",
+        "maxRank": 2,
+        "minLevel": 30,
+        "row": 4,
+        "col": 2,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Seal Fate": {
+        "id": 105710,
+        "spellID": 14186,
+        "tree": "Assassination",
+        "maxRank": 5,
+        "minLevel": 35,
+        "row": 5,
+        "col": 2,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": []
+      },
+      "Venom": {
+        "id": 105712,
+        "spellID": 1310703,
+        "tree": "Assassination",
+        "maxRank": 1,
+        "minLevel": 40,
+        "row": 6,
+        "col": 1,
+        "gate": [
+          30,
+          6
+        ],
+        "requires": [
+          [
+            105709,
+            1
+          ]
+        ]
+      },
+      "Improved Eviscerate": {
+        "id": 105708,
+        "spellID": 14162,
+        "tree": "Combat",
+        "maxRank": 3,
+        "minLevel": 10,
+        "row": 0,
+        "col": 0,
+        "gate": [],
+        "requires": []
+      },
+      "Improved Sinister Strike": {
+        "id": 105741,
+        "spellID": 13732,
+        "tree": "Combat",
+        "maxRank": 2,
+        "minLevel": 10,
+        "row": 0,
+        "col": 1,
+        "gate": [],
+        "requires": []
+      },
+      "Lightning Reflexes": {
+        "id": 113398,
+        "spellID": 13712,
+        "tree": "Combat",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 2,
+        "gate": [],
+        "requires": []
+      },
+      "Puncturing Wounds": {
+        "id": 105719,
+        "spellID": 1224716,
+        "tree": "Combat",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 0,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Deflection": {
+        "id": 105738,
+        "spellID": 13713,
+        "tree": "Combat",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 1,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Precision": {
+        "id": 105737,
+        "spellID": 13705,
+        "tree": "Combat",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 2,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Endurance": {
+        "id": 105736,
+        "spellID": 13742,
+        "tree": "Combat",
+        "maxRank": 2,
+        "minLevel": 20,
+        "row": 2,
+        "col": 0,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Riposte": {
+        "id": 105735,
+        "spellID": 14251,
+        "tree": "Combat",
+        "maxRank": 1,
+        "minLevel": 20,
+        "row": 2,
+        "col": 1,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": [
+          [
+            105738,
+            3
+          ]
+        ]
+      },
+      "Improved Sprint": {
+        "id": 105732,
+        "spellID": 13743,
+        "tree": "Combat",
+        "maxRank": 2,
+        "minLevel": 20,
+        "row": 2,
+        "col": 3,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Improved Kick": {
+        "id": 105733,
+        "spellID": 13754,
+        "tree": "Combat",
+        "maxRank": 2,
+        "minLevel": 25,
+        "row": 3,
+        "col": 0,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Flawless Execution": {
+        "id": 108100,
+        "spellID": 1310711,
+        "tree": "Combat",
+        "maxRank": 1,
+        "minLevel": 25,
+        "row": 3,
+        "col": 1,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Dual Wield Specialization": {
+        "id": 105740,
+        "spellID": 13715,
+        "tree": "Combat",
+        "maxRank": 5,
+        "minLevel": 25,
+        "row": 3,
+        "col": 2,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": [
+          [
+            105737,
+            3
+          ]
+        ]
+      },
+      "Blade Flurry": {
+        "id": 105728,
+        "spellID": 13877,
+        "tree": "Combat",
+        "maxRank": 1,
+        "minLevel": 30,
+        "row": 4,
+        "col": 1,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Hack and Slash": {
+        "id": 105727,
+        "spellID": 13960,
+        "tree": "Combat",
+        "maxRank": 5,
+        "minLevel": 30,
+        "row": 4,
+        "col": 2,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Weapon Expertise": {
+        "id": 105726,
+        "spellID": 30919,
+        "tree": "Combat",
+        "maxRank": 2,
+        "minLevel": 35,
+        "row": 5,
+        "col": 1,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": [
+          [
+            105728,
+            1
+          ]
+        ]
+      },
+      "Aggression": {
+        "id": 105730,
+        "spellID": 18427,
+        "tree": "Combat",
+        "maxRank": 3,
+        "minLevel": 35,
+        "row": 5,
+        "col": 2,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": []
+      },
+      "Adrenaline Rush": {
+        "id": 105724,
+        "spellID": 13750,
+        "tree": "Combat",
+        "maxRank": 1,
+        "minLevel": 40,
+        "row": 6,
+        "col": 1,
+        "gate": [
+          30,
+          6
+        ],
+        "requires": []
+      },
+      "Camouflage": {
+        "id": 105756,
+        "spellID": 13975,
+        "tree": "Subtlety",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 0,
+        "gate": [],
+        "requires": []
+      },
+      "Master of Deception": {
+        "id": 105761,
+        "spellID": 13958,
+        "tree": "Subtlety",
+        "maxRank": 3,
+        "minLevel": 10,
+        "row": 0,
+        "col": 1,
+        "gate": [],
+        "requires": []
+      },
+      "Opportunity": {
+        "id": 105760,
+        "spellID": 14057,
+        "tree": "Subtlety",
+        "maxRank": 2,
+        "minLevel": 10,
+        "row": 0,
+        "col": 2,
+        "gate": [],
+        "requires": []
+      },
+      "Setup": {
+        "id": 105751,
+        "spellID": 13983,
+        "tree": "Subtlety",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 0,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Elusiveness": {
+        "id": 105753,
+        "spellID": 13981,
+        "tree": "Subtlety",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 1,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Dirty Tricks": {
+        "id": 105757,
+        "spellID": 1224782,
+        "tree": "Subtlety",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 2,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Improved Ambush": {
+        "id": 105749,
+        "spellID": 14079,
+        "tree": "Subtlety",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 3,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Initiative": {
+        "id": 105755,
+        "spellID": 13976,
+        "tree": "Subtlety",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 0,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Ghostly Strike": {
+        "id": 105754,
+        "spellID": 14278,
+        "tree": "Subtlety",
+        "maxRank": 1,
+        "minLevel": 20,
+        "row": 2,
+        "col": 1,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Improved Distract": {
+        "id": 110868,
+        "spellID": 14084,
+        "tree": "Subtlety",
+        "maxRank": 2,
+        "minLevel": 20,
+        "row": 2,
+        "col": 2,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Heightened Senses": {
+        "id": 105747,
+        "spellID": 30894,
+        "tree": "Subtlety",
+        "maxRank": 2,
+        "minLevel": 25,
+        "row": 3,
+        "col": 0,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Premeditation": {
+        "id": 105743,
+        "spellID": 14183,
+        "tree": "Subtlety",
+        "maxRank": 1,
+        "minLevel": 25,
+        "row": 3,
+        "col": 1,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Serrated Blades": {
+        "id": 105752,
+        "spellID": 14171,
+        "tree": "Subtlety",
+        "maxRank": 3,
+        "minLevel": 25,
+        "row": 3,
+        "col": 2,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Dirty Deeds": {
+        "id": 105745,
+        "spellID": 14082,
+        "tree": "Subtlety",
+        "maxRank": 2,
+        "minLevel": 30,
+        "row": 4,
+        "col": 0,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Preparation": {
+        "id": 105746,
+        "spellID": 14185,
+        "tree": "Subtlety",
+        "maxRank": 1,
+        "minLevel": 30,
+        "row": 4,
+        "col": 1,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Hemorrhage": {
+        "id": 105748,
+        "spellID": 16511,
+        "tree": "Subtlety",
+        "maxRank": 1,
+        "minLevel": 30,
+        "row": 4,
+        "col": 2,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": [
+          [
+            105752,
+            3
+          ]
+        ]
+      },
+      "Quietus": {
+        "id": 110867,
+        "spellID": 1310728,
+        "tree": "Subtlety",
+        "maxRank": 5,
+        "minLevel": 35,
+        "row": 5,
+        "col": 0,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": [
+          [
+            105745,
+            2
+          ]
+        ]
+      },
+      "Cutthroat": {
+        "id": 105750,
+        "spellID": 462708,
+        "tree": "Subtlety",
+        "maxRank": 5,
+        "minLevel": 35,
+        "row": 5,
+        "col": 2,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": []
+      },
+      "Thousand Cuts": {
+        "id": 110866,
+        "spellID": 1310721,
+        "tree": "Subtlety",
+        "maxRank": 1,
+        "minLevel": 40,
+        "row": 6,
+        "col": 1,
+        "gate": [
+          30,
+          6
+        ],
+        "requires": [
+          [
+            105746,
+            1
+          ]
+        ]
+      }
+    },
+    "PRIEST": {
+      "Power in Light": {
+        "id": 110853,
+        "spellID": 1309969,
+        "tree": "Discipline",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 0,
+        "gate": [],
+        "requires": []
+      },
+      "Wand Specialization": {
+        "id": 105850,
+        "spellID": 14524,
+        "tree": "Discipline",
+        "maxRank": 2,
+        "minLevel": 10,
+        "row": 0,
+        "col": 1,
+        "gate": [],
+        "requires": []
+      },
+      "Twin Disciplines": {
+        "id": 105849,
+        "spellID": 1225132,
+        "tree": "Discipline",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 2,
+        "gate": [],
+        "requires": []
+      },
+      "Silent Resolve": {
+        "id": 105848,
+        "spellID": 14523,
+        "tree": "Discipline",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 0,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Holy Precision": {
+        "id": 110852,
+        "spellID": 1309957,
+        "tree": "Discipline",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 1,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Improved Power Word: Shield": {
+        "id": 105846,
+        "spellID": 14748,
+        "tree": "Discipline",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 2,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Martyrdom": {
+        "id": 105845,
+        "spellID": 14531,
+        "tree": "Discipline",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 3,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Mental Agility": {
+        "id": 105842,
+        "spellID": 14520,
+        "tree": "Discipline",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 0,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Inner Focus": {
+        "id": 105844,
+        "spellID": 14751,
+        "tree": "Discipline",
+        "maxRank": 1,
+        "minLevel": 20,
+        "row": 2,
+        "col": 1,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Meditation": {
+        "id": 105843,
+        "spellID": 14521,
+        "tree": "Discipline",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 3,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Improved Inner Fire": {
+        "id": 105841,
+        "spellID": 14747,
+        "tree": "Discipline",
+        "maxRank": 3,
+        "minLevel": 25,
+        "row": 3,
+        "col": 0,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Mental Strength": {
+        "id": 105837,
+        "spellID": 18551,
+        "tree": "Discipline",
+        "maxRank": 5,
+        "minLevel": 25,
+        "row": 3,
+        "col": 1,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Soul Warding": {
+        "id": 105839,
+        "spellID": 402000,
+        "tree": "Discipline",
+        "maxRank": 1,
+        "minLevel": 25,
+        "row": 3,
+        "col": 2,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": [
+          [
+            105846,
+            3
+          ]
+        ]
+      },
+      "Improved Mana Burn": {
+        "id": 105838,
+        "spellID": 14750,
+        "tree": "Discipline",
+        "maxRank": 2,
+        "minLevel": 25,
+        "row": 3,
+        "col": 3,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Penance": {
+        "id": 105834,
+        "spellID": 402174,
+        "tree": "Discipline",
+        "maxRank": 1,
+        "minLevel": 30,
+        "row": 4,
+        "col": 1,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Renewed Hope": {
+        "id": 105835,
+        "spellID": 425280,
+        "tree": "Discipline",
+        "maxRank": 5,
+        "minLevel": 30,
+        "row": 4,
+        "col": 2,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": [
+          [
+            105839,
+            1
+          ]
+        ]
+      },
+      "Divine Aegis": {
+        "id": 105840,
+        "spellID": 431622,
+        "tree": "Discipline",
+        "maxRank": 3,
+        "minLevel": 35,
+        "row": 5,
+        "col": 2,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": []
+      },
+      "Power Infusion": {
+        "id": 105836,
+        "spellID": 10060,
+        "tree": "Discipline",
+        "maxRank": 1,
+        "minLevel": 40,
+        "row": 6,
+        "col": 1,
+        "gate": [
+          30,
+          6
+        ],
+        "requires": [
+          [
+            105834,
+            1
+          ]
+        ]
+      },
+      "Twilight Focus": {
+        "id": 105867,
+        "spellID": 14913,
+        "tree": "Holy",
+        "maxRank": 3,
+        "minLevel": 10,
+        "row": 0,
+        "col": 0,
+        "gate": [],
+        "requires": []
+      },
+      "Improved Renew": {
+        "id": 105866,
+        "spellID": 14908,
+        "tree": "Holy",
+        "maxRank": 3,
+        "minLevel": 10,
+        "row": 0,
+        "col": 1,
+        "gate": [],
+        "requires": []
+      },
+      "Holy Specialization": {
+        "id": 110855,
+        "spellID": 14889,
+        "tree": "Holy",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 2,
+        "gate": [],
+        "requires": []
+      },
+      "Spell Warding": {
+        "id": 105864,
+        "spellID": 27900,
+        "tree": "Holy",
+        "maxRank": 5,
+        "minLevel": 15,
+        "row": 1,
+        "col": 1,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Divine Fury": {
+        "id": 105863,
+        "spellID": 18530,
+        "tree": "Holy",
+        "maxRank": 5,
+        "minLevel": 15,
+        "row": 1,
+        "col": 2,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Holy Nova": {
+        "id": 105862,
+        "spellID": 15237,
+        "tree": "Holy",
+        "maxRank": 1,
+        "minLevel": 20,
+        "row": 2,
+        "col": 0,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Blessed Recovery": {
+        "id": 105861,
+        "spellID": 27811,
+        "tree": "Holy",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 1,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Inspiration": {
+        "id": 105860,
+        "spellID": 14892,
+        "tree": "Holy",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 3,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Holy Reach": {
+        "id": 105859,
+        "spellID": 27789,
+        "tree": "Holy",
+        "maxRank": 2,
+        "minLevel": 25,
+        "row": 3,
+        "col": 0,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Improved Healing": {
+        "id": 105858,
+        "spellID": 14912,
+        "tree": "Holy",
+        "maxRank": 3,
+        "minLevel": 25,
+        "row": 3,
+        "col": 1,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Searing Light": {
+        "id": 105857,
+        "spellID": 14909,
+        "tree": "Holy",
+        "maxRank": 2,
+        "minLevel": 25,
+        "row": 3,
+        "col": 2,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": [
+          [
+            105863,
+            5
+          ]
+        ]
+      },
+      "Binding Heal": {
+        "id": 105856,
+        "spellID": 401937,
+        "tree": "Holy",
+        "maxRank": 1,
+        "minLevel": 25,
+        "row": 3,
+        "col": 3,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Litany of Light": {
+        "id": 105855,
+        "spellID": 1317006,
+        "tree": "Holy",
+        "maxRank": 2,
+        "minLevel": 30,
+        "row": 4,
+        "col": 0,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Spirit of Redemption": {
+        "id": 105854,
+        "spellID": 20711,
+        "tree": "Holy",
+        "maxRank": 1,
+        "minLevel": 30,
+        "row": 4,
+        "col": 1,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Spiritual Guidance": {
+        "id": 105853,
+        "spellID": 14901,
+        "tree": "Holy",
+        "maxRank": 5,
+        "minLevel": 30,
+        "row": 4,
+        "col": 2,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Spiritual Healing": {
+        "id": 105852,
+        "spellID": 14898,
+        "tree": "Holy",
+        "maxRank": 3,
+        "minLevel": 35,
+        "row": 5,
+        "col": 2,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": []
+      },
+      "Prayer of Mending": {
+        "id": 105851,
+        "spellID": 401859,
+        "tree": "Holy",
+        "maxRank": 1,
+        "minLevel": 40,
+        "row": 6,
+        "col": 1,
+        "gate": [
+          30,
+          6
+        ],
+        "requires": [
+          [
+            105854,
+            1
+          ]
+        ]
+      },
+      "Shadow Focus": {
+        "id": 110851,
+        "spellID": 15260,
+        "tree": "Shadow",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 0,
+        "gate": [],
+        "requires": []
+      },
+      "Blackout": {
+        "id": 105832,
+        "spellID": 15326,
+        "tree": "Shadow",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 1,
+        "gate": [],
+        "requires": []
+      },
+      "Spirit Tap": {
+        "id": 105833,
+        "spellID": 15270,
+        "tree": "Shadow",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 2,
+        "gate": [],
+        "requires": []
+      },
+      "Shadow Affinity": {
+        "id": 105831,
+        "spellID": 15318,
+        "tree": "Shadow",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 0,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Improved Shadow Word: Pain": {
+        "id": 105830,
+        "spellID": 15275,
+        "tree": "Shadow",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 2,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Shadow Reach": {
+        "id": 105829,
+        "spellID": 17322,
+        "tree": "Shadow",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 3,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Improved Mind Blast": {
+        "id": 105827,
+        "spellID": 15273,
+        "tree": "Shadow",
+        "maxRank": 5,
+        "minLevel": 20,
+        "row": 2,
+        "col": 0,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Improved Psychic Scream": {
+        "id": 105828,
+        "spellID": 15392,
+        "tree": "Shadow",
+        "maxRank": 2,
+        "minLevel": 20,
+        "row": 2,
+        "col": 1,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": [
+          [
+            105832,
+            5
+          ]
+        ]
+      },
+      "Mind Flay": {
+        "id": 105826,
+        "spellID": 15407,
+        "tree": "Shadow",
+        "maxRank": 1,
+        "minLevel": 20,
+        "row": 2,
+        "col": 2,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Improved Mind Flay": {
+        "id": 105825,
+        "spellID": 1225139,
+        "tree": "Shadow",
+        "maxRank": 2,
+        "minLevel": 20,
+        "row": 2,
+        "col": 3,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": [
+          [
+            105826,
+            1
+          ]
+        ]
+      },
+      "Improved Fade": {
+        "id": 105823,
+        "spellID": 15274,
+        "tree": "Shadow",
+        "maxRank": 2,
+        "minLevel": 25,
+        "row": 3,
+        "col": 0,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Vampiric Embrace": {
+        "id": 105820,
+        "spellID": 15286,
+        "tree": "Shadow",
+        "maxRank": 1,
+        "minLevel": 25,
+        "row": 3,
+        "col": 1,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Shadow Weaving": {
+        "id": 105821,
+        "spellID": 15257,
+        "tree": "Shadow",
+        "maxRank": 3,
+        "minLevel": 25,
+        "row": 3,
+        "col": 2,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Silence": {
+        "id": 105824,
+        "spellID": 15487,
+        "tree": "Shadow",
+        "maxRank": 1,
+        "minLevel": 30,
+        "row": 4,
+        "col": 0,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Devouring Contagion": {
+        "id": 105819,
+        "spellID": 1309950,
+        "tree": "Shadow",
+        "maxRank": 2,
+        "minLevel": 30,
+        "row": 4,
+        "col": 2,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Early Demise": {
+        "id": 110854,
+        "spellID": 1310076,
+        "tree": "Shadow",
+        "maxRank": 2,
+        "minLevel": 35,
+        "row": 5,
+        "col": 0,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": []
+      },
+      "Darkness": {
+        "id": 105818,
+        "spellID": 15259,
+        "tree": "Shadow",
+        "maxRank": 5,
+        "minLevel": 35,
+        "row": 5,
+        "col": 2,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": []
+      },
+      "Shadowform": {
+        "id": 105817,
+        "spellID": 15473,
+        "tree": "Shadow",
+        "maxRank": 1,
+        "minLevel": 40,
+        "row": 6,
+        "col": 1,
+        "gate": [
+          30,
+          6
+        ],
+        "requires": [
+          [
+            105820,
+            1
+          ]
+        ]
+      }
+    },
+    "SHAMAN": {
+      "Convection": {
+        "id": 104773,
+        "spellID": 16039,
+        "tree": "Elemental",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 1,
+        "gate": [],
+        "requires": []
+      },
+      "Concussion": {
+        "id": 104772,
+        "spellID": 16035,
+        "tree": "Elemental",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 2,
+        "gate": [],
+        "requires": []
+      },
+      "Elemental Warding": {
+        "id": 104771,
+        "spellID": 28996,
+        "tree": "Elemental",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 0,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Reverberation": {
+        "id": 104767,
+        "spellID": 16040,
+        "tree": "Elemental",
+        "maxRank": 5,
+        "minLevel": 15,
+        "row": 1,
+        "col": 1,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Call of Flame": {
+        "id": 104770,
+        "spellID": 16038,
+        "tree": "Elemental",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 2,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Elemental Devastation": {
+        "id": 104769,
+        "spellID": 30160,
+        "tree": "Elemental",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 3,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Elemental Focus": {
+        "id": 104768,
+        "spellID": 16164,
+        "tree": "Elemental",
+        "maxRank": 1,
+        "minLevel": 20,
+        "row": 2,
+        "col": 1,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Elemental Alacrity": {
+        "id": 104765,
+        "spellID": 16578,
+        "tree": "Elemental",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 2,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Improved Fire Nova": {
+        "id": 104764,
+        "spellID": 16086,
+        "tree": "Elemental",
+        "maxRank": 2,
+        "minLevel": 25,
+        "row": 3,
+        "col": 0,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Eye of the Storm": {
+        "id": 104763,
+        "spellID": 29062,
+        "tree": "Elemental",
+        "maxRank": 3,
+        "minLevel": 25,
+        "row": 3,
+        "col": 1,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Call of Thunder": {
+        "id": 104762,
+        "spellID": 16120,
+        "tree": "Elemental",
+        "maxRank": 1,
+        "minLevel": 25,
+        "row": 3,
+        "col": 2,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": [
+          [
+            104765,
+            3
+          ]
+        ]
+      },
+      "Elemental Reach": {
+        "id": 104761,
+        "spellID": 28999,
+        "tree": "Elemental",
+        "maxRank": 2,
+        "minLevel": 30,
+        "row": 4,
+        "col": 0,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Lightning Overload": {
+        "id": 104759,
+        "spellID": 408438,
+        "tree": "Elemental",
+        "maxRank": 3,
+        "minLevel": 30,
+        "row": 4,
+        "col": 1,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Earthbound": {
+        "id": 104760,
+        "spellID": 1222988,
+        "tree": "Elemental",
+        "maxRank": 1,
+        "minLevel": 30,
+        "row": 4,
+        "col": 3,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Elemental Fury": {
+        "id": 104766,
+        "spellID": 16089,
+        "tree": "Elemental",
+        "maxRank": 5,
+        "minLevel": 35,
+        "row": 5,
+        "col": 2,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": [
+          [
+            104762,
+            1
+          ]
+        ]
+      },
+      "Lava Burst": {
+        "id": 104758,
+        "spellID": 408490,
+        "tree": "Elemental",
+        "maxRank": 1,
+        "minLevel": 40,
+        "row": 6,
+        "col": 1,
+        "gate": [
+          30,
+          6
+        ],
+        "requires": [
+          [
+            104759,
+            3
+          ]
+        ]
+      },
+      "Earth's Grasp": {
+        "id": 104757,
+        "spellID": 16043,
+        "tree": "Enhancement",
+        "maxRank": 2,
+        "minLevel": 10,
+        "row": 0,
+        "col": 0,
+        "gate": [],
+        "requires": []
+      },
+      "Thundering Strikes": {
+        "id": 104753,
+        "spellID": 16255,
+        "tree": "Enhancement",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 1,
+        "gate": [],
+        "requires": []
+      },
+      "Ancestral Knowledge": {
+        "id": 104756,
+        "spellID": 17485,
+        "tree": "Enhancement",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 2,
+        "gate": [],
+        "requires": []
+      },
+      "Guardian Totems": {
+        "id": 104754,
+        "spellID": 16258,
+        "tree": "Enhancement",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 0,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Mental Dexterity": {
+        "id": 104755,
+        "spellID": 415140,
+        "tree": "Enhancement",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 1,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Improved Ghost Wolf": {
+        "id": 104752,
+        "spellID": 16262,
+        "tree": "Enhancement",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 2,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Improved Lightning Shield": {
+        "id": 104751,
+        "spellID": 16261,
+        "tree": "Enhancement",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 3,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Elemental Weapons": {
+        "id": 104750,
+        "spellID": 16266,
+        "tree": "Enhancement",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 0,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Shamanistic Focus": {
+        "id": 104749,
+        "spellID": 1223030,
+        "tree": "Enhancement",
+        "maxRank": 1,
+        "minLevel": 20,
+        "row": 2,
+        "col": 2,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Anticipation": {
+        "id": 104748,
+        "spellID": 16254,
+        "tree": "Enhancement",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 3,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Toughness": {
+        "id": 104746,
+        "spellID": 16252,
+        "tree": "Enhancement",
+        "maxRank": 5,
+        "minLevel": 25,
+        "row": 3,
+        "col": 0,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Flurry": {
+        "id": 104747,
+        "spellID": 16256,
+        "tree": "Enhancement",
+        "maxRank": 5,
+        "minLevel": 25,
+        "row": 3,
+        "col": 1,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": [
+          [
+            104755,
+            3
+          ]
+        ]
+      },
+      "Stormstrike": {
+        "id": 104743,
+        "spellID": 17364,
+        "tree": "Enhancement",
+        "maxRank": 1,
+        "minLevel": 25,
+        "row": 3,
+        "col": 2,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Spirit Weapons": {
+        "id": 104745,
+        "spellID": 16268,
+        "tree": "Enhancement",
+        "maxRank": 1,
+        "minLevel": 30,
+        "row": 4,
+        "col": 0,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Mental Quickness": {
+        "id": 104744,
+        "spellID": 30812,
+        "tree": "Enhancement",
+        "maxRank": 2,
+        "minLevel": 30,
+        "row": 4,
+        "col": 1,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Improved Stormstrike": {
+        "id": 104742,
+        "spellID": 1223031,
+        "tree": "Enhancement",
+        "maxRank": 2,
+        "minLevel": 30,
+        "row": 4,
+        "col": 2,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": [
+          [
+            104743,
+            1
+          ]
+        ]
+      },
+      "Maelstrom Weapon": {
+        "id": 104741,
+        "spellID": 408498,
+        "tree": "Enhancement",
+        "maxRank": 5,
+        "minLevel": 35,
+        "row": 5,
+        "col": 2,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": []
+      },
+      "Rage of the Farseer": {
+        "id": 104740,
+        "spellID": 425336,
+        "tree": "Enhancement",
+        "maxRank": 1,
+        "minLevel": 40,
+        "row": 6,
+        "col": 1,
+        "gate": [
+          30,
+          6
+        ],
+        "requires": [
+          [
+            104744,
+            2
+          ]
+        ]
+      },
+      "Improved Healing Wave": {
+        "id": 104739,
+        "spellID": 16182,
+        "tree": "Restoration",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 1,
+        "gate": [],
+        "requires": []
+      },
+      "Totemic Focus": {
+        "id": 104729,
+        "spellID": 16173,
+        "tree": "Restoration",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 2,
+        "gate": [],
+        "requires": []
+      },
+      "Mindfulness": {
+        "id": 104734,
+        "spellID": 1223033,
+        "tree": "Restoration",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 0,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Natural Grace": {
+        "id": 104736,
+        "spellID": 29187,
+        "tree": "Restoration",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 1,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Tidal Focus": {
+        "id": 104735,
+        "spellID": 16179,
+        "tree": "Restoration",
+        "maxRank": 5,
+        "minLevel": 15,
+        "row": 1,
+        "col": 2,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Improved Reincarnation": {
+        "id": 104737,
+        "spellID": 16184,
+        "tree": "Restoration",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 3,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Ancestral Healing": {
+        "id": 104731,
+        "spellID": 16176,
+        "tree": "Restoration",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 0,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Healing Focus": {
+        "id": 104733,
+        "spellID": 16181,
+        "tree": "Restoration",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 1,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Water Shield": {
+        "id": 104732,
+        "spellID": 408510,
+        "tree": "Restoration",
+        "maxRank": 1,
+        "minLevel": 20,
+        "row": 2,
+        "col": 2,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Tidal Mastery": {
+        "id": 104738,
+        "spellID": 16194,
+        "tree": "Restoration",
+        "maxRank": 5,
+        "minLevel": 25,
+        "row": 3,
+        "col": 0,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Restorative Totems": {
+        "id": 104730,
+        "spellID": 16187,
+        "tree": "Restoration",
+        "maxRank": 5,
+        "minLevel": 25,
+        "row": 3,
+        "col": 1,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Mana Tide Totem": {
+        "id": 104728,
+        "spellID": 16190,
+        "tree": "Restoration",
+        "maxRank": 1,
+        "minLevel": 25,
+        "row": 3,
+        "col": 2,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Healing Way": {
+        "id": 104727,
+        "spellID": 29206,
+        "tree": "Restoration",
+        "maxRank": 3,
+        "minLevel": 30,
+        "row": 4,
+        "col": 1,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Nature's Swiftness": {
+        "id": 104726,
+        "spellID": 16188,
+        "tree": "Restoration",
+        "maxRank": 1,
+        "minLevel": 30,
+        "row": 4,
+        "col": 2,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Purification": {
+        "id": 104725,
+        "spellID": 16178,
+        "tree": "Restoration",
+        "maxRank": 5,
+        "minLevel": 35,
+        "row": 5,
+        "col": 2,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": []
+      },
+      "Riptide": {
+        "id": 104724,
+        "spellID": 408521,
+        "tree": "Restoration",
+        "maxRank": 1,
+        "minLevel": 40,
+        "row": 6,
+        "col": 1,
+        "gate": [
+          30,
+          6
+        ],
+        "requires": [
+          [
+            104727,
+            3
+          ]
+        ]
+      }
+    },
+    "MAGE": {
+      "Wand Specialization": {
+        "id": 105815,
+        "spellID": 6057,
+        "tree": "Arcane",
+        "maxRank": 2,
+        "minLevel": 10,
+        "row": 0,
+        "col": 0,
+        "gate": [],
+        "requires": []
+      },
+      "Arcane Focus": {
+        "id": 105814,
+        "spellID": 11222,
+        "tree": "Arcane",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 1,
+        "gate": [],
+        "requires": []
+      },
+      "Improved Channeling": {
+        "id": 105813,
+        "spellID": 11237,
+        "tree": "Arcane",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 2,
+        "gate": [],
+        "requires": []
+      },
+      "Arcane Subtlety": {
+        "id": 105812,
+        "spellID": 11210,
+        "tree": "Arcane",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 0,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Magic Absorption": {
+        "id": 105811,
+        "spellID": 29441,
+        "tree": "Arcane",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 1,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Arcane Concentration": {
+        "id": 105810,
+        "spellID": 11213,
+        "tree": "Arcane",
+        "maxRank": 5,
+        "minLevel": 15,
+        "row": 1,
+        "col": 2,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Arcane Resilience": {
+        "id": 105809,
+        "spellID": 28574,
+        "tree": "Arcane",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 3,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Arcane Geometry": {
+        "id": 105808,
+        "spellID": 11247,
+        "tree": "Arcane",
+        "maxRank": 2,
+        "minLevel": 20,
+        "row": 2,
+        "col": 0,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Arcane Impact": {
+        "id": 105807,
+        "spellID": 11242,
+        "tree": "Arcane",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 1,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Arcane Blast": {
+        "id": 105806,
+        "spellID": 400574,
+        "tree": "Arcane",
+        "maxRank": 1,
+        "minLevel": 20,
+        "row": 2,
+        "col": 3,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Arcane Shielding": {
+        "id": 105805,
+        "spellID": 11252,
+        "tree": "Arcane",
+        "maxRank": 2,
+        "minLevel": 25,
+        "row": 3,
+        "col": 0,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Improved Counterspell": {
+        "id": 105804,
+        "spellID": 11255,
+        "tree": "Arcane",
+        "maxRank": 2,
+        "minLevel": 25,
+        "row": 3,
+        "col": 1,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Arcane Meditation": {
+        "id": 105803,
+        "spellID": 18462,
+        "tree": "Arcane",
+        "maxRank": 3,
+        "minLevel": 25,
+        "row": 3,
+        "col": 2,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": [
+          [
+            105810,
+            5
+          ]
+        ]
+      },
+      "Missile Barrage": {
+        "id": 105802,
+        "spellID": 400588,
+        "tree": "Arcane",
+        "maxRank": 1,
+        "minLevel": 25,
+        "row": 3,
+        "col": 3,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Presence of Mind": {
+        "id": 105801,
+        "spellID": 12043,
+        "tree": "Arcane",
+        "maxRank": 1,
+        "minLevel": 30,
+        "row": 4,
+        "col": 1,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Arcane Mind": {
+        "id": 105800,
+        "spellID": 11232,
+        "tree": "Arcane",
+        "maxRank": 5,
+        "minLevel": 30,
+        "row": 4,
+        "col": 2,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Arcane Instability": {
+        "id": 105799,
+        "spellID": 15058,
+        "tree": "Arcane",
+        "maxRank": 3,
+        "minLevel": 35,
+        "row": 5,
+        "col": 2,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": []
+      },
+      "Arcane Power": {
+        "id": 105798,
+        "spellID": 12042,
+        "tree": "Arcane",
+        "maxRank": 1,
+        "minLevel": 40,
+        "row": 6,
+        "col": 1,
+        "gate": [
+          30,
+          6
+        ],
+        "requires": [
+          [
+            105801,
+            1
+          ]
+        ]
+      },
+      "Wake of Fire": {
+        "id": 105797,
+        "spellID": 11078,
+        "tree": "Fire",
+        "maxRank": 2,
+        "minLevel": 10,
+        "row": 0,
+        "col": 0,
+        "gate": [],
+        "requires": []
+      },
+      "Incineration": {
+        "id": 105796,
+        "spellID": 18459,
+        "tree": "Fire",
+        "maxRank": 3,
+        "minLevel": 10,
+        "row": 0,
+        "col": 1,
+        "gate": [],
+        "requires": []
+      },
+      "Improved Fireball": {
+        "id": 105795,
+        "spellID": 11069,
+        "tree": "Fire",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 2,
+        "gate": [],
+        "requires": []
+      },
+      "Ignite": {
+        "id": 105794,
+        "spellID": 11119,
+        "tree": "Fire",
+        "maxRank": 5,
+        "minLevel": 15,
+        "row": 1,
+        "col": 0,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Flame Throwing": {
+        "id": 105793,
+        "spellID": 11100,
+        "tree": "Fire",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 1,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Impact": {
+        "id": 105792,
+        "spellID": 11103,
+        "tree": "Fire",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 2,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Burning Soul": {
+        "id": 105789,
+        "spellID": 11083,
+        "tree": "Fire",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 0,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Improved Flamestrike": {
+        "id": 105791,
+        "spellID": 11108,
+        "tree": "Fire",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 1,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Pyroblast": {
+        "id": 105790,
+        "spellID": 11366,
+        "tree": "Fire",
+        "maxRank": 1,
+        "minLevel": 20,
+        "row": 2,
+        "col": 2,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Improved Scorch": {
+        "id": 105788,
+        "spellID": 11095,
+        "tree": "Fire",
+        "maxRank": 3,
+        "minLevel": 25,
+        "row": 3,
+        "col": 0,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Improved Fire Ward": {
+        "id": 105787,
+        "spellID": 11094,
+        "tree": "Fire",
+        "maxRank": 2,
+        "minLevel": 25,
+        "row": 3,
+        "col": 1,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Heating Up": {
+        "id": 105786,
+        "spellID": 400624,
+        "tree": "Fire",
+        "maxRank": 1,
+        "minLevel": 25,
+        "row": 3,
+        "col": 2,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": [
+          [
+            105790,
+            1
+          ]
+        ]
+      },
+      "Master of Elements": {
+        "id": 105785,
+        "spellID": 29074,
+        "tree": "Fire",
+        "maxRank": 3,
+        "minLevel": 25,
+        "row": 3,
+        "col": 3,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Critical Mass": {
+        "id": 105784,
+        "spellID": 11115,
+        "tree": "Fire",
+        "maxRank": 3,
+        "minLevel": 30,
+        "row": 4,
+        "col": 1,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Blast Wave": {
+        "id": 105783,
+        "spellID": 11113,
+        "tree": "Fire",
+        "maxRank": 1,
+        "minLevel": 30,
+        "row": 4,
+        "col": 2,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Fire Power": {
+        "id": 105782,
+        "spellID": 11124,
+        "tree": "Fire",
+        "maxRank": 5,
+        "minLevel": 35,
+        "row": 5,
+        "col": 2,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": []
+      },
+      "Combustion": {
+        "id": 105781,
+        "spellID": 11129,
+        "tree": "Fire",
+        "maxRank": 1,
+        "minLevel": 40,
+        "row": 6,
+        "col": 1,
+        "gate": [
+          30,
+          6
+        ],
+        "requires": [
+          [
+            105784,
+            3
+          ]
+        ]
+      },
+      "Frost Warding": {
+        "id": 105780,
+        "spellID": 11189,
+        "tree": "Frost",
+        "maxRank": 2,
+        "minLevel": 10,
+        "row": 0,
+        "col": 0,
+        "gate": [],
+        "requires": []
+      },
+      "Improved Frostbolt": {
+        "id": 105779,
+        "spellID": 11070,
+        "tree": "Frost",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 1,
+        "gate": [],
+        "requires": []
+      },
+      "Elemental Precision": {
+        "id": 105778,
+        "spellID": 29438,
+        "tree": "Frost",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 2,
+        "gate": [],
+        "requires": []
+      },
+      "Ice Shards": {
+        "id": 105777,
+        "spellID": 11207,
+        "tree": "Frost",
+        "maxRank": 5,
+        "minLevel": 15,
+        "row": 1,
+        "col": 0,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Permafrost": {
+        "id": 105776,
+        "spellID": 11175,
+        "tree": "Frost",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 1,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Improved Frost Nova": {
+        "id": 105775,
+        "spellID": 11165,
+        "tree": "Frost",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 2,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Frostbite": {
+        "id": 105774,
+        "spellID": 11071,
+        "tree": "Frost",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 3,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Piercing Ice": {
+        "id": 105773,
+        "spellID": 11151,
+        "tree": "Frost",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 0,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Frost Channeling": {
+        "id": 105772,
+        "spellID": 11160,
+        "tree": "Frost",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 1,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Ice Lance": {
+        "id": 105767,
+        "spellID": 1312002,
+        "tree": "Frost",
+        "maxRank": 1,
+        "minLevel": 20,
+        "row": 2,
+        "col": 2,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Improved Blizzard": {
+        "id": 105771,
+        "spellID": 11185,
+        "tree": "Frost",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 3,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Arctic Reach": {
+        "id": 105770,
+        "spellID": 16757,
+        "tree": "Frost",
+        "maxRank": 2,
+        "minLevel": 25,
+        "row": 3,
+        "col": 0,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Ice Block": {
+        "id": 105769,
+        "spellID": 11958,
+        "tree": "Frost",
+        "maxRank": 1,
+        "minLevel": 25,
+        "row": 3,
+        "col": 1,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Shatter": {
+        "id": 105768,
+        "spellID": 11170,
+        "tree": "Frost",
+        "maxRank": 3,
+        "minLevel": 25,
+        "row": 3,
+        "col": 3,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Improved Cone of Cold": {
+        "id": 105765,
+        "spellID": 11190,
+        "tree": "Frost",
+        "maxRank": 3,
+        "minLevel": 30,
+        "row": 4,
+        "col": 0,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Cold Snap": {
+        "id": 105766,
+        "spellID": 12472,
+        "tree": "Frost",
+        "maxRank": 1,
+        "minLevel": 30,
+        "row": 4,
+        "col": 1,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Fingers of Frost": {
+        "id": 105764,
+        "spellID": 400647,
+        "tree": "Frost",
+        "maxRank": 2,
+        "minLevel": 30,
+        "row": 4,
+        "col": 2,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": [
+          [
+            105767,
+            1
+          ]
+        ]
+      },
+      "Winter's Chill": {
+        "id": 105763,
+        "spellID": 11180,
+        "tree": "Frost",
+        "maxRank": 5,
+        "minLevel": 35,
+        "row": 5,
+        "col": 2,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": []
+      },
+      "Ice Barrier": {
+        "id": 105762,
+        "spellID": 11426,
+        "tree": "Frost",
+        "maxRank": 1,
+        "minLevel": 40,
+        "row": 6,
+        "col": 1,
+        "gate": [
+          30,
+          6
+        ],
+        "requires": [
+          [
+            105766,
+            1
+          ]
+        ]
+      }
+    },
+    "WARLOCK": {
+      "Improved Life Tap": {
+        "id": 105921,
+        "spellID": 18182,
+        "tree": "Affliction",
+        "maxRank": 2,
+        "minLevel": 10,
+        "row": 0,
+        "col": 0,
+        "gate": [],
+        "requires": []
+      },
+      "Suppression": {
+        "id": 105925,
+        "spellID": 18174,
+        "tree": "Affliction",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 1,
+        "gate": [],
+        "requires": []
+      },
+      "Improved Corruption": {
+        "id": 105924,
+        "spellID": 17810,
+        "tree": "Affliction",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 2,
+        "gate": [],
+        "requires": []
+      },
+      "Malediction": {
+        "id": 105923,
+        "spellID": 1225177,
+        "tree": "Affliction",
+        "maxRank": 5,
+        "minLevel": 15,
+        "row": 1,
+        "col": 0,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Soul Harvest": {
+        "id": 105922,
+        "spellID": 437032,
+        "tree": "Affliction",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 1,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Improved Drains": {
+        "id": 105920,
+        "spellID": 403511,
+        "tree": "Affliction",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 2,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Improved Bane of Agony": {
+        "id": 105919,
+        "spellID": 18827,
+        "tree": "Affliction",
+        "maxRank": 2,
+        "minLevel": 20,
+        "row": 2,
+        "col": 0,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Fel Concentration": {
+        "id": 105918,
+        "spellID": 17783,
+        "tree": "Affliction",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 1,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Amplify Curse": {
+        "id": 105916,
+        "spellID": 18288,
+        "tree": "Affliction",
+        "maxRank": 1,
+        "minLevel": 20,
+        "row": 2,
+        "col": 2,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Pandemic": {
+        "id": 105917,
+        "spellID": 427712,
+        "tree": "Affliction",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 3,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Malevolence": {
+        "id": 110876,
+        "spellID": 1310949,
+        "tree": "Affliction",
+        "maxRank": 5,
+        "minLevel": 25,
+        "row": 3,
+        "col": 0,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Nightfall": {
+        "id": 105914,
+        "spellID": 18094,
+        "tree": "Affliction",
+        "maxRank": 2,
+        "minLevel": 25,
+        "row": 3,
+        "col": 1,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Curse of Exhaustion": {
+        "id": 105913,
+        "spellID": 18223,
+        "tree": "Affliction",
+        "maxRank": 1,
+        "minLevel": 25,
+        "row": 3,
+        "col": 2,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": [
+          [
+            105916,
+            1
+          ]
+        ]
+      },
+      "Siphon Life": {
+        "id": 105912,
+        "spellID": 18265,
+        "tree": "Affliction",
+        "maxRank": 1,
+        "minLevel": 30,
+        "row": 4,
+        "col": 1,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Soul Siphon": {
+        "id": 105911,
+        "spellID": 17804,
+        "tree": "Affliction",
+        "maxRank": 3,
+        "minLevel": 30,
+        "row": 4,
+        "col": 2,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Shadow Mastery": {
+        "id": 105910,
+        "spellID": 18271,
+        "tree": "Affliction",
+        "maxRank": 5,
+        "minLevel": 35,
+        "row": 5,
+        "col": 2,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": []
+      },
+      "Wrack": {
+        "id": 105909,
+        "spellID": 1316697,
+        "tree": "Affliction",
+        "maxRank": 1,
+        "minLevel": 40,
+        "row": 6,
+        "col": 1,
+        "gate": [
+          30,
+          6
+        ],
+        "requires": [
+          [
+            105912,
+            1
+          ]
+        ]
+      },
+      "Improved Health Funnel": {
+        "id": 105905,
+        "spellID": 18703,
+        "tree": "Demonology",
+        "maxRank": 2,
+        "minLevel": 10,
+        "row": 0,
+        "col": 0,
+        "gate": [],
+        "requires": []
+      },
+      "Improved Imp": {
+        "id": 105908,
+        "spellID": 18694,
+        "tree": "Demonology",
+        "maxRank": 3,
+        "minLevel": 10,
+        "row": 0,
+        "col": 1,
+        "gate": [],
+        "requires": []
+      },
+      "Demonic Embrace": {
+        "id": 105907,
+        "spellID": 18697,
+        "tree": "Demonology",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 2,
+        "gate": [],
+        "requires": []
+      },
+      "Unholy Power": {
+        "id": 105906,
+        "spellID": 18769,
+        "tree": "Demonology",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 3,
+        "gate": [],
+        "requires": []
+      },
+      "Demonic Aegis": {
+        "id": 105902,
+        "spellID": 1235316,
+        "tree": "Demonology",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 0,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Improved Voidwalker": {
+        "id": 105904,
+        "spellID": 18705,
+        "tree": "Demonology",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 1,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Fel Vitality": {
+        "id": 105903,
+        "spellID": 18731,
+        "tree": "Demonology",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 2,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Demonic Energies": {
+        "id": 105899,
+        "spellID": 1225214,
+        "tree": "Demonology",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 3,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Improved Sayaad": {
+        "id": 105901,
+        "spellID": 18754,
+        "tree": "Demonology",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 0,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Demonic Sacrifice": {
+        "id": 105900,
+        "spellID": 18788,
+        "tree": "Demonology",
+        "maxRank": 1,
+        "minLevel": 20,
+        "row": 2,
+        "col": 1,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Master Summoner": {
+        "id": 105898,
+        "spellID": 18709,
+        "tree": "Demonology",
+        "maxRank": 2,
+        "minLevel": 20,
+        "row": 2,
+        "col": 2,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Decimation": {
+        "id": 105897,
+        "spellID": 440870,
+        "tree": "Demonology",
+        "maxRank": 2,
+        "minLevel": 25,
+        "row": 3,
+        "col": 0,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Fel Domination": {
+        "id": 105895,
+        "spellID": 18708,
+        "tree": "Demonology",
+        "maxRank": 1,
+        "minLevel": 25,
+        "row": 3,
+        "col": 2,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": [
+          [
+            105898,
+            2
+          ]
+        ]
+      },
+      "Demonic Brand": {
+        "id": 105896,
+        "spellID": 1293695,
+        "tree": "Demonology",
+        "maxRank": 3,
+        "minLevel": 25,
+        "row": 3,
+        "col": 3,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Improved Felhunter": {
+        "id": 105894,
+        "spellID": 1225217,
+        "tree": "Demonology",
+        "maxRank": 3,
+        "minLevel": 30,
+        "row": 4,
+        "col": 0,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Soul Link": {
+        "id": 105892,
+        "spellID": 19028,
+        "tree": "Demonology",
+        "maxRank": 1,
+        "minLevel": 30,
+        "row": 4,
+        "col": 1,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": [
+          [
+            105900,
+            1
+          ]
+        ]
+      },
+      "Demonic Knowledge": {
+        "id": 105893,
+        "spellID": 412732,
+        "tree": "Demonology",
+        "maxRank": 3,
+        "minLevel": 30,
+        "row": 4,
+        "col": 2,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Master Demonologist": {
+        "id": 105891,
+        "spellID": 23785,
+        "tree": "Demonology",
+        "maxRank": 5,
+        "minLevel": 35,
+        "row": 5,
+        "col": 2,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": []
+      },
+      "Demonic Pact": {
+        "id": 105890,
+        "spellID": 425464,
+        "tree": "Demonology",
+        "maxRank": 1,
+        "minLevel": 40,
+        "row": 6,
+        "col": 1,
+        "gate": [
+          30,
+          6
+        ],
+        "requires": [
+          [
+            105892,
+            1
+          ]
+        ]
+      },
+      "Destructive Reach": {
+        "id": 105881,
+        "spellID": 17917,
+        "tree": "Destruction",
+        "maxRank": 2,
+        "minLevel": 10,
+        "row": 0,
+        "col": 0,
+        "gate": [],
+        "requires": []
+      },
+      "Improved Shadow Bolt": {
+        "id": 105889,
+        "spellID": 17793,
+        "tree": "Destruction",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 1,
+        "gate": [],
+        "requires": []
+      },
+      "Bane": {
+        "id": 105888,
+        "spellID": 17788,
+        "tree": "Destruction",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 2,
+        "gate": [],
+        "requires": []
+      },
+      "Molten Skin": {
+        "id": 105885,
+        "spellID": 1225220,
+        "tree": "Destruction",
+        "maxRank": 5,
+        "minLevel": 15,
+        "row": 1,
+        "col": 0,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Cataclysm": {
+        "id": 105887,
+        "spellID": 17778,
+        "tree": "Destruction",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 1,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Aftermath": {
+        "id": 105886,
+        "spellID": 18119,
+        "tree": "Destruction",
+        "maxRank": 5,
+        "minLevel": 15,
+        "row": 1,
+        "col": 2,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Ruin": {
+        "id": 105883,
+        "spellID": 17959,
+        "tree": "Destruction",
+        "maxRank": 5,
+        "minLevel": 20,
+        "row": 2,
+        "col": 1,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Shadowburn": {
+        "id": 105884,
+        "spellID": 17877,
+        "tree": "Destruction",
+        "maxRank": 1,
+        "minLevel": 20,
+        "row": 2,
+        "col": 2,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Intensity": {
+        "id": 105882,
+        "spellID": 18135,
+        "tree": "Destruction",
+        "maxRank": 3,
+        "minLevel": 25,
+        "row": 3,
+        "col": 0,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Agonizing Flames": {
+        "id": 105879,
+        "spellID": 17927,
+        "tree": "Destruction",
+        "maxRank": 3,
+        "minLevel": 25,
+        "row": 3,
+        "col": 1,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Conflagrate": {
+        "id": 105880,
+        "spellID": 1293817,
+        "tree": "Destruction",
+        "maxRank": 1,
+        "minLevel": 25,
+        "row": 3,
+        "col": 2,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Pyroclasm": {
+        "id": 105878,
+        "spellID": 18073,
+        "tree": "Destruction",
+        "maxRank": 2,
+        "minLevel": 30,
+        "row": 4,
+        "col": 0,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": [
+          [
+            105882,
+            3
+          ]
+        ]
+      },
+      "Bane of Havoc": {
+        "id": 105876,
+        "spellID": 1225228,
+        "tree": "Destruction",
+        "maxRank": 1,
+        "minLevel": 30,
+        "row": 4,
+        "col": 1,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Fire and Brimstone": {
+        "id": 105877,
+        "spellID": 412751,
+        "tree": "Destruction",
+        "maxRank": 3,
+        "minLevel": 30,
+        "row": 4,
+        "col": 2,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": [
+          [
+            105880,
+            1
+          ]
+        ]
+      },
+      "Shadow and Flame": {
+        "id": 105875,
+        "spellID": 426316,
+        "tree": "Destruction",
+        "maxRank": 5,
+        "minLevel": 35,
+        "row": 5,
+        "col": 2,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": []
+      },
+      "Incinerate": {
+        "id": 105874,
+        "spellID": 412758,
+        "tree": "Destruction",
+        "maxRank": 1,
+        "minLevel": 40,
+        "row": 6,
+        "col": 1,
+        "gate": [
+          30,
+          6
+        ],
+        "requires": [
+          [
+            105876,
+            1
+          ]
+        ]
+      }
+    },
+    "DRUID": {
+      "Improved Wrath": {
+        "id": 104923,
+        "spellID": 16814,
+        "tree": "Balance",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 1,
+        "gate": [],
+        "requires": []
+      },
+      "Genesis": {
+        "id": 104924,
+        "spellID": 1223081,
+        "tree": "Balance",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 2,
+        "gate": [],
+        "requires": []
+      },
+      "Moonglow": {
+        "id": 104925,
+        "spellID": 16845,
+        "tree": "Balance",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 0,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Improved Moonfire": {
+        "id": 104931,
+        "spellID": 16821,
+        "tree": "Balance",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 1,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Nature's Majesty": {
+        "id": 104927,
+        "spellID": 1223082,
+        "tree": "Balance",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 2,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Nature's Reach": {
+        "id": 104929,
+        "spellID": 16819,
+        "tree": "Balance",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 3,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Improved Entangling Roots": {
+        "id": 104926,
+        "spellID": 16918,
+        "tree": "Balance",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 0,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Nature's Splendor": {
+        "id": 104928,
+        "spellID": 1223083,
+        "tree": "Balance",
+        "maxRank": 1,
+        "minLevel": 20,
+        "row": 2,
+        "col": 2,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": [
+          [
+            104927,
+            2,
+            1
+          ]
+        ]
+      },
+      "Insect Swarm": {
+        "id": 104930,
+        "spellID": 5570,
+        "tree": "Balance",
+        "maxRank": 1,
+        "minLevel": 25,
+        "row": 3,
+        "col": 0,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Vengeance": {
+        "id": 104932,
+        "spellID": 16909,
+        "tree": "Balance",
+        "maxRank": 5,
+        "minLevel": 25,
+        "row": 3,
+        "col": 1,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": [
+          [
+            104931,
+            2
+          ]
+        ]
+      },
+      "Improved Starfire": {
+        "id": 104933,
+        "spellID": 16850,
+        "tree": "Balance",
+        "maxRank": 5,
+        "minLevel": 25,
+        "row": 3,
+        "col": 2,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Overgrowth": {
+        "id": 110844,
+        "spellID": 17245,
+        "tree": "Balance",
+        "maxRank": 2,
+        "minLevel": 30,
+        "row": 4,
+        "col": 0,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Nature's Grace": {
+        "id": 104934,
+        "spellID": 16880,
+        "tree": "Balance",
+        "maxRank": 1,
+        "minLevel": 30,
+        "row": 4,
+        "col": 1,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Eclipse": {
+        "id": 104935,
+        "spellID": 408248,
+        "tree": "Balance",
+        "maxRank": 3,
+        "minLevel": 30,
+        "row": 4,
+        "col": 2,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Moonfury": {
+        "id": 104936,
+        "spellID": 16896,
+        "tree": "Balance",
+        "maxRank": 5,
+        "minLevel": 35,
+        "row": 5,
+        "col": 1,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": []
+      },
+      "Moonkin Form": {
+        "id": 104937,
+        "spellID": 24858,
+        "tree": "Balance",
+        "maxRank": 1,
+        "minLevel": 40,
+        "row": 6,
+        "col": 1,
+        "gate": [
+          30,
+          6
+        ],
+        "requires": []
+      },
+      "Ferocity": {
+        "id": 104938,
+        "spellID": 16934,
+        "tree": "Feral Combat",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 1,
+        "gate": [],
+        "requires": []
+      },
+      "Heart of the Wild": {
+        "id": 104939,
+        "spellID": 17003,
+        "tree": "Feral Combat",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 2,
+        "gate": [],
+        "requires": []
+      },
+      "Feral Swiftness": {
+        "id": 104943,
+        "spellID": 17002,
+        "tree": "Feral Combat",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 0,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Feral Instinct": {
+        "id": 104940,
+        "spellID": 16947,
+        "tree": "Feral Combat",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 1,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Brutal Impact": {
+        "id": 104941,
+        "spellID": 16940,
+        "tree": "Feral Combat",
+        "maxRank": 2,
+        "minLevel": 15,
+        "row": 1,
+        "col": 2,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Thick Hide": {
+        "id": 104942,
+        "spellID": 16929,
+        "tree": "Feral Combat",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 3,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Shredding Attacks": {
+        "id": 104945,
+        "spellID": 16966,
+        "tree": "Feral Combat",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 0,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Savage Fury": {
+        "id": 104948,
+        "spellID": 16998,
+        "tree": "Feral Combat",
+        "maxRank": 2,
+        "minLevel": 20,
+        "row": 2,
+        "col": 1,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Feral Charge": {
+        "id": 104944,
+        "spellID": 1238122,
+        "tree": "Feral Combat",
+        "maxRank": 1,
+        "minLevel": 20,
+        "row": 2,
+        "col": 2,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Sharpened Claws": {
+        "id": 104946,
+        "spellID": 16942,
+        "tree": "Feral Combat",
+        "maxRank": 2,
+        "minLevel": 20,
+        "row": 2,
+        "col": 3,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Shifting Power": {
+        "id": 104951,
+        "spellID": 1322605,
+        "tree": "Feral Combat",
+        "maxRank": 1,
+        "minLevel": 25,
+        "row": 3,
+        "col": 0,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": [
+          [
+            104945,
+            3
+          ]
+        ]
+      },
+      "Primal Bite": {
+        "id": 104949,
+        "spellID": 407995,
+        "tree": "Feral Combat",
+        "maxRank": 1,
+        "minLevel": 25,
+        "row": 3,
+        "col": 1,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": [
+          [
+            104948,
+            2
+          ]
+        ]
+      },
+      "Predatory Strikes": {
+        "id": 104952,
+        "spellID": 16972,
+        "tree": "Feral Combat",
+        "maxRank": 3,
+        "minLevel": 25,
+        "row": 3,
+        "col": 2,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Blood Frenzy": {
+        "id": 104947,
+        "spellID": 16958,
+        "tree": "Feral Combat",
+        "maxRank": 2,
+        "minLevel": 25,
+        "row": 3,
+        "col": 3,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": [
+          [
+            104946,
+            2
+          ]
+        ]
+      },
+      "Improved Shifting Power": {
+        "id": 113563,
+        "spellID": 1322670,
+        "tree": "Feral Combat",
+        "maxRank": 2,
+        "minLevel": 30,
+        "row": 4,
+        "col": 0,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": [
+          [
+            104951,
+            1
+          ]
+        ]
+      },
+      "Leader of the Pack": {
+        "id": 104955,
+        "spellID": 17007,
+        "tree": "Feral Combat",
+        "maxRank": 1,
+        "minLevel": 30,
+        "row": 4,
+        "col": 1,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Predatory Instincts": {
+        "id": 104950,
+        "spellID": 1223242,
+        "tree": "Feral Combat",
+        "maxRank": 2,
+        "minLevel": 30,
+        "row": 4,
+        "col": 3,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Natural Reaction": {
+        "id": 104954,
+        "spellID": 417051,
+        "tree": "Feral Combat",
+        "maxRank": 5,
+        "minLevel": 35,
+        "row": 5,
+        "col": 0,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": []
+      },
+      "Rend and Tear": {
+        "id": 104953,
+        "spellID": 1223246,
+        "tree": "Feral Combat",
+        "maxRank": 5,
+        "minLevel": 35,
+        "row": 5,
+        "col": 2,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": [
+          [
+            104952,
+            3
+          ]
+        ]
+      },
+      "Berserk": {
+        "id": 104956,
+        "spellID": 417141,
+        "tree": "Feral Combat",
+        "maxRank": 1,
+        "minLevel": 40,
+        "row": 6,
+        "col": 1,
+        "gate": [
+          30,
+          6
+        ],
+        "requires": [
+          [
+            104955,
+            1
+          ]
+        ]
+      },
+      "Nature's Focus": {
+        "id": 104957,
+        "spellID": 17063,
+        "tree": "Restoration",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 1,
+        "gate": [],
+        "requires": []
+      },
+      "Furor": {
+        "id": 104958,
+        "spellID": 17056,
+        "tree": "Restoration",
+        "maxRank": 5,
+        "minLevel": 10,
+        "row": 0,
+        "col": 2,
+        "gate": [],
+        "requires": []
+      },
+      "Naturalist": {
+        "id": 104922,
+        "spellID": 17069,
+        "tree": "Restoration",
+        "maxRank": 5,
+        "minLevel": 15,
+        "row": 1,
+        "col": 0,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Subtlety": {
+        "id": 104920,
+        "spellID": 17118,
+        "tree": "Restoration",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 1,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Natural Shapeshifter": {
+        "id": 104919,
+        "spellID": 16833,
+        "tree": "Restoration",
+        "maxRank": 3,
+        "minLevel": 15,
+        "row": 1,
+        "col": 2,
+        "gate": [
+          5,
+          0
+        ],
+        "requires": []
+      },
+      "Reflection": {
+        "id": 104917,
+        "spellID": 17106,
+        "tree": "Restoration",
+        "maxRank": 3,
+        "minLevel": 20,
+        "row": 2,
+        "col": 1,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Gift of Nature": {
+        "id": 104916,
+        "spellID": 17104,
+        "tree": "Restoration",
+        "maxRank": 5,
+        "minLevel": 20,
+        "row": 2,
+        "col": 2,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Gift of the Earthmother": {
+        "id": 104918,
+        "spellID": 414673,
+        "tree": "Restoration",
+        "maxRank": 1,
+        "minLevel": 20,
+        "row": 2,
+        "col": 3,
+        "gate": [
+          10,
+          1
+        ],
+        "requires": []
+      },
+      "Tranquil Spirit": {
+        "id": 104915,
+        "spellID": 24968,
+        "tree": "Restoration",
+        "maxRank": 5,
+        "minLevel": 25,
+        "row": 3,
+        "col": 1,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Improved Rejuvenation": {
+        "id": 104914,
+        "spellID": 17111,
+        "tree": "Restoration",
+        "maxRank": 3,
+        "minLevel": 25,
+        "row": 3,
+        "col": 2,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Swiftmend": {
+        "id": 104912,
+        "spellID": 18562,
+        "tree": "Restoration",
+        "maxRank": 1,
+        "minLevel": 25,
+        "row": 3,
+        "col": 3,
+        "gate": [
+          15,
+          2
+        ],
+        "requires": []
+      },
+      "Nature's Swiftness": {
+        "id": 104921,
+        "spellID": 17116,
+        "tree": "Restoration",
+        "maxRank": 1,
+        "minLevel": 30,
+        "row": 4,
+        "col": 0,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": [
+          [
+            104922,
+            5
+          ]
+        ]
+      },
+      "Living Spirit": {
+        "id": 104911,
+        "spellID": 1309631,
+        "tree": "Restoration",
+        "maxRank": 3,
+        "minLevel": 30,
+        "row": 4,
+        "col": 1,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Improved Tranquility": {
+        "id": 104909,
+        "spellID": 17123,
+        "tree": "Restoration",
+        "maxRank": 2,
+        "minLevel": 30,
+        "row": 4,
+        "col": 3,
+        "gate": [
+          20,
+          3
+        ],
+        "requires": []
+      },
+      "Improved Regrowth": {
+        "id": 104913,
+        "spellID": 17074,
+        "tree": "Restoration",
+        "maxRank": 5,
+        "minLevel": 35,
+        "row": 5,
+        "col": 2,
+        "gate": [
+          25,
+          4
+        ],
+        "requires": [
+          [
+            104914,
+            3
+          ]
+        ]
+      },
+      "Wild Growth": {
+        "id": 104910,
+        "spellID": 408120,
+        "tree": "Restoration",
+        "maxRank": 1,
+        "minLevel": 40,
+        "row": 6,
+        "col": 1,
+        "gate": [
+          30,
+          6
+        ],
+        "requires": [
+          [
+            104911,
+            3
+          ]
+        ]
+      }
+    }
+  }
+}

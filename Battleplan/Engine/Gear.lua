@@ -39,7 +39,7 @@ function Gear.EnchantAdvice(enchants, equipped, weights)
 end
 
 -- targets: { { slot=, itemID=, name=, source=, minLevel=, stats = { STAT = n } } }
--- equippedScores: { [slot] = score of what's worn } (missing = empty slot)
+-- equippedScores: { [slot] = score or false (unknown) } (missing = empty slot)
 -- Returns the best reachable upgrade per slot: { slot=, slotName=, target=, gain=, now= }
 -- `now` is true when the level allows it already.
 function Gear.NextUpgrades(targets, level, weights, equippedScores)
@@ -48,7 +48,7 @@ function Gear.NextUpgrades(targets, level, weights, equippedScores)
     local score = Score.Stats(t.stats, weights)
     local gain = score - (equippedScores[t.slot] or 0)
     local reachable = (t.minLevel or 0) <= level + 5 -- what's worth planning for next
-    if gain > 0 and reachable then
+    if equippedScores[t.slot] ~= false and gain > 0 and reachable then
       local cur = best[t.slot]
       local nowOk = (t.minLevel or 0) <= level
       -- Prefer what you can use now; among equals, the bigger gain.

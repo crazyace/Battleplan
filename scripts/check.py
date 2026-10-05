@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parent.parent
 TESTS = [
     ("smoke test", "tests/smoke_test.py"),
     ("perf test", "tests/perf_test.py"),
+    ("regression test", "tests/regression_test.py"),
     ("tools test", "tests/test_tools.py"),
     ("rules test", "tests/test_rules.py"),
 ]

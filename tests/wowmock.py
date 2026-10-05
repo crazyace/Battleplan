@@ -249,8 +249,8 @@ ROGUE_30 = r'''{
   nodes = {
     -- Combat (group 11573): the build's first 20 points, Blade Flurry not yet
     { 11573, "Improved Sinister Strike", 2, 5100 }, { 11573, "Lightning Reflexes", 3, 5200 },
-    { 11573, "Precision", 3, 5300 }, { 11573, "Deflection", 2, 5400 }, { 11573, "Riposte", 1, 5500 },
-    { 11573, "Endurance", 2, 5600 }, { 11573, "Improved Sprint", 2, 5700 },
+    { 11573, "Precision", 3, 5300 }, { 11573, "Deflection", 3, 5400 }, { 11573, "Riposte", 1, 5500 },
+    { 11573, "Endurance", 1, 5600 }, { 11573, "Improved Sprint", 2, 5700 },
     { 11573, "Dual Wield Specialization", 5, 5800 }, { 11573, "Blade Flurry", 0, 5900 },
     -- Assassination (11580): one point the plan doesn't want
     { 11580, "Malice", 1, 1100 }, { 11580, "Mutilate", 0, 1200 },

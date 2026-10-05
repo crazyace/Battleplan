@@ -145,7 +145,7 @@ s = ns.state
 check(s.spec == "holy" and s.role == "healer", f"priest {s.spec} {s.role}")
 tabs = L.eval("function(ns) local t = {} for _, x in ipairs(ns.UI.TabsFor(ns.state)) do t[#t+1] = x.key end return table.concat(t, ',') end")(ns)
 check(tabs == "talents,rotation,gear,consumables,healing", f"healer tabs: {tabs}")
-has(screen(L, ns, "talents"), "Points spent | 31 of 31", "Next point | Prayer of Mending at level 41")
+has(screen(L, ns, "talents"), "Points spent | 31 of 31", "Next point | Spirit of Redemption at level 41")
 check("Different from the plan" not in screen(L, ns, "talents"), "duplicate Holy Specialization node read once")
 
 healing = screen(L, ns, "healing")

@@ -42,6 +42,7 @@ local function rankText(rank) return (rank and rank > 1) and ("Rank " .. rank) o
 -- Lines every tab starts with.
 function UI.Banner(state)
   local rows = {}
+  if state.error then note(rows, state.error, 0) end
   if not state.ready then
     note(rows, "Working out your plan...", 0)
     return rows
@@ -71,8 +72,18 @@ function build.talents(s, rows)
   header(rows, s.build.title or "Recommended build")
   if s.build.summary then note(rows, s.build.summary) end
   local p = s.talentPlan
+  if p.invalid then
+    note(rows, "Build advice is unavailable: it fails the imported talent rules.", 0)
+    for _, issue in ipairs(p.errors) do
+      note(rows, (issue.name and (issue.name .. ": ") or "") .. issue.reason)
+    end
+    return
+  end
   row(rows, "Points spent", ("%d of %d"):format(p.spent, p.available))
-  if p.next then
+  if p.blocked then
+    row(rows, "Next point", "Prerequisites not met", p.blocked)
+    note(rows, p.blocked)
+  elseif p.next then
     row(rows, "Next point", util.color("green", p.next.name), ("Rank %d of the build's %s."):format(p.next.rank, p.next.name))
   elseif p.upcoming and p.nextIndex and p.nextIndex <= p.available then
     row(rows, "Next point", ("%s (needs a respec)"):format(p.upcoming.name),
@@ -148,6 +159,8 @@ function build.gear(s, rows)
   header(rows, "Next upgrades")
   if not s.hasUpgradeData then
     note(rows, "No upgrade list for your class yet: it fills in from dungeon drops (the probe's loot log).")
+  elseif s.gearUnknown then
+    note(rows, "Waiting for equipped item stats; comparisons for those slots are unavailable.")
   elseif #s.upgrades == 0 then
     note(rows, "Nothing on the list beats what you're wearing.")
   end

@@ -206,24 +206,32 @@ function API.EquippedEnchants()
   return out
 end
 
--- Raw stat tokens of what's worn: { [slotID] = { ITEM_MOD_*_SHORT = n } }
+-- Raw stat tokens: { [slotID] = { ITEM_MOD_*_SHORT = n } or false (not readable yet) }
 API.GEAR_SLOTS = { 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 }
 function API.EquippedItemStats()
   local out = {}
   local getStats = C_Item and C_Item.GetItemStats
-  if not getStats then return out end
+  -- Still mark equipped slots unknown when the stats API is unavailable.
   for _, slot in ipairs(API.GEAR_SLOTS) do
     local link = API.clean(GetInventoryItemLink("player", slot))
     if type(link) == "string" then
-      local ok, stats = pcall(getStats, link)
-      local clean = {}
-      if ok and type(stats) == "table" then
+      local ok, stats
+      if getStats then ok, stats = pcall(getStats, link) end
+      local clean, readable = {}, ok and type(stats) == "table"
+      if readable then
         for token, v in pairs(stats) do
           v = API.clean(v)
-          if v then clean[token] = v end
+          if v == nil then readable = false else clean[token] = v end
         end
       end
-      out[slot] = clean
+      if readable then out[slot] = clean
+      else
+        out[slot] = false -- unknown, not an empty item with zero stats
+        local id = tonumber(link:match("item:(%d+)"))
+        if id and C_Item and C_Item.RequestLoadItemDataByID then
+          pcall(C_Item.RequestLoadItemDataByID, id)
+        end
+      end
     end
   end
   return out

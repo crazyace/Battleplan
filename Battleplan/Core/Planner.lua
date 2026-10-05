@@ -29,11 +29,12 @@ local function healingRows(known, guide)
 end
 
 local function equippedScores(weights)
-  local out = {}
+  local out, unknown = {}, false
   for slot, raw in pairs(API.EquippedItemStats()) do
-    out[slot] = E.Score.Stats(E.Score.FromTokens(raw), weights)
+    if raw == false then out[slot], unknown = false, true
+    else out[slot] = E.Score.Stats(E.Score.FromTokens(raw), weights) end
   end
-  return out
+  return out, unknown
 end
 
 -- Every elixir's buff name, for the buff check. Item data can arrive late,
@@ -68,14 +69,14 @@ local function announce(changes, specName)
 end
 
 local function compute()
-  local s = state
-  local oldRotation, oldSpec = s.rotation, s.spec
+  local s = {} -- publish only after the whole job succeeds
+  local oldRotation, oldSpec = state.rotation, state.spec
   s.class = API.PlayerClass()
   s.level = API.PlayerLevel()
   local data = s.class and ns.Data[s.class]
   s.supported = data ~= nil and data.Specs ~= nil
   if not s.supported then
-    s.ready, s.version = true, s.version + 1
+    state.supported, state.ready, state.version = false, true, state.version + 1
     return
   end
   local specs = data.Specs
@@ -91,21 +92,29 @@ local function compute()
   -- Talents
   local specTalents = data.Talents and data.Talents[s.spec]
   s.build = specTalents and (E.Score.Lookup(specTalents, s.situation) or E.Score.Lookup(specTalents, "leveling"))
-  s.talentPlan = s.build and s.build.order and E.Talents.Plan(s.build, s.level, E.Spec.Flatten(s.talents)) or nil
+  local rules = ns.Data.TalentRules and ns.Data.TalentRules[s.class]
+  s.talentPlan = s.build and s.build.order and E.Talents.Plan(s.build, s.level, E.Spec.Flatten(s.talents), rules) or nil
+  if s.build and ns.Data.TalentRules and ns.Data.TalentRules._status ~= "verified" then s.provisional = true end
   coroutine.yield()
 
   -- Rotation
   s.known = API.KnownSpells()
   s.rotation = data.Rotations and E.Rotation.Build(data.Rotations, s.spec, s.situation, s.known, s.level) or nil
+  local changes
   if oldRotation and s.rotation and oldSpec == s.spec then
-    announce(E.Rotation.Changes(oldRotation, s.rotation), s.specName)
+    changes = E.Rotation.Changes(oldRotation, s.rotation)
   end
   coroutine.yield()
 
   -- Gear
   s.enchants = E.Gear.EnchantAdvice(data.Gear and data.Gear.enchants, API.EquippedEnchants(), s.weights)
   local targets = data.Gear and data.Gear.targets
-  s.upgrades = (targets and #targets > 0) and E.Gear.NextUpgrades(targets, s.level, s.weights, equippedScores(s.weights)) or {}
+  s.upgrades = {}
+  if targets and #targets > 0 then
+    local scores
+    scores, s.gearUnknown = equippedScores(s.weights)
+    s.upgrades = E.Gear.NextUpgrades(targets, s.level, s.weights, scores)
+  end
   s.hasUpgradeData = targets ~= nil and #targets > 0
   coroutine.yield()
 
@@ -115,7 +124,7 @@ local function compute()
   })
   s.counts = {}
   for _, rec in pairs(s.consumables) do s.counts[rec.item.itemID] = API.ItemCount(rec.item.itemID) end
-  Planner.CheckBuffs()
+  Planner.CheckBuffs(s)
   coroutine.yield()
 
   -- Role guides
@@ -135,18 +144,46 @@ local function compute()
     s.tanking = E.Tanking.Build(data.Tanking, s.spec, s.known, s.level)
   end
 
-  s.ready = true
-  s.version = s.version + 1
+  s.ready, s.version = true, state.version + 1
+  for k in pairs(state) do state[k] = nil end
+  for k, v in pairs(s) do state[k] = v end
+  if changes then announce(changes, s.specName) end
 end
 
 -- Buffs only (cheap): used on its own when auras change.
-function Planner.CheckBuffs()
-  local s = state
+local function sameMissing(a, b)
+  if not a or #a ~= #b then return false end
+  for i, row in ipairs(b) do
+    if a[i].group ~= row.group or a[i].item.itemID ~= row.item.itemID then return false end
+  end
+  return true
+end
+
+function Planner.CheckBuffs(target)
+  local s = target or state
   if not s.consumables or ns.InCombat() then return end
   local mh = API.WeaponEnchants()
   if not API.HasMainHand() then mh = nil end -- no weapon, nothing to check
-  s.missing = E.Consumables.BuffCheck(s.consumables, API.PlayerAuras(), elixirAuraNames(), mh,
+  local missing = E.Consumables.BuffCheck(s.consumables, API.PlayerAuras(), elixirAuraNames(), mh,
     ns.Data.Consumables.foodAura)
+  if not sameMissing(s.missing, missing) then
+    s.missing = missing
+    if s == state then s.version = s.version + 1 end
+  end
+end
+
+-- Bags can change without a spell, talent or equipment event.
+function Planner.CheckCounts()
+  local s = state
+  if not s.consumables or ns.InCombat() then return end
+  local changed = false
+  for _, rec in pairs(s.consumables) do
+    local id = rec.item.itemID
+    local count = API.ItemCount(id)
+    if s.counts[id] ~= count then s.counts[id], changed = count, true end
+  end
+  if changed then s.version = s.version + 1 end
+  if ns.UI.Refresh then ns.UI.Refresh() end
 end
 
 -- Queue a refresh: coalesced, deferred until after combat, run as a job.
@@ -166,13 +203,20 @@ local function job()
   finish()
 end
 
+local function failed()
+  running, again = false, false
+  state.error = "Couldn't update the plan. Reopen Battleplan to try again."
+  state.version = state.version + 1
+  if ns.UI.Refresh then ns.UI.Refresh() end
+end
+
 local function start()
   if running then
     again = true
     return
   end
   running = true
-  ns.Jobs:Run(job, "plan")
+  ns.Jobs:Run(job, "plan", failed)
 end
 
 function Planner.Queue()
@@ -206,6 +250,11 @@ function Planner.Start()
     Events:On(event, function() API.ForgetTalents(); Planner.Queue() end, "talents")
   end
   Events:On("PLAYER_EQUIPMENT_CHANGED", Planner.Queue, "gear")
+  Events:On("GET_ITEM_INFO_RECEIVED", Planner.Queue, "item-data")
+  Events:On("ITEM_DATA_LOAD_RESULT", Planner.Queue, "item-data")
+  local function bagRefresh() ns.Refresh("bags", 0.2, Planner.CheckCounts) end
+  Events:On("BAG_UPDATE_DELAYED", bagRefresh, "bags")
+  Events:On("BAG_UPDATE", bagRefresh, "bags")
   -- UNIT_AURA fires constantly: player only, only while the window is open,
   -- coalesced, and with no new closure per event.
   local function buffRefresh() Planner.CheckBuffs(); ns.UI.Refresh() end

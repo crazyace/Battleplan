@@ -55,3 +55,18 @@ How every phase below gets done. Details in [AGENTS.md](AGENTS.md).
 - [ ] Raid builds and raid consumable sets
 - [ ] More classes: Mage, Warlock, Hunter, Druid, Paladin, Shaman
 - [ ] Healer guides for Druid, Paladin and Shaman; tank guides for Druid and Paladin
+
+## Review fixes and database integration (2026-10-05)
+
+- [x] Recover from planner errors without publishing partial results
+- [x] Refresh displayed buffs and bag counts; recheck combat when timers fire
+- [x] Preserve unreadable equipped stats as unknown and retry on item-data events
+- [x] Import a reproducible provisional structural catalog for all nine classes
+- [x] Validate build orders, next-point prerequisites and generated Lua in CI
+- [x] Repair Combat, Holy and Discipline prerequisite order without changing 51-point totals
+- [ ] Confirm imported prerequisite rules against each class's beta talent capture
+- [ ] Interpret additional gate/prerequisite condition fields after client verification
+- [ ] Extend the importer to spell ranks, eligible items, enchants and consumable aura IDs,
+      preserving source/build labels and availability evidence
+- [ ] Use models and captures to account for caps, procs, set bonuses, weapon restrictions
+      and consumable stacking before expanding upgrade or best-consumable claims
