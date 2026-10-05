@@ -45,6 +45,17 @@ FIELD_NUM = r"\b{}\s*=\s*(\d+(?:\.\d+)?)"
 EXTRA = re.compile(r"extra\s*=\s*\{([^{}]*)\}")
 EXTRA_PAIR = re.compile(r"([A-Z_]+)\s*=\s*(\d+(?:\.\d+)?)")
 NUMBER = re.compile(r"\d+(?:\.\d+)?")
+# WoW text codes: |4singular:plural; grammar, |cAARRGGBB colour, |r reset, |H...|h links.
+# Their digits ("|4hour:hrs;") must not count as amounts.
+ESCAPES = re.compile(r"\|4[^;]*;|\|c[0-9a-fA-F]{8}|\|[rh]|\|H[^|]*")
+# The word a tooltip uses for each stat key, to tell "+4 Agility" from "4 Strength".
+STAT_WORDS = {
+    "STRENGTH": "strength", "AGILITY": "agility", "STAMINA": "stamina", "INTELLECT": "intellect",
+    "SPIRIT": "spirit", "ARMOR": "armor", "HEALTH": "health", "MP5": "mana", "HEALING": "heal",
+    "SPELL_POWER": "spell damage", "WEAPON_DAMAGE": "damage", "CRIT_PCT": "critical",
+}
+NEAR = 40  # characters between an amount and its stat word
+DURATION = re.compile(r"\s*(?:sec|min|hour|hrs)", re.I)  # "10 sec eating" is not an amount
 
 
 # Battleplan's data -------------------------------------------------------------------
@@ -120,6 +131,21 @@ def fmt(n):
     return f"{n:g}"
 
 
+def plain(s):
+    return ESCAPES.sub("", s)
+
+
+def states(tip, stat, amount):
+    """Does the tooltip give this amount, next to this stat's word when we know the word?"""
+    word = STAT_WORDS.get(stat)
+    for m in NUMBER.finditer(tip):
+        if float(m.group()) != amount or DURATION.match(tip, m.end()):
+            continue
+        if word is None or word in tip[max(0, m.start() - NEAR):m.end() + NEAR].lower():
+            return True
+    return False
+
+
 # Checks: each returns (heading, [lines that need attention], [lines that are fine]) ---
 def check_spells(capture, class_root=DATA):
     who = capture.get("who") or {}
@@ -169,12 +195,14 @@ def check_spells(capture, class_root=DATA):
             bad.append(f"{name}: not in the spellbook at level {level}, but data says minLevel "
                        f"{info['minLevel']} ({where})")
 
-    multi = sum(1 for r in ranks.values() if r["ranks"] > 1 or r.get("ranked"))
+    ranked = sum(1 for r in ranks.values() if r.get("ranked"))
+    listed = sum(1 for r in ranks.values() if r["ranks"] > 1)
     with_cost = sum(1 for r in ranks.values() if r["cost"])
     with_desc = sum(1 for r in ranks.values() if r["desc"])
-    good.append(f"{len(ranks)} spells; {multi} show lower ranks, {with_cost} have a cost, {with_desc} a description")
-    if ranks and multi == 0:
-        bad.append("no spell shows more than one rank: downranking may not exist (healing guide 'efficient' rank)")
+    good.append(f"{len(ranks)} spells; {ranked} have a rank in their name, {listed} are listed at more than one"
+                f" rank, {with_cost} have a cost, {with_desc} a description")
+    if ranks and ranked == 0:
+        bad.append("no spell has a rank in its name: ranks may be gone (healing guide 'efficient' rank)")
     if ranks and with_cost == 0:
         bad.append("no spell came with a cost: GetSpellPowerCost may be missing or secret")
     return head, bad, good
@@ -208,9 +236,8 @@ def check_items(captures, data):
         if not text(got.get("spellName")):
             problems.append("no item spell (does it still do anything?)")
         if want["kind"] != "potion":  # potion amounts are tiers, not tooltip numbers
-            tip = " ".join(t for t in (got.get("tooltip") or []) if isinstance(t, str))
-            numbers = {float(n) for n in NUMBER.findall(tip)}
-            missing = [f"{stat} {fmt(v)}" for stat, v in want["amounts"].items() if v not in numbers]
+            tip = plain(" ".join(t for t in (got.get("tooltip") or []) if isinstance(t, str)))
+            missing = [f"{stat} {fmt(v)}" for stat, v in want["amounts"].items() if not states(tip, stat, v)]
             if not tip:
                 problems.append("no tooltip text to check the amount against")
             elif missing:
@@ -238,11 +265,18 @@ def check_env(captures, api_text):
     head = f"env: build {' '.join(str(b) for b in build[:4])} ({c['source']})"
     missing = sorted(p for p, v in apis.items() if v == "missing")
     used = [p for p in missing if re.search(r"\b" + re.escape(p) + r"\b", api_text)]
+    # "if X", "elseif X", "A and X", "A or X", "(X": API.lua checks for it before calling,
+    # so it's a fallback the client doesn't need; anything else would error.
+    guard = r"(\b(?:if|elseif|and|or|not)\s+|\()\(?\s*"
+    guarded = [p for p in used if re.search(guard + re.escape(p) + r"\b", api_text)]
     for p in used:
-        bad.append(f"{p}: missing, and Core/API.lua calls it (needs a fallback and a mock to match)")
+        if p not in guarded:
+            bad.append(f"{p}: missing, and Core/API.lua calls it unguarded (needs a fallback and a mock to match)")
     rest = [p for p in missing if p not in used]
     good.append(f"{len(apis) - len(missing)} of {len(apis)} APIs present"
                 + (f"; also missing: {', '.join(rest)}" if rest else ""))
+    if guarded:
+        good.append(f"missing, but Core/API.lua only uses them as feature-detected fallbacks: {', '.join(guarded)}")
     return head, bad, good
 
 
@@ -261,7 +295,12 @@ def report(files, verbose=False, class_root=DATA, consumables_path=DATA / "Consu
     cap = load(files)
     caps = cap["captures"]
     sections = []
+    # One spellbook per character and level: /bpp all twice gives two identical reads.
+    latest = {}
     for c in caps.get("spells", []):
+        who = c.get("who") or {}
+        latest[(who.get("character"), who.get("level"))] = c
+    for c in latest.values():
         sections.append(check_spells(c, class_root))
     if caps.get("items"):
         sections.append(check_items(caps["items"], consumables(consumables_path)))

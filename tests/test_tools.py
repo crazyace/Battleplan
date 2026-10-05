@@ -110,10 +110,29 @@ assert "8949 Elixir of Agility: no item data" in out, out
 assert "2457 Elixir of Minor Agility: required level 3, data says 2; tooltip lacks AGILITY 4" in out, out
 assert "3390 Elixir of Lesser Agility: ok" in out and "118 Minor Healing Potion: ok" in out, out
 assert "consumables not in this capture" in out
-assert "C_Spell.GetSpellPowerCost: missing, and Core/API.lua calls it" in out, out
+assert "only uses them as feature-detected fallbacks: C_Spell.GetSpellPowerCost" in out, out
 assert not any("GetFramerate" in l for l in fixes) and "also missing: GetFramerate" in out
 assert "in combat: detailed secret, simple ok" in out
 assert flagged == len(fixes) and capture_check.main([str(src)]) == 1
+
+# An API called without a feature check is flagged; one behind "if X" or "A or X" isn't.
+api = tmp / "API.lua"
+api.write_text("local n = C_Spell.GetSpellPowerCost(1)\nif GetFramerate then end\n")
+lines, _ = capture_check.report([str(src)], api_path=api)
+assert any("C_Spell.GetSpellPowerCost: missing, and Core/API.lua calls it unguarded" in l for l in lines), lines
+
+# Tooltip amounts: WoW's |4hour:hrs; codes and durations don't count, and the stat word must be near.
+tip = capture_check.plain("Use: Increases Agility by 8 for 1 |4hour:hrs;. (1 |4Sec:Sec; Cooldown)")
+assert tip == "Use: Increases Agility by 8 for 1 . (1  Cooldown)", tip
+assert capture_check.states(tip, "AGILITY", 8) and not capture_check.states(tip, "AGILITY", 4)
+assert not capture_check.states(tip, "STRENGTH", 8), "right amount, wrong stat"
+food = "Use: If you spend at least 10 sec eating, you will become well fed and gain 15 Intellect for 15 min."
+assert capture_check.states(food, "INTELLECT", 15) and not capture_check.states(food, "INTELLECT", 10)
+
+# The committed beta capture agrees with Data/Consumables.lua and the Warrior guide.
+real = Path(__file__).resolve().parent.parent / "data" / "probe" / "2026-10-05-warrior-12.json"
+lines, flagged = capture_check.report([str(real)])
+assert flagged == 0, "\n".join(lines)
 
 # A clean capture exits 0; an empty export says what to run.
 clean = tmp / "clean.json"

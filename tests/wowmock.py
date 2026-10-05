@@ -168,6 +168,8 @@ function GetWeaponEnchantInfo() return C.weaponMH, 0, 0, 0, false end
 local function st(k) return C.stats[k] or 0 end
 function UnitStat(_, i) local k = ({ "str", "agi", "sta", "int", "spi" })[i] return st(k), st(k), 0, 0 end
 function UnitArmor() return st("armor"), st("armor") end
+-- Forever has UnitDefenseSkill (base, modifier), not UnitDefense (2026-10-05-warrior-12).
+function UnitDefenseSkill() return st("def"), st("def_mod") end
 function UnitHealthMax() return st("hp") end
 function UnitPowerMax() return 100 end
 function UnitAttackPower() return st("ap"), 0, 0 end

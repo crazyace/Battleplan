@@ -38,7 +38,8 @@ How every phase below gets done. Details in [AGENTS.md](AGENTS.md).
       `conversions.json` and write Weights, Talents and Rotations as Lua tables
 - [ ] Replace provisional Rogue weights and builds with model output
 - [ ] Holy and Discipline healing model: downranking and mana plan from measured regen
-- [ ] Protection Warrior mitigation weights; check whether a defense cap exists
+- [ ] Protection Warrior mitigation weights, with the 440 Defense raid-boss crit cap
+      ([BETA-FINDINGS](docs/BETA-FINDINGS.md))
 
 ## Phase 2: launch (Nov 4)
 
