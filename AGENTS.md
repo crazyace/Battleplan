@@ -36,9 +36,11 @@ luacheck .                       # lint (luarocks install luacheck)
 All five must pass before every commit. One command runs them all:
 
 ```
-sh scripts/check.sh              # all five; prints ok / FAIL per check
+python scripts/check.py          # all five; prints ok / FAIL per check (any shell, PowerShell too)
 git config core.hooksPath .githooks   # once per clone: runs check.sh before every push
 ```
+
+`sh scripts/check.sh` runs the same thing; the hook and CI use it.
 
 **Two gates.** The pre-push hook runs check.sh before anything leaves your machine, and
 CI runs the same script on GitHub for every push and pull request (docs-only changes
@@ -144,7 +146,7 @@ These are tested, and a failing perf test blocks the commit:
 - One logical change per commit. Subject in the imperative, under 72 characters
   ("Add Druid healing guide"); body says what and why, and which capture any new fact
   came from.
-- Run `sh scripts/check.sh` before committing; the pre-push hook runs it again. Push to
+- Run `python scripts/check.py` before committing; the pre-push hook runs it again. Push to
   `main` when it passes. If CI runs and fails, fixing it is the next task.
 - Never commit secrets, personal data from other players (names in captures are fine
   only when the client shows them publicly, and AH seller names are never recorded),

@@ -86,7 +86,9 @@ luarocks install luacheck            # optional locally, but recommended
 git config core.hooksPath .githooks  # runs every check before each push
 ```
 
-Before committing: `sh scripts/check.sh` (on Windows, from Git Bash).
+Before committing: `python scripts/check.py` (PowerShell, cmd or any shell; `sh scripts/check.sh`
+does the same). The tools in `tools/` expand `*` wildcards themselves, so the commands in the
+docs work as written in PowerShell.
 
 ## Commands
 
