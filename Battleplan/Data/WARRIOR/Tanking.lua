@@ -1,7 +1,7 @@
 -- Tank guide for Protection Warriors. Threat is likely a secret value in
 -- combat on Forever, so this is a guide to read between pulls, not a meter.
--- Spell names and levels are Classic: PROVISIONAL until a Warrior trainer
--- capture confirms them.
+-- Early spell names/text are confirmed by the level-12 capture; learning levels
+-- and uncaptured abilities/advice remain Classic-based and PROVISIONAL.
 local _, ns = ...
 
 ns.Data.WARRIOR.Tanking = {
@@ -14,7 +14,7 @@ ns.Data.WARRIOR.Tanking = {
       { spell = "Heroic Strike", minLevel = 1, note = "Only with spare rage (above ~50)." },
     },
     multi = {
-      { spell = "Thunder Clap", minLevel = 6, note = "Hits the whole pack and slows them." },
+      { spell = "Thunder Clap", minLevel = 6, note = "Hits up to 4 nearby enemies and slows their attacks." },
       { spell = "Demoralizing Shout", minLevel = 14, note = "Threat on everything in range, and less damage taken." },
       { spell = "Cleave", minLevel = 20, note = "Instead of Heroic Strike with 2+ mobs." },
       { spell = "Revenge", minLevel = 14, note = "Tab between targets with it." },

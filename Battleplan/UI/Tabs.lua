@@ -115,7 +115,11 @@ end
 local function spellRows(rows, list, numbered)
   for i, r in ipairs(list) do
     local text = numbered and ("%d. %s"):format(i, r.spell) or r.spell
-    row(rows, text, rankText(r.rank), r.note, 1)
+    local tip = r.note
+    if r.reference and r.reference.description and r.reference.description ~= "" then
+      tip = (tip or "") .. "\n\nCaptured spell text (level " .. r.reference.observedAtLevel .. "): " .. r.reference.description
+    end
+    row(rows, text, rankText(r.rank), tip, 1)
     if r.note then note(rows, r.note, 2) end
   end
 end
@@ -138,6 +142,7 @@ function build.rotation(s, rows)
     note(rows, "No rotation for this spec yet.", 0)
     return
   end
+  if r.scopeNote then note(rows, r.scopeNote, 0); blank(rows) end
   if #r.opener > 0 then header(rows, "Opener"); spellRows(rows, r.opener, true); blank(rows) end
   header(rows, "Priority")
   if #r.priority == 0 then note(rows, "Nothing from this list is learned yet.") end

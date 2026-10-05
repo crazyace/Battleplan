@@ -66,7 +66,11 @@ How every phase below gets done. Details in [AGENTS.md](AGENTS.md).
 - [x] Repair Combat, Holy and Discipline prerequisite order without changing 51-point totals
 - [ ] Confirm imported prerequisite rules against each class's beta talent capture
 - [ ] Interpret additional gate/prerequisite condition fields after client verification
-- [ ] Extend the importer to spell ranks, eligible items, enchants and consumable aura IDs,
+- [x] Add native `/bpp talents` with batched reads, raw prerequisites and explicit incomplete captures
+- [x] Import captured Warrior spell ranks/costs/text with build and source hashes; CI checks regeneration
+- [x] Add provisional known-spell starter rotations for Arms, Fury and Protection
+- [ ] Extend Warrior rotations to higher-level/talent abilities after captures and modeling
+- [ ] Extend the importer to other classes, eligible items, enchants and consumable aura IDs,
       preserving source/build labels and availability evidence
 - [ ] Use models and captures to account for caps, procs, set bonuses, weapon restrictions
       and consumable stacking before expanding upgrade or best-consumable claims

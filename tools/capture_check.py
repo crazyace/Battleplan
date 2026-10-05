@@ -290,6 +290,15 @@ def check_threat(captures):
     return f"threat: {len(captures)} reads", [], lines
 
 
+def check_talents(capture):
+    data = capture.get("data") or {}
+    nodes = data.get("nodes") or []
+    head = f"talents: {(capture.get('who') or {}).get('class')} ({capture['source']}, {len(nodes)} nodes)"
+    if not data.get("complete") or not nodes:
+        return head, [f"incomplete capture: {data.get('reason', 'unknown')}; retry /bpp talents out of combat"], []
+    return head, [], ["raw groups, ranks, definitions and conditions captured; validate rules before promoting data"]
+
+
 def report(files, verbose=False, class_root=DATA, consumables_path=DATA / "Consumables.lua", api_path=API_LUA):
     """Returns (printable lines, number of lines that need attention)."""
     cap = load(files)
@@ -302,6 +311,12 @@ def report(files, verbose=False, class_root=DATA, consumables_path=DATA / "Consu
         latest[(who.get("character"), who.get("level"))] = c
     for c in latest.values():
         sections.append(check_spells(c, class_root))
+    latest_talents = {}
+    for c in caps.get("talents", []):
+        who = c.get("who") or {}
+        latest_talents[(who.get("character"), who.get("class"))] = c
+    for c in latest_talents.values():
+        sections.append(check_talents(c))
     if caps.get("items"):
         sections.append(check_items(caps["items"], consumables(consumables_path)))
     if caps.get("env"):
@@ -313,7 +328,7 @@ def report(files, verbose=False, class_root=DATA, consumables_path=DATA / "Consu
                          ["python tools/stat_lab.py " + " ".join(files)]))
     if cap["perf"]:
         sections.append((f"perf: {len(cap['perf'])} runs", [], ["compare runs with Battleplan on and off"]))
-    for kind in sorted(set(caps) - {"spells", "items", "env", "threat"}):
+    for kind in sorted(set(caps) - {"spells", "items", "env", "threat", "talents"}):
         sections.append((f"{kind}: {len(caps[kind])} captures (not checked here)", [], []))
 
     out, flagged = [], 0

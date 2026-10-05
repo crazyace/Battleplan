@@ -8,12 +8,15 @@ local Lookup = ns.Engine.Score.Lookup
 
 -- list: Data entries; known: API.KnownSpells() shape ({ [name] = { best = rank } }).
 -- Returns rows the character can use, and upcoming entries they can't yet.
-function Rotation.Filter(list, known, level, upcoming, seen)
+function Rotation.Filter(list, known, level, upcoming, seen, catalog)
   local rows = {}
   for _, e in ipairs(list or {}) do
     local k = known[e.spell]
     if k then
-      rows[#rows + 1] = { spell = e.spell, note = e.note, rank = k.best, talent = e.talent }
+      local reference = catalog and catalog[k.id]
+      if reference and reference.rank and reference.rank ~= k.best then reference = nil end
+      rows[#rows + 1] = { spell = e.spell, note = e.note, rank = k.best, talent = e.talent,
+        spellID = k.id, reference = reference and reference.name == e.spell and reference or nil }
     elseif upcoming and not seen[e.spell] then
       seen[e.spell] = true
       upcoming[#upcoming + 1] = {
@@ -32,17 +35,18 @@ local function byLevel(a, b)
 end
 
 -- data: Data/<CLASS>/Rotations.lua; returns nil when there's no rotation for the spec.
-function Rotation.Build(data, spec, situation, known, level)
+function Rotation.Build(data, spec, situation, known, level, catalog)
   local specData = Lookup(data, spec)
   if not specData then return nil end
   local r = Lookup(specData, situation) or Lookup(specData, "default")
   if not r then return nil end
   local upcoming, seen = {}, {}
   local built = {
-    opener = Rotation.Filter(r.opener, known, level, upcoming, seen),
-    priority = Rotation.Filter(r.priority, known, level, upcoming, seen),
-    utility = Rotation.Filter(r.utility, known, level, upcoming, seen),
+    opener = Rotation.Filter(r.opener, known, level, upcoming, seen, catalog),
+    priority = Rotation.Filter(r.priority, known, level, upcoming, seen, catalog),
+    utility = Rotation.Filter(r.utility, known, level, upcoming, seen, catalog),
     upcoming = upcoming,
+    scopeNote = data.scopeNote,
   }
   table.sort(upcoming, byLevel)
   return built

@@ -95,3 +95,25 @@ The regression suite confirms code behavior against the mock, including delayed 
 races and item-data completion. It does not claim those synthetic scenarios are new
 observations from the live client. Bag and item-data events are feature-detected;
 missing event names are skipped through the existing event wrapper.
+
+## Follow-up Warrior capture (2026-10-05)
+
+Source: [2026-10-05-warrior-12-followup.json](../data/probe/2026-10-05-warrior-12-followup.json),
+committed byte-for-byte from Jeff's export. Client 1.60.1.70205, Human Warrior level 12.
+Latest spellbook: 21 entries, including the 11 class abilities listed above; Heroic
+Strike 284 and Rend 6546 are rank 2. Captured rage costs are Charge/Battle Stance/
+Defensive Stance/Taunt 0, Hamstring/Rend/Battle Shout 10, Heroic Strike/Sunder Armor 15,
+and Thunder Clap 20. Bloodrage has no cost record; that is unknown, not zero.
+Thunder Clap's text specifies at most four targets, not an unlimited pack.
+
+The 16:40:56 to 16:41:07 gear pair changes only slot 7 with unchanged aura names:
+Strength 39 → 42, base AP 94 → 100, armor 572 → 685 and block value 3 → 4.
+This supports 2 melee AP per Strength at level 12. The item also supplies armor, so
+113 armor must not be treated as a Strength conversion. The single rounded block
+change does not establish a per-point block-value formula. No weights were promoted
+or general stat conversion file generated from this mixed-effect pair.
+
+The latest snapshot records defense base 58, bonus 0. The export contains no talent
+or performance captures, and both threat captures are out of combat. Those tasks
+remain open. Native `/bpp talents` is now implemented defensively; its optional
+condition API and raw field semantics still need a live capture before promotion.

@@ -48,7 +48,7 @@ with the item name and amount, e.g. `+15 agility`).
 
 ## Tanking
 
-- [ ] Warrior talent tree with points in each spec (`/gwp talents`), for `traitTabGroups`.
+- [ ] Warrior talent tree with points in each spec: `/bpp talents`, wait for completion, then `/bpp export`, for `traitTabGroups`. GearwrightProbe `/gwp talents` also works.
 - [ ] Target a mob, `/bpp threat` out of combat; and once in combat if you can type it:
       is threat readable or secret?
 
