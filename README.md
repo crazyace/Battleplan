@@ -185,4 +185,4 @@ advice directly; **Auto** shows the resolved choice and follows your talents/lev
 The Talents tab highlights the next point and its target rank, then explains that
 choice. **Show build details** expands the remaining talent reasons. Explanations
 and item names wrap instead of being cut off; scroll for longer guides and hover
-for captured spell/rank text. Drag the title bar to move the window; Escape closes it.
+for extra captured spell/rank text. Inline explanations do not repeat on hover. Drag the title bar to move the window; Escape closes it.

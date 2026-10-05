@@ -13,9 +13,9 @@ end
 
 local function onEnter(row)
   local d = row.data
-  if not d or not d.tip then return end
+  if not d or not d.tip or d.tip == d.text then return end
   GameTooltip:SetOwner(row, "ANCHOR_RIGHT")
-  GameTooltip:SetText(d.text or "", 1, 0.82, 0)
+  GameTooltip:SetText(d.text or "", 1, 0.82, 0, 1, true)
   GameTooltip:AddLine(d.tip, 1, 1, 1, true)
   GameTooltip:Show()
 end

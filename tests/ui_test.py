@@ -57,6 +57,32 @@ ns.UI.SelectTab('rotation')
 check(not controls.details.IsShown(controls.details), 'details only on talent tab')
 ns.UI.SelectTab('talents')
 
+# Explanation text stays inline; only extra information earns a tooltip.
+check(all(ns.UI.list.data[i].tip is None for i in range(1, len(ns.UI.list.data) + 1)
+          if ns.UI.list.data[i].kind == 'note'), 'notes have no duplicate hover text')
+L.globals().BP = ns
+L.execute("""
+  tooltipBodies = 0
+  GameTooltip.SetText=function(self, text, _, _, _, _, wrap)
+    self.text=text; tooltipTitleWrap=wrap
+  end
+  GameTooltip.AddLine=function(_, text) tooltipBodies=tooltipBodies+1; tooltipBody=text end
+  BP.UI.list:SetData({{kind="note",text="Explanation",tip="Explanation"}})
+  GameTooltip:Hide()
+  BP.UI.list.rows[1]._OnEnter(BP.UI.list.rows[1])
+""")
+check(not L.globals().GameTooltip._shown and L.globals().tooltipBodies == 0,
+      'legacy identical title/body tooltip is suppressed')
+L.execute("""
+  BP.UI.list:SetData({{kind="row",text="Next point",tip="Captured rank 4: 80% chance of 5 Rage on block."}})
+  BP.UI.list.rows[1]._OnEnter(BP.UI.list.rows[1])
+""")
+check(L.globals().GameTooltip._shown and L.globals().tooltipBodies == 1,
+      'captured details still show one tooltip body')
+check(L.globals().tooltipTitleWrap is True and '80%' in L.globals().tooltipBody,
+      'tooltip heading wraps and preserves captured text')
+ns.UI.Refresh(True)
+
 # Narrow layout with a long label, value and description; no text is shortened.
 list_ = ns.UI.list
 L.globals().BP = ns
