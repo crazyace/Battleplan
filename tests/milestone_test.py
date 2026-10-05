@@ -23,6 +23,9 @@ def check(condition, label):
 def probe(setup=''):
     L = runtime(WARRIOR_20)
     L.execute('''pending = {}; nodeReads = 0
+      C_TooltipInfo.GetTraitEntry=function(_, rank)
+        return {lines={{leftText="Synthetic rank " .. rank}}}
+      end
       C_Timer.After = function(_, fn) pending[#pending+1] = fn end
       function tick() local fn=table.remove(pending,1); if fn then fn() end end
       local original = C_Traits.GetNodeInfo
@@ -39,6 +42,14 @@ def probe(setup=''):
     return L
 
 
+def drain_probe(L):
+    for _ in range(100):
+        if len(L.globals().pending) == 0:
+            return
+        L.globals().tick()
+    raise AssertionError('probe did not finish')
+
+
 def exported(L):
     return json.loads(L.globals().BattleplanProbe.export())
 
@@ -52,11 +63,11 @@ cmd('talents')
 check(len(L.globals().pending) == 1, 'duplicate command does not enqueue another capture')
 L.globals().tick()
 check(L.globals().nodeReads == 4, 'at most four nodes per timer batch')
-L.globals().tick()
+drain_probe(L)
 data = exported(L)['captures']['talents'][0]['data']
 check(data['complete'] and len(data['nodes']) == 7, 'whole trait tree exported')
 node = data['nodes'][0]
-check(node['info']['values'][0]['groupIDs'] == [3001], 'raw spec groups retained')
+check(node['info']['values'][0]['groupIDs'] == [11650], 'raw spec groups retained')
 check(node['info']['values'][0]['visibleEdges'][0]['targetNode'] == 2, 'prerequisite edge retained')
 check(node['conditions'][0]['info']['values'][0]['requiredRanks'] == 5, 'gate metadata retained')
 entry = node['entries'][0]
@@ -80,29 +91,25 @@ for setup, status in [
 
 L = probe('C_Traits.GetNodeInfo=function() error("node read failed") end')
 L.globals().SlashCmdList.BATTLEPLANPROBE('talents')
-for _ in range(3):
-    L.globals().tick()
+drain_probe(L)
 data = exported(L)['captures']['talents'][0]['data']
 check(not data['complete'] and data['failures'] == 7, 'failed node reads preserve partial capture')
 check(data['nodes'][0]['info']['status'] == 'error', 'node error remains inspectable')
 
 L = probe('C_Traits.GetDefinitionInfo=function() return {spellID="SECRET"} end')
 L.globals().SlashCmdList.BATTLEPLANPROBE('talents')
-for _ in range(3):
-    L.globals().tick()
+drain_probe(L)
 data = exported(L)['captures']['talents'][0]['data']
 check(not data['complete'] and data['failures'] == 7, 'nested secret definitions mark capture incomplete')
 
 L = probe('C_Traits.GetNodeInfo=function() return 4 end')
 L.globals().SlashCmdList.BATTLEPLANPROBE('talents')
-for _ in range(3):
-    L.globals().tick()
+drain_probe(L)
 check(not exported(L)['captures']['talents'][0]['data']['complete'], 'malformed node shape fails closed')
 
 L = probe('C_Traits.GetConditionInfo=nil')
 L.globals().SlashCmdList.BATTLEPLANPROBE('talents')
-for _ in range(3):
-    L.globals().tick()
+drain_probe(L)
 data = exported(L)['captures']['talents'][0]['data']
 check(not data['complete'] and data['failures'] == 7, 'missing gate API never implies verified prerequisites')
 
@@ -119,8 +126,7 @@ data = exported(L)['captures']['talents'][0]['data']
 check(data['reason'] == 'combat-interrupted' and len(data['nodes']) == 4, 'combat interrupts remaining tree work')
 L.execute('IN_COMBAT=false')
 L.globals().SlashCmdList.BATTLEPLANPROBE('talents')
-for _ in range(3):
-    L.globals().tick()
+drain_probe(L)
 check(exported(L)['captures']['talents'][1]['data']['complete'], 'capture can retry after interruption')
 import tempfile
 with tempfile.TemporaryDirectory() as directory:

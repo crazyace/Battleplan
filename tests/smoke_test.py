@@ -168,7 +168,7 @@ has(cons, "Elixir: Mageblood Elixir (+12 Mana per 5 s)", "Weapon: Lesser Mana Oi
 check("Elixir | " not in cons, "Mageblood is up: elixir not missing")
 has(screen(L, ns, "rotation"), "Shadow Word: Pain", "Mind Blast", "Smite")
 
-# Warrior (tank, tree not captured: spec from layout) ---------------------------------------
+# Warrior (tank: confirmed spec groups) ---------------------------------------
 L = runtime(WARRIOR_20)
 ns = start_battleplan(L)
 s = ns.state

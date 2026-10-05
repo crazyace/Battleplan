@@ -100,6 +100,7 @@ end
 
 -- Environment ----------------------------------------------------------------------------
 local API_PATHS = {
+  "C_TooltipInfo.GetTraitEntry", "C_Spell.RequestLoadSpellData",
   "C_ClassTalents.GetActiveConfigID", "C_Traits.GetConfigInfo", "C_Traits.GetTreeNodes",
   "C_Traits.GetNodeInfo", "C_Traits.GetEntryInfo", "C_Traits.GetDefinitionInfo", "C_Traits.GetConditionInfo",
   "issecretvalue", "canaccessvalue", "InCombatLockdown",
@@ -392,10 +393,15 @@ local function readableID(id) return type(id) == "number" and id > 0 and id % 1 
 local function finishTalents(run, reason)
   run.data.complete = reason == nil and run.data.failures == 0
   run.data.reason = reason or (run.data.failures > 0 and "unreadable-records" or nil)
+  run.data.tooltipReadsComplete = reason == nil and run.data.tooltipFailures == 0
+    and run.data.tooltipReads == run.data.tooltipExpected and run.data.tooltipExpected > 0
   talentRun = nil
   record("talents", run.data)
   say("talents: %d nodes, %d unreadable records (%s); /bpp export",
     #run.data.nodes, run.data.failures, run.data.complete and "complete" or "incomplete")
+  say("talent tooltips: %d/%d rank reads, %d without readable text (%s)",
+    run.data.tooltipReads, run.data.tooltipExpected, run.data.tooltipFailures,
+    run.data.tooltipReadsComplete and "complete" or "incomplete")
 end
 
 local function unreadableField(value)
@@ -416,6 +422,33 @@ local function traitRead(run, path, ...)
   return result
 end
 
+-- The Forever talent UI uses GetTraitEntry(entryID, rank), not generic spell text.
+-- Keep rank-specific lines apart; missing tooltip text never becomes a zero effect.
+local function readTalentTooltip(entryID, rank)
+  local result = capture("C_TooltipInfo.GetTraitEntry", entryID, rank)
+  local out = { rank = rank, status = result.status, error = result.error, lines = {} }
+  local tooltip = firstValue(result)
+  if result.status == "ok" then
+    if type(tooltip) ~= "table" or type(tooltip.lines) ~= "table" then
+      out.status = "empty"
+    else
+      for _, line in ipairs(tooltip.lines) do
+        if type(line) == "table" then
+          local left, right = line.leftText, line.rightText
+          if left == "<secret>" or right == "<secret>" then out.status = "secret" end
+          local readableLeft = type(left) == "string" and left ~= "" and left ~= "<nil>" and left ~= "<secret>" and left ~= "<table>"
+          local readableRight = type(right) == "string" and right ~= "" and right ~= "<nil>" and right ~= "<secret>" and right ~= "<table>"
+          if readableLeft or readableRight then
+            out.lines[#out.lines + 1] = { leftText = left, rightText = right, type = line.type }
+          end
+        end
+      end
+      if #out.lines == 0 and out.status == "ok" then out.status = "empty" end
+    end
+  end
+  return out
+end
+
 local talentBatch
 local function queueTalentBatch() C_Timer.After(0, talentBatch) end
 
@@ -425,9 +458,26 @@ talentBatch = function()
   if InCombatLockdown() then return finishTalents(run, "combat-interrupted") end
   local active = firstValue(capture("C_ClassTalents.GetActiveConfigID"))
   if active ~= run.data.configID then return finishTalents(run, "config-changed") end
+  if run.readingTooltips then
+    for _ = 1, 4 do
+      local request = run.tooltipPending[run.tooltipIndex]
+      if not request then return finishTalents(run) end
+      run.tooltipIndex = run.tooltipIndex + 1
+      local tooltip = readTalentTooltip(request.entry.entryID, request.rank)
+      request.entry.tooltips[#request.entry.tooltips + 1] = tooltip
+      run.data.tooltipReads = run.data.tooltipReads + 1
+      if tooltip.status ~= "ok" then run.data.tooltipFailures = run.data.tooltipFailures + 1 end
+    end
+    queueTalentBatch()
+    return
+  end
   for _ = 1, 4 do
     local pending = run.pending[run.index]
-    if not pending then return finishTalents(run) end
+    if not pending then
+      run.readingTooltips = true
+      queueTalentBatch()
+      return
+    end
     run.index = run.index + 1
     local node = { nodeID = pending.nodeID, treeID = pending.treeID, entries = {}, conditions = {} }
     node.info = traitRead(run, "C_Traits.GetNodeInfo", run.data.configID, node.nodeID)
@@ -435,17 +485,30 @@ talentBatch = function()
     if type(info) == "table" then
       for _, entryID in ipairs(type(info.entryIDs) == "table" and info.entryIDs or {}) do
         if readableID(entryID) then
-          local entry = { entryID = entryID }
+          local entry = { entryID = entryID, tooltips = {} }
           entry.info = traitRead(run, "C_Traits.GetEntryInfo", run.data.configID, entryID)
           local value = firstValue(entry.info)
           if type(value) == "table" and readableID(value.definitionID) then
             entry.definition = traitRead(run, "C_Traits.GetDefinitionInfo", value.definitionID)
             local def = firstValue(entry.definition)
             if type(def) == "table" and readableID(def.spellID) then
+              if C_Spell and C_Spell.RequestLoadSpellData then
+                entry.spellLoad = capture("C_Spell.RequestLoadSpellData", def.spellID)
+              end
               entry.spell = spellDetails(def.spellID)
               entry.spell.name = entry.spell.name or firstValue(capture("C_Spell.GetSpellName", def.spellID))
             end
           else run.data.failures = run.data.failures + 1 end
+          local maxRank = type(value) == "table" and value.maxRanks or info.maxRanks
+          if readableID(maxRank) and maxRank <= 100 then
+            for rank = 1, maxRank do
+              run.tooltipPending[#run.tooltipPending + 1] = { entry = entry, rank = rank }
+              run.data.tooltipExpected = run.data.tooltipExpected + 1
+            end
+          else
+            entry.tooltips[1] = { status = "invalid-rank-count", lines = {} }
+            run.data.tooltipFailures = run.data.tooltipFailures + 1
+          end
           node.entries[#node.entries + 1] = entry
         else run.data.failures = run.data.failures + 1 end
       end
@@ -466,7 +529,11 @@ end
 function P.talents()
   if InCombatLockdown() then return say("leave combat first: /bpp talents") end
   if talentRun then return say("talent capture already running") end
-  local run = { data = { how = "C_Traits", trees = {}, nodes = {}, failures = 0 }, pending = {}, index = 1 }
+  local run = {
+    data = { how = "C_Traits", trees = {}, nodes = {}, failures = 0,
+      tooltipExpected = 0, tooltipReads = 0, tooltipFailures = 0 },
+    pending = {}, index = 1, tooltipPending = {}, tooltipIndex = 1,
+  }
   run.data.activeConfig = traitRead(run, "C_ClassTalents.GetActiveConfigID")
   local configID = firstValue(run.data.activeConfig)
   if not readableID(configID) then return finishTalents(run, "no-talent-config") end

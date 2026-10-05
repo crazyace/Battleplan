@@ -20,6 +20,7 @@ TESTS = [
     ("perf test", "tests/perf_test.py"),
     ("regression test", "tests/regression_test.py"),
     ("milestone test", "tests/milestone_test.py"),
+    ("trait capture test", "tests/trait_capture_test.py"),
     ("tools test", "tests/test_tools.py"),
     ("rules test", "tests/test_rules.py"),
 ]
