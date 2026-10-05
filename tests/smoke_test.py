@@ -173,7 +173,7 @@ L = runtime(WARRIOR_20)
 ns = start_battleplan(L)
 s = ns.state
 check(s.spec == "protection" and s.role == "tank", f"warrior {s.spec} {s.role}")
-has(screen(L, ns, "talents"), "No recommended build for this spec yet")
+has(screen(L, ns, "talents"), "Protection: shield leveling", "Provisional", "Improved Revenge (needs a respec)")
 tank = screen(L, ns, "tanking")
 print("---- Warrior: Tanking ----\n" + tank)
 has(tank, "One target", "1. Revenge", "2. Sunder Armor", "3. Heroic Strike | Rank 3", "A pack", "Thunder Clap",

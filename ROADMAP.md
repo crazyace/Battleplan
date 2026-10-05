@@ -31,7 +31,9 @@ How every phase below gets done. Details in [AGENTS.md](AGENTS.md).
 - [ ] Spell ranks and costs (`/bpp spells`), Priest and Warrior trainers
 - [ ] Consumables checked in game (`tools/consumable_ids.py`)
 - [x] Warrior talent tree captured; fill `Data/WARRIOR/Specs.lua` with confirmed groups
-- [ ] Capture rank-specific Warrior effects and model Warrior builds
+- [x] Capture all 150 Warrior rank tooltips and import a verified text catalog
+- [x] Add and validate a provisional 51-point Protection shield leveling path
+- [ ] Model and play-test Warrior builds, including Arms/Fury and raid allocations
 
 ## Phase 1: theorycraft from real numbers (Oct - launch)
 
@@ -70,7 +72,7 @@ How every phase below gets done. Details in [AGENTS.md](AGENTS.md).
 - [x] Add native `/bpp talents` with batched reads, raw prerequisites and explicit incomplete captures
 - [x] Confirm Warrior spec groups and replay the 52-node live capture in tests
 - [x] Add a separately batched per-rank talent tooltip collector
-- [ ] Confirm native rank-tooltip results in the live client before promoting effects
+- [x] Confirm native rank-tooltip results in the live client before promoting effects
 - [x] Import captured Warrior spell ranks/costs/text with build and source hashes; CI checks regeneration
 - [x] Add provisional known-spell starter rotations for Arms, Fury and Protection
 - [ ] Extend Warrior rotations to higher-level/talent abilities after captures and modeling

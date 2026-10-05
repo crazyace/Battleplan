@@ -146,10 +146,37 @@ Shield Specialization text says 5% block and 100% chance to generate 5 Rage whil
 its node has only three ranks purchased. Other zero-rank talents return zero-valued
 text. These reads do not establish each rank's effect.
 
-**Tooltip lead, not yet live-verified:** the Forever UI calls
+**Tooltip lead (subsequently verified below):** the Forever UI calls
 `GetTraitEntry(entryID, rank)` for talent descriptions. Its generated API documentation
 lists the same two arguments. The probe now uses this API defensively for every rank;
 Jeff's next capture must confirm returned text before effects are promoted.
 
 - [Forever talent display source](https://github.com/Gethe/wow-ui-source/blob/forever/Interface/AddOns/Blizzard_SharedTalentUI/Blizzard_TalentDisplay.lua)
 - [Forever tooltip API documentation](https://github.com/Gethe/wow-ui-source/blob/forever/Interface/AddOns/Blizzard_APIDocumentationGenerated/TooltipInfoDocumentation.lua)
+
+
+### Warrior rank effects — 2026-10-05 18:14:01
+
+Source: unchanged `data/probe/2026-10-05-warrior-12-talent-effects.json`, Human Warrior
+level 12, client 1.60.1.70205. The second talent snapshot completes all 52 nodes and
+150 rank tooltip reads with zero failures. Every multi-rank talent has distinct text
+between ranks. `GetTraitEntry(entryID, rank)` is now confirmed in the live client.
+
+The generated `Data/WARRIOR/TalentEffects.lua` preserves all readable left/right
+text, in line order, for each rank, with source hash, build, timestamp and observed
+level. It imports text only: no inferred coefficients, trainer levels or base damage.
+Shield Slam's captured damage, for example, is not a universal level-60 value.
+
+Confirmed examples: Shield Specialization rank 3 grants +3% block and a 60% chance
+of 5 Rage on block (rank 5: +5%, 100%); Anticipation adds 4 Defense skill per rank;
+Improved Revenge adds 20% damage per rank. Master of Defense rank 2 generates 5 Rage
+on dodge/parry with a shield; Defiance rank 3 adds 15% threat in Defensive Stance with
+a shield; Bastion rank 5 adds 10% damage with a shield.
+
+The Protection order is a provisional shield questing / leveling dungeon choice:
+31 Protection points by level 40, then 5 Deflection, 5 Cruelty and 10 further
+Protection points (5 Arms / 5 Fury / 41 Protection at level 60). Every point is tested
+against the imported gates, rank limits and prerequisites. This validates the order
+under those rules, not optimal performance or full live prerequisite semantics.
+The global `TalentRules` status remains provisional. Raid builds and damage/mitigation
+optimization still require a model and play tests.

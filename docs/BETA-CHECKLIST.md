@@ -50,9 +50,10 @@ with the item name and amount, e.g. `+15 agility`).
 
 - [x] Warrior talent tree and spec groups: native capture has 52 nodes, Arms 11650,
       Fury 11657, Protection 11670; three points in Shield Specialization.
-- [ ] Update BattleplanProbe, run `/bpp talents` outside combat, wait for both structural
-      and rank-tooltip summaries, then `/bpp export`. Confirm text for every rank,
-      especially passive talents that returned nil or zero-valued generic descriptions.
+- [x] All 150 rank tooltips for 52 Warrior talents captured with zero failures in
+      `2026-10-05-warrior-12-talent-effects.json`, including passives with missing generic text.
+- [ ] Play-test the Protection shield path: next point at level 13, Revenge after it is
+      learned, Rage generation while blocking/parrying/dodging, and dungeon threat.
 - [ ] Target a mob, `/bpp threat` out of combat; and once in combat if you can type it:
       is threat readable or secret?
 

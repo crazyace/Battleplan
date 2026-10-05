@@ -93,7 +93,7 @@ local function compute()
   local specTalents = data.Talents and data.Talents[s.spec]
   s.build = specTalents and (E.Score.Lookup(specTalents, s.situation) or E.Score.Lookup(specTalents, "leveling"))
   local rules = ns.Data.TalentRules and ns.Data.TalentRules[s.class]
-  s.talentPlan = s.build and s.build.order and E.Talents.Plan(s.build, s.level, E.Spec.Flatten(s.talents), rules) or nil
+  s.talentPlan = s.build and s.build.order and E.Talents.Plan(s.build, s.level, E.Spec.Flatten(s.talents), rules, data.TalentEffects) or nil
   if s.build and ns.Data.TalentRules and ns.Data.TalentRules._status ~= "verified" then s.provisional = true end
   coroutine.yield()
 

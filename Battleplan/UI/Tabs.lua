@@ -66,7 +66,7 @@ local build = {}
 
 function build.talents(s, rows)
   if not s.build then
-    note(rows, "No recommended build for this spec yet: its talent tree hasn't been captured on Forever.", 0)
+    note(rows, "No recommended build for this spec yet: its build advice is still being developed.", 0)
     return
   end
   header(rows, s.build.title or "Recommended build")
@@ -79,17 +79,22 @@ function build.talents(s, rows)
     end
     return
   end
+  local rankTip
+  if p.rankText then
+    rankTip = ("Captured rank %d text (level %d character; ability values may scale):\n%s"):format(
+      p.upcoming.rank, p.observedAtLevel, p.rankText)
+  end
   row(rows, "Points spent", ("%d of %d"):format(p.spent, p.available))
   if p.blocked then
     row(rows, "Next point", "Prerequisites not met", p.blocked)
     note(rows, p.blocked)
   elseif p.next then
-    row(rows, "Next point", util.color("green", p.next.name), ("Rank %d of the build's %s."):format(p.next.rank, p.next.name))
+    row(rows, "Next point", util.color("green", p.next.name), rankTip or ("Rank %d of the build's %s."):format(p.next.rank, p.next.name))
   elseif p.upcoming and p.nextIndex and p.nextIndex <= p.available then
     row(rows, "Next point", ("%s (needs a respec)"):format(p.upcoming.name),
-      "Your points are all spent, some of them off the plan. A trainer can reset them.")
+      "Your points are all spent, some of them off the plan. A trainer can reset them." .. (rankTip and ("\n\n" .. rankTip) or ""))
   elseif p.upcoming and p.nextIndex then
-    row(rows, "Next point", ("%s at level %d"):format(p.upcoming.name, ns.Engine.Talents.LevelOfPoint(p.nextIndex)))
+    row(rows, "Next point", ("%s at level %d"):format(p.upcoming.name, ns.Engine.Talents.LevelOfPoint(p.nextIndex)), rankTip)
   elseif p.available == 0 then
     note(rows, "Your first talent point comes at level 10.")
   end

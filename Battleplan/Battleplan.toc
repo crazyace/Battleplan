@@ -34,6 +34,7 @@ Data\WARRIOR\Specs.lua
 Data\WARRIOR\Spells.lua
 Data\WARRIOR\Rotations.lua
 Data\WARRIOR\Weights.lua
+Data\WARRIOR\TalentEffects.lua
 Data\WARRIOR\Talents.lua
 Data\WARRIOR\Tanking.lua
 
