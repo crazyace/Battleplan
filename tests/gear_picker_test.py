@@ -138,4 +138,40 @@ first.frame._OnClick(first.frame)
 check(L.eval('C.chatLinks and C.chatLinks[1]') is not None, 'shift-click links an option')
 check(ns.db.gearPicks[multi.slot] is None, 'shift-click does not pick')
 
+# "Gear for" level: plan upgrades for a higher level from the Gear tab.
+# The imported catalog stops near level 30, so this uses a level 12 Warrior.
+from wowmock import drain, screen
+L = runtime('{class="WARRIOR",className="Warrior",level=12,nodes={{11670,"Shield Specialization",3,9000}}}')
+ns = start_battleplan(L)
+L.globals().BP = ns
+ns.UI.Show()
+controls, menu = ns.UI.controls, ns.UI.controls.menu
+ns.UI.SelectTab('gear')
+check(controls.gear.IsShown(controls.gear) and 'your level' in controls.gear.text, 'Gear for control on the Gear tab')
+ns.UI.SelectTab('talents')
+check(not controls.gear.IsShown(controls.gear), 'only on the Gear tab')
+ns.UI.SelectTab('gear')
+controls.gear._OnClick(controls.gear)
+labels = [menu.options[i].text for i in range(1, 6) if menu.options[i].IsShown(menu.options[i])]
+check(labels == ['* Your level (12)', '  Level 15', '  Level 17', '  Level 22', '  Level 60'],
+      f'level choices: {labels}')
+now = {ns.state.upgrades[i].target.itemID for i in range(1, len(ns.state.upgrades) + 1)}
+menu.options[4]._OnClick(menu.options[4])
+drain(L, ns)
+check(ns.db.gearAhead == 10 and ns.state.gearLevel == 22, 'choice saved and planned for level 22')
+text = screen(L, ns, 'gear')
+check('Best upgrades for level 22' in text, 'heading names the level')
+ahead = [ns.state.upgrades[i] for i in range(1, len(ns.state.upgrades) + 1)]
+later = [u for u in ahead if (u.requiredLevel or 0) > 12]
+check(later and all(f'level {u.requiredLevel}' in text for u in later), 'items above your level say when')
+check({u.target.itemID for u in ahead} != now, 'a higher level changes the recommendations')
+check('Gear for: level 22' in controls.gear.text, 'control shows the chosen level')
+L.execute('BP.db.gearAhead = 0; BP.Planner.Queue()')
+drain(L, ns)
+check(ns.state.gearLevel == 12 and 'Next upgrades' in screen(L, ns, 'gear'), 'back to your level')
+L.execute('BP.state.level = 58')
+controls.gear._OnClick(controls.gear)
+controls.gear._OnClick(controls.gear)
+labels = [menu.options[i].text for i in range(1, 6) if menu.options[i].IsShown(menu.options[i])]
+check(labels == ['* Your level (58)', '  Level 60'], f'near max level, choices collapse: {labels}')
 print(f"gear picker test passed ({checks} checks)")

@@ -210,13 +210,21 @@ local function sourceLine(u)
   return text
 end
 
+-- The level an option needs when that's above the player's own; the engine's
+-- `now` is relative to the level the Gear tab plans for, which can be higher.
+function UI.GearLaterLevel(u)
+  local need = u.requiredLevel or u.target.minLevel or 0
+  if not u.now or need > (ns.state and ns.state.level or 0) then return need end
+end
+
 -- Hover text under the item's own tooltip.
 local function itemTip(u, equipped)
   local details = u.comparison
   local gain = ("Battleplan: +%.1f score"):format(u.gain)
   if details and details.gainFraction then gain = gain .. (" (%.1f%%)"):format(details.gainFraction * 100) end
   local lines = { util.color("green", gain .. " in " .. u.slotName) }
-  if not u.now then lines[#lines + 1] = ("Usable at level %d."):format(u.requiredLevel or u.target.minLevel or 0) end
+  local later = UI.GearLaterLevel(u)
+  if later then lines[#lines + 1] = ("Usable at level %d."):format(later) end
   local current = not (details and details.empty) and equipped and equipped[u.slot]
   lines[#lines + 1] = current and ("Replaces " .. current) or ("Your " .. u.slotName .. " slot is empty.")
   statChanges(details, lines)
@@ -250,7 +258,8 @@ end
 function UI.GearValue(u, oneLine)
   local value = util.color("green", ("+%.1f"):format(u.gain))
   local sep = oneLine and "  " or "\n"
-  if not u.now then value = value .. sep .. util.color("gray", ("level %d"):format(u.requiredLevel or u.target.minLevel or 0))
+  local later = UI.GearLaterLevel(u)
+  if later then value = value .. sep .. util.color("gray", ("level %d"):format(later))
   elseif u.status == "unknown" then value = value .. sep .. util.color("gray", "unconfirmed") end
   return value
 end
@@ -294,7 +303,8 @@ function build.gear(s, rows)
     row(rows, text, status, tip, 1)
   end
   blank(rows)
-  header(rows, "Next upgrades")
+  header(rows, s.gearLevel and s.gearLevel > s.level and ("Best upgrades for level %d"):format(s.gearLevel)
+    or "Next upgrades")
   if s.hasUpgradeData then
     note(rows, "Score from item stats only (no effects or set bonuses), not a damage or healing percentage. "
       .. "Hover an item for details; click it to see every option for that slot.")

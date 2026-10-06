@@ -156,11 +156,12 @@ local function compute()
   end
   coroutine.yield()
 
-  -- Gear
+  -- Gear, for the level the player chose on the Gear tab (their own by default).
+  s.gearLevel = math.max(s.level, math.min(ns.MAX_LEVEL, s.level + math.max(0, tonumber(ns.db.gearAhead) or 0)))
   s.enchants = E.Gear.EnchantAdvice(data.Gear and data.Gear.enchants, API.EquippedEnchants(), s.weights)
   local targets = data.Gear and data.Gear.targets
   if not targets or #targets == 0 then
-    targets = E.Gear.CatalogTargets(ns.Data.FullGearCatalog, s.class, s.level, yieldGear)
+    targets = E.Gear.CatalogTargets(ns.Data.FullGearCatalog, s.class, s.gearLevel, yieldGear)
   end
   s.upgrades, s.equippedLinks, gearPending = {}, {}, false
   if targets and #targets > 0 then
@@ -171,11 +172,11 @@ local function compute()
       equippedStats = details, professions = API.PlayerProfessions() }
     local queried, reads = {}, 0
     for i, target in ipairs(targets) do
-      if (target.minLevel or 0) <= s.level + 5 and not owned[target.itemID] then
+      if (target.minLevel or 0) <= s.gearLevel + 5 and not owned[target.itemID] then
         local count = API.ItemCount(target.itemID)
         if type(count) == "number" and count > 0 then owned[target.itemID] = true end
       end
-      if (target.minLevel or 0) <= s.level + 5 then
+      if (target.minLevel or 0) <= s.gearLevel + 5 then
         if target.routeData then
           for _, id in ipairs(target.questIDs or EMPTY) do
             if not queried[id] then
@@ -207,7 +208,7 @@ local function compute()
       end
       if i % 4 == 0 then coroutine.yield() end
     end
-    s.upgrades = E.Gear.NextUpgrades(targets, s.level, s.weights, scores, context, yieldGear)
+    s.upgrades = E.Gear.NextUpgrades(targets, s.gearLevel, s.weights, scores, context, yieldGear)
     -- Load the suggested items now so hovering one shows its full tooltip.
     for _, u in ipairs(s.upgrades) do
       for _, option in ipairs(u.options or EMPTY) do API.RequestItem(option.target.itemID) end

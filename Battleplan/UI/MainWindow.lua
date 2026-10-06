@@ -3,11 +3,21 @@
 local _, ns = ...
 local UI = ns.UI
 local WIDTH, HEIGHT = 760, 700
-local frame, list, tabButtons, specButton, modeButton, detailsButton, menu
+local frame, list, tabButtons, specButton, modeButton, detailsButton, gearButton, menu
 local context, badge, sizeLabel
 local currentTab, showDetails = "talents", false
 local shownVersion, shownTab, shownDetails
 local MODES = { "auto", "leveling", "solo", "dungeon", "raid" }
+-- Gear tab "Gear for" choices, in levels above yours; 60 reaches max level.
+local AHEAD = { 0, 3, 5, 10, 60 }
+local function aheadLevel(ahead)
+  local level = ns.state.level or 1
+  return math.max(level, math.min(ns.MAX_LEVEL, level + ahead))
+end
+local function aheadText(ahead)
+  if ahead == 0 then return ("Your level (%d)"):format(ns.state.level or 1) end
+  return ("Level %d"):format(aheadLevel(ahead))
+end
 
 local function label(parent, text, font, x, y)
   local fs = parent:CreateFontString(nil, "OVERLAY", font or "GameFontHighlightSmall")
@@ -84,6 +94,24 @@ local function openMenu(self)
   menu.owner, menu.setting = self, self.setting
   menu:ClearAllPoints()
   menu:SetPoint("TOPLEFT", self, "BOTTOMLEFT", 0, -4)
+  if self.setting == "gearAhead" then
+    -- One option per distinct level (near max level several choices are the same).
+    local count, last = 0, nil
+    for _, ahead in ipairs(AHEAD) do
+      local level = aheadLevel(ahead)
+      if level ~= last then
+        count, last = count + 1, level
+        local option = menu.options[count]
+        option.value = ahead
+        option:SetText((aheadLevel(ns.db.gearAhead or 0) == level and "* " or "  ") .. aheadText(ahead))
+        option:Show()
+      end
+    end
+    for i = count + 1, #menu.options do menu.options[i]:Hide() end
+    menu:SetHeight(count * 34 + 8)
+    menu:Show()
+    return
+  end
   local specs = ns.Data[ns.state.class] and ns.Data[ns.state.class].Specs
   local choices = self.setting == "spec" and specs and specs.order or MODES
   local count = self.setting == "spec" and (specs and #choices + 1 or 1) or #choices
@@ -189,6 +217,12 @@ local function create()
   detailsButton = button(content, "Show build details", 190, 30)
   detailsButton:SetPoint("TOPRIGHT", -14, -40)
   detailsButton:SetScript("OnClick", toggleDetails)
+  -- Same place as the details button, on the Gear tab instead of Talents.
+  gearButton = button(content, "Gear for: your level", 190, 30)
+  gearButton:SetPoint("TOPRIGHT", -14, -40)
+  gearButton.setting = "gearAhead"
+  gearButton.tip = "Plan gear for a higher level: upgrades usable by then, so you can work toward them now."
+  gearButton:SetScript("OnClick", openMenu)
   tabButtons = {}
   for i = 1, 5 do
     local b = button(content, "", 140, 30)
@@ -237,7 +271,7 @@ local function create()
   f:Hide()
   tinsert(UISpecialFrames, "BattleplanFrame")
   frame, UI.frame, UI.list = f, f, list
-  UI.controls = { spec = specButton, situation = modeButton, details = detailsButton, menu = menu,
+  UI.controls = { spec = specButton, situation = modeButton, details = detailsButton, gear = gearButton, menu = menu,
     smaller = smaller, larger = larger, size = sizeLabel, context = context, title = title,
     content = content, close = x, tabs = tabButtons }
   applyScale()
@@ -262,6 +296,9 @@ function UI.Refresh(force)
   specButton:SetText(specText .. "  v")
   modeButton:SetText(modeText .. "  v")
   detailsButton:SetShown(currentTab == "talents" and s.build ~= nil)
+  gearButton:SetShown(currentTab == "gear")
+  gearButton:SetText((s.gearLevel and s.level and s.gearLevel > s.level) and ("Gear for: level %d  v"):format(s.gearLevel)
+    or "Gear for: your level  v")
   list:SetData(UI.BuildRows(currentTab, s, true, showDetails))
 end
 local function show()
