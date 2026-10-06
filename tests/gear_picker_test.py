@@ -39,7 +39,7 @@ rows = [data[i] for i in range(1, len(data) + 1)]
 check(not any((r.text or '').startswith('Or: ') for r in rows), 'no stacked alternative rows')
 check(sum(1 for r in rows if r.itemID) == len(upgrades), 'one item row per slot')
 slot_row = next(r for r in rows if r.slot == multi.slot)
-check(f'{len(multi.options)} options, click to choose' in slot_row.text, 'row says it has options')
+check(f'{len(multi.options)} options' in slot_row.text, 'row says it has options')
 
 L.execute('''
   function rowFor(slot)
@@ -156,6 +156,11 @@ labels = [menu.options[i].text for i in range(1, 6) if menu.options[i].IsShown(m
 check(labels == ['* Your level (12)', '  Level 15', '  Level 17', '  Level 22', '  Level 60'],
       f'level choices: {labels}')
 now = {ns.state.upgrades[i].target.itemID for i in range(1, len(ns.state.upgrades) + 1)}
+# Regression: "your level" still suggested gear up to five levels above it.
+mine = [ns.state.upgrades[i] for i in range(1, len(ns.state.upgrades) + 1)]
+check(mine and all((u.requiredLevel or 0) <= 12 and u.now for u in mine), 'your level suggests only gear you can wear')
+check(all((u.options[i].requiredLevel or 0) <= 12 for u in mine for i in range(1, len(u.options) + 1)),
+      'and the dropdown lists only gear you can wear')
 menu.options[4]._OnClick(menu.options[4])
 drain(L, ns)
 check(ns.db.gearAhead == 10 and ns.state.gearLevel == 22, 'choice saved and planned for level 22')

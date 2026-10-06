@@ -8,7 +8,8 @@ candidate set. A craftable item does not require the wearer to be its crafter.
 
 1. Exclude known unusable items, already-owned items, opposite-class/faction routes,
    completed one-time quests and routes explicitly observed to be blocked.
-2. Keep only positive weighted-stat gains and gear within five levels. An unknown
+2. Keep only positive weighted-stat gains and gear the player can wear at the
+   level chosen under "Gear for" (their own level by default). An unknown
    equipped score blocks comparisons for that slot; an empty slot starts at zero.
 3. For structured routes, filter gains below 5% of the equipped weighted score.
    This is a provisional anti-churn policy, adjustable through `minGainFraction`.
