@@ -22,7 +22,7 @@ ns = start_battleplan(L)
 check(ns.UI.frame is None, 'no frames at login')
 ns.UI.Show()
 controls = ns.UI.controls
-check(ns.UI.frame.GetWidth(ns.UI.frame) == 640, 'roomier window')
+check(ns.UI.frame.GetWidth(ns.UI.frame) == 760, 'roomier window')
 check('Protection' in controls.context.text and 'Level 12' in controls.context.text, 'persistent context')
 check(ns.UI.frame._template == 'BasicFrameTemplateWithInset', 'native framed panel')
 check(controls.spec._template == 'UIPanelButtonTemplate' and controls.tabs[1]._template == 'UIPanelButtonTemplate',
@@ -34,6 +34,37 @@ check(L.eval('function(c) return c.context._parent == c.content and c.spec._pare
 check(controls.content._frameLevel > ns.UI.frame._frameLevel + 1 and
       controls.close._frameLevel > controls.title._parent._frameLevel,
       'explicit layers protect header text and close-button input')
+check(ns.UI.list.rows[1].left.fontSize >= 14, 'readable body text')
+check(controls.spec.label.fontSize == 14, 'readable control text')
+check(ns.UI.frame.GetScale(ns.UI.frame) == 1, 'default size')
+click(controls.larger)
+check(abs(ns.db.uiScale - 1.1) < 0.001 and abs(ns.UI.frame.GetScale(ns.UI.frame) - 1.1) < 0.001,
+      'size control scales entire window and saves preference')
+ns.UI.Hide()
+ns.UI.Show()
+check(abs(ns.UI.frame.GetScale(ns.UI.frame) - 1.1) < 0.001, 'size survives reopening')
+L.execute('IN_COMBAT=true')
+click(controls.larger)
+check(abs(ns.db.uiScale - 1.1) < 0.001, 'size buttons dormant in combat')
+L.execute('UIParent:SetSize(800, 600);fire("DISPLAY_SIZE_CHANGED")')
+check(abs(ns.UI.frame.GetScale(ns.UI.frame) - 1.1) < 0.001, 'screen fitting deferred in combat')
+L.execute('IN_COMBAT=false;fire("PLAYER_REGEN_ENABLED")')
+drain(L, ns)
+check(ns.UI.frame.GetScale(ns.UI.frame) * 700 <= 568 and ns.UI.frame.GetScale(ns.UI.frame) * 760 <= 768,
+      'window fits small screen with margins')
+check(abs(ns.db.uiScale - 1.1) < 0.001, 'screen fit preserves requested size')
+L.execute('UIParent:SetSize(1920, 1080);fire("UI_SCALE_CHANGED")')
+drain(L, ns)
+check(abs(ns.UI.frame.GetScale(ns.UI.frame) - 1.1) < 0.001, 'requested size restored on larger screen')
+for _ in range(20):
+    click(controls.larger)
+check(ns.db.uiScale == 1.4, 'upper size limit')
+for _ in range(20):
+    click(controls.smaller)
+check(ns.db.uiScale == 0.8, 'lower size limit')
+ns.db.uiScale = 'corrupt'
+ns.UI.Show()
+check(ns.db.uiScale == 1, 'invalid saved size repaired')
 rows = ns.UI.list.data
 check('Shield Specialization' in str([(rows[i].text, rows[i].value) for i in range(1, len(rows) + 1)]), 'next point visible')
 check(not any(rows[i].text == 'Why' for i in range(1, len(rows) + 1)), 'full reasons collapsed')
@@ -148,10 +179,11 @@ for char in (ROGUE_30, PRIEST_40, MAGE_20):
 
 other = runtime(character)
 addon = start_battleplan(other)
-other.execute('IN_COMBAT=true')
+other.execute('BattleplanDB.uiScale=1.2;IN_COMBAT=true')
 addon.UI.Show()
 check(addon.UI.frame is None, 'opening in combat defers frame creation')
 other.execute('IN_COMBAT=false;fire("PLAYER_REGEN_ENABLED")')
 drain(other, addon)
 check(addon.UI.IsShown(), 'deferred opening occurs after combat')
+check(abs(addon.UI.frame.GetScale(addon.UI.frame) - 1.2) < 0.001, 'saved size applied in fresh UI')
 print(f'UI test passed: {checks} checks')

@@ -2,8 +2,14 @@
 -- rebinds a fixed pool and never builds tables or frames.
 local _, ns = ...
 local UI = ns.UI
-local MIN_HEIGHT, LINE_HEIGHT = 26, 16
-local FONTS = { header = "GameFontNormal", row = "GameFontHighlightSmall", note = "GameFontHighlightSmall" }
+local MIN_HEIGHT, LINE_HEIGHT = 32, 20
+local FONTS = { header = "GameFontNormal", row = "GameFontHighlight", note = "GameFontHighlight" }
+-- Keep measurements and displayed text on the same readable font metrics.
+function UI.ReadableFont(fs, kind, font)
+  fs:SetFontObject(font or FONTS[kind] or FONTS.row)
+  local face, _, flags = fs:GetFont()
+  fs:SetFont(face, kind == "header" and 16 or 14, flags)
+end
 local List = {}
 List.__index = List
 
@@ -27,18 +33,20 @@ local function makeRow(list)
   row.right = row:CreateFontString(nil, "OVERLAY", FONTS.row)
   row.left:SetJustifyH("LEFT")
   row.right:SetJustifyH("RIGHT")
+  UI.ReadableFont(row.right, "row")
   row.left:SetJustifyV("TOP")
   row.right:SetJustifyV("TOP")
   row.left:SetWordWrap(true)
   row.right:SetWordWrap(true)
   row.icon = row:CreateTexture(nil, "ARTWORK")
-  row.icon:SetSize(24, 24)
+  row.icon:SetSize(32, 32)
   row.icon:SetTexCoord(0.07, 0.93, 0.07, 0.93)
   row.icon:Hide()
-  row.iconBorder = row:CreateTexture(nil, "OVERLAY")
-  row.iconBorder:SetSize(32, 32)
+  row.iconBorder = row:CreateTexture(nil, "BORDER")
+  row.iconBorder:SetSize(36, 36)
   row.iconBorder:SetPoint("CENTER", row.icon, "CENTER")
-  row.iconBorder:SetTexture("Interface\\Buttons\\UI-Quickslot2")
+  -- A solid rim behind the icon has no artwork padding to shrink its edges.
+  row.iconBorder:SetColorTexture(0.55, 0.45, 0.24, 1)
   row.iconBorder:Hide()
   row.accent = row:CreateTexture(nil, "BACKGROUND")
   row.accent:SetAllPoints()
@@ -60,13 +68,13 @@ function List:Measure()
   local y = 0
   for i, d in ipairs(self.data) do
     local kind = d.kind or "row"
-    local indent = (d.indent or 0) * 12 + 8 + (d.icon and 32 or 0)
+    local indent = (d.indent or 0) * 12 + 8 + (d.icon and 44 or 0)
     local rightWidth = d.value and d.value ~= "" and math.floor(width * 0.40) or 0
     local leftWidth = width - indent - (rightWidth > 0 and rightWidth + 14 or 0)
-    self.measure:SetFontObject(FONTS[kind] or FONTS.row)
+    UI.ReadableFont(self.measure, kind)
     local height = math.max(measure(self.measure, d.text, leftWidth),
-      rightWidth > 0 and measure(self.measure, d.value, rightWidth) or 0) + 10
-    if d.icon then height = math.max(height, 34) end
+      rightWidth > 0 and measure(self.measure, d.value, rightWidth) or 0) + 12
+    if d.icon then height = math.max(height, 44) end
     if kind == "blank" then height = 10
     elseif kind == "header" then height = height + 8
     elseif d.emphasis then height = height + 10 end
@@ -81,14 +89,15 @@ local function bind(row, d, list, index)
   local kind = d.kind or "row"
   if row.kind ~= kind then
     row.kind = kind
-    row.left:SetFontObject(FONTS[kind] or FONTS.row)
+    UI.ReadableFont(row.left, kind)
+    UI.ReadableFont(row.right, kind)
   end
-  local indent = (d.indent or 0) * 12 + 8 + (d.icon and 32 or 0)
+  local indent = (d.indent or 0) * 12 + 8 + (d.icon and 44 or 0)
   local rightWidth = d.value and d.value ~= "" and math.floor(list.width * 0.40) or 0
-  local top = d.emphasis and -10 or -5
+  local top = d.emphasis and -11 or -6
   if d.icon then
     row.icon:ClearAllPoints()
-    row.icon:SetPoint("TOPLEFT", indent - 32, top)
+    row.icon:SetPoint("TOPLEFT", indent - 42, top)
     if row.iconID ~= d.icon then row.iconID = d.icon; row.icon:SetTexture(d.icon) end
     row.icon:Show()
     row.iconBorder:Show()

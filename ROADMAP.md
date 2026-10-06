@@ -102,3 +102,7 @@ How every phase below gets done. Details in [AGENTS.md](AGENTS.md).
 - [x] Resolve client icons for upcoming Warrior abilities without marking them learned
 - [x] Replace Safe/Threat setup prose with preparation filtered to learned abilities
 - [ ] Live-check upcoming ability icons and level-appropriate tank preparation
+
+- [x] Fix icon rims to enclose images; enlarge text, icons, window and controls
+- [x] Add saved size controls and automatic screen fitting outside combat
+- [ ] Live-check larger typography, rim geometry and size controls at different UI scales
