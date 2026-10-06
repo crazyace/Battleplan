@@ -169,14 +169,14 @@ local function compute()
     scores, s.gearUnknown, owned, details, s.equippedLinks = equippedScores(s.weights)
     gearPending = s.gearUnknown
     local context = { class = s.class, owned = owned, faction = API.PlayerFaction(), completedQuests = {},
-      equippedStats = details, professions = API.PlayerProfessions() }
+      equippedStats = details, professions = API.PlayerProfessions(), lookahead = 0 }
     local queried, reads = {}, 0
     for i, target in ipairs(targets) do
-      if (target.minLevel or 0) <= s.gearLevel + 5 and not owned[target.itemID] then
+      if (target.minLevel or 0) <= s.gearLevel and not owned[target.itemID] then
         local count = API.ItemCount(target.itemID)
         if type(count) == "number" and count > 0 then owned[target.itemID] = true end
       end
-      if (target.minLevel or 0) <= s.gearLevel + 5 then
+      if (target.minLevel or 0) <= s.gearLevel then
         if target.routeData then
           for _, id in ipairs(target.questIDs or EMPTY) do
             if not queried[id] then

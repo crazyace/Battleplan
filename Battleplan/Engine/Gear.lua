@@ -140,7 +140,7 @@ end
 
 local function access(route, target, level, ctx)
   local required = math.max(target.minLevel or 0, route.minLevel or 0)
-  if required > level + 5 then return nil end
+  if required > level + ctx.lookahead then return nil end
   if route.questID and ctx.completedQuests and ctx.completedQuests[route.questID] and not route.repeatable then return nil end
   if route.faction and ctx.faction and route.faction ~= ctx.faction then return nil end
   if route.classes and ctx.class and not route.classes[ctx.class] then return nil end
@@ -248,8 +248,11 @@ end
 -- Context contains observed access, usability, owned items and quest completion only.
 -- Legacy text sources keep their existing behavior until migrated to structured routes.
 -- The default 5% weighted-score threshold is a provisional churn filter, not a DPS claim.
+-- ctx.lookahead (default 5) is how many levels above `level` to suggest; the Planner
+-- passes 0 because the player picks the level to plan for ("Gear for").
 function Gear.NextUpgrades(targets, level, weights, equippedScores, context, workTick)
   local ctx, groups = context or {}, {}
+  ctx.lookahead = ctx.lookahead or 5
   local threshold = ctx.minGainFraction or 0.05
   local routeWork, scratch = 0, {}
   for i, t in ipairs(targets or EMPTY) do
@@ -274,7 +277,7 @@ function Gear.NextUpgrades(targets, level, weights, equippedScores, context, wor
               retain(group, scratch)
             end
           end
-        elseif (t.minLevel or 0) <= level + 5 then
+        elseif (t.minLevel or 0) <= level + ctx.lookahead then
           scratch.slot, scratch.slotName, scratch.target = t.slot, Gear.SLOT_NAMES[t.slot], t
           scratch.gain, scratch.now, scratch.requiredLevel = gain, (t.minLevel or 0) <= level, t.minLevel or 0
           scratch.route, scratch.status = nil, "available"

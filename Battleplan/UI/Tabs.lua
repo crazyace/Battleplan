@@ -282,7 +282,7 @@ local function upgradeRow(rows, u, equipped, picks)
   local text = u.slotName .. ": " .. shown.target.name
   local source = sourceLine(shown)
   local count = u.options and #u.options or 1
-  local more = count > 1 and ("%d options, click to choose"):format(count) or nil
+  local more = count > 1 and ("%d options"):format(count) or nil
   if shown ~= u then more = "your pick; " .. (more or "") end
   if source and more then source = source .. "  |  " .. more else source = source or more end
   if source then text = text .. "\n" .. util.color("gray", source) end
