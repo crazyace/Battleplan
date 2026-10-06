@@ -142,7 +142,9 @@ local function compute()
 
   -- Rotation
   s.known = API.KnownSpells()
-  s.rotation = data.Rotations and E.Rotation.Build(data.Rotations, s.spec, s.situation, s.known, s.level, data.Spells) or nil
+  local learn = ns.Data.SpellRanks and ns.Data.SpellRanks[s.class]
+  s.rotation = data.Rotations
+    and E.Rotation.Build(data.Rotations, s.spec, s.situation, s.known, s.level, data.Spells, learn) or nil
   local changes
   if oldRotation and s.rotation and oldSpec == s.spec then
     changes = E.Rotation.Changes(oldRotation, s.rotation)
@@ -222,11 +224,11 @@ local function compute()
         rows = rows,
         picks = E.Healing.Pick(guide.situations, rows),
         manaPlan = guide.manaPlan or {},
-        cooldowns = E.Rotation.Filter(guide.cooldowns, s.known, s.level),
+        cooldowns = E.Rotation.Filter(guide.cooldowns, s.known, s.level, nil, nil, nil, learn),
       }
     end
   elseif s.role == "tank" then
-    s.tanking = E.Tanking.Build(data.Tanking, s.spec, s.known, s.level)
+    s.tanking = E.Tanking.Build(data.Tanking, s.spec, s.known, s.level, learn)
   end
 
   coroutine.yield()

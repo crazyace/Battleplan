@@ -27,7 +27,13 @@ Regenerate and verify from the repository root:
 ```
 python tools/import_full_data.py
 python tools/import_full_data.py --check
+python tools/import_class_data.py
+python tools/import_class_data.py --check
 ```
+
+`tools/import_class_data.py` generates `Battleplan/Data/SpellRanks.lua` and
+`docs/FOREVER-CHANGES.md` from `classes.json` and `changes.json`. Both are client-derived
+and provisional.
 
 To replace the collection, supply `--collection-dir PATH` to the importer. Keep
 this notice and upstream license information with redistributed data.

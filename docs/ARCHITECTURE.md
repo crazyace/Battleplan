@@ -84,6 +84,20 @@ conditions are preserved but fail closed until their semantics are confirmed (on
 Druid record currently has such a condition). Imported data stays `provisional` and
 does not establish live availability or supersede probe captures.
 
+## Imported ability learn levels
+
+`tools/import_class_data.py` checks `classes.json` and `changes.json` against
+`data/external/manifest.json`, then generates `Data/SpellRanks.lua` (per class:
+`[name] = { id, level, ranks = { level of Rank 1, ... }, quest, races, faction }`) and
+`docs/FOREVER-CHANGES.md`. Season of Discovery rune records and proc/effect ("other")
+records are skipped; tooltip prose is never copied.
+
+Planner passes the class's table to `Rotation.Build`, `Tanking.Build` and the healing
+cooldown filter. `Rotation.Filter` uses it in two ways: a known spell gets `trainRank`
+when a higher non-quest rank is within level, and an upcoming entry without a
+hand-written `minLevel` takes the imported level and `quest` flag. Hand-written values
+win, and `class_data_test.py` keeps the two in agreement.
+
 ## Native talent captures and observed spell catalog
 
 BattleplanProbe `/bpp talents` feature-detects the trait APIs and records config,

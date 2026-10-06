@@ -1,6 +1,7 @@
 -- Starter advice uses names confirmed by the level-12 Warrior spell capture.
 -- Priority/advice remain provisional; higher-level abilities need integration.
--- No minLevel: possession at 12 does not establish a trainer requirement.
+-- No minLevel: possession at 12 does not establish a trainer requirement. Upcoming
+-- abilities take their learn level from the imported Data/SpellRanks.lua instead.
 local _, ns = ...
 
 local SHOUT = { spell = "Battle Shout", note = "Keep the attack power buff up when it benefits your party." }

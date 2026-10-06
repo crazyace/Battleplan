@@ -129,6 +129,11 @@ How every phase below gets done. Details in [AGENTS.md](AGENTS.md).
 
 ## Full collected data milestone
 
+- [x] Import learn levels for every rank of every trained ability, all nine classes (`Data/SpellRanks.lua`)
+- [x] Generate a per-class Forever-vs-Classic change report (`docs/FOREVER-CHANGES.md`) and gate our data against it
+- [ ] Confirm imported learn levels against Priest and Warrior trainer captures, then mark verified
+- [ ] Use the imported enchants, item sets and dungeon data
+
 - [x] Preserve every downloaded JSON record and collection manifest with checksums and upstream credits/licenses
 - [x] Generate a lazy provisional armor catalog with quest, crafting, vendor and drop routes
 - [x] Filter observed faction/completed quests and retain unknown access honestly

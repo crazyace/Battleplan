@@ -270,6 +270,22 @@ records API presence, player faction and a completion sample for quest 6. Synthe
 tests exercise missing/error/secret values; they do not verify these APIs on Forever.
 After maintenance, `/bpp all` and `/bpp export` can confirm their actual behavior.
 
+### Ability learn levels and Forever changes — 2026-10-06
+
+ForeverDB `classes.json` (build 1.60.1.70205, SHA-256 `c6f07937...`) lists every
+class ability rank with its learn level and source. The 1,504 trainer and quest ranks (430
+abilities) are generated into `Data/SpellRanks.lua` as **provisional** leads. Every `minLevel`
+Battleplan already had (12 Rogue, 8 Priest and 10 Warrior abilities, from the Rogue
+trainer capture and Classic values) matches the import.
+
+`changes.json` (SHA-256 `ce54a829...`) compares the Forever client with Classic. For
+example, Slam is learned at 20 instead of 30 and gains a fifth rank, Berserker Rage
+moves from 32 to 30, and Warrior loses Sword Specialization, Polearm Specialization,
+Improved Battle Shout, Toughness and Improved Taunt as talents. No Rogue, Priest or
+Warrior advice names a talent or ability that Forever removed. The full list is in
+`docs/FOREVER-CHANGES.md`. A trainer capture is still needed before marking learn
+levels verified.
+
 ### Selected gear comparison — 2026-10-06
 
 No new client API or game facts are introduced. Planner reuses existing cleaned
