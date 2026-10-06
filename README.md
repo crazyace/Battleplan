@@ -204,3 +204,16 @@ The planner now starts at 760x700 with 14-point body/control text, 16-point sect
 headings and 32-pixel icons. Icon rims sit outside the image rather than overlapping
 it. Use the footer **- / +** buttons to save a size preference (80–140%); the window
 automatically fits smaller screens and respects WoW's own UI scale.
+
+### Practical upgrade selection
+
+The gear engine can compare quest, crafted, vendor and drop routes for each slot,
+showing one next upgrade and one useful alternative with source/location and
+requirements inline. Confirmed usable-now routes take priority; unknown availability
+is explicitly labeled **Check requirements**. Crafted gear can come from another
+player unless the item requires the wearer's profession.
+
+This is the selection/presentation foundation, not a populated upgrade service yet.
+A source catalog and live access/usability resolver are still needed. Existing
+stat weights remain provisional; score gains are not damage/healing percentages.
+See [the gearing design](docs/GEAR-UPGRADES.md) for the policy and remaining work.

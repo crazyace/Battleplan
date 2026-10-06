@@ -115,6 +115,31 @@ allocations(L, ns)
 L, ns = slices(PRIEST_40, "Priest (healing table)")
 rows(L, ns, "Priest")
 
+# Large synthetic source catalog: each resume must stay within the scheduler budget.
+L.globals().GEAR_NS = ns
+L.execute("""
+  GEAR_TARGETS={}
+  for i=1,3200 do
+    GEAR_TARGETS[i]={slot=5,itemID=900000+i,name="Test item",stats={AGILITY=i},routes={
+      {key="route"..i,kind="quest",name="Test quest"}}}
+  end
+  GEAR_JOB=coroutine.create(function()
+    GEAR_RESULT=GEAR_NS.Engine.Gear.NextUpgrades(GEAR_TARGETS,30,{AGILITY=1},{[5]=100},{},coroutine.yield)
+  end)
+""")
+resume = L.eval("function() return coroutine.resume(GEAR_JOB),coroutine.status(GEAR_JOB) end")
+worst, count = 0.0, 0
+while True:
+    started = time.perf_counter()
+    ok, status = resume()
+    worst = max(worst, (time.perf_counter() - started) * 1000)
+    count += 1
+    if not ok:
+        raise AssertionError('source catalog coroutine failed')
+    if status == 'dead':
+        break
+report(f"3200 source candidates, worst of {count} slices", worst, SLICE_BUDGET_MS, "ms")
+
 if failures:
     print(f"\nperf test FAILED: {len(failures)} over budget")
     sys.exit(1)

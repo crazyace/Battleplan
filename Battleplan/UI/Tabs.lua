@@ -173,6 +173,29 @@ function build.rotation(s, rows)
   upcomingRows(rows, r.upcoming, s.icons)
 end
 
+local SOURCE_NAMES = { quest = "Quest", craft = "Crafting", vendor = "Vendor", drop = "Drop" }
+local function upgradeRow(rows, u, alternative)
+  local when
+  if not u.now then when = ("Level %d"):format(u.requiredLevel or u.target.minLevel or 0)
+  elseif u.status == "unknown" then when = "Check requirements"
+  else when = util.color("green", ("+%.1f score"):format(u.gain)) end
+  local prefix = alternative and "Alternative: " or (u.slotName .. ": ")
+  row(rows, prefix .. u.target.name, when, type(u.target.source) == "string" and u.target.source or nil, 1, u.target.icon)
+  if u.selectedForEase then note(rows, "Easier to obtain while keeping most of the stronger option's score gain.", 2) end
+  local route = u.route
+  if route then
+    local source = (SOURCE_NAMES[route.kind] or "Source") .. ": " .. (route.name or "Details unavailable")
+    if route.location then source = source .. " — " .. route.location end
+    note(rows, source, 2)
+    if route.requirements then note(rows, route.requirements, 2) end
+    if route.kind == "craft" and route.profession then
+      note(rows, "Find a crafter with " .. route.profession .. "; confirm the recipe, materials and price.", 2)
+    end
+    if u.status == "unknown" then note(rows, "Availability or equipment requirements are not confirmed.", 2) end
+    if u.target._status ~= "verified" or route._status ~= "verified" then note(rows, "Source data is provisional.", 2) end
+  end
+end
+
 function build.gear(s, rows)
   header(rows, "Enchants")
   if #s.enchants == 0 then note(rows, "No enchant advice for your gear yet.") end
@@ -185,16 +208,15 @@ function build.gear(s, rows)
   blank(rows)
   header(rows, "Next upgrades")
   if not s.hasUpgradeData then
-    note(rows, "No upgrade list for your class yet: it fills in from dungeon drops (the probe's loot log).")
+    note(rows, "No upgrade sources for your class yet. Quest, crafted, vendor and drop options need confirmed data.")
   elseif s.gearUnknown then
     note(rows, "Waiting for equipped item stats; comparisons for those slots are unavailable.")
   elseif #s.upgrades == 0 then
-    note(rows, "Nothing on the list beats what you're wearing.")
+    note(rows, "No suitable upgrade found in the current catalog. Unknown or blocked options may be excluded.")
   end
   for _, u in ipairs(s.upgrades) do
-    local when = u.now and util.color("green", ("+%.1f"):format(u.gain))
-      or ("level %d"):format(u.target.minLevel or 0)
-    row(rows, ("%s: %s"):format(u.slotName, u.target.name), when, u.target.source, 1)
+    upgradeRow(rows, u, false)
+    if u.alternative then upgradeRow(rows, u.alternative, true) end
   end
 end
 

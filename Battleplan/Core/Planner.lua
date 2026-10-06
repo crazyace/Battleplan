@@ -104,6 +104,8 @@ local function announce(changes, specName)
   end
 end
 
+local function yieldGear() coroutine.yield() end
+
 local function compute()
   local s = {} -- publish only after the whole job succeeds
   local oldRotation, oldSpec = state.rotation, state.spec
@@ -149,7 +151,7 @@ local function compute()
   if targets and #targets > 0 then
     local scores
     scores, s.gearUnknown = equippedScores(s.weights)
-    s.upgrades = E.Gear.NextUpgrades(targets, s.level, s.weights, scores)
+    s.upgrades = E.Gear.NextUpgrades(targets, s.level, s.weights, scores, { class = s.class }, yieldGear)
   end
   s.hasUpgradeData = targets ~= nil and #targets > 0
   coroutine.yield()

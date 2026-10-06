@@ -212,3 +212,20 @@ UIParent dimensions with a 32-unit margin, without overwriting the requested siz
 Opening and display/UI-scale events reapply fitting outside combat. Invalid saved
 values reset or clamp. Controls stay dormant in combat. UI tests cover saved scale,
 limits, screen fitting and deferral; icon tests cover exact outer-rim dimensions.
+
+### Practical upgrade routes
+
+`Engine/Gear.NextUpgrades` accepts optional observed context and a work-yield
+callback. Structured targets carry acquisition `routes`; access and item usability
+are supplied separately from static catalog facts. The engine excludes known
+blocked, owned, unusable or completed one-time quest routes, compares weighted
+stat gains and returns one primary plus at most one alternative per slot.
+Collection and per-slot selection yield every 32 candidates. The planner supplies
+the callback from its existing out-of-combat job. No new game API is read.
+
+The initial planner context contains the class only. A live access/usability resolver
+and approved catalog are pending; structured routes therefore remain unknown
+until observed context is supplied. Legacy text-source targets retain the previous
+selection behavior. `UI/Tabs` prints sources, requirements, unknown status and
+provisional provenance inline. Selection policy and schema are in GEAR-UPGRADES.md.
+Tests use synthetic fixtures; no quest/crafting facts are promoted by them.
