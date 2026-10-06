@@ -92,3 +92,6 @@ How every phase below gets done. Details in [AGENTS.md](AGENTS.md).
       title dragging and Escape at the player's UI scale
 
 - [x] Remove duplicated explanation tooltips; preserve captured-detail tooltips
+
+- [x] Add optional client spell/talent icons with name checks and reusable textures
+- [ ] Confirm icon display and capture icon IDs on Forever after maintenance

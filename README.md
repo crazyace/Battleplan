@@ -186,3 +186,8 @@ The Talents tab highlights the next point and its target rank, then explains tha
 choice. **Show build details** expands the remaining talent reasons. Explanations
 and item names wrap instead of being cut off; scroll for longer guides and hover
 for extra captured spell/rank text. Inline explanations do not repeat on hover. Drag the title bar to move the window; Escape closes it.
+
+Spell rows and the next talent point show the client's icon beside the text when it
+is available. Full build details also show talent icons. Missing icon data keeps a
+text-only row; names and ranks remain visible. Update BattleplanProbe as well to
+include icon IDs in future `/bpp spells` and `/bpp talents` exports.

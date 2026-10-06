@@ -99,6 +99,14 @@ def allocations(L, ns):
     # Scrolling rebinds existing rows; no new frames or tables.
     scroll = L.eval("function() BattleplanNS.UI.list:Scroll(1); BattleplanNS.UI.list:Scroll(-1) end")
     report(f"list scroll x{n}: memory", measure(scroll, n), ALLOC_BUDGET_KB, "KB")
+    # Synthetic icon values exercise texture rebinding, not actual client icons.
+    L.execute("""
+      BattleplanNS.state.icons={}
+      for name in pairs(BattleplanNS.state.known) do BattleplanNS.state.icons[name]=987001 end
+      BattleplanNS.UI.SelectTab("rotation")
+      BattleplanNS.UI.list:Scroll(10000); BattleplanNS.UI.list:Scroll(-10000)
+    """)
+    report(f"list scroll with icons x{n}: memory", measure(scroll, n), ALLOC_BUDGET_KB, "KB")
 
 
 L, ns = slices(ROGUE_30, "Rogue")

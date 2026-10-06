@@ -304,6 +304,7 @@ local function spellDetails(spellID)
   if C_Spell and C_Spell.GetSpellInfo then
     local ok, info = pcall(C_Spell.GetSpellInfo, spellID)
     if ok and type(info) == "table" then
+      d.iconID = sanitize(info.iconID)
       d.name, d.castTime, d.minRange, d.maxRange = sanitize(info.name), sanitize(info.castTime),
         sanitize(info.minRange), sanitize(info.maxRange)
     end

@@ -10,6 +10,27 @@ local API, E = ns.API, ns.Engine
 local state = { version = 0, ready = false }
 ns.state = state
 
+-- Icon reads are bounded per slice and published with the rest of the plan.
+local function spellIcons(s, data, rules)
+  local icons, reads = {}, 0
+  for name, spell in pairs(s.known) do
+    icons[name] = API.SpellIcon(spell.id, name)
+    reads = reads + 1
+    if reads % 4 == 0 then coroutine.yield() end
+  end
+  for _, step in ipairs(s.build and s.build.order or {}) do
+    local name = step[1]
+    local effect = data.TalentEffects and data.TalentEffects[name]
+    local rule = rules and rules[name]
+    if not icons[name] then
+      icons[name] = API.SpellIcon(effect and effect.spellID or rule and rule.spellID, name)
+      reads = reads + 1
+      if reads % 4 == 0 then coroutine.yield() end
+    end
+  end
+  return icons
+end
+
 -- Healing table: every rank of every heal the guide mentions.
 local function healingRows(known, guide)
   local raw = {}
@@ -143,6 +164,9 @@ local function compute()
   elseif s.role == "tank" then
     s.tanking = E.Tanking.Build(data.Tanking, s.spec, s.known, s.level)
   end
+
+  coroutine.yield()
+  s.icons = spellIcons(s, data, rules)
 
   s.ready, s.version = true, state.version + 1
   for k in pairs(state) do state[k] = nil end

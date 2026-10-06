@@ -31,6 +31,10 @@ local function makeRow(list)
   row.right:SetJustifyV("TOP")
   row.left:SetWordWrap(true)
   row.right:SetWordWrap(true)
+  row.icon = row:CreateTexture(nil, "ARTWORK")
+  row.icon:SetSize(24, 24)
+  row.icon:SetTexCoord(0.07, 0.93, 0.07, 0.93)
+  row.icon:Hide()
   row.accent = row:CreateTexture(nil, "BACKGROUND")
   row.accent:SetAllPoints()
   row.accent:SetColorTexture(0.18, 0.24, 0.31, 0.65)
@@ -51,12 +55,13 @@ function List:Measure()
   local y = 0
   for i, d in ipairs(self.data) do
     local kind = d.kind or "row"
-    local indent = (d.indent or 0) * 12 + 8
+    local indent = (d.indent or 0) * 12 + 8 + (d.icon and 32 or 0)
     local rightWidth = d.value and d.value ~= "" and math.floor(width * 0.40) or 0
     local leftWidth = width - indent - (rightWidth > 0 and rightWidth + 14 or 0)
     self.measure:SetFontObject(FONTS[kind] or FONTS.row)
     local height = math.max(measure(self.measure, d.text, leftWidth),
       rightWidth > 0 and measure(self.measure, d.value, rightWidth) or 0) + 10
+    if d.icon then height = math.max(height, 34) end
     if kind == "blank" then height = 10
     elseif kind == "header" then height = height + 8
     elseif d.emphasis then height = height + 10 end
@@ -73,9 +78,18 @@ local function bind(row, d, list, index)
     row.kind = kind
     row.left:SetFontObject(FONTS[kind] or FONTS.row)
   end
-  local indent = (d.indent or 0) * 12 + 8
+  local indent = (d.indent or 0) * 12 + 8 + (d.icon and 32 or 0)
   local rightWidth = d.value and d.value ~= "" and math.floor(list.width * 0.40) or 0
   local top = d.emphasis and -10 or -5
+  if d.icon then
+    row.icon:ClearAllPoints()
+    row.icon:SetPoint("TOPLEFT", indent - 32, top)
+    if row.iconID ~= d.icon then row.iconID = d.icon; row.icon:SetTexture(d.icon) end
+    row.icon:Show()
+  else
+    row.iconID = nil
+    row.icon:Hide()
+  end
   row.left:ClearAllPoints()
   row.left:SetPoint("TOPLEFT", indent, top)
   row.left:SetWidth(list.width - indent - (rightWidth > 0 and rightWidth + 14 or 0))

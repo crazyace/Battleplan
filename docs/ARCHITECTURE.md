@@ -158,3 +158,20 @@ not a live-client render and must not be used to claim pixel-perfect compatibili
 Explanation rows wrap inline and have no hover tooltip. List hover also suppresses
 identical title/body text defensively; tooltips with extra captured data retain a
 wrapped heading and one body. The UI tests cover both paths.
+
+
+### Spell and talent icons
+
+`API.SpellIcon(id, expectedName)` reads the optional `iconID` from the existing
+`C_Spell.GetSpellInfo` API, cleans fields and checks the returned name before caching
+a successful texture file ID. Missing/error/secret values and mismatched names do
+not produce an icon. `ForgetSpells` clears the icon cache; spell-data-load events
+also queue a new plan so unavailable data can be retried.
+
+The planner gathers icons for known spells and talents in the selected build, using
+captured talent IDs when available and imported rules otherwise. Name checking is
+required for both. Reads yield every four requests, run only out of combat and are
+published with the rest of the state. Engines and the UI perform no icon data reads.
+UI rows reserve 32 pixels for a reusable 24-pixel texture; measurement uses the same
+inset, and text-only rows reclaim it. Rebinding hides stale icons and changes the
+texture only when the file ID changes. The perf suite measures icon-bearing scrolls.

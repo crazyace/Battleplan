@@ -95,6 +95,7 @@ function CreateFrame(kind, name, parent)
     t.Show = function(self) self._shown = true end
     t.Hide = function(self) self._shown = false end
     t.SetShown = function(self, v) self._shown = v end
+    t.SetTexture = function(self, v) self.texture = v end
     return t
   end
   f.CreateAnimationGroup = function(self) return animGroup(self) end
@@ -162,7 +163,7 @@ C_Spell = {
     local n = C.nodes[id - 900000]
     return n and n[2]
   end,
-  GetSpellInfo = function(id) local s = spell(id) return s and { name = s[1], castTime = s[5] or 0 } end,
+  GetSpellInfo = function(id) local s = spell(id) return s and { name = s[1], castTime = s[5] or 0, iconID = s[7] } end,
   GetSpellPowerCost = function(id) local s = spell(id) return s and s[4] and { { type = 0, cost = s[4] } } or {} end,
   GetSpellDescription = function(id) local s = spell(id) return s and s[6] or "" end,
 }
