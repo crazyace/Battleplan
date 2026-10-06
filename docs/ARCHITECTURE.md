@@ -73,6 +73,11 @@ only for the latter. Its third return, equipped links by slot, becomes
 Rows stay plain tables: an item row carries `itemID` and `hyperlink` (`"item:<id>"`).
 `UI/List.lua` shows `GameTooltip:SetHyperlink(hyperlink)` with the row's `tip` under it,
 and shift-click (`IsModifiedClick("CHATLINK")`) inserts `API.ItemLink(itemID)` in chat.
+A Gear row with several options also carries `slot`, `choices` (the engine's
+`options`), `recommended` and `picked`; a plain click opens `UI/GearPicker.lua`, a
+lazily built, reused dropdown grouped by source kind. Picks live in
+`ns.db.gearPicks[slot] = itemID`; Tabs falls back to the recommendation when the saved
+item isn't among the options.
 `List:SetData` re-shows the tooltip for the row still under the mouse, so a replan
 doesn't close it. `API.RequestItem` asks for each item once, and item-load events
 (`GET_ITEM_INFO_RECEIVED`, `ITEM_DATA_LOAD_RESULT`) replan only while the last plan

@@ -209,8 +209,7 @@ local function compute()
     s.upgrades = E.Gear.NextUpgrades(targets, s.level, s.weights, scores, context, yieldGear)
     -- Load the suggested items now so hovering one shows its full tooltip.
     for _, u in ipairs(s.upgrades) do
-      API.RequestItem(u.target.itemID)
-      if u.alternative then API.RequestItem(u.alternative.target.itemID) end
+      for _, option in ipairs(u.options or EMPTY) do API.RequestItem(option.target.itemID) end
     end
   end
   s.hasUpgradeData = targets ~= nil and #targets > 0

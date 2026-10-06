@@ -284,12 +284,14 @@ def printed(L):
 
 
 def screen(L, ns, tab, tips=False):
-    """Every row of a tab as 'text | value' lines; tips=True adds item rows' hover text."""
+    """Every row of a tab as 'text | value' lines; tips=True adds item rows' hover text
+    and the options in each Gear row's picker."""
     return L.eval("""function(ns, tab, tips)
       local out = {}
       for _, r in ipairs(ns.UI.BuildRows(tab, ns.state)) do
         out[#out + 1] = (r.text or "") .. " | " .. (r.value or "")
         if tips and r.itemID and r.tip then out[#out + 1] = "  hover: " .. r.tip end
+        for _, c in ipairs(tips and r.choices or {}) do out[#out + 1] = "  choice: " .. c.target.name .. " | " .. (ns.UI.GearSourceLine(c) or "") end
       end
       return table.concat(out, "\\n")
     end""")(ns, tab, tips)

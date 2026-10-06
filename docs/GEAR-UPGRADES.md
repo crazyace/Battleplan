@@ -21,9 +21,12 @@ candidate set. A craftable item does not require the wearer to be its crafter.
    option's gain. Both routes must be available now and have known effort bands.
    These bands must be based on acquisition evidence, not guessed from source kind.
    Unknown effort never means expensive. The 80% rule is also provisional policy.
-6. Show one primary and at most one alternative per slot. Keep a materially stronger
-   item when an easier item wins, otherwise the strongest different acquisition
-   kind at the same availability/level status. Do not duplicate the same item.
+6. Recommend one item per slot, and offer every kept option (up to
+   `Gear.MAX_OPTIONS`, best first, one route per item) in the slot's picker so the
+   player can choose a quest, crafted, vendor or drop item themselves. The engine
+   still names one alternative (a materially stronger item when an easier item wins,
+   otherwise the strongest different acquisition kind at the same availability/level
+   status). Do not duplicate the same item.
 7. Show a compact row (slot, name, one-line source, gain) and put source/location,
    requirements, provisional provenance and availability in the hover under the item
    tooltip. Future gear shows its required level; unknown access shows "unconfirmed" on
