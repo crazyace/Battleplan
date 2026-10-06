@@ -20,7 +20,7 @@ function Rotation.Filter(list, known, level, upcoming, seen, catalog)
     elseif upcoming and not seen[e.spell] then
       seen[e.spell] = true
       upcoming[#upcoming + 1] = {
-        spell = e.spell, note = e.note, talent = e.talent, minLevel = e.minLevel,
+        spell = e.spell, spellID = e.spellID, note = e.note, talent = e.talent, minLevel = e.minLevel,
         trainable = (not e.talent) and e.minLevel ~= nil and e.minLevel <= level,
       }
     end

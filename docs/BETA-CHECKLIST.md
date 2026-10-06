@@ -94,3 +94,7 @@ with the item name and amount, e.g. `+15 agility`).
 
 - [ ] Native window pass: title/context visible, standard close button clickable, gold
       selected navigation, WoW menu backdrop, and icon borders after scrolling.
+
+- [ ] Tanking at level 12: Before you pull lists equipment/stance/Rage/pull size,
+      no Shield Wall readiness or Stamina-for-hit trade; upcoming Revenge,
+      Demoralizing Shout, Shield Block, Cleave and Shield Wall have client icons.

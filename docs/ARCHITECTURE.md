@@ -187,3 +187,19 @@ A transparent, narrower title drag region leaves the close button accessible.
 Title, content and close button levels are explicit so the inset/header artwork
 cannot hide the title/context or consume close-button clicks. Offline tests track
 template choice, ownership and frame levels as well as existing behavior/performance.
+
+
+### Upcoming icons and tank preparation
+
+`Rotation.Filter` preserves optional candidate spell IDs on upcoming rows, while
+known rows always use their actual spellbook IDs. The planner requests upcoming
+icons with the same name checks and four-request yield budget as active icons;
+talent-rule IDs are a fallback for upcoming talents. Resolving an icon never adds
+an ability to `known` or changes learning-level evidence.
+
+The tank guide's `setup` contains labeled preparation steps and optional spell
+requirements / unavailable text. `Engine.Tanking.Build` filters it and conditional
+pull instructions using plain known-spell data. The UI shows this checklist before
+ability priorities. It makes no readiness, cooldown, equipped-gear or optimized
+stat-trade claim. Tests cover level-12 preparation, all five formerly blank upcoming
+icons, missing stance, conditional pulls and learning an upcoming ability.

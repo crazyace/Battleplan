@@ -194,3 +194,8 @@ include icon IDs in future `/bpp spells` and `/bpp talents` exports.
 
 The window uses Blizzard’s framed panel, red buttons, gold headings, close button
 and icon borders so it fits the WoW UI. Readable wrapping and direct controls remain.
+
+The Tanking tab starts with **Before you pull**: equipment, your learned stance,
+Bloodrage when learned, and pull size. Pull instructions omit abilities you have
+not learned. Upcoming Warrior abilities can show client icons even before learning
+them; this does not make them usable or verify their provisional learning levels.

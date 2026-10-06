@@ -10,6 +10,19 @@ local API, E = ns.API, ns.Engine
 local state = { version = 0, ready = false }
 ns.state = state
 
+local function upcomingIcons(guide, icons, reads, rules)
+  if not guide then return reads end
+  for _, spell in ipairs(guide.upcoming or {}) do
+    if not icons[spell.spell] then
+      local rule = rules and rules[spell.spell]
+      icons[spell.spell] = API.SpellIcon(spell.spellID or rule and rule.spellID, spell.spell)
+      reads = reads + 1
+      if reads % 4 == 0 then coroutine.yield() end
+    end
+  end
+  return reads
+end
+
 -- Icon reads are bounded per slice and published with the rest of the plan.
 local function spellIcons(s, data, rules)
   local icons, reads = {}, 0
@@ -28,6 +41,8 @@ local function spellIcons(s, data, rules)
       if reads % 4 == 0 then coroutine.yield() end
     end
   end
+  reads = upcomingIcons(s.rotation, icons, reads, rules)
+  upcomingIcons(s.tanking, icons, reads, rules)
   return icons
 end
 
