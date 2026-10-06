@@ -6,14 +6,14 @@ ns.Engine.Tanking = Tanking
 
 local Rotation = ns.Engine.Rotation
 
-function Tanking.Build(data, spec, known, level)
+function Tanking.Build(data, spec, known, level, ranks)
   local guide = data and ns.Engine.Score.Lookup(data, spec)
   if not guide then return nil end
   local upcoming, seen = {}, {}
   local built = {
-    single = Rotation.Filter(guide.single, known, level, upcoming, seen),
-    multi = Rotation.Filter(guide.multi, known, level, upcoming, seen),
-    cooldowns = Rotation.Filter(guide.cooldowns, known, level, upcoming, seen),
+    single = Rotation.Filter(guide.single, known, level, upcoming, seen, nil, ranks),
+    multi = Rotation.Filter(guide.multi, known, level, upcoming, seen, nil, ranks),
+    cooldowns = Rotation.Filter(guide.cooldowns, known, level, upcoming, seen, nil, ranks),
     pullPlan = {},
     setup = {},
     upcoming = upcoming,

@@ -241,6 +241,21 @@ Run `python tools/import_full_data.py --check` to verify checksums and generatio
 `python tools/import_full_data.py` regenerates the catalog from the preserved ZIP.
 See [data provenance and licensing](data/external/NOTICE.md).
 
+## Ability learn levels and Forever changes
+
+`python tools/import_class_data.py` reads `classes.json` and `changes.json` from the
+preserved snapshot and writes two files: `Data/SpellRanks.lua`, the learn level of every
+rank of every trainer- or quest-taught ability for all nine classes, and
+[docs/FOREVER-CHANGES.md](docs/FOREVER-CHANGES.md), what Forever changed from Classic
+for each class. `--check` fails when either file is stale. Both are provisional.
+
+The Rotation, Tanking and Healing tabs use the learn levels. A known spell with a
+higher rank available at your level shows "Rank N at trainer". An upcoming ability with
+no hand-written `minLevel` gets the imported one, and quest-taught abilities say
+"quest" rather than "train now". `tests/class_data_test.py` also fails when a
+hand-written `minLevel` disagrees with the import, or when a class's advice names a
+talent or ability that Forever removed.
+
 Gear suggestions now show estimated stat-score gain plus separate gains and losses
 against equipped gear. Empty slots are labeled; unavailable equipped stats block
 comparisons. These estimates describe modeled static stats, not DPS/healing gains.

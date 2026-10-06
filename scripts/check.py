@@ -23,6 +23,7 @@ TESTS = [
     ("gear comparison test", "tests/gear_comparison_test.py"),
     ("gear catalog test", "tests/gear_catalog_test.py"),
     ("full data test", "tests/full_data_test.py"),
+    ("class data test", "tests/class_data_test.py"),
     ("perf test", "tests/perf_test.py"),
     ("regression test", "tests/regression_test.py"),
     ("milestone test", "tests/milestone_test.py"),

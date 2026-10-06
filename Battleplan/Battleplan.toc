@@ -19,6 +19,7 @@ Core\API.lua
 Data\Stats.lua
 Data\FullGearCatalog.lua
 Data\TalentRules.lua
+Data\SpellRanks.lua
 Data\Consumables.lua
 Data\ROGUE\Specs.lua
 Data\ROGUE\Weights.lua

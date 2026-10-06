@@ -141,7 +141,12 @@ local function spellRows(rows, list, numbered, icons)
     if r.reference and r.reference.description and r.reference.description ~= "" then
       tip = (tip or "") .. "\n\nCaptured spell text (level " .. r.reference.observedAtLevel .. "): " .. r.reference.description
     end
-    row(rows, text, rankText(r.rank), tip, 1, icons and icons[r.spell])
+    local value = rankText(r.rank)
+    if r.trainRank then
+      value = util.color("green", ("Rank %d at trainer"):format(r.trainRank))
+      tip = (tip and tip .. "\n\n" or "") .. ("You know Rank %d. Rank %d is trainable at your level."):format(r.rank, r.trainRank)
+    end
+    row(rows, text, value, tip, 1, icons and icons[r.spell])
     if r.note then note(rows, r.note, 2) end
   end
 end
@@ -153,6 +158,7 @@ local function upcomingRows(rows, upcoming, icons)
   for _, u in ipairs(upcoming) do
     local when = u.talent and "talent"
       or u.trainable and util.color("green", "train now")
+      or u.quest and (u.minLevel and ("quest, level %d"):format(u.minLevel) or "quest")
       or u.minLevel and ("level %d"):format(u.minLevel) or ""
     row(rows, u.spell, when, u.note, 1, icons and icons[u.spell])
   end
