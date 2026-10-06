@@ -167,7 +167,8 @@ local function compute()
     local scores, owned, details
     scores, s.gearUnknown, owned, details, s.equippedLinks = equippedScores(s.weights)
     gearPending = s.gearUnknown
-    local context = { class = s.class, owned = owned, faction = API.PlayerFaction(), completedQuests = {}, equippedStats = details }
+    local context = { class = s.class, owned = owned, faction = API.PlayerFaction(), completedQuests = {},
+      equippedStats = details, professions = API.PlayerProfessions() }
     local queried, reads = {}, 0
     for i, target in ipairs(targets) do
       if (target.minLevel or 0) <= s.level + 5 and not owned[target.itemID] then
@@ -365,6 +366,8 @@ function Planner.Start()
     Events:On(event, function() API.ForgetTalents(); Planner.Queue() end, "talents")
   end
   Events:On("PLAYER_EQUIPMENT_CHANGED", Planner.Queue, "gear")
+  -- Learning or dropping a profession changes which bind-on-pickup crafts show.
+  Events:On("SKILL_LINES_CHANGED", Planner.Queue, "professions")
   Events:On("QUEST_TURNED_IN", questsChanged, "quests")
   Events:On("QUEST_LOG_UPDATE", questsChanged, "quests")
   Events:On("GET_ITEM_INFO_RECEIVED", itemDataArrived, "item-data")

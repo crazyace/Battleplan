@@ -46,6 +46,7 @@ plus a screenshot of the same character's Defense tooltip.
 | Consumable items | All 55 item IDs exist. Renamed: Elixir of Minor Strength (2454), Ogre Strength (3391), Greater Strength (9206, level 48), Lesser Fortitude (3825), Lesser Defense (3389), Defense (8951), Greater Defense (13445), Mageblood Elixir (20007). Elixir of Wisdom is level 10 | W12 items |
 | Food | One stat each, for 15 min after 10 s of eating; item spell "Nutritious Food". Spiced Wolf Meat +1 Agi, Goretusk Liver Pie +3 Str, Crocolisk Steak +3 Agi (level 5), Lean Wolf Steak +5 Agi (15), Monster Omelet +15 Sta, Grilled Squid +1% crit, Smoked Desert Dumplings +20 Str, Nightfin Soup +22 spell damage, Runn Tum Tuber Surprise +15 Int (35) | W12 items |
 | Weapon oils | Wizard oils: spell damage and healing +8 / 16 / 36 (Brilliant also +1% spell crit). Mana oils: 5 / 10 / 15 mana per 5 s and healing +10 / 20 / 30 | W12 items |
+| Professions | `GetProfessions` and `GetProfessionInfo` answer: a level 19 Rogue read Leatherworking 85, Skinning 133, First Aid 83, Cooking 15 | Gearwright `data/probe/2026-10-03-weaponskills-professions.json` |
 | Item tooltips | The first `/bpp items` read has names and levels but no "Use:" line; the second, seconds later, has the full text | W12 items |
 | Warrior level 12 stats | Blessing of Kings landed between the two snapshots (+10% every stat). From it: 1 Stamina = 10 health; 2 Agility = +0.357% melee crit and dodge and +4 armor (about 5.6 Agility per 1% crit); 3 Strength = +6 melee AP. One-off pair, not a stat lab measurement | W12 stat lab |
 

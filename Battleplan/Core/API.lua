@@ -40,6 +40,26 @@ function API.PlayerFaction()
   if value == "Alliance" or value == "Horde" then return value end
 end
 
+-- The player's professions as { [name] = skill }, from GetProfessions and
+-- GetProfessionInfo (both answer on Forever: Gearwright's 2026-10-03
+-- weaponskills-professions capture). Empty when the client can't say.
+function API.PlayerProfessions()
+  local out = {}
+  if not (GetProfessions and GetProfessionInfo) then return out end
+  -- Up to five indexes (two primaries, archaeology, fishing, cooking); any may be nil.
+  local indexes = { pcall(GetProfessions) }
+  if not indexes[1] then return out end
+  for i = 2, 6 do
+    local index = API.clean(indexes[i])
+    if index then
+      local okInfo, name, _, skill = pcall(GetProfessionInfo, index)
+      name = okInfo and API.clean(name)
+      if type(name) == "string" then out[name] = API.clean(skill) or 0 end
+    end
+  end
+  return out
+end
+
 local questValues, questEpochs, questEpoch = {}, {}, 0
 function API.QuestCompleted(id)
   if ns.InCombat() or type(id) ~= "number" or id <= 0 then return nil end

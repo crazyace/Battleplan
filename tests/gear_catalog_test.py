@@ -113,5 +113,14 @@ for character, cls, prof in ((ROGUE_30, 'ROGUE', 'Leatherworking'), (PRIEST_40, 
     other = runtime(character)
     addon = start_battleplan(other)
     check(addon.state.hasUpgradeData and len(addon.state.upgrades) > 0, cls + ' catalog connected')
-    check(prof in screen(other, addon, 'gear'), cls + ' relevant crafter source shown')
+    check(prof in screen(other, addon, 'gear', tips=True), cls + ' relevant crafter source shown')
+# Bind-on-pickup crafts (wearerProfession) show only with that profession, read live.
+other = runtime(ROGUE_30)
+addon = start_battleplan(other)
+names = lambda: {u.options[i].target.name for u in addon.state.upgrades.values()
+                 for i in range(1, len(u.options) + 1)}
+check("Skulker's Leather Belt" not in names(), 'bind-on-pickup craft hidden without Leatherworking')
+other.execute('C.professions = { { "Leatherworking", 150 }, { "Skinning", 140 } }; fire("SKILL_LINES_CHANGED")')
+drain(other, addon)
+check("Skulker's Leather Belt" in names(), 'bind-on-pickup craft shown once the player has Leatherworking')
 print(f'gear catalog test passed: {checks} checks')

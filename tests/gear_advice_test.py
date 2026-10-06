@@ -53,6 +53,19 @@ L.execute('CRAFT.classes=nil;CRAFT.routes[1].wearerProfession="Blacksmithing";CT
 check(choose()[1].target.itemID == 900001, 'actual wearer profession requirement enforced')
 L.execute('CTX.professions=nil')
 check(choose()[1].target.itemID == 900001, 'unknown wearer skill cannot outrank confirmed route')
+# Bind-on-pickup crafts only for a player with that profession.
+L.execute('CTX.professions={}')
+r = choose()[1]
+check(all(r.options[i].target.itemID != 900002 for i in range(1, len(r.options) + 1)),
+      'bind-on-pickup craft hidden without the profession')
+L.execute('CTX.professions=nil')
+r = choose()[1]
+check(all(r.options[i].target.itemID != 900002 for i in range(1, len(r.options) + 1)),
+      'bind-on-pickup craft hidden when professions are unreadable')
+L.execute('CTX.professions={Blacksmithing=50}')
+r = choose()[1]
+check(any(r.options[i].target.itemID == 900002 for i in range(1, len(r.options) + 1)),
+      'bind-on-pickup craft offered with the profession')
 L.execute('CRAFT.routes[1].wearerProfession=nil;QUEST.routes[1].prerequisites={99999}')
 check(choose()[1].target.itemID == 900002, 'unknown prerequisites do not become available automatically')
 L.execute('CTX.completedQuests[99999]=true;QUEST.routes[1].faction="Alliance";CTX.faction="Horde"')

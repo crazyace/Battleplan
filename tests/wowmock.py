@@ -201,6 +201,12 @@ C_Spell = {
 
 -- Items and gear: C.inv = { [slot] = link }, C.itemStats = { [link] = {...} }
 function GetInventoryItemLink(_, slot) return C.inv[slot] end
+-- Professions: C.professions = { { name, skill }, ... } (Mainline order: up to 5 indexes).
+function GetProfessions()
+  local p = C.professions or {}
+  return p[1] and 1 or nil, p[2] and 2 or nil, p[3] and 3 or nil, p[4] and 4 or nil, p[5] and 5 or nil
+end
+function GetProfessionInfo(i) local p = C.professions[i] return p[1], nil, p[2], 300 end
 -- Chat links: C.modified is the held modifier action ("CHATLINK" for shift).
 function IsModifiedClick(action) return C.modified == action end
 function ChatEdit_InsertLink(link) C.chatLinks = C.chatLinks or {}; C.chatLinks[#C.chatLinks + 1] = link; return true end

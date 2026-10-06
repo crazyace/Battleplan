@@ -147,11 +147,12 @@ local function access(route, target, level, ctx)
   local known = ctx.access and ctx.access[route.key]
   if known == "blocked" then return nil end
   local status = known == "available" and "available" or "unknown"
+  -- Bind-on-pickup crafts (the importer sets wearerProfession) only reach a player
+  -- with that profession; anyone else can't get one, so they aren't shown at all.
   -- Wearing restrictions are separate from the crafter's profession.
   if route.wearerProfession then
     local skill = ctx.professions and ctx.professions[route.wearerProfession]
-    if skill and skill < (route.wearerSkill or 1) then return nil end
-    if not skill then status = "unknown" end
+    if not skill or skill < (route.wearerSkill or 1) then return nil end
   end
   for _, id in ipairs(route.prerequisites or EMPTY) do
     if not ctx.completedQuests or not ctx.completedQuests[id] then status = "unknown" end

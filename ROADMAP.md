@@ -145,6 +145,7 @@ How every phase below gets done. Details in [AGENTS.md](AGENTS.md).
 - [x] Hover a suggested item for its item tooltip plus gain, replaced item and source; shift-click links it
 - [x] Compact Gearwright-style gear rows; keep the hover tooltip up across replans
 - [x] Per-slot picker: every quest, crafted, vendor and drop option; the player's pick is saved
+- [x] Bind-on-pickup crafted gear only for players with that profession (read live)
 - [ ] Live-check suggested-item hover tooltips and shift-click links on Forever
 - [x] Distinguish empty slots, zero-score equipment and unreadable equipped links
 - [ ] Live-check primary/alternative comparisons against equipped and item tooltips
