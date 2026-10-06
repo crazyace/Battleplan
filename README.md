@@ -110,7 +110,8 @@ docs work as written in PowerShell.
 ## Related
 
 [Gearwright](https://github.com/crazyace/Gearwright) does item scoring and tooltip upgrade
-lines; Battleplan leaves tooltips to it. Battleplan's confirmed API facts come from
+lines on every item tooltip; Battleplan leaves those to it. Battleplan's suggested-gear
+hover works the way Gearwright's item rows do. Battleplan's confirmed API facts come from
 Gearwright's beta findings.
 
 ## License
@@ -259,3 +260,8 @@ talent or ability that Forever removed.
 Gear suggestions now show estimated stat-score gain plus separate gains and losses
 against equipped gear. Empty slots are labeled; unavailable equipped stats block
 comparisons. These estimates describe modeled static stats, not DPS/healing gains.
+
+Hover a suggested item for the game's own item tooltip, with Battleplan's lines under
+it: the score gain and slot, the item it replaces (or that the slot is empty), and the
+source. Shift-click the row to link the item in chat. Battleplan asks the server for
+every suggested item when it plans, so the tooltip is complete on the first hover.

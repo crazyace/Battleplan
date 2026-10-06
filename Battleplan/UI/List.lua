@@ -17,15 +17,36 @@ local function setText(fs, text)
   if fs.last ~= text then fs.last = text; fs:SetText(text) end
 end
 
+-- Item rows show the client's own item tooltip with Battleplan's lines under
+-- it (Gearwright does the same with SetHyperlink on the Forever beta).
 local function onEnter(row)
   local d = row.data
-  if not d or not d.tip or d.tip == d.text then return end
+  if not d then return end
+  if d.hyperlink and GameTooltip.SetHyperlink then
+    GameTooltip:SetOwner(row, "ANCHOR_RIGHT")
+    GameTooltip:SetHyperlink(d.hyperlink)
+    if d.tip then
+      GameTooltip:AddLine(" ")
+      GameTooltip:AddLine(d.tip, 1, 1, 1, true)
+    end
+    GameTooltip:Show()
+    return
+  end
+  if not d.tip or d.tip == d.text then return end
   GameTooltip:SetOwner(row, "ANCHOR_RIGHT")
   GameTooltip:SetText(d.text or "", 1, 0.82, 0, 1, true)
   GameTooltip:AddLine(d.tip, 1, 1, 1, true)
   GameTooltip:Show()
 end
 local function onLeave() GameTooltip:Hide() end
+
+-- Shift-click (the player's chat-link binding) puts an item row's link in chat.
+local function onClick(row)
+  local d = row.data
+  if not (d and d.itemID and IsModifiedClick and IsModifiedClick("CHATLINK") and ChatEdit_InsertLink) then return end
+  local link = ns.API.ItemLink(d.itemID)
+  if link then ChatEdit_InsertLink(link) end
+end
 
 local function makeRow(list)
   local row = CreateFrame("Button", nil, list)
@@ -53,6 +74,7 @@ local function makeRow(list)
   row.accent:SetColorTexture(1, 0.82, 0, 0.08)
   row:SetScript("OnEnter", onEnter)
   row:SetScript("OnLeave", onLeave)
+  row:SetScript("OnClick", onClick)
   return row
 end
 

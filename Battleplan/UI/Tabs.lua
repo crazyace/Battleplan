@@ -202,13 +202,27 @@ local function comparisonRows(rows, u)
   if #losses > 0 then note(rows, "Losses: " .. table.concat(losses, ", "), 2) end
 end
 
-local function upgradeRow(rows, u, alternative)
+-- Hover text under the item's own tooltip: what Battleplan adds to it.
+-- Like Gearwright's item rows: the gain, what it replaces, how to link it.
+local function itemTip(u, equipped)
+  local lines = { util.color("green", ("Battleplan: +%.1f score in %s"):format(u.gain, u.slotName)) }
+  if not u.now then lines[#lines + 1] = ("Usable at level %d."):format(u.requiredLevel or u.target.minLevel or 0) end
+  local current = equipped and equipped[u.slot]
+  lines[#lines + 1] = current and ("Replaces " .. current) or ("Your " .. u.slotName .. " slot is empty.")
+  if type(u.target.source) == "string" then lines[#lines + 1] = u.target.source end
+  lines[#lines + 1] = util.color("gray", "Shift-click to link it in chat.")
+  return table.concat(lines, "\n")
+end
+
+local function upgradeRow(rows, u, alternative, equipped)
   local when
   if not u.now then when = ("Level %d"):format(u.requiredLevel or u.target.minLevel or 0)
   elseif u.status == "unknown" then when = "Potential upgrade"
   else when = util.color("green", ("+%.1f score"):format(u.gain)) end
   local prefix = alternative and "Alternative: " or (u.slotName .. ": ")
-  row(rows, prefix .. u.target.name, when, type(u.target.source) == "string" and u.target.source or nil, 1, u.target.icon)
+  row(rows, prefix .. u.target.name, when, itemTip(u, equipped), 1, u.target.icon)
+  local itemID = u.target.itemID
+  if itemID then rows[#rows].itemID, rows[#rows].hyperlink = itemID, "item:" .. itemID end
   comparisonRows(rows, u)
   if u.selectedForEase then note(rows, "Easier to obtain while keeping most of the stronger option's score gain.", 2) end
   local route = u.route
@@ -253,8 +267,8 @@ function build.gear(s, rows)
     note(rows, "No suitable upgrade found in the current catalog. Unknown or blocked options may be excluded.")
   end
   for _, u in ipairs(s.upgrades) do
-    upgradeRow(rows, u, false)
-    if u.alternative then upgradeRow(rows, u.alternative, true) end
+    upgradeRow(rows, u, false, s.equippedLinks)
+    if u.alternative then upgradeRow(rows, u.alternative, true, s.equippedLinks) end
   end
 end
 

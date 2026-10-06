@@ -189,12 +189,17 @@ C_Spell = {
 
 -- Items and gear: C.inv = { [slot] = link }, C.itemStats = { [link] = {...} }
 function GetInventoryItemLink(_, slot) return C.inv[slot] end
+-- Chat links: C.modified is the held modifier action ("CHATLINK" for shift).
+function IsModifiedClick(action) return C.modified == action end
+function ChatEdit_InsertLink(link) C.chatLinks = C.chatLinks or {}; C.chatLinks[#C.chatLinks + 1] = link; return true end
 C_Item = {
   GetItemStats = function(link) return C.itemStats[link] end,
   GetItemSpell = function(id) local n = C.itemSpells[id] return n, n and id end,
   GetItemCount = function(id) return C.bags[id] or 0 end,
   RequestLoadItemDataByID = function() end,
-  GetItemInfo = function(id) return "Item " .. id, nil, 1, 1, 1 end,
+  GetItemInfo = function(id)
+    return "Item " .. id, ("|cff1eff00|Hitem:%d::::::::30:::::|h[Item %d]|h|r"):format(id, id), 1, 1, 1
+  end,
 }
 C_TooltipInfo = { GetItemByID = function(id) return { lines = { { leftText = "Item " .. id }, { leftText = "Use: does a thing." } } } end }
 C_UnitAuras = {

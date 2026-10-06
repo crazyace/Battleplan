@@ -142,5 +142,7 @@ How every phase below gets done. Details in [AGENTS.md](AGENTS.md).
 - [ ] Verify acquisition effort, quest chains, crafter requirements and locations on Forever
 
 - [x] Explain selected upgrades with equipped-stat gains/losses and estimated score gain
+- [x] Hover a suggested item for its item tooltip plus gain, replaced item and source; shift-click links it
+- [ ] Live-check suggested-item hover tooltips and shift-click links on Forever
 - [x] Distinguish empty slots, zero-score equipment and unreadable equipped links
 - [ ] Live-check primary/alternative comparisons against equipped and item tooltips
