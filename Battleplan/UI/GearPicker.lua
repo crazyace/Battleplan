@@ -139,7 +139,8 @@ local function choice(e, option, d, y)
   e.sub:SetText(util.color("gray", source))
   e.right:SetText(util.color("green", ("+%.1f"):format(option.gain)))
   local when = ""
-  if not option.now then when = ("level %d"):format(option.requiredLevel or option.target.minLevel or 0)
+  local later = UI.GearLaterLevel(option)
+  if later then when = ("level %d"):format(later)
   elseif option.status == "unknown" then when = "unconfirmed" end
   e.when:SetText(util.color("gray", when))
   return place(e, y, OPTION)

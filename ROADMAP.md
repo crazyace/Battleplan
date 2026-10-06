@@ -146,6 +146,8 @@ How every phase below gets done. Details in [AGENTS.md](AGENTS.md).
 - [x] Compact Gearwright-style gear rows; keep the hover tooltip up across replans
 - [x] Per-slot picker: every quest, crafted, vendor and drop option; the player's pick is saved
 - [x] Bind-on-pickup crafted gear only for players with that profession (read live)
+- [x] "Gear for" level on the Gear tab: best upgrades for your level, +3, +5, +10 or 60
+- [ ] Extend the imported gear catalog past level 30 so "Gear for" helps at higher levels
 - [ ] Live-check suggested-item hover tooltips and shift-click links on Forever
 - [x] Distinguish empty slots, zero-score equipment and unreadable equipped links
 - [ ] Live-check primary/alternative comparisons against equipped and item tooltips

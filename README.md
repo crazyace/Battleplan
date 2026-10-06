@@ -273,6 +273,12 @@ recommendation. Bind-on-pickup crafted gear only appears if you have that profes
 (read from the game, and refreshed when you learn or drop one); anyone can buy the
 other crafted items from a crafter.
 
+**Gear for** (top right on the Gear tab) plans for a higher level: your level, +3, +5,
++10 or 60. Battleplan then picks the best upgrades usable by that level and labels the
+ones you can't wear yet with "level N", so you can line up quests, crafts and drops
+ahead of time. The choice is saved as levels above yours, so it moves with you. The
+imported catalog currently stops near level 30, so later levels have little to offer yet.
+
 Hover a suggested item for the game's own item tooltip, with Battleplan's details under
 it: score gain and percentage, the item it replaces (or that the slot is empty), stat
 gains and losses, the full source with requirements, and any provisional or

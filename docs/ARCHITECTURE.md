@@ -73,6 +73,9 @@ only for the latter. Its third return, equipped links by slot, becomes
 Rows stay plain tables: an item row carries `itemID` and `hyperlink` (`"item:<id>"`).
 `UI/List.lua` shows `GameTooltip:SetHyperlink(hyperlink)` with the row's `tip` under it,
 and shift-click (`IsModifiedClick("CHATLINK")`) inserts `API.ItemLink(itemID)` in chat.
+The Gear tab plans for `state.gearLevel`: the player's level plus `ns.db.gearAhead`
+(chosen with the Gear-for menu), capped at max level. The engine treats items up to that
+level as "now"; `UI.GearLaterLevel` still labels anything above the player's own level.
 A Gear row with several options also carries `slot`, `choices` (the engine's
 `options`), `recommended` and `picked`; a plain click opens `UI/GearPicker.lua`, a
 lazily built, reused dropdown grouped by source kind. Picks live in

@@ -21,6 +21,7 @@ local DEFAULTS = {
   debugPerf = false,
   window = {},
   uiScale = 1,
+  gearAhead = 0,        -- Gear tab plans for this many levels above yours (60 = max level)
 }
 
 -- Fills missing settings without touching the ones the player changed.
