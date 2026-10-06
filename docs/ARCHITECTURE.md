@@ -140,7 +140,7 @@ text round trips, regeneration, import rejection cases and every Protection leve
 
 ### Readable planner presentation
 
-The 640x620 window uses reusable texture-backed controls, a fixed context header,
+The 640x620 window uses reusable Blizzard panel/button templates, a fixed context header,
 role-aware tabs and direct spec/situation menus. Settings go through `Planner.Queue`;
 no additional game data reads are introduced. The provisional status is a compact
 badge with an explanation on hover. `BuildRows` can omit the banner for this fixed
@@ -175,3 +175,15 @@ published with the rest of the state. Engines and the UI perform no icon data re
 UI rows reserve 32 pixels for a reusable 24-pixel texture; measurement uses the same
 inset, and text-only rows reclaim it. Rebinding hides stale icons and changes the
 texture only when the file ID changes. The perf suite measures icon-bearing scrolls.
+
+
+### Native WoW presentation
+
+The main window uses `BasicFrameTemplateWithInset` and `UIPanelButtonTemplate`,
+already seen working in the original live window. It reuses the native close button
+(with a `UIPanelCloseButton` fallback), gold/white/gray text, a tooltip-textured menu
+backdrop and `UI-Quickslot2` icon borders. The generic blue fills are removed.
+A transparent, narrower title drag region leaves the close button accessible.
+Title, content and close button levels are explicit so the inset/header artwork
+cannot hide the title/context or consume close-button clicks. Offline tests track
+template choice, ownership and frame levels as well as existing behavior/performance.

@@ -24,6 +24,16 @@ ns.UI.Show()
 controls = ns.UI.controls
 check(ns.UI.frame.GetWidth(ns.UI.frame) == 640, 'roomier window')
 check('Protection' in controls.context.text and 'Level 12' in controls.context.text, 'persistent context')
+check(ns.UI.frame._template == 'BasicFrameTemplateWithInset', 'native framed panel')
+check(controls.spec._template == 'UIPanelButtonTemplate' and controls.tabs[1]._template == 'UIPanelButtonTemplate',
+      'controls and navigation use Blizzard button artwork')
+check(controls.close._template == 'UIPanelCloseButton', 'native close button')
+check(controls.title.text == 'Battleplan', 'visible title belongs to transparent drag region')
+check(L.eval('function(c) return c.context._parent == c.content and c.spec._parent == c.content end')(controls),
+      'context and controls are above native inset, not behind header artwork')
+check(controls.content._frameLevel > ns.UI.frame._frameLevel + 1 and
+      controls.close._frameLevel > controls.title._parent._frameLevel,
+      'explicit layers protect header text and close-button input')
 rows = ns.UI.list.data
 check('Shield Specialization' in str([(rows[i].text, rows[i].value) for i in range(1, len(rows) + 1)]), 'next point visible')
 check(not any(rows[i].text == 'Why' for i in range(1, len(rows) + 1)), 'full reasons collapsed')

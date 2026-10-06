@@ -9,12 +9,6 @@ local currentTab, showDetails = "talents", false
 local shownVersion, shownTab, shownDetails
 local MODES = { "auto", "leveling", "solo", "dungeon", "raid" }
 
-local function fill(parent, r, g, b, a)
-  local texture = parent:CreateTexture(nil, "BACKGROUND")
-  texture:SetAllPoints()
-  texture:SetColorTexture(r, g, b, a or 1)
-  return texture
-end
 local function label(parent, text, font, x, y)
   local fs = parent:CreateFontString(nil, "OVERLAY", font or "GameFontHighlightSmall")
   fs:SetPoint("TOPLEFT", x, y)
@@ -29,14 +23,9 @@ local function tooltip(self)
 end
 local function hideTooltip() GameTooltip:Hide() end
 local function button(parent, text, width, height)
-  local b = CreateFrame("Button", nil, parent)
+  local b = CreateFrame("Button", nil, parent, "UIPanelButtonTemplate")
   b:SetSize(width, height)
-  b.background = fill(b, 0.13, 0.17, 0.23)
-  local highlight = b:CreateTexture(nil, "HIGHLIGHT")
-  highlight:SetAllPoints()
-  highlight:SetColorTexture(1, 1, 1, 0.07)
-  b:SetHighlightTexture(highlight)
-  b.label = b:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
+  b.label = b:CreateFontString(nil, "OVERLAY", "GameFontNormal")
   b.label:SetPoint("CENTER")
   b:SetFontString(b.label)
   b:SetText(text)
@@ -51,8 +40,8 @@ end
 local function paintTabs()
   for _, b in ipairs(tabButtons) do
     local selected = b.key == currentTab
-    b.accent:SetShown(selected)
-    b.label:SetTextColor(selected and 1 or 0.70, selected and 0.84 or 0.76, selected and 0.64 or 0.82)
+    if selected then b:LockHighlight() else b:UnlockHighlight() end
+    b.label:SetTextColor(1, selected and 1 or 0.82, selected and 1 or 0)
   end
 end
 local function selectTab(key)
@@ -116,7 +105,7 @@ end
 local function close() UI.Hide() end
 
 local function create()
-  local f = CreateFrame("Frame", "BattleplanFrame", UIParent)
+  local f = CreateFrame("Frame", "BattleplanFrame", UIParent, "BasicFrameTemplateWithInset")
   f:SetSize(WIDTH, HEIGHT)
   local pos = ns.db.window or {}
   if pos.point then f:SetPoint(pos.point, UIParent, pos.relPoint or pos.point, pos.x or 0, pos.y or 0)
@@ -124,64 +113,78 @@ local function create()
   f:SetFrameStrata("MEDIUM")
   f:SetClampedToScreen(true)
   f:EnableMouse(true)
-  fill(f, 0.055, 0.075, 0.10, 0.98)
   local titleBar = CreateFrame("Frame", nil, f)
-  titleBar:SetPoint("TOPLEFT")
-  titleBar:SetPoint("TOPRIGHT")
-  titleBar:SetHeight(58)
-  fill(titleBar, 0.09, 0.12, 0.17)
+  titleBar:SetPoint("TOPLEFT", 30, -2)
+  titleBar:SetPoint("TOPRIGHT", -30, -2)
+  titleBar:SetHeight(26)
+  titleBar:SetFrameLevel(f:GetFrameLevel() + 3)
   f:SetMovable(true)
   titleBar:EnableMouse(true)
   titleBar:RegisterForDrag("LeftButton")
   titleBar:SetScript("OnDragStart", function() if not ns.InCombat() then f:StartMoving() end end)
   titleBar:SetScript("OnDragStop", function() f:StopMovingOrSizing(); savePosition(f) end)
-  label(f, "Battleplan", "GameFontNormalLarge", 22, -16)
-  label(f, "Your plan between pulls", nil, 22, -38):SetTextColor(0.70, 0.76, 0.82)
-  local x = button(f, "X", 28, 28)
-  x:SetPoint("TOPRIGHT", -12, -12)
-  x.tip = "Close (Escape)"
+  -- Keep content above the template's inset; the drag region has no opaque fill.
+  local content = CreateFrame("Frame", nil, f)
+  content:SetPoint("TOPLEFT", 8, -28)
+  content:SetPoint("BOTTOMRIGHT", -8, 8)
+  content:SetFrameLevel(f:GetFrameLevel() + 2)
+  local title = label(titleBar, "Battleplan", "GameFontHighlight", 0, 0)
+  title:ClearAllPoints()
+  title:SetPoint("TOP", 0, -5)
+  local x = f.CloseButton
+  if type(x) ~= "table" and type(x) ~= "userdata" then
+    x = CreateFrame("Button", nil, f, "UIPanelCloseButton")
+    x:SetPoint("TOPRIGHT", 0, 0)
+  end
+  x:SetFrameLevel(f:GetFrameLevel() + 4)
   x:SetScript("OnClick", close)
-  context = label(f, "", nil, 330, -14)
-  badge = button(f, "", 170, 20)
-  badge:SetPoint("TOPRIGHT", -48, -36)
+  context = label(content, "", "GameFontNormal", 14, -12)
+  badge = CreateFrame("Button", nil, content)
+  badge:SetSize(170, 20)
+  badge:SetPoint("TOPRIGHT", -14, -8)
+  badge.label = badge:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+  badge.label:SetPoint("RIGHT")
+  badge.SetText = function(self, text) self.label:SetText(text) end
   badge.tip = "Provisional advice is a first draft. Captured facts are labeled separately; build choices still need testing."
+  badge:SetScript("OnEnter", tooltip)
+  badge:SetScript("OnLeave", hideTooltip)
 
-  label(f, "Spec", nil, 22, -78):SetTextColor(0.70, 0.76, 0.82)
-  specButton = button(f, "Auto", 150, 28)
-  specButton:SetPoint("TOPLEFT", 62, -70)
+  label(content, "Spec", nil, 14, -45)
+  specButton = button(content, "Auto", 150, 24)
+  specButton:SetPoint("TOPLEFT", 54, -38)
   specButton.setting, specButton.tip = "spec", "Choose a spec to plan for, or Auto to follow your talents."
   specButton:SetScript("OnClick", openMenu)
-  label(f, "Situation", nil, 234, -78):SetTextColor(0.70, 0.76, 0.82)
-  modeButton = button(f, "Auto", 150, 28)
-  modeButton:SetPoint("TOPLEFT", 300, -70)
+  label(content, "Situation", nil, 226, -45)
+  modeButton = button(content, "Auto", 150, 24)
+  modeButton:SetPoint("TOPLEFT", 292, -38)
   modeButton.setting, modeButton.tip = "situation", "Choose leveling, solo, dungeon or raid advice. Auto follows your level."
   modeButton:SetScript("OnClick", openMenu)
-  detailsButton = button(f, "Show build details", 150, 28)
-  detailsButton:SetPoint("TOPRIGHT", -22, -70)
+  detailsButton = button(content, "Show build details", 150, 24)
+  detailsButton:SetPoint("TOPRIGHT", -14, -38)
   detailsButton:SetScript("OnClick", toggleDetails)
   tabButtons = {}
   for i = 1, 5 do
-    local b = button(f, "", 116, 32)
-    b:SetPoint("TOPLEFT", 22 + (i - 1) * 120, -110)
-    b.accent = b:CreateTexture(nil, "OVERLAY")
-    b.accent:SetHeight(2)
-    b.accent:SetPoint("BOTTOMLEFT")
-    b.accent:SetPoint("BOTTOMRIGHT")
-    b.accent:SetColorTexture(1, 0.76, 0.36)
+    local b = button(content, "", 116, 24)
+    b:SetPoint("TOPLEFT", 14 + (i - 1) * 120, -76)
     b:SetScript("OnClick", function(self) selectTab(self.key) end)
     tabButtons[i] = b
   end
-  list = UI.CreateList(f)
-  list:SetPoint("TOPLEFT", 22, -156)
-  list:SetPoint("BOTTOMRIGHT", -22, 34)
+  list = UI.CreateList(content)
+  list:SetPoint("TOPLEFT", 14, -112)
+  list:SetPoint("BOTTOMRIGHT", -14, 26)
   UI.AddPulse(list)
   UI.AddFade(f)
-  label(f, "Scroll to read more  |  Hover for captured text and details", nil, 22, -HEIGHT + 22):SetTextColor(0.55, 0.63, 0.72)
-  menu = CreateFrame("Frame", nil, f)
+  local hint = label(content, "Scroll to read more  |  Hover for captured text and details", "GameFontDisableSmall", 0, 0)
+  hint:ClearAllPoints()
+  hint:SetPoint("BOTTOMLEFT", 14, 8)
+  menu = CreateFrame("Frame", nil, f, "BackdropTemplate")
   menu:SetWidth(180)
   menu:SetFrameStrata("DIALOG")
   menu:EnableMouse(true)
-  fill(menu, 0.12, 0.16, 0.22)
+  menu:SetBackdrop({ bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
+    edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", tile = true, tileSize = 16, edgeSize = 16,
+    insets = { left = 4, right = 4, top = 4, bottom = 4 } })
+  menu:SetBackdropColor(0.08, 0.08, 0.08, 1)
   menu.options = {}
   for i = 1, 5 do
     local option = button(menu, "", 172, 28)
@@ -196,7 +199,8 @@ local function create()
   f:Hide()
   tinsert(UISpecialFrames, "BattleplanFrame")
   frame, UI.frame, UI.list = f, f, list
-  UI.controls = { spec = specButton, situation = modeButton, details = detailsButton, menu = menu, context = context }
+  UI.controls = { spec = specButton, situation = modeButton, details = detailsButton, menu = menu,
+    context = context, title = title, content = content, close = x, tabs = tabButtons }
   list:Layout()
 end
 

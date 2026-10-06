@@ -91,3 +91,6 @@ with the item name and amount, e.g. `+15 agility`).
       names/ranks stay visible and no previous row's icon persists after scrolling.
 - [ ] Update BattleplanProbe and export `/bpp spells` / `/bpp talents` with icon IDs
       when convenient; icon metadata remains pending live confirmation.
+
+- [ ] Native window pass: title/context visible, standard close button clickable, gold
+      selected navigation, WoW menu backdrop, and icon borders after scrolling.

@@ -95,3 +95,6 @@ How every phase below gets done. Details in [AGENTS.md](AGENTS.md).
 
 - [x] Add optional client spell/talent icons with name checks and reusable textures
 - [ ] Confirm icon display and capture icon IDs on Forever after maintenance
+
+- [x] Restore native WoW frame/buttons and fix header layering; retain icons and wrapping
+- [ ] Verify the restored native window, title/context and menu appearance in the client
