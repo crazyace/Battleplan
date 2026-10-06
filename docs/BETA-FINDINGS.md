@@ -269,3 +269,16 @@ results; completion caches invalidate on supported quest events. The probe env n
 records API presence, player faction and a completion sample for quest 6. Synthetic
 tests exercise missing/error/secret values; they do not verify these APIs on Forever.
 After maintenance, `/bpp all` and `/bpp export` can confirm their actual behavior.
+
+### Selected gear comparison — 2026-10-06
+
+No new client API or game facts are introduced. Planner reuses existing cleaned
+item-stat tokens for gains/losses and score estimates. These explanations inherit
+the provisional item catalog and weights; they do not verify item usability or
+source access. Synthetic tests cover empty/zero-score/unknown baselines, rating
+conversion, alternatives, future items and ALL_STATS expansion.
+
+Secret or malformed equipped links now mark their slots unknown rather than
+empty. This is defensive handling exercised by the mock, not a new live capture.
+After maintenance, check the Gear tab with known equipped items and capture any
+mismatch between listed stat differences and the client tooltip.

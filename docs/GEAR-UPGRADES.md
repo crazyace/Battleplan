@@ -119,3 +119,17 @@ reputation restrictions and missing source/level facts remain reference data unt
 the model supports them. `data/external/catalog-report.json` accounts for every item.
 All imported recommendations remain Potential upgrades; these data do not prove
 source availability or equipment usability.
+
+## Explain an upgrade before chasing it
+
+Every selected primary/alternative now includes the estimated gain against the
+equipped weighted stat score, even when acquisition access is unknown. Gains and
+losses show actual differences in the modeled stats. Percent changes in chance
+stats are percentage-point differences; the score percentage is an estimate from
+the current weights, never a damage, healing or mitigation percentage.
+
+An empty slot starts at zero and has no percentage against zero. An equipped item
+with a zero weighted score remains equipped. Secret/unreadable links or item stats
+block the slot instead of being treated as empty. Effects, set bonuses and unmodeled
+stats are outside this comparison. Source warnings and future wearing levels stay
+visible, and selection policy is unchanged.

@@ -20,6 +20,7 @@ TESTS = [
     ("icons test", "tests/icons_test.py"),
     ("UI test", "tests/ui_test.py"),
     ("gear advice test", "tests/gear_advice_test.py"),
+    ("gear comparison test", "tests/gear_comparison_test.py"),
     ("gear catalog test", "tests/gear_catalog_test.py"),
     ("full data test", "tests/full_data_test.py"),
     ("perf test", "tests/perf_test.py"),

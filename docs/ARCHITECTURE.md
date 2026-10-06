@@ -269,3 +269,18 @@ keeps the persistent table graph small enough for Lua 5.1 garbage collection.
 Decoded sources use a weak memo cache; unused records can be reclaimed. Quest
 IDs are extracted once when a chunk loads, so repeated planning does not decode
 full source records merely to read quest completion.
+
+### Upgrade comparison details
+
+Planner normalizes equipped tokens once and reuses that table both for scoring and
+selected-item explanations. `context.equippedStats[slot]` supplies modeled stat
+amounts; a missing slot in this supplied map means empty, and `false` means unreadable.
+Engine attaches comparisons only to the primary and alternative after selection,
+yielding between slots. Each comparison records baseline/target score, an optional
+gain fraction for a positive baseline, and sorted stat deltas. ALL_STATS expands
+into the five base stats without modifying either input. Legacy score-only callers
+receive score details without invented stat changes or empty-slot claims.
+
+UI formats positive/negative deltas in gains/losses rows and keeps potential-source
+and future-level labels. No additional item reads, timers or frame creation are used.
+The API treats secret and malformed inventory links as unknown equipment.

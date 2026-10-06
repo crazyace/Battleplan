@@ -190,6 +190,33 @@ local function retain(group, option)
   kept.route, kept.status = option.route, option.status
 end
 
+-- Reuse a bounded order of modeled stats instead of allocating/sorting keys per recommendation.
+local comparisonStats = {}
+for key in pairs(ns.Data.Stats.names) do
+  if key ~= "ALL_STATS" then comparisonStats[#comparisonStats + 1] = key end
+end
+table.sort(comparisonStats)
+local baseStats = { STRENGTH = true, AGILITY = true, STAMINA = true, INTELLECT = true, SPIRIT = true }
+local function comparison(option, scores, equipped)
+  local baseline = scores[option.slot] or 0
+  local result = { baselineScore = baseline, targetScore = baseline + option.gain,
+    gainFraction = baseline > 0 and option.gain / baseline or nil }
+  -- Legacy score-only callers do not provide enough facts to describe individual stats.
+  if not equipped or equipped[option.slot] == false then return result end
+  result.empty = equipped[option.slot] == nil
+  local old, new = equipped[option.slot] or EMPTY, option.target.stats or EMPTY
+  result.changes = {}
+  for _, key in ipairs(comparisonStats) do
+    local before = (old[key] or 0) + (baseStats[key] and old.ALL_STATS or 0)
+    local after = (new[key] or 0) + (baseStats[key] and new.ALL_STATS or 0)
+    local delta = after - before
+    if math.abs(delta) > 0.000001 then
+      result.changes[#result.changes + 1] = { stat = key, before = before, after = after, delta = delta }
+    end
+  end
+  return result
+end
+
 -- Structured targets use routes with stable keys, source names/locations and requirements.
 -- Context contains observed access, usability, owned items and quest completion only.
 -- Legacy text sources keep their existing behavior until migrated to structured routes.
@@ -263,7 +290,10 @@ function Gear.NextUpgrades(targets, level, weights, equippedScores, context, wor
       end
       practical.selectedForEase = practical ~= strongest
       practical.alternative = alternative
+      practical.comparison = comparison(practical, equippedScores, ctx.equippedStats)
+      if alternative then alternative.comparison = comparison(alternative, equippedScores, ctx.equippedStats) end
       rows[#rows + 1] = practical
+      if workTick then workTick() end
     end
   end
   return rows
