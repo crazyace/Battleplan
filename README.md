@@ -240,3 +240,7 @@ still need confirmation. Classic-derived routes are explicitly labeled.
 Run `python tools/import_full_data.py --check` to verify checksums and generation;
 `python tools/import_full_data.py` regenerates the catalog from the preserved ZIP.
 See [data provenance and licensing](data/external/NOTICE.md).
+
+Gear suggestions now show estimated stat-score gain plus separate gains and losses
+against equipped gear. Empty slots are labeled; unavailable equipped stats block
+comparisons. These estimates describe modeled static stats, not DPS/healing gains.

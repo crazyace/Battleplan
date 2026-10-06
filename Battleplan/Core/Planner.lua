@@ -66,13 +66,16 @@ local function healingRows(known, guide)
 end
 
 local function equippedScores(weights)
-  local out, unknown = {}, false
+  local out, details, unknown = {}, {}, false
   local equipped, owned = API.EquippedItemStats()
   for slot, raw in pairs(equipped) do
-    if raw == false then out[slot], unknown = false, true
-    else out[slot] = E.Score.Stats(E.Score.FromTokens(raw), weights) end
+    if raw == false then out[slot], details[slot], unknown = false, false, true
+    else
+      details[slot] = E.Score.FromTokens(raw)
+      out[slot] = E.Score.Stats(details[slot], weights)
+    end
   end
-  return out, unknown, owned
+  return out, unknown, owned, details
 end
 
 -- Every elixir's buff name, for the buff check. Item data can arrive late,
@@ -154,9 +157,9 @@ local function compute()
   end
   s.upgrades = {}
   if targets and #targets > 0 then
-    local scores, owned
-    scores, s.gearUnknown, owned = equippedScores(s.weights)
-    local context = { class = s.class, owned = owned, faction = API.PlayerFaction(), completedQuests = {} }
+    local scores, owned, details
+    scores, s.gearUnknown, owned, details = equippedScores(s.weights)
+    local context = { class = s.class, owned = owned, faction = API.PlayerFaction(), completedQuests = {}, equippedStats = details }
     local queried, reads = {}, 0
     for i, target in ipairs(targets) do
       if (target.minLevel or 0) <= s.level + 5 and not owned[target.itemID] then

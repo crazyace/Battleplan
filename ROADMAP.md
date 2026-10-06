@@ -135,3 +135,7 @@ How every phase below gets done. Details in [AGENTS.md](AGENTS.md).
 - [ ] Confirm optional faction/quest APIs and new source details in a live probe capture
 - [ ] Model weapons, duplicate slots, effects and restricted items before ranking them
 - [ ] Verify acquisition effort, quest chains, crafter requirements and locations on Forever
+
+- [x] Explain selected upgrades with equipped-stat gains/losses and estimated score gain
+- [x] Distinguish empty slots, zero-score equipment and unreadable equipped links
+- [ ] Live-check primary/alternative comparisons against equipped and item tooltips

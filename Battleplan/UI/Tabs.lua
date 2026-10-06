@@ -174,6 +174,28 @@ function build.rotation(s, rows)
 end
 
 local SOURCE_NAMES = { quest = "Quest", craft = "Crafting", vendor = "Vendor", drop = "Drop" }
+local function comparisonRows(rows, u)
+  local details = u.comparison
+  if not details then return end
+  local estimate = ("Estimated stat-score gain: +%.1f"):format(u.gain)
+  if details.gainFraction then estimate = estimate .. (" (%.1f%%)"):format(details.gainFraction * 100) end
+  note(rows, estimate .. ".", 2)
+  if details.empty then note(rows, "This slot is empty.", 2) end
+  if not details.changes then return end
+  local gains, losses = {}, {}
+  for _, change in ipairs(details.changes) do
+    local name = Stats.names[change.stat] or change.stat
+    local text
+    if change.stat:find("_PCT$") then
+      text = ("%+.2f%% %s"):format(change.delta, (name:gsub(" %%", "")))
+    else text = ("%+g %s"):format(change.delta, name) end
+    local list = change.delta > 0 and gains or losses
+    list[#list + 1] = text
+  end
+  if #gains > 0 then note(rows, "Gains: " .. table.concat(gains, ", "), 2) end
+  if #losses > 0 then note(rows, "Losses: " .. table.concat(losses, ", "), 2) end
+end
+
 local function upgradeRow(rows, u, alternative)
   local when
   if not u.now then when = ("Level %d"):format(u.requiredLevel or u.target.minLevel or 0)
@@ -181,6 +203,7 @@ local function upgradeRow(rows, u, alternative)
   else when = util.color("green", ("+%.1f score"):format(u.gain)) end
   local prefix = alternative and "Alternative: " or (u.slotName .. ": ")
   row(rows, prefix .. u.target.name, when, type(u.target.source) == "string" and u.target.source or nil, 1, u.target.icon)
+  comparisonRows(rows, u)
   if u.selectedForEase then note(rows, "Easier to obtain while keeping most of the stronger option's score gain.", 2) end
   local route = u.route
   if route then
@@ -212,7 +235,10 @@ function build.gear(s, rows)
   end
   blank(rows)
   header(rows, "Next upgrades")
-  if s.hasUpgradeData then note(rows, "Stat-score estimates; recipe availability and item requirements may be unconfirmed.") end
+  if s.hasUpgradeData then
+    note(rows, "Stat-score estimates; recipe availability and item requirements may be unconfirmed.")
+    note(rows, "Static stats only; effects and set bonuses are not included. Score gain is not a damage or healing percentage.")
+  end
   if not s.hasUpgradeData then
     note(rows, "No upgrade sources for your class yet. Quest, crafted, vendor and drop options need confirmed data.")
   elseif s.gearUnknown then

@@ -260,8 +260,11 @@ function API.EquippedItemStats()
   local getStats = C_Item and C_Item.GetItemStats
   -- Still mark equipped slots unknown when the stats API is unavailable.
   for _, slot in ipairs(API.GEAR_SLOTS) do
-    local link = API.clean(GetInventoryItemLink("player", slot))
-    if type(link) == "string" then
+    local link = GetInventoryItemLink("player", slot)
+    if API.isSecret(link) or link ~= nil and type(link) ~= "string" then
+      out[slot] = false
+    elseif type(link) == "string" then
+      link = API.clean(link)
       local itemID = tonumber(link:match("item:(%d+)"))
       if itemID then owned[itemID] = true end
       local ok, stats
