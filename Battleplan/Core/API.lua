@@ -239,6 +239,27 @@ function API.ItemCount(itemID)
   return ok and API.clean(n) or 0
 end
 
+-- A chat link for an item ("|cff...|Hitem:...|h[Name]|h|r"), or nil until the
+-- server has sent the item. Asking starts the load, so a later call finds it.
+local itemLinkCache = {}
+function API.ItemLink(itemID)
+  local cached = itemLinkCache[itemID]
+  if cached then return cached end
+  local fn = C_Item and C_Item.GetItemInfo
+  if not fn then return nil end
+  local ok, _, link = pcall(fn, itemID)
+  link = ok and API.clean(link) or nil
+  if type(link) == "string" then itemLinkCache[itemID] = link; return link end
+  API.RequestItem(itemID)
+  return nil
+end
+
+-- Ask the server for an item now, so its tooltip is complete when hovered
+-- (the first read of an uncached item has no "Use:" line; see BETA-FINDINGS).
+function API.RequestItem(itemID)
+  if itemID and C_Item and C_Item.RequestLoadItemDataByID then pcall(C_Item.RequestLoadItemDataByID, itemID) end
+end
+
 -- Equipped enchants: { [slotID] = enchantID (0 = none) } for slots with an item.
 API.ENCHANT_SLOTS = { 1, 2, 3, 5, 7, 8, 9, 10, 15, 16, 17 }
 function API.EquippedEnchants()
@@ -254,9 +275,10 @@ end
 
 -- Raw stat tokens: { [slotID] = { ITEM_MOD_*_SHORT = n } or false (not readable yet) }
 -- Second return: item IDs from the same equipped links, for ownership filtering.
+-- Third return: { [slotID] = link }, so advice can name what an upgrade replaces.
 API.GEAR_SLOTS = { 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 }
 function API.EquippedItemStats()
-  local out, owned = {}, {}
+  local out, owned, links = {}, {}, {}
   local getStats = C_Item and C_Item.GetItemStats
   -- Still mark equipped slots unknown when the stats API is unavailable.
   for _, slot in ipairs(API.GEAR_SLOTS) do
@@ -265,6 +287,7 @@ function API.EquippedItemStats()
       out[slot] = false
     elseif type(link) == "string" then
       link = API.clean(link)
+      links[slot] = link
       local itemID = tonumber(link:match("item:(%d+)"))
       if itemID then owned[itemID] = true end
       local ok, stats
@@ -286,7 +309,7 @@ function API.EquippedItemStats()
       end
     end
   end
-  return out, owned
+  return out, owned, links
 end
 
 -- Talents ---------------------------------------------------------------------------------

@@ -67,7 +67,7 @@ end
 
 local function equippedScores(weights)
   local out, details, unknown = {}, {}, false
-  local equipped, owned = API.EquippedItemStats()
+  local equipped, owned, links = API.EquippedItemStats()
   for slot, raw in pairs(equipped) do
     if raw == false then out[slot], details[slot], unknown = false, false, true
     else
@@ -75,7 +75,7 @@ local function equippedScores(weights)
       out[slot] = E.Score.Stats(details[slot], weights)
     end
   end
-  return out, unknown, owned, details
+  return out, unknown, owned, details, links
 end
 
 -- Every elixir's buff name, for the buff check. Item data can arrive late,
@@ -157,10 +157,10 @@ local function compute()
   if not targets or #targets == 0 then
     targets = E.Gear.CatalogTargets(ns.Data.FullGearCatalog, s.class, s.level, yieldGear)
   end
-  s.upgrades = {}
+  s.upgrades, s.equippedLinks = {}, {}
   if targets and #targets > 0 then
     local scores, owned, details
-    scores, s.gearUnknown, owned, details = equippedScores(s.weights)
+    scores, s.gearUnknown, owned, details, s.equippedLinks = equippedScores(s.weights)
     local context = { class = s.class, owned = owned, faction = API.PlayerFaction(), completedQuests = {}, equippedStats = details }
     local queried, reads = {}, 0
     for i, target in ipairs(targets) do
@@ -201,6 +201,11 @@ local function compute()
       if i % 4 == 0 then coroutine.yield() end
     end
     s.upgrades = E.Gear.NextUpgrades(targets, s.level, s.weights, scores, context, yieldGear)
+    -- Load the suggested items now so hovering one shows its full tooltip.
+    for _, u in ipairs(s.upgrades) do
+      API.RequestItem(u.target.itemID)
+      if u.alternative then API.RequestItem(u.alternative.target.itemID) end
+    end
   end
   s.hasUpgradeData = targets ~= nil and #targets > 0
   coroutine.yield()

@@ -67,7 +67,12 @@ releases the running flag, keeps the previous plan and exposes a retry message.
 
 `API.EquippedItemStats` returns `false` for an equipped slot whose stats are unreadable;
 an absent slot is genuinely empty. Gear comparisons skip the former and use zero
-only for the latter.
+only for the latter. Its third return, equipped links by slot, becomes
+`state.equippedLinks` for the "Replaces" line on a suggestion's hover.
+
+Rows stay plain tables: an item row carries `itemID` and `hyperlink` (`"item:<id>"`).
+`UI/List.lua` shows `GameTooltip:SetHyperlink(hyperlink)` with the row's `tip` under it,
+and shift-click (`IsModifiedClick("CHATLINK")`) inserts `API.ItemLink(itemID)` in chat.
 
 ## Imported structural talent data
 

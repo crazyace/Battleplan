@@ -21,5 +21,5 @@ read_globals = {
   "GetSpellPowerCost", "GetNumTalentTabs", "GetNumTalents", "GetTalentInfo",
   "UnitClass", "UnitFactionGroup", "UnitRace", "UnitLevel", "UnitFullName", "UnitName", "UnitExists", "UnitBuff",
   "GetCombatRating", "GetCombatRatingBonus",
-  "InCombatLockdown", "issecretvalue", "geterrorhandler", "debugprofilestop", "date", "tinsert",
+  "InCombatLockdown", "IsModifiedClick", "ChatEdit_InsertLink", "issecretvalue", "geterrorhandler", "debugprofilestop", "date", "tinsert",
 }
