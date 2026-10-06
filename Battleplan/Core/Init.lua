@@ -20,6 +20,7 @@ local DEFAULTS = {
   debug = false,
   debugPerf = false,
   window = {},
+  uiScale = 1,
 }
 
 -- Fills missing settings without touching the ones the player changed.

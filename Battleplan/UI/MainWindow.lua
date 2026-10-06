@@ -2,15 +2,16 @@
 -- and planning stay behind the API wrapper and the out-of-combat scheduler.
 local _, ns = ...
 local UI = ns.UI
-local WIDTH, HEIGHT = 640, 620
+local WIDTH, HEIGHT = 760, 700
 local frame, list, tabButtons, specButton, modeButton, detailsButton, menu
-local context, badge
+local context, badge, sizeLabel
 local currentTab, showDetails = "talents", false
 local shownVersion, shownTab, shownDetails
 local MODES = { "auto", "leveling", "solo", "dungeon", "raid" }
 
 local function label(parent, text, font, x, y)
   local fs = parent:CreateFontString(nil, "OVERLAY", font or "GameFontHighlightSmall")
+  UI.ReadableFont(fs, "row", font)
   fs:SetPoint("TOPLEFT", x, y)
   fs:SetText(text)
   return fs
@@ -26,6 +27,7 @@ local function button(parent, text, width, height)
   local b = CreateFrame("Button", nil, parent, "UIPanelButtonTemplate")
   b:SetSize(width, height)
   b.label = b:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+  UI.ReadableFont(b.label, "row", "GameFontNormal")
   b.label:SetPoint("CENTER")
   b:SetFontString(b.label)
   b:SetText(text)
@@ -93,7 +95,7 @@ local function openMenu(self)
       option:SetText((ns.db[self.setting] == value and "* " or "  ") .. text)
     end
   end
-  menu:SetHeight(count * 30 + 8)
+  menu:SetHeight(count * 34 + 8)
   menu:Show()
 end
 local function toggleDetails()
@@ -103,6 +105,29 @@ local function toggleDetails()
   UI.Refresh(true)
 end
 local function close() UI.Hide() end
+
+-- UIParent dimensions are UI units, so this also respects the player's UI scale.
+local function applyScale()
+  if ns.InCombat() then return end
+  local scale = tonumber(ns.db.uiScale) or 1
+  if scale ~= scale then scale = 1 end
+  scale = ns.util.clamp(scale, 0.8, 1.4)
+  ns.db.uiScale = scale
+  local fit = math.min((UIParent:GetWidth() - 32) / WIDTH, (UIParent:GetHeight() - 32) / HEIGHT)
+  local applied = math.max(0.1, math.min(scale, fit))
+  frame:SetScale(applied)
+  sizeLabel:SetText("Size " .. math.floor(applied * 100 + 0.5) .. "%")
+end
+local function changeSize(self)
+  if ns.InCombat() then return end
+  ns.db.uiScale = ns.util.clamp(ns.db.uiScale + self.step, 0.8, 1.4)
+  applyScale()
+end
+local function screenChanged()
+  if frame then ns.Refresh("ui-scale", 0, applyScale) end
+end
+ns.Events:On("DISPLAY_SIZE_CHANGED", screenChanged, "planner-size")
+ns.Events:On("UI_SCALE_CHANGED", screenChanged, "planner-size")
 
 local function create()
   local f = CreateFrame("Frame", "BattleplanFrame", UIParent, "BasicFrameTemplateWithInset")
@@ -143,42 +168,54 @@ local function create()
   badge:SetSize(170, 20)
   badge:SetPoint("TOPRIGHT", -14, -8)
   badge.label = badge:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+  UI.ReadableFont(badge.label, "row", "GameFontNormal")
   badge.label:SetPoint("RIGHT")
   badge.SetText = function(self, text) self.label:SetText(text) end
   badge.tip = "Provisional advice is a first draft. Captured facts are labeled separately; build choices still need testing."
   badge:SetScript("OnEnter", tooltip)
   badge:SetScript("OnLeave", hideTooltip)
 
-  label(content, "Spec", nil, 14, -45)
-  specButton = button(content, "Auto", 150, 24)
-  specButton:SetPoint("TOPLEFT", 54, -38)
+  label(content, "Spec", nil, 14, -49)
+  specButton = button(content, "Auto", 190, 30)
+  specButton:SetPoint("TOPLEFT", 54, -40)
   specButton.setting, specButton.tip = "spec", "Choose a spec to plan for, or Auto to follow your talents."
   specButton:SetScript("OnClick", openMenu)
-  label(content, "Situation", nil, 226, -45)
-  modeButton = button(content, "Auto", 150, 24)
-  modeButton:SetPoint("TOPLEFT", 292, -38)
+  label(content, "Situation", nil, 264, -49)
+  modeButton = button(content, "Auto", 190, 30)
+  modeButton:SetPoint("TOPLEFT", 334, -40)
   modeButton.setting, modeButton.tip = "situation", "Choose leveling, solo, dungeon or raid advice. Auto follows your level."
   modeButton:SetScript("OnClick", openMenu)
-  detailsButton = button(content, "Show build details", 150, 24)
-  detailsButton:SetPoint("TOPRIGHT", -14, -38)
+  detailsButton = button(content, "Show build details", 190, 30)
+  detailsButton:SetPoint("TOPRIGHT", -14, -40)
   detailsButton:SetScript("OnClick", toggleDetails)
   tabButtons = {}
   for i = 1, 5 do
-    local b = button(content, "", 116, 24)
-    b:SetPoint("TOPLEFT", 14 + (i - 1) * 120, -76)
+    local b = button(content, "", 140, 30)
+    b:SetPoint("TOPLEFT", 14 + (i - 1) * 144, -84)
     b:SetScript("OnClick", function(self) selectTab(self.key) end)
     tabButtons[i] = b
   end
   list = UI.CreateList(content)
-  list:SetPoint("TOPLEFT", 14, -112)
-  list:SetPoint("BOTTOMRIGHT", -14, 26)
+  list:SetPoint("TOPLEFT", 14, -126)
+  list:SetPoint("BOTTOMRIGHT", -14, 44)
   UI.AddPulse(list)
   UI.AddFade(f)
-  local hint = label(content, "Scroll to read more  |  Hover for captured text and details", "GameFontDisableSmall", 0, 0)
+  local hint = label(content, "Scroll for more  |  Hover for extra details", "GameFontDisableSmall", 0, 0)
   hint:ClearAllPoints()
-  hint:SetPoint("BOTTOMLEFT", 14, 8)
+  hint:SetPoint("BOTTOMLEFT", 14, 12)
+  sizeLabel = label(content, "", nil, 0, 0)
+  sizeLabel:ClearAllPoints()
+  sizeLabel:SetPoint("BOTTOMRIGHT", -58, 12)
+  local smaller = button(content, "-", 32, 28)
+  smaller:SetPoint("BOTTOMRIGHT", -154, 5)
+  smaller.step, smaller.tip = -0.1, "Make Battleplan smaller. Your size preference is saved."
+  smaller:SetScript("OnClick", changeSize)
+  local larger = button(content, "+", 32, 28)
+  larger:SetPoint("BOTTOMRIGHT", -14, 5)
+  larger.step, larger.tip = 0.1, "Make Battleplan larger. The window stays within your screen."
+  larger:SetScript("OnClick", changeSize)
   menu = CreateFrame("Frame", nil, f, "BackdropTemplate")
-  menu:SetWidth(180)
+  menu:SetWidth(220)
   menu:SetFrameStrata("DIALOG")
   menu:EnableMouse(true)
   menu:SetBackdrop({ bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
@@ -187,8 +224,8 @@ local function create()
   menu:SetBackdropColor(0.08, 0.08, 0.08, 1)
   menu.options = {}
   for i = 1, 5 do
-    local option = button(menu, "", 172, 28)
-    option:SetPoint("TOPLEFT", 4, -4 - (i - 1) * 30)
+    local option = button(menu, "", 212, 30)
+    option:SetPoint("TOPLEFT", 4, -4 - (i - 1) * 34)
     option:SetScript("OnClick", choose)
     menu.options[i] = option
   end
@@ -200,7 +237,9 @@ local function create()
   tinsert(UISpecialFrames, "BattleplanFrame")
   frame, UI.frame, UI.list = f, f, list
   UI.controls = { spec = specButton, situation = modeButton, details = detailsButton, menu = menu,
-    context = context, title = title, content = content, close = x, tabs = tabButtons }
+    smaller = smaller, larger = larger, size = sizeLabel, context = context, title = title,
+    content = content, close = x, tabs = tabButtons }
+  applyScale()
   list:Layout()
 end
 
@@ -226,6 +265,7 @@ function UI.Refresh(force)
 end
 local function show()
   if not frame then create() end
+  applyScale()
   UI.ShowSmooth(frame)
 end
 function UI.Show() ns.OutOfCombat(show) end

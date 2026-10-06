@@ -67,7 +67,13 @@ L.execute('''
   iconWidth=BP.UI.list.rows[1].left.width
 ''')
 row = ns.UI.list.rows[1]
-check(row.icon._shown and row.icon.texture == 987001 and L.globals().iconHeight >= 34, 'icon visible with enough height')
+check(row.icon._shown and row.icon.texture == 987001 and L.globals().iconHeight >= 44, 'icon visible with enough height')
+check(row.icon._width == 32 and row.icon._height == 32, 'larger readable icons')
+check(row.iconBorder._width == row.icon._width + 4 and row.iconBorder._height == row.icon._height + 4,
+      'border encloses actual icon dimensions without padded artwork')
+check(L.eval('function(r) return r.iconBorder.relative == r.icon end')(row) and
+      row.iconBorder.point == 'CENTER' and row.iconBorder._layer == 'BORDER' and row.icon._layer == 'ARTWORK',
+      'rim stays centered behind the recycled icon')
 L.execute('BP.UI.list:SetData({{text="No icon available"}})')
 check(not row.icon._shown and not row.iconBorder._shown and L.eval("function(row) return rawget(row, 'iconID') == nil end")(row) and row.left.width > L.globals().iconWidth,
       'text-only row hides stale icon and reclaims width')

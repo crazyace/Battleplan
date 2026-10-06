@@ -140,7 +140,7 @@ text round trips, regeneration, import rejection cases and every Protection leve
 
 ### Readable planner presentation
 
-The 640x620 window uses reusable Blizzard panel/button templates, a fixed context header,
+The 760x700 window uses reusable Blizzard panel/button templates, a fixed context header,
 role-aware tabs and direct spec/situation menus. Settings go through `Planner.Queue`;
 no additional game data reads are introduced. The provisional status is a compact
 badge with an explanation on hover. `BuildRows` can omit the banner for this fixed
@@ -148,7 +148,7 @@ header and include optional talent details. Errors remain visible in the content
 
 `UI/List.lua` measures wrapped labels and values when data or width changes, stores
 row tops/heights, and rebinds a fixed viewport pool during pixel scrolling. The
-viewport clips partial rows; the thumb tracks total text height. No fonts, tables,
+viewport clips partial rows; the thumb tracks total text height. No font objects, tables,
 frames or measurement work are created by scrolling. Size changes, opening and
 control work defer or return during combat. `tests/ui_test.py` checks wrapping,
 scroll bounds, menus, details, role/class fallback and combat deferral with mock
@@ -172,7 +172,7 @@ The planner gathers icons for known spells and talents in the selected build, us
 captured talent IDs when available and imported rules otherwise. Name checking is
 required for both. Reads yield every four requests, run only out of combat and are
 published with the rest of the state. Engines and the UI perform no icon data reads.
-UI rows reserve 32 pixels for a reusable 24-pixel texture; measurement uses the same
+UI rows reserve 44 pixels for a reusable 32-pixel texture; measurement uses the same
 inset, and text-only rows reclaim it. Rebinding hides stale icons and changes the
 texture only when the file ID changes. The perf suite measures icon-bearing scrolls.
 
@@ -182,7 +182,8 @@ texture only when the file ID changes. The perf suite measures icon-bearing scro
 The main window uses `BasicFrameTemplateWithInset` and `UIPanelButtonTemplate`,
 already seen working in the original live window. It reuses the native close button
 (with a `UIPanelCloseButton` fallback), gold/white/gray text, a tooltip-textured menu
-backdrop and `UI-Quickslot2` icon borders. The generic blue fills are removed.
+backdrop and gold icon rims. A 36-pixel solid rim on the BORDER layer encloses each
+32-pixel ARTWORK icon; padded slot artwork no longer overlaps the image.
 A transparent, narrower title drag region leaves the close button accessible.
 Title, content and close button levels are explicit so the inset/header artwork
 cannot hide the title/context or consume close-button clicks. Offline tests track
@@ -203,3 +204,11 @@ pull instructions using plain known-spell data. The UI shows this checklist befo
 ability priorities. It makes no readiness, cooldown, equipped-gear or optimized
 stat-trade claim. Tests cover level-12 preparation, all five formerly blank upcoming
 icons, missing stance, conditional pulls and learning an upcoming ability.
+
+Body/control text uses explicit 14-point font metrics, section headings 16-point.
+The hidden measurement string shares displayed font metrics and wrapping widths.
+Footer size buttons save `uiScale` (0.8–1.4); the applied scale is limited by
+UIParent dimensions with a 32-unit margin, without overwriting the requested size.
+Opening and display/UI-scale events reapply fitting outside combat. Invalid saved
+values reset or clamp. Controls stay dormant in combat. UI tests cover saved scale,
+limits, screen fitting and deferral; icon tests cover exact outer-rim dimensions.

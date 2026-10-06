@@ -199,3 +199,8 @@ The Tanking tab starts with **Before you pull**: equipment, your learned stance,
 Bloodrage when learned, and pull size. Pull instructions omit abilities you have
 not learned. Upcoming Warrior abilities can show client icons even before learning
 them; this does not make them usable or verify their provisional learning levels.
+
+The planner now starts at 760x700 with 14-point body/control text, 16-point section
+headings and 32-pixel icons. Icon rims sit outside the image rather than overlapping
+it. Use the footer **- / +** buttons to save a size preference (80–140%); the window
+automatically fits smaller screens and respects WoW's own UI scale.
