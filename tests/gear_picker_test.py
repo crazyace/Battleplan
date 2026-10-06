@@ -12,6 +12,7 @@ def check(condition, label):
 
 
 L = runtime(ROGUE_30)
+L.execute('RECORD_POINTS = true')
 ns = start_battleplan(L)
 L.globals().BP = ns
 gear = ns.Engine.Gear
@@ -49,7 +50,10 @@ L.execute('''
   function entries()
     local out = {}
     for _, e in ipairs(BP.UI.GearPickerEntries() or {}) do
-      if e:IsShown() then out[#out + 1] = { text = e.left.text, value = e.right.text, option = rawget(e, "option"), frame = e } end
+      if e:IsShown() then
+        out[#out + 1] = { text = e.left.text, sub = e.sub.text, value = e.right.text, when = e.when.text,
+          option = rawget(e, "option"), frame = e }
+      end
     end
     return out
   end
@@ -64,10 +68,24 @@ choices = [e for e in shown if e.option is not None]
 check(len(choices) == len(multi.options), 'picker lists every option')
 check(all(h.endswith(('Quests|r', 'Crafted|r', 'Vendors|r', 'Drops|r', 'Other|r')) for h in headings)
       and len(headings) == len(kinds), 'options grouped under one heading per source kind')
-recommended = next(e for e in choices if '(recommended)' in e.text)
+recommended = next(e for e in choices if 'Recommended' in e.sub)
 check(recommended.option.target.itemID == multi.target.itemID, 'recommendation marked')
-check('UI-CheckBox-Check' in recommended.text, 'current choice checked')
-check('+' in choices[0].value, 'each option shows its gain')
+check('UI-CheckBox-Check' in recommended.text and '(recommended)' not in recommended.text,
+      'current choice checked; the name line holds only the name')
+check(all('+' in e.value and '|' not in e.value.replace('|cff', '').replace('|r', '') for e in choices),
+      'gain alone in the value column')
+check(all(e.when in ('|cff9d9d9d|r', '|cff9d9d9dunconfirmed|r') or 'level' in e.when for e in choices),
+      'level or confirmation on the line under the gain')
+
+# Regression: long names overlapped the gain and rows behind showed through.
+frame = recommended.frame
+value_width = L.eval('BP.UI.GearPickerEntries()[1].right.width')
+check(frame.left.wrap is False and frame.sub.wrap is False, 'names cut short instead of wrapping')
+check(frame.left.points.TOPRIGHT[1] <= -value_width and frame.sub.points.TOPRIGHT[1] <= -value_width,
+      'name and source stop before the value column')
+check(frame.right.width == value_width and frame.when.width == value_width, 'fixed-width value column')
+picker_bg = L.eval('BP.UI.GearPickerEntries()[1]:GetParent().bg')
+check(picker_bg.color == 1, 'picker background is opaque')
 
 # Hover an option: its item tooltip with Battleplan's details.
 L.execute('TIP = {}; GameTooltip.SetHyperlink = function(_, link) TIP.link = link end')

@@ -47,6 +47,11 @@ local function fontString()
   fs.GetText = function(self) return self.text end
   fs.SetWidth = function(self, w) self.width = w end
   fs.SetWordWrap = function(self, w) self.wrap = w end
+  fs.SetJustifyH = function(self, j) self.justify = j end
+  -- Anchors are recorded only when a test sets RECORD_POINTS (perf_test counts allocations).
+  fs.SetPoint = function(self, point, ...)
+    if RECORD_POINTS then self.points = rawget(self, "points") or {}; self.points[point] = { ... } end
+  end
   fs.GetStringHeight = function(self)
     local text = (self.text or ""):gsub("|c%x%x%x%x%x%x%x%x", ""):gsub("|r", "")
     local chars = math.max(1, math.floor((self.width or 200) / ((self.fontSize or 14) / 2)))
@@ -116,6 +121,7 @@ function CreateFrame(kind, name, parent, template)
     t.Hide = function(self) self._shown = false end
     t.SetShown = function(self, v) self._shown = v end
     t.SetTexture = function(self, v) self.texture = v end
+    t.SetColorTexture = function(self, r, g, b, a) self.color = a end
     return t
   end
   f.CreateAnimationGroup = function(self) return animGroup(self) end
