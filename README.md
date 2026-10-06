@@ -216,8 +216,8 @@ is explicitly labeled **Check requirements**. Crafted gear can come from another
 player unless the item requires the wearer's profession.
 
 The starter catalog now contains 133 client-derived crafted armor/cloak items for
-Warrior, Rogue and Priest through level 30. Unconfirmed routes show **Potential upgrade**
-and **Source not confirmed**, with the recipe and crafter profession. Equipped/bag
+Warrior, Rogue and Priest through level 30. Unconfirmed routes are marked **unconfirmed**,
+and their hover says **Source not confirmed**, with the recipe and crafter profession. Equipped/bag
 items are excluded. A live access/usability resolver and quest-source import are
 still needed. Stat weights remain provisional; scores are not damage/healing percentages.
 See [the gearing design](docs/GEAR-UPGRADES.md) for the policy and remaining work.
@@ -257,11 +257,15 @@ no hand-written `minLevel` gets the imported one, and quest-taught abilities say
 hand-written `minLevel` disagrees with the import, or when a class's advice names a
 talent or ability that Forever removed.
 
-Gear suggestions now show estimated stat-score gain plus separate gains and losses
-against equipped gear. Empty slots are labeled; unavailable equipped stats block
-comparisons. These estimates describe modeled static stats, not DPS/healing gains.
+Gear suggestions are laid out like Gearwright's: one compact row per item with the
+slot and name, a one-line source ("Crafted with Blacksmithing", "Quest: ..."), and the
+score gain (with "level N" or "unconfirmed" under it when that applies). The second
+choice for a slot sits under it as "Or: ...". These estimates describe modeled static
+stats, not DPS/healing gains; unavailable equipped stats block comparisons.
 
-Hover a suggested item for the game's own item tooltip, with Battleplan's lines under
-it: the score gain and slot, the item it replaces (or that the slot is empty), and the
-source. Shift-click the row to link the item in chat. Battleplan asks the server for
-every suggested item when it plans, so the tooltip is complete on the first hover.
+Hover a suggested item for the game's own item tooltip, with Battleplan's details under
+it: score gain and percentage, the item it replaces (or that the slot is empty), stat
+gains and losses, the full source with requirements, and any provisional or
+unconfirmed warning. Shift-click the row to link the item in chat. Battleplan asks the
+server for each suggested item once, so the tooltip is complete on the first hover;
+the tooltip stays up while the list redraws under the mouse.

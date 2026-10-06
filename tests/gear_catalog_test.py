@@ -70,10 +70,10 @@ L = runtime(warrior)
 ns = start_battleplan(L)
 L.globals().BP = ns
 check(ns.state.hasUpgradeData and len(ns.state.upgrades) > 0, 'catalog connected for Warrior without class Gear file')
-text = screen(L, ns, 'gear')
+text = screen(L, ns, 'gear', tips=True)
 check('Crafting:' in text and 'Blacksmithing' in text and 'Source not confirmed' in text,
       'real source and provisional warning visible')
-check('Potential upgrade' in text and 'score estimates' in text, 'potential label and scoring scope visible')
+check('unconfirmed' in text and 'Score from item stats' in text, 'potential label and scoring scope visible')
 check(all(ns.state.upgrades[i].status == 'unknown' for i in range(1, len(ns.state.upgrades) + 1)),
       'catalog presence never proves source access/usability')
 check(all(ns.state.upgrades[i].slot not in (11, 12, 13, 14, 16, 17, 18)

@@ -67,12 +67,12 @@ drain(L, ns)
 has(screen(L, ns, "rotation"), "2. Blade Flurry", "3. Riposte")
 check(any("Blade Flurry" in p and "#2 in your Combat rotation" in p for p in printed(L)), "announces new spell")
 
-gear = screen(L, ns, "gear")
+gear = screen(L, ns, "gear", tips=True)
 print("---- Rogue: Gear ----\n" + gear)
 has(gear, "Chest: Living Stats (+4 All stats) | |cff9d9d9denchanted|r",
     "Wrist: Superior Agility (+9 Agility) | |cffff4040missing|r", "Main hand: Agility (+15 Agility)",
-    "Potential upgrade", "Source not confirmed", "Crafting:",
-    "Estimated stat-score gain:", "Gains:", "Static stats only;")
+    "unconfirmed", "Source not confirmed", "Crafting:", "Crafted with Leatherworking",
+    "Battleplan: +", "Gains:", "Score from item stats only")
 
 cons = screen(L, ns, "consumables")
 print("---- Rogue: Consumables ----\n" + cons)
