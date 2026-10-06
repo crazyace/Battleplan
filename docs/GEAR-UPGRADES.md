@@ -15,8 +15,10 @@ candidate set. A craftable item does not require the wearer to be its crafter.
    It is not a claim about damage, healing or mitigation percentages.
 4. Prefer usable-now gear, then confirmed access, then the strongest score gain.
    Equipment usability and source access are separate checks; missing observations
-   remain unknown. Quest prerequisites and wearer-profession requirements must also
-   be known before a route is presented as available.
+   remain unknown. Quest prerequisites must also be known before a route is presented
+   as available. A route with `wearerProfession` (a bind-on-pickup craft) is shown only
+   when the player has that profession at `wearerSkill` or above; when professions
+   can't be read it is hidden, not shown as unknown.
 5. Prefer an explicitly easier route if it keeps at least 80% of the strongest
    option's gain. Both routes must be available now and have known effort bands.
    These bands must be based on acquisition evidence, not guessed from source kind.
@@ -49,7 +51,7 @@ A target retains `slot`, `itemID`, `name`, `minLevel`, `stats` and provenance, a
 | `questID`, `prerequisites`, `repeatable` | Quest eligibility and chain information |
 | `minLevel`, `faction`, `classes` | Acquisition restrictions, separate from wearing level |
 | `profession` | Profession of the producer; does not restrict the wearer |
-| `wearerProfession`, `wearerSkill` | Actual wearer requirement, only when evidenced |
+| `wearerProfession`, `wearerSkill` | Bind-on-pickup craft: only its crafter can get it (importer sets it when ForeverDB `b == 1`) |
 | `effort` | Evidence-backed band: 1 easy, 2 moderate, 3 involved; omitted when unknown |
 | `_status` | Provenance status; missing/unverified data is visibly provisional |
 

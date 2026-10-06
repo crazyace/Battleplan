@@ -16,7 +16,7 @@ read_globals = {
   "C_TooltipInfo", "C_QuestLog", "C_Traits", "C_UnitAuras", "Enum", "WOW_PROJECT_ID",
   "CreateFrame", "UIParent", "UISpecialFrames", "GameTooltip", "ChatFontNormal",
   "GetAddOnMetadata", "GetBuildInfo", "GetLocale", "GetRealZoneText", "IsInInstance",
-  "GetInventoryItemLink", "GetItemSpell", "GetItemCount", "GetWeaponEnchantInfo",
+  "GetInventoryItemLink", "GetProfessions", "GetProfessionInfo", "GetItemSpell", "GetItemCount", "GetWeaponEnchantInfo",
   "GetNumSpellTabs", "GetSpellTabInfo", "GetSpellBookItemName", "GetSpellBookItemInfo", "GetSpellInfo",
   "GetSpellPowerCost", "GetNumTalentTabs", "GetNumTalents", "GetTalentInfo",
   "UnitClass", "UnitFactionGroup", "UnitRace", "UnitLevel", "UnitFullName", "UnitName", "UnitExists", "UnitBuff",

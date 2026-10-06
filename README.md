@@ -269,7 +269,9 @@ Vendors and Drops, each with its gain, and the recommendation marked. Hover an o
 for its tooltip; click one to chase it instead. The row then shows your pick, saved per
 slot by item ID; pick the recommendation again to go back. A saved pick that stops
 being an option (you got it, or it's no longer an upgrade) falls back to the
-recommendation.
+recommendation. Bind-on-pickup crafted gear only appears if you have that profession
+(read from the game, and refreshed when you learn or drop one); anyone can buy the
+other crafted items from a crafter.
 
 Hover a suggested item for the game's own item tooltip, with Battleplan's details under
 it: score gain and percentage, the item it replaces (or that the slot is empty), stat

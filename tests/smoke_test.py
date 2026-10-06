@@ -71,7 +71,7 @@ gear = screen(L, ns, "gear", tips=True)
 print("---- Rogue: Gear ----\n" + gear)
 has(gear, "Chest: Living Stats (+4 All stats) | |cff9d9d9denchanted|r",
     "Wrist: Superior Agility (+9 Agility) | |cffff4040missing|r", "Main hand: Agility (+15 Agility)",
-    "unconfirmed", "Source not confirmed", "Crafting:", "Crafted with Leatherworking",
+    "unconfirmed", "Source not confirmed", "Crafted with Leatherworking",
     "Battleplan: +", "Gains:", "Score from item stats only")
 
 cons = screen(L, ns, "consumables")
