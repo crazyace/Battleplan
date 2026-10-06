@@ -229,3 +229,22 @@ Warrior: unlearned cooldowns described as ready, and an unmodeled Stamina-for-hi
 trade. These choices are replaced by a pre-pull checklist with known-spell filtering;
 pull instructions also omit unlearned ability names. Shield Slam advice no longer
 asserts an unmodeled best threat-per-Rage ranking.
+
+### Provisional crafted gear cohort — 2026-10-05
+
+The existing ForeverDB client-derived snapshot (1.60.1.70205) now supplies an
+initial 133-item crafted armor/cloak catalog. The dated input is
+`data/gear/client-crafting.json`; it retains source URLs, extraction date,
+SHA-256 of items.json and all 64 crafting shards. Items and recipe associations
+remain provisional; client presence does not prove recipe access or live usability.
+
+Only ordinary tradeable armor with supported static stats is included. Current
+`st` fields are used, never historical `chg.st` values (for example, Embossed
+Leather Pants currently list Spell Power rather than their historical Spirit).
+Recipe skill fields disagree across feeds, so this import omits skill requirements
+instead of choosing one. No quest/Classic source tables are bundled.
+
+The production change reuses existing item-count and equipped-link reads. Equipped
+IDs are extracted from the same cleaned links already used for stat comparisons;
+no new client API is introduced or declared verified. Bag/equipment ownership,
+source icons and source-side recipe details still need a live visual check.

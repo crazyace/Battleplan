@@ -177,7 +177,7 @@ local SOURCE_NAMES = { quest = "Quest", craft = "Crafting", vendor = "Vendor", d
 local function upgradeRow(rows, u, alternative)
   local when
   if not u.now then when = ("Level %d"):format(u.requiredLevel or u.target.minLevel or 0)
-  elseif u.status == "unknown" then when = "Check requirements"
+  elseif u.status == "unknown" then when = "Potential upgrade"
   else when = util.color("green", ("+%.1f score"):format(u.gain)) end
   local prefix = alternative and "Alternative: " or (u.slotName .. ": ")
   row(rows, prefix .. u.target.name, when, type(u.target.source) == "string" and u.target.source or nil, 1, u.target.icon)
@@ -191,8 +191,10 @@ local function upgradeRow(rows, u, alternative)
     if route.kind == "craft" and route.profession then
       note(rows, "Find a crafter with " .. route.profession .. "; confirm the recipe, materials and price.", 2)
     end
-    if u.status == "unknown" then note(rows, "Availability or equipment requirements are not confirmed.", 2) end
-    if u.target._status ~= "verified" or route._status ~= "verified" then note(rows, "Source data is provisional.", 2) end
+    if u.status == "unknown" then note(rows, "Source not confirmed. Check requirements before spending time or gold.", 2) end
+    if u.status ~= "unknown" and (u.target._status ~= "verified" or route._status ~= "verified") then
+      note(rows, "Source data is provisional.", 2)
+    end
   end
 end
 
@@ -207,6 +209,7 @@ function build.gear(s, rows)
   end
   blank(rows)
   header(rows, "Next upgrades")
+  if s.hasUpgradeData then note(rows, "Stat-score estimates; recipe availability and item requirements may be unconfirmed.") end
   if not s.hasUpgradeData then
     note(rows, "No upgrade sources for your class yet. Quest, crafted, vendor and drop options need confirmed data.")
   elseif s.gearUnknown then

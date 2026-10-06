@@ -88,7 +88,7 @@ for phrase in ('Test crafted chest', 'Alternative: Test quest chest', 'Crafting:
     check(phrase in text, 'source-aware presentation: ' + phrase)
 L.execute('CTX.access.q1="blocked";CTX.access.c1="unknown";choose();BP.state.upgrades=RESULT')
 text = screen(L, ns, 'gear')
-check('Check requirements' in text and 'not confirmed' in text, 'unknown route visibly requires checking')
+check('Potential upgrade' in text and 'Check requirements' in text and 'not confirmed' in text, 'unknown route visibly requires checking')
 L.execute('''
   CTX.access.c1="available";CRAFT.minLevel=33;choose();BP.state.upgrades=RESULT
 ''')

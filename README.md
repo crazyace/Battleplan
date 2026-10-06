@@ -213,7 +213,16 @@ requirements inline. Confirmed usable-now routes take priority; unknown availabi
 is explicitly labeled **Check requirements**. Crafted gear can come from another
 player unless the item requires the wearer's profession.
 
-This is the selection/presentation foundation, not a populated upgrade service yet.
-A source catalog and live access/usability resolver are still needed. Existing
-stat weights remain provisional; score gains are not damage/healing percentages.
+The starter catalog now contains 133 client-derived crafted armor/cloak items for
+Warrior, Rogue and Priest through level 30. Unconfirmed routes show **Potential upgrade**
+and **Source not confirmed**, with the recipe and crafter profession. Equipped/bag
+items are excluded. A live access/usability resolver and quest-source import are
+still needed. Stat weights remain provisional; scores are not damage/healing percentages.
 See [the gearing design](docs/GEAR-UPGRADES.md) for the policy and remaining work.
+
+The first cohort uses each class's usual armor type and shared cloaks. It excludes
+weapons, rings/trinkets, bind-on-pickup crafting, wearer-profession restrictions,
+unknown stats and unmodeled item effects. It is a starter list, not a complete best-in-slot
+catalog. Open `/bplan` and choose **Gear**; updates after equipment/level changes and
+visible-window bag changes run outside combat. Regenerate with
+`python tools/import_gear_catalog.py`; use `--check` to check the committed output.

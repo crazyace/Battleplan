@@ -223,9 +223,22 @@ stat gains and returns one primary plus at most one alternative per slot.
 Collection and per-slot selection yield every 32 candidates. The planner supplies
 the callback from its existing out-of-combat job. No new game API is read.
 
-The initial planner context contains the class only. A live access/usability resolver
-and approved catalog are pending; structured routes therefore remain unknown
-until observed context is supplied. Legacy text-source targets retain the previous
+The planner context contains class and observed equipped/bag ownership. The shared
+`Data/GearCatalog` supplies a dated, provisional crafted-armor cohort when class-specific
+targets are empty. A live access/usability resolver is pending; catalog routes remain
+unknown until observed context is supplied. Legacy text-source targets retain the previous
 selection behavior. `UI/Tabs` prints sources, requirements, unknown status and
 provisional provenance inline. Selection policy and schema are in GEAR-UPGRADES.md.
 Tests use synthetic fixtures; no quest/crafting facts are promoted by them.
+
+`tools/import_gear_catalog.py` generates the shared cohort from the committed
+`data/gear/client-crafting.json` snapshot of client-derived item/recipe facts,
+retaining build/date/full-source hashes. Class arrays reference shared item records.
+Armor stats use current source fields rather than historical `chg` fields.
+Unsupported stats/effects, restricted crafting and unmodeled slots are excluded.
+Equipped ownership is returned alongside stats from the same existing link reads.
+Bag counts are read in batches of four in the plan job. Bag events keep their lightweight
+coalesced callback; while visible it also queues the sliced planner so acquired
+items disappear. A closed window refreshes when reopened. Combat remains dormant.
+Catalog regeneration, importer validation and visible planning/ownership behavior
+are enforced in `gear_catalog_test.py`; the existing perf suite includes real catalog plans.

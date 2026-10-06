@@ -1,0 +1,5459 @@
+{
+  "_status": "provisional",
+  "source": "https://foreverdb.net/data/items.json",
+  "recipeSource": "https://foreverdb.net/data/crafting/{shard}.json",
+  "sourceBuild": "1.60.1.70205",
+  "retrievedAt": "2026-10-05",
+  "sourceSha256": "aba322ef0f01ccf5c73c1c99485bdcd27cc9657e310db0e42a45f1846319e521",
+  "recipeShardSha256": {
+    "0.json": "30c1ba0d5acc9b28d04744f8c14c4163f855897884605f3978f7d347cca97def",
+    "1.json": "30a3bfc2286fca2c6cdb3aa8dbfbf6390e01e3f2962d29a489f41522ee086dcb",
+    "10.json": "5f78f0b93f2796ceffa18319a6052bf10422360f490f1e5e258fe2499f83655c",
+    "11.json": "947d3ebc93ee34ecdfeef3328b09f5b702e3d114d0b4874ff564120c73e7d835",
+    "12.json": "10bc4d932cac6255d084bca2019e4d247965d5ec252af3d892a7f6ce4930ce98",
+    "13.json": "19c8433730fe1c9241f492d13dc2a970aef499f1de0f18e36ec089405ab8c177",
+    "14.json": "febf2f6ffd34f454d0258a03b96bdabb6235c957e0ea374953f262bc9d976e04",
+    "15.json": "d1c25516ece8cb454506fe003814c8d6e6f0fa375ce3c46606fd4101ee451e0f",
+    "16.json": "fde79b75eaf4cb80f1207475b1e9cf6b239923c1e024d0bbc3aef58a81dd9bec",
+    "17.json": "8c01316a00dcb24f006f7a2d7f64e8721d62858f5bf135ad8f2349fe392791c7",
+    "18.json": "c925ff79f054c3006e3d5cc7364fb855501bd90225a553a38346523ba38ab045",
+    "19.json": "510cf62414f5fc6b35d79888b6c1d31b1c5ed56bc8fd7b44d1869c2b49a3c38d",
+    "2.json": "88bc5192e12bebe025a5be2e6f374355080c2708c3906408f550e4e067b6b854",
+    "20.json": "31c79776b02468125764447d7831656e5790d75261994cc0d9286a8732be362b",
+    "21.json": "7d669d74945667eaaf878dab4b92f57ab4eacb00adf7837a2e3b7b22a73c7e14",
+    "22.json": "279bd287750b11ac0f006e2de918d239bb1f33523482940e531f8705f6f8bb96",
+    "23.json": "a3cf9ba4785e5ece362d5b1dc4ce1bd98a5acc57e778ea61942f29afae6e7d54",
+    "24.json": "69f6c9da44eb18332f4058af8160ba2f1257d52aab624e88e0305b8f63d8d01d",
+    "25.json": "0fe2619c0a58b93c2cc6925393c790f20b63da82fd7d56568091d3d6d6759e5f",
+    "26.json": "56bf38030b827f0312ea238fecc55464622d0f5594fe172c93708a40aa6be9c0",
+    "27.json": "e149b2e59b2a2a994bc6ecc4bb9ad78349d6e7125165d1a596563f11f3a81d64",
+    "28.json": "555ffb43e4e6d2075fba4031695b580f0a49d4aad77019d5a297d79443b58647",
+    "29.json": "bf102d3cead30a84b59c1eb1f442e1bb6b243e4b3bdc9d07b214945ae2f8251a",
+    "3.json": "2371d3682bb31bcebc64ac8a9ec5b17e245f371e77487b09cb87dc2a902f93a0",
+    "30.json": "caea4a838ef1b59d01618034030dc7a4491dfe134f6c8da1efb5e1321cc45289",
+    "31.json": "3f968d875c3d4c9f9ca93482d1e040ea08d7b208ed709895afb224de077277c6",
+    "32.json": "f9b7d944a4d994629867a8fab67b2f64af1f85b3dcd3e1ac436cfb246850308a",
+    "33.json": "4673b3af76262c94e55ac1ffe568dda76c6229c4d3d245872388872b4279cbdd",
+    "34.json": "18df06aae25f8d91770ccb140b171cd2963003174641ac9954fa13aee40c35dd",
+    "35.json": "749ce0636ab475b4eff03bf4d1187fbc55a889db58a14dd666494cdc3a99a22a",
+    "36.json": "bef4e4c9e6dfce3f03a6b23bddbbc8c60c2cc488f0f892b279796ca160479191",
+    "37.json": "5f319daf1b5c31b2ee1c705bba3cd62feaa0a2f1eda161e1dbee0de8f53cd1ee",
+    "38.json": "8b1aabfd0d5d609ca622133f6a5f84c76c8917a508a351f8573595f2b67104ac",
+    "39.json": "1dffb47d714318eca1bfa2310f09b746b712ae9460ff35bc3766ab9bba8da8eb",
+    "4.json": "ef06103ae4a6ef5ed557431d6591be4d6f21229a6aeb6f2feb47cc511e9b2496",
+    "40.json": "d9a3a8738cdaf47cbb81b487e4328dee919658b1efca459534728dbc0078a304",
+    "41.json": "7568a898ef96b06a13862a20e9f0d94a834bd4714cf48d50b65ad5e9989a3b67",
+    "42.json": "d323b8223f04e91044d3580f2f186ef7879edf20491fca72173fbe10658911bd",
+    "43.json": "64fa0c1ade4a0de8bd4719b1eafa40519cbec1b5f7faa48508ea3e6f5d756190",
+    "44.json": "05da134f9813abec28ee8d666629c1639789e7f29618ce49d654ebe269ddc2d2",
+    "45.json": "6849c4ed5a12ebc5d930977b367a7ed6cc225b1c7e5907c2589d18795a9b9f0b",
+    "46.json": "e1b9291df5f252bf97cb252c516570fb080282a66197ab66fcad1346cbbd6132",
+    "47.json": "fdf8c64d35ae0df29ff64c93903e6a74bf9d231b3d902a786c86d1544b6afa43",
+    "48.json": "a9febb29bdaa4a457fd87c265147ad918517f1c92635d541f3513ff7f85b8512",
+    "49.json": "1ec6445f08967bef118c44adfe57166ecc0db2b30321f8a8a29e9ce82e2c6484",
+    "5.json": "0d4085c8dbb6c873d8bb478732ce7f2659d172d857fc2da8cc7e40e344a67527",
+    "50.json": "8d1097303da2ce755b74894d2e3691d8dce4a1ed071a81c935b0533d322d5840",
+    "51.json": "74d219c9cc978466a2f0b45d107e155e96ce230b93eafb93c8823bf4c3e738dd",
+    "52.json": "1cbe26c3e49329930bd93c713a46fde93202a93fbcbe8a3b390bbd52e88d51b1",
+    "53.json": "b11aee20757bf844aedd369e913626ba1138abfdf940ed40ce0de8cbd9c017cd",
+    "54.json": "adaf76601fce62ffc9cfd46a9d4b0ca6d436d7ef32643cd8bb8c8b163e4f7b54",
+    "55.json": "56715a068aa7854e8b51c8159fa0e39653fba1d66416753dd165b79e00f8faa5",
+    "56.json": "bf502c6b7baaad06643cd39a365460e999f6896296d7bdb556deaa6a6b3cd2eb",
+    "57.json": "3fa2ffed0d0b61954f28d52257861aadc2225a3da8538f2d3b6ce8338f79c9e1",
+    "58.json": "eb06b1d2322ccff6cbeb105243fb20ce3af300cdebc552cfe638b8391bf89ba5",
+    "59.json": "b27fbd14e5637d760bb62a423f1f0fcdd11847088d863417f563260ae2659659",
+    "6.json": "0983fac6737882b61583107c259d645d7e24b096d18e8b6e80acc44812bbd747",
+    "60.json": "fb87fcefab3c6985703a5ca4953195020ab1cdbed26a74c8ad73d8b6fc814355",
+    "61.json": "739fd657587107f6ea874d9ea028b1e306d953a51cdb50cf9dbfe785e25afbbd",
+    "62.json": "0137158ddaa8d2f413f34f1ebd20ba3d76f64715eff2a39cd289323c5e2b434c",
+    "63.json": "1f900878d97b7a963aeb43a28bdc4326f1e7afd453a7458ca1631d4827444b01",
+    "7.json": "6a9ca9b7f7ac8359fbfa1c304e072159392492527f8f8f28dfe181c56cb10e38",
+    "8.json": "279dc2b3c158633c6065eb17202e2d5c10e48b12bd54407887942caea81c197e",
+    "9.json": "8170b397ad25f4aa0abb077db9f3e20014126993af566d1f3754f540a4e43d9a"
+  },
+  "records": [
+    {
+      "item": {
+        "id": 2300,
+        "n": "Embossed Leather Vest",
+        "q": 2,
+        "il": 12,
+        "rl": 7,
+        "c": 4,
+        "sc": 2,
+        "inv": 5,
+        "ic": 132724,
+        "src": "f",
+        "st": [
+          [
+            7,
+            2
+          ]
+        ],
+        "ar": 62,
+        "b": 2,
+        "sell": 192
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          2160,
+          40,
+          "Embossed Leather Vest",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2303,
+        "n": "Handstitched Leather Pants",
+        "q": 2,
+        "il": 10,
+        "rl": 5,
+        "c": 4,
+        "sc": 2,
+        "inv": 7,
+        "ic": 134706,
+        "src": "f",
+        "st": [
+          [
+            3,
+            1
+          ]
+        ],
+        "ar": 48,
+        "b": 2,
+        "sell": 71,
+        "chg": {
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          2153,
+          15,
+          "Handstitched Leather Pants",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2307,
+        "n": "Fine Leather Boots",
+        "q": 2,
+        "il": 18,
+        "rl": 13,
+        "c": 4,
+        "sc": 2,
+        "inv": 8,
+        "ic": 132540,
+        "src": "f",
+        "st": [
+          [
+            3,
+            3
+          ],
+          [
+            7,
+            2
+          ]
+        ],
+        "ar": 51,
+        "b": 2,
+        "sell": 243,
+        "chg": {
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          2158,
+          65,
+          "Fine Leather Boots",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2308,
+        "n": "Fine Leather Cloak",
+        "q": 2,
+        "il": 15,
+        "rl": 10,
+        "c": 4,
+        "sc": 1,
+        "inv": 16,
+        "ic": 133762,
+        "src": "f",
+        "st": [
+          [
+            7,
+            2
+          ]
+        ],
+        "ar": 14,
+        "b": 2,
+        "sell": 267
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          2159,
+          85,
+          "Fine Leather Cloak",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2309,
+        "n": "Embossed Leather Boots",
+        "q": 2,
+        "il": 15,
+        "rl": 10,
+        "c": 4,
+        "sc": 2,
+        "inv": 8,
+        "ic": 132539,
+        "src": "f",
+        "st": [
+          [
+            7,
+            2
+          ],
+          [
+            45,
+            2
+          ]
+        ],
+        "ar": 48,
+        "b": 2,
+        "sell": 268,
+        "chg": {
+          "st": [
+            [
+              6,
+              2
+            ],
+            [
+              7,
+              2
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          2161,
+          55,
+          "Embossed Leather Boots",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2310,
+        "n": "Embossed Leather Cloak",
+        "q": 2,
+        "il": 13,
+        "rl": 8,
+        "c": 4,
+        "sc": 1,
+        "inv": 16,
+        "ic": 133150,
+        "src": "f",
+        "st": [
+          [
+            3,
+            1
+          ]
+        ],
+        "ar": 12,
+        "b": 2,
+        "sell": 112,
+        "chg": {
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          2162,
+          60,
+          "Embossed Leather Cloak",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2311,
+        "n": "White Leather Jerkin",
+        "q": 2,
+        "il": 13,
+        "rl": 8,
+        "c": 4,
+        "sc": 2,
+        "inv": 5,
+        "ic": 132760,
+        "src": "f",
+        "st": [
+          [
+            4,
+            2
+          ],
+          [
+            45,
+            2
+          ]
+        ],
+        "ar": 65,
+        "b": 2,
+        "sell": 150,
+        "chg": {
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          2163,
+          40,
+          "White Leather Jerkin",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2312,
+        "n": "Fine Leather Gloves",
+        "q": 2,
+        "il": 15,
+        "rl": 10,
+        "c": 4,
+        "sc": 2,
+        "inv": 10,
+        "ic": 132939,
+        "src": "f",
+        "st": [
+          [
+            5,
+            2
+          ],
+          [
+            45,
+            2
+          ]
+        ],
+        "ar": 43,
+        "b": 2,
+        "sell": 181,
+        "chg": {
+          "st": [
+            [
+              5,
+              2
+            ],
+            [
+              6,
+              2
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          2164,
+          50,
+          "Fine Leather Gloves",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2315,
+        "n": "Dark Leather Boots",
+        "q": 2,
+        "il": 20,
+        "rl": 15,
+        "c": 4,
+        "sc": 2,
+        "inv": 8,
+        "ic": 132539,
+        "src": "f",
+        "st": [
+          [
+            3,
+            5
+          ]
+        ],
+        "ar": 53,
+        "b": 2,
+        "sell": 307,
+        "chg": {
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          2167,
+          100,
+          "Dark Leather Boots",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2316,
+        "n": "Dark Leather Cloak",
+        "q": 2,
+        "il": 22,
+        "rl": 17,
+        "c": 4,
+        "sc": 1,
+        "inv": 16,
+        "ic": 133762,
+        "src": "f",
+        "st": [
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            2
+          ]
+        ],
+        "ar": 18,
+        "b": 2,
+        "sell": 408,
+        "chg": {
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          2168,
+          110,
+          "Dark Leather Cloak",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2317,
+        "n": "Dark Leather Tunic",
+        "q": 2,
+        "il": 20,
+        "rl": 15,
+        "c": 4,
+        "sc": 2,
+        "inv": 5,
+        "ic": 132718,
+        "src": "f",
+        "st": [
+          [
+            3,
+            6
+          ]
+        ],
+        "ar": 78,
+        "b": 2,
+        "sell": 689
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          2169,
+          75,
+          "Dark Leather Tunic",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2569,
+        "n": "Linen Boots",
+        "q": 2,
+        "il": 13,
+        "rl": 8,
+        "c": 4,
+        "sc": 1,
+        "inv": 8,
+        "ic": 132543,
+        "src": "f",
+        "st": [
+          [
+            7,
+            2
+          ]
+        ],
+        "ar": 17,
+        "b": 2,
+        "sell": 87,
+        "chg": {
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          2386,
+          65,
+          "Linen Boots",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2572,
+        "n": "Red Linen Robe",
+        "q": 2,
+        "il": 10,
+        "rl": 5,
+        "c": 4,
+        "sc": 1,
+        "inv": 20,
+        "ic": 132659,
+        "src": "f",
+        "st": [
+          [
+            5,
+            1
+          ]
+        ],
+        "ar": 19,
+        "b": 2,
+        "sell": 99
+      },
+      "recipes": [
+        [
+          "tailoring",
+          2389,
+          25,
+          "Red Linen Robe",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2578,
+        "n": "Barbaric Linen Vest",
+        "q": 2,
+        "il": 14,
+        "rl": 9,
+        "c": 4,
+        "sc": 1,
+        "inv": 5,
+        "ic": 132715,
+        "src": "f",
+        "st": [
+          [
+            7,
+            2
+          ],
+          [
+            45,
+            2
+          ]
+        ],
+        "ar": 26,
+        "b": 2,
+        "sell": 224,
+        "chg": {
+          "st": [
+            [
+              6,
+              2
+            ],
+            [
+              7,
+              2
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          2395,
+          70,
+          "Barbaric Linen Vest",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2580,
+        "n": "Reinforced Linen Cape",
+        "q": 2,
+        "il": 12,
+        "rl": 7,
+        "c": 4,
+        "sc": 1,
+        "inv": 16,
+        "ic": 133759,
+        "src": "f",
+        "st": [
+          [
+            45,
+            1
+          ]
+        ],
+        "ar": 11,
+        "b": 2,
+        "sell": 67,
+        "chg": {
+          "q": 1
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          2397,
+          60,
+          "Reinforced Linen Cape",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2582,
+        "n": "Green Woolen Vest",
+        "q": 2,
+        "il": 17,
+        "rl": 12,
+        "c": 4,
+        "sc": 1,
+        "inv": 5,
+        "ic": 132680,
+        "src": "f",
+        "st": [
+          [
+            45,
+            4
+          ],
+          [
+            6,
+            4
+          ]
+        ],
+        "ar": 30,
+        "b": 2,
+        "sell": 216,
+        "chg": {
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          2399,
+          85,
+          "Green Woolen Vest",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2583,
+        "n": "Woolen Boots",
+        "q": 2,
+        "il": 19,
+        "rl": 14,
+        "c": 4,
+        "sc": 1,
+        "inv": 8,
+        "ic": 132543,
+        "src": "f",
+        "st": [
+          [
+            5,
+            2
+          ],
+          [
+            6,
+            2
+          ],
+          [
+            45,
+            2
+          ]
+        ],
+        "ar": 22,
+        "b": 2,
+        "sell": 359,
+        "chg": {
+          "st": [
+            [
+              3,
+              2
+            ],
+            [
+              5,
+              2
+            ],
+            [
+              6,
+              2
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          2401,
+          95,
+          "Woolen Boots",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2584,
+        "n": "Woolen Cape",
+        "q": 2,
+        "il": 16,
+        "rl": 11,
+        "c": 4,
+        "sc": 1,
+        "inv": 16,
+        "ic": 133762,
+        "src": "f",
+        "st": [
+          [
+            45,
+            1
+          ],
+          [
+            6,
+            1
+          ]
+        ],
+        "ar": 15,
+        "b": 2,
+        "sell": 142,
+        "chg": {
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          2402,
+          75,
+          "Woolen Cape",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2585,
+        "n": "Gray Woolen Robe",
+        "q": 2,
+        "il": 21,
+        "rl": 16,
+        "c": 4,
+        "sc": 1,
+        "inv": 20,
+        "ic": 132654,
+        "src": "f",
+        "st": [
+          [
+            5,
+            5
+          ],
+          [
+            45,
+            4
+          ]
+        ],
+        "ar": 35,
+        "b": 2,
+        "sell": 638,
+        "chg": {
+          "st": [
+            [
+              5,
+              5
+            ],
+            [
+              7,
+              4
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          2403,
+          80,
+          "Gray Woolen Robe",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2851,
+        "n": "Copper Chain Belt",
+        "q": 2,
+        "il": 11,
+        "rl": 6,
+        "c": 4,
+        "sc": 3,
+        "inv": 6,
+        "ic": 132491,
+        "src": "f",
+        "st": [
+          [
+            7,
+            1
+          ]
+        ],
+        "ar": 65,
+        "b": 2,
+        "sell": 56,
+        "chg": {
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          2661,
+          35,
+          "Copper Chain Belt",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2852,
+        "n": "Copper Chain Pants",
+        "q": 2,
+        "il": 10,
+        "rl": 4,
+        "c": 4,
+        "sc": 3,
+        "inv": 7,
+        "ic": 134583,
+        "src": "f",
+        "st": [
+          [
+            7,
+            1
+          ]
+        ],
+        "ar": 94,
+        "b": 2,
+        "sell": 67,
+        "chg": {
+          "il": 9,
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          2662,
+          1,
+          "Copper Chain Pants",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2854,
+        "n": "Runed Copper Bracers",
+        "q": 2,
+        "il": 19,
+        "rl": 14,
+        "c": 4,
+        "sc": 3,
+        "inv": 9,
+        "ic": 132602,
+        "src": "f",
+        "st": [
+          [
+            4,
+            2
+          ],
+          [
+            7,
+            2
+          ]
+        ],
+        "ar": 72,
+        "b": 2,
+        "sell": 225,
+        "chg": {
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          2664,
+          90,
+          "Runed Copper Bracers",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2857,
+        "n": "Runed Copper Belt",
+        "q": 2,
+        "il": 18,
+        "rl": 13,
+        "c": 4,
+        "sc": 3,
+        "inv": 6,
+        "ic": 132492,
+        "src": "f",
+        "st": [
+          [
+            4,
+            3
+          ],
+          [
+            7,
+            2
+          ]
+        ],
+        "ar": 91,
+        "b": 2,
+        "sell": 198,
+        "chg": {
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          2666,
+          70,
+          "Runed Copper Belt",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2864,
+        "n": "Runed Copper Breastplate",
+        "q": 2,
+        "il": 18,
+        "rl": 13,
+        "c": 4,
+        "sc": 3,
+        "inv": 5,
+        "ic": 132738,
+        "src": "f",
+        "st": [
+          [
+            4,
+            4
+          ],
+          [
+            7,
+            3
+          ]
+        ],
+        "ar": 162,
+        "b": 2,
+        "sell": 630
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          2667,
+          55,
+          "Runed Copper Breastplate",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2865,
+        "n": "Rough Bronze Leggings",
+        "q": 2,
+        "il": 21,
+        "rl": 16,
+        "c": 4,
+        "sc": 3,
+        "inv": 7,
+        "ic": 134583,
+        "src": "f",
+        "st": [
+          [
+            7,
+            5
+          ],
+          [
+            6,
+            4
+          ]
+        ],
+        "ar": 149,
+        "b": 2,
+        "sell": 962
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          2668,
+          105,
+          "Rough Bronze Leggings",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2866,
+        "n": "Rough Bronze Cuirass",
+        "q": 2,
+        "il": 23,
+        "rl": 18,
+        "c": 4,
+        "sc": 3,
+        "inv": 5,
+        "ic": 132630,
+        "src": "f",
+        "st": [
+          [
+            7,
+            8
+          ]
+        ],
+        "ar": 177,
+        "b": 2,
+        "sell": 752,
+        "chg": {
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          2670,
+          105,
+          "Rough Bronze Cuirass",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2867,
+        "n": "Rough Bronze Bracers",
+        "q": 2,
+        "il": 23,
+        "rl": 18,
+        "c": 4,
+        "sc": 3,
+        "inv": 9,
+        "ic": 132604,
+        "src": "f",
+        "st": [
+          [
+            7,
+            4
+          ]
+        ],
+        "ar": 77,
+        "b": 2,
+        "sell": 629
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          2671,
+          115,
+          "Rough Bronze Bracers",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2868,
+        "n": "Patterned Bronze Bracers",
+        "q": 2,
+        "il": 25,
+        "rl": 20,
+        "c": 4,
+        "sc": 3,
+        "inv": 9,
+        "ic": 132606,
+        "src": "f",
+        "st": [
+          [
+            4,
+            5
+          ]
+        ],
+        "ar": 80,
+        "b": 2,
+        "sell": 807
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          2672,
+          120,
+          "Patterned Bronze Bracers",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2869,
+        "n": "Silvered Bronze Breastplate",
+        "q": 2,
+        "il": 26,
+        "rl": 21,
+        "c": 4,
+        "sc": 3,
+        "inv": 5,
+        "ic": 132631,
+        "src": "f",
+        "st": [
+          [
+            4,
+            5
+          ],
+          [
+            7,
+            5
+          ],
+          [
+            6,
+            4
+          ]
+        ],
+        "ar": 186,
+        "b": 2,
+        "sell": 1831
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          2673,
+          105,
+          "Silvered Bronze Breastplate",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 2870,
+        "n": "Shining Silver Breastplate",
+        "q": 3,
+        "il": 29,
+        "rl": 24,
+        "c": 4,
+        "sc": 3,
+        "inv": 5,
+        "ic": 132750,
+        "src": "f",
+        "st": [
+          [
+            4,
+            14
+          ],
+          [
+            7,
+            6
+          ]
+        ],
+        "ar": 214,
+        "b": 2,
+        "sell": 2935
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          2675,
+          145,
+          "Shining Silver Breastplate",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 3469,
+        "n": "Copper Chain Boots",
+        "q": 2,
+        "il": 10,
+        "rl": 4,
+        "c": 4,
+        "sc": 3,
+        "inv": 8,
+        "ic": 132535,
+        "src": "f",
+        "st": [
+          [
+            7,
+            1
+          ]
+        ],
+        "ar": 74,
+        "b": 2,
+        "sell": 49,
+        "chg": {
+          "il": 9,
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          3319,
+          20,
+          "Copper Chain Boots",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 3471,
+        "n": "Copper Chain Vest",
+        "q": 2,
+        "il": 10,
+        "rl": 5,
+        "c": 4,
+        "sc": 3,
+        "inv": 5,
+        "ic": 132624,
+        "src": "f",
+        "st": [
+          [
+            4,
+            1
+          ]
+        ],
+        "ar": 108,
+        "b": 2,
+        "sell": 142
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          3321,
+          30,
+          "Copper Chain Vest",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 3472,
+        "n": "Runed Copper Gauntlets",
+        "q": 2,
+        "il": 12,
+        "rl": 7,
+        "c": 4,
+        "sc": 3,
+        "inv": 10,
+        "ic": 132938,
+        "src": "f",
+        "st": [
+          [
+            4,
+            1
+          ],
+          [
+            7,
+            1
+          ]
+        ],
+        "ar": 77,
+        "b": 2,
+        "sell": 71,
+        "chg": {
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          3323,
+          40,
+          "Runed Copper Gauntlets",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 3473,
+        "n": "Runed Copper Pants",
+        "q": 2,
+        "il": 13,
+        "rl": 8,
+        "c": 4,
+        "sc": 3,
+        "inv": 7,
+        "ic": 134583,
+        "src": "f",
+        "st": [
+          [
+            4,
+            2
+          ],
+          [
+            7,
+            2
+          ]
+        ],
+        "ar": 113,
+        "b": 2,
+        "sell": 299
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          3324,
+          45,
+          "Runed Copper Pants",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 3480,
+        "n": "Rough Bronze Shoulders",
+        "q": 2,
+        "il": 22,
+        "rl": 17,
+        "c": 4,
+        "sc": 3,
+        "inv": 3,
+        "ic": 135036,
+        "src": "f",
+        "st": [
+          [
+            7,
+            4
+          ],
+          [
+            4,
+            3
+          ]
+        ],
+        "ar": 130,
+        "b": 2,
+        "sell": 532,
+        "chg": {
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          3328,
+          110,
+          "Rough Bronze Shoulders",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 3481,
+        "n": "Silvered Bronze Shoulders",
+        "q": 2,
+        "il": 25,
+        "rl": 20,
+        "c": 4,
+        "sc": 3,
+        "inv": 3,
+        "ic": 135040,
+        "src": "f",
+        "st": [
+          [
+            4,
+            3
+          ],
+          [
+            7,
+            3
+          ],
+          [
+            6,
+            3
+          ]
+        ],
+        "ar": 137,
+        "b": 2,
+        "sell": 1284
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          3330,
+          100,
+          "Silvered Bronze Shoulders",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 3482,
+        "n": "Silvered Bronze Boots",
+        "q": 2,
+        "il": 26,
+        "rl": 21,
+        "c": 4,
+        "sc": 3,
+        "inv": 8,
+        "ic": 132535,
+        "src": "f",
+        "st": [
+          [
+            4,
+            4
+          ],
+          [
+            7,
+            4
+          ],
+          [
+            6,
+            3
+          ]
+        ],
+        "ar": 128,
+        "b": 2,
+        "sell": 1317
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          3331,
+          130,
+          "Silvered Bronze Boots",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 3483,
+        "n": "Silvered Bronze Gauntlets",
+        "q": 2,
+        "il": 27,
+        "rl": 22,
+        "c": 4,
+        "sc": 3,
+        "inv": 10,
+        "ic": 132939,
+        "src": "f",
+        "st": [
+          [
+            4,
+            4
+          ],
+          [
+            7,
+            4
+          ],
+          [
+            6,
+            3
+          ]
+        ],
+        "ar": 118,
+        "b": 2,
+        "sell": 965
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          3333,
+          135,
+          "Silvered Bronze Gauntlets",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 3484,
+        "n": "Green Iron Boots",
+        "q": 2,
+        "il": 29,
+        "rl": 24,
+        "c": 4,
+        "sc": 3,
+        "inv": 8,
+        "ic": 132535,
+        "src": "f",
+        "st": [
+          [
+            7,
+            7
+          ],
+          [
+            4,
+            3
+          ]
+        ],
+        "ar": 134,
+        "b": 2,
+        "sell": 1767
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          3334,
+          120,
+          "Green Iron Boots",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 3485,
+        "n": "Green Iron Gauntlets",
+        "q": 2,
+        "il": 30,
+        "rl": 25,
+        "c": 4,
+        "sc": 3,
+        "inv": 10,
+        "ic": 132939,
+        "src": "f",
+        "st": [
+          [
+            7,
+            6
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        "ar": 124,
+        "b": 2,
+        "sell": 1295
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          3336,
+          125,
+          "Green Iron Gauntlets",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 3719,
+        "n": "Hillman's Cloak",
+        "q": 2,
+        "il": 30,
+        "rl": 25,
+        "c": 4,
+        "sc": 1,
+        "inv": 16,
+        "ic": 133759,
+        "src": "f",
+        "st": [
+          [
+            45,
+            5
+          ],
+          [
+            7,
+            4
+          ]
+        ],
+        "ar": 21,
+        "b": 2,
+        "sell": 1027,
+        "chg": {
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          3760,
+          150,
+          "Hillman's Cloak",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 3835,
+        "n": "Green Iron Bracers",
+        "q": 2,
+        "il": 33,
+        "rl": 28,
+        "c": 4,
+        "sc": 3,
+        "inv": 9,
+        "ic": 132605,
+        "src": "f",
+        "st": [
+          [
+            7,
+            5
+          ],
+          [
+            4,
+            4
+          ]
+        ],
+        "ar": 91,
+        "b": 2,
+        "sell": 1106,
+        "chg": {
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          3501,
+          165,
+          "Green Iron Bracers",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 3836,
+        "n": "Green Iron Helm",
+        "q": 2,
+        "il": 34,
+        "rl": 29,
+        "c": 4,
+        "sc": 3,
+        "inv": 1,
+        "ic": 133071,
+        "src": "f",
+        "st": [
+          [
+            7,
+            11
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        "ar": 171,
+        "b": 2,
+        "sell": 3053
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          3502,
+          170,
+          "Green Iron Helm",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 3840,
+        "n": "Green Iron Shoulders",
+        "q": 2,
+        "il": 32,
+        "rl": 27,
+        "c": 4,
+        "sc": 3,
+        "inv": 3,
+        "ic": 135040,
+        "src": "f",
+        "st": [
+          [
+            7,
+            7
+          ],
+          [
+            4,
+            4
+          ]
+        ],
+        "ar": 153,
+        "b": 2,
+        "sell": 2571
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          3504,
+          135,
+          "Green Iron Shoulders",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 3841,
+        "n": "Golden Scale Shoulders",
+        "q": 2,
+        "il": 35,
+        "rl": 30,
+        "c": 4,
+        "sc": 3,
+        "inv": 3,
+        "ic": 135040,
+        "src": "f",
+        "st": [
+          [
+            4,
+            7
+          ],
+          [
+            7,
+            6
+          ]
+        ],
+        "ar": 160,
+        "b": 2,
+        "sell": 3106,
+        "chg": {
+          "st": [
+            [
+              4,
+              7
+            ],
+            [
+              6,
+              6
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          3505,
+          150,
+          "Golden Scale Shoulders",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 3842,
+        "n": "Green Iron Leggings",
+        "q": 2,
+        "il": 31,
+        "rl": 26,
+        "c": 4,
+        "sc": 3,
+        "inv": 7,
+        "ic": 134585,
+        "src": "f",
+        "st": [
+          [
+            7,
+            8
+          ],
+          [
+            4,
+            8
+          ]
+        ],
+        "ar": 176,
+        "b": 2,
+        "sell": 2906
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          3506,
+          155,
+          "Green Iron Leggings",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 3843,
+        "n": "Golden Scale Leggings",
+        "q": 2,
+        "il": 34,
+        "rl": 29,
+        "c": 4,
+        "sc": 3,
+        "inv": 7,
+        "ic": 134584,
+        "src": "f",
+        "st": [
+          [
+            4,
+            11
+          ],
+          [
+            7,
+            5
+          ]
+        ],
+        "ar": 184,
+        "b": 2,
+        "sell": 3882,
+        "chg": {
+          "st": [
+            [
+              4,
+              11
+            ],
+            [
+              6,
+              5
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          3507,
+          145,
+          "Golden Scale Leggings",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4237,
+        "n": "Handstitched Leather Belt",
+        "q": 2,
+        "il": 10,
+        "rl": 5,
+        "c": 4,
+        "sc": 2,
+        "inv": 6,
+        "ic": 132493,
+        "src": "f",
+        "st": [
+          [
+            4,
+            1
+          ]
+        ],
+        "ar": 31,
+        "b": 2,
+        "sell": 34,
+        "chg": {
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          3753,
+          25,
+          "Handstitched Leather Belt",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4239,
+        "n": "Embossed Leather Gloves",
+        "q": 2,
+        "il": 13,
+        "rl": 8,
+        "c": 4,
+        "sc": 2,
+        "inv": 10,
+        "ic": 132939,
+        "src": "f",
+        "st": [
+          [
+            3,
+            1
+          ],
+          [
+            7,
+            1
+          ]
+        ],
+        "ar": 41,
+        "b": 2,
+        "sell": 71,
+        "chg": {
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          3756,
+          55,
+          "Embossed Leather Gloves",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4242,
+        "n": "Embossed Leather Pants",
+        "q": 2,
+        "il": 15,
+        "rl": 10,
+        "c": 4,
+        "sc": 2,
+        "inv": 7,
+        "ic": 134582,
+        "src": "f",
+        "st": [
+          [
+            7,
+            2
+          ],
+          [
+            45,
+            3
+          ]
+        ],
+        "ar": 61,
+        "b": 2,
+        "sell": 347,
+        "chg": {
+          "st": [
+            [
+              6,
+              3
+            ],
+            [
+              7,
+              2
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          3759,
+          75,
+          "Embossed Leather Pants",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4243,
+        "n": "Fine Leather Tunic",
+        "q": 2,
+        "il": 17,
+        "rl": 12,
+        "c": 4,
+        "sc": 2,
+        "inv": 5,
+        "ic": 132724,
+        "src": "f",
+        "st": [
+          [
+            3,
+            4
+          ],
+          [
+            7,
+            3
+          ]
+        ],
+        "ar": 73,
+        "b": 2,
+        "sell": 461
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          3761,
+          85,
+          "Fine Leather Tunic",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4244,
+        "n": "Hillman's Leather Vest",
+        "q": 2,
+        "il": 20,
+        "rl": 15,
+        "c": 4,
+        "sc": 2,
+        "inv": 5,
+        "ic": 132725,
+        "src": "f",
+        "st": [
+          [
+            7,
+            4
+          ],
+          [
+            45,
+            4
+          ]
+        ],
+        "ar": 78,
+        "b": 2,
+        "sell": 723,
+        "chg": {
+          "st": [
+            [
+              6,
+              4
+            ],
+            [
+              7,
+              4
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          3762,
+          75,
+          "Hillman's Leather Vest",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4246,
+        "n": "Fine Leather Belt",
+        "q": 2,
+        "il": 16,
+        "rl": 11,
+        "c": 4,
+        "sc": 2,
+        "inv": 6,
+        "ic": 132493,
+        "src": "f",
+        "st": [
+          [
+            3,
+            2
+          ],
+          [
+            7,
+            2
+          ]
+        ],
+        "ar": 40,
+        "b": 2,
+        "sell": 125,
+        "chg": {
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          3763,
+          80,
+          "Fine Leather Belt",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4247,
+        "n": "Hillman's Leather Gloves",
+        "q": 2,
+        "il": 29,
+        "rl": 24,
+        "c": 4,
+        "sc": 2,
+        "inv": 10,
+        "ic": 132939,
+        "src": "f",
+        "st": [
+          [
+            7,
+            6
+          ],
+          [
+            45,
+            5
+          ]
+        ],
+        "ar": 57,
+        "b": 2,
+        "sell": 1049,
+        "chg": {
+          "st": [
+            [
+              6,
+              5
+            ],
+            [
+              7,
+              6
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          3764,
+          145,
+          "Hillman's Leather Gloves",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4249,
+        "n": "Dark Leather Belt",
+        "q": 2,
+        "il": 25,
+        "rl": 20,
+        "c": 4,
+        "sc": 2,
+        "inv": 6,
+        "ic": 132492,
+        "src": "f",
+        "st": [
+          [
+            3,
+            4
+          ],
+          [
+            7,
+            4
+          ]
+        ],
+        "ar": 48,
+        "b": 2,
+        "sell": 703
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          3766,
+          125,
+          "Dark Leather Belt",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4250,
+        "n": "Hillman's Belt",
+        "q": 2,
+        "il": 25,
+        "rl": 20,
+        "c": 4,
+        "sc": 2,
+        "inv": 6,
+        "ic": 132495,
+        "src": "f",
+        "st": [
+          [
+            7,
+            4
+          ],
+          [
+            45,
+            4
+          ]
+        ],
+        "ar": 48,
+        "b": 2,
+        "sell": 705,
+        "chg": {
+          "st": [
+            [
+              6,
+              4
+            ],
+            [
+              7,
+              4
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          3767,
+          95,
+          "Hillman's Belt",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4251,
+        "n": "Hillman's Shoulders",
+        "q": 2,
+        "il": 26,
+        "rl": 21,
+        "c": 4,
+        "sc": 2,
+        "inv": 3,
+        "ic": 135039,
+        "src": "f",
+        "st": [
+          [
+            7,
+            5
+          ],
+          [
+            6,
+            3
+          ]
+        ],
+        "ar": 65,
+        "b": 2,
+        "sell": 1199
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          3768,
+          130,
+          "Hillman's Shoulders",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4252,
+        "n": "Dark Leather Shoulders",
+        "q": 2,
+        "il": 28,
+        "rl": 23,
+        "c": 4,
+        "sc": 2,
+        "inv": 3,
+        "ic": 135043,
+        "src": "f",
+        "st": [
+          [
+            3,
+            7
+          ]
+        ],
+        "ar": 68,
+        "b": 2,
+        "sell": 1457
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          3769,
+          115,
+          "Dark Leather Shoulders",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4253,
+        "n": "Toughened Leather Gloves",
+        "q": 3,
+        "il": 27,
+        "rl": 22,
+        "c": 4,
+        "sc": 2,
+        "inv": 10,
+        "ic": 132958,
+        "src": "f",
+        "st": [
+          [
+            3,
+            6
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            7,
+            3
+          ]
+        ],
+        "ar": 61,
+        "b": 2,
+        "sell": 962,
+        "chg": {
+          "st": [
+            [
+              3,
+              6
+            ],
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              3
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          3770,
+          135,
+          "Toughened Leather Gloves",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4254,
+        "n": "Barbaric Gloves",
+        "q": 2,
+        "il": 30,
+        "rl": 25,
+        "c": 4,
+        "sc": 2,
+        "inv": 10,
+        "ic": 132939,
+        "src": "f",
+        "st": [
+          [
+            7,
+            5
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "ar": 58,
+        "b": 2,
+        "sell": 1071,
+        "chg": {
+          "st": [
+            [
+              3,
+              4
+            ],
+            [
+              6,
+              4
+            ],
+            [
+              7,
+              5
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          3771,
+          125,
+          "Barbaric Gloves",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4255,
+        "n": "Green Leather Armor",
+        "q": 2,
+        "il": 31,
+        "rl": 26,
+        "c": 4,
+        "sc": 2,
+        "inv": 5,
+        "ic": 132723,
+        "src": "f",
+        "st": [
+          [
+            3,
+            8
+          ],
+          [
+            5,
+            8
+          ]
+        ],
+        "ar": 95,
+        "b": 2,
+        "sell": 2366,
+        "chg": {
+          "st": [
+            [
+              3,
+              8
+            ],
+            [
+              6,
+              8
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          3772,
+          130,
+          "Green Leather Armor",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4256,
+        "n": "Guardian Armor",
+        "q": 2,
+        "il": 35,
+        "rl": 30,
+        "c": 4,
+        "sc": 2,
+        "inv": 5,
+        "ic": 132723,
+        "src": "f",
+        "st": [
+          [
+            5,
+            10
+          ],
+          [
+            45,
+            9
+          ]
+        ],
+        "ar": 102,
+        "b": 2,
+        "sell": 3477,
+        "chg": {
+          "st": [
+            [
+              5,
+              10
+            ],
+            [
+              6,
+              9
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          3773,
+          150,
+          "Guardian Armor",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4257,
+        "n": "Green Leather Belt",
+        "q": 2,
+        "il": 32,
+        "rl": 27,
+        "c": 4,
+        "sc": 2,
+        "inv": 6,
+        "ic": 132506,
+        "src": "f",
+        "st": [
+          [
+            3,
+            6
+          ],
+          [
+            5,
+            6
+          ]
+        ],
+        "ar": 54,
+        "b": 2,
+        "sell": 1311,
+        "chg": {
+          "st": [
+            [
+              3,
+              6
+            ],
+            [
+              6,
+              6
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          3774,
+          160,
+          "Green Leather Belt",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4258,
+        "n": "Guardian Belt",
+        "q": 2,
+        "il": 34,
+        "rl": 29,
+        "c": 4,
+        "sc": 2,
+        "inv": 6,
+        "ic": 132492,
+        "src": "f",
+        "st": [
+          [
+            5,
+            7
+          ],
+          [
+            45,
+            6
+          ]
+        ],
+        "ar": 56,
+        "b": 2,
+        "sell": 1592,
+        "chg": {
+          "st": [
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              6
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          3775,
+          145,
+          "Guardian Belt",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4307,
+        "n": "Heavy Linen Gloves",
+        "q": 2,
+        "il": 10,
+        "rl": 5,
+        "c": 4,
+        "sc": 1,
+        "inv": 10,
+        "ic": 132939,
+        "src": "f",
+        "st": [
+          [
+            45,
+            1
+          ]
+        ],
+        "ar": 12,
+        "b": 2,
+        "sell": 29,
+        "chg": {
+          "q": 1
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          3840,
+          35,
+          "Heavy Linen Gloves",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4308,
+        "n": "Green Linen Bracers",
+        "q": 2,
+        "il": 12,
+        "rl": 7,
+        "c": 4,
+        "sc": 1,
+        "inv": 9,
+        "ic": 132611,
+        "src": "f",
+        "st": [
+          [
+            6,
+            1
+          ]
+        ],
+        "ar": 10,
+        "b": 2,
+        "sell": 45,
+        "chg": {
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          3841,
+          60,
+          "Green Linen Bracers",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4309,
+        "n": "Handstitched Linen Britches",
+        "q": 2,
+        "il": 14,
+        "rl": 9,
+        "c": 4,
+        "sc": 1,
+        "inv": 7,
+        "ic": 134587,
+        "src": "f",
+        "st": [
+          [
+            45,
+            2
+          ],
+          [
+            5,
+            2
+          ]
+        ],
+        "ar": 23,
+        "b": 2,
+        "sell": 226,
+        "chg": {
+          "st": [
+            [
+              5,
+              2
+            ],
+            [
+              6,
+              2
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          3842,
+          70,
+          "Handstitched Linen Britches",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4310,
+        "n": "Heavy Woolen Gloves",
+        "q": 2,
+        "il": 17,
+        "rl": 12,
+        "c": 4,
+        "sc": 1,
+        "inv": 10,
+        "ic": 132939,
+        "src": "f",
+        "st": [
+          [
+            5,
+            2
+          ],
+          [
+            45,
+            2
+          ]
+        ],
+        "ar": 19,
+        "b": 2,
+        "sell": 180,
+        "chg": {
+          "st": [
+            [
+              5,
+              2
+            ],
+            [
+              6,
+              2
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          3843,
+          85,
+          "Heavy Woolen Gloves",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4311,
+        "n": "Heavy Woolen Cloak",
+        "q": 2,
+        "il": 21,
+        "rl": 16,
+        "c": 4,
+        "sc": 1,
+        "inv": 16,
+        "ic": 133766,
+        "src": "f",
+        "st": [
+          [
+            6,
+            4
+          ],
+          [
+            45,
+            4
+          ]
+        ],
+        "ar": 17,
+        "b": 2,
+        "sell": 475
+      },
+      "recipes": [
+        [
+          "tailoring",
+          3844,
+          80,
+          "Heavy Woolen Cloak",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4312,
+        "n": "Soft-soled Linen Boots",
+        "q": 2,
+        "il": 16,
+        "rl": 11,
+        "c": 4,
+        "sc": 1,
+        "inv": 8,
+        "ic": 132543,
+        "src": "f",
+        "st": [
+          [
+            7,
+            2
+          ],
+          [
+            45,
+            2
+          ]
+        ],
+        "ar": 20,
+        "b": 2,
+        "sell": 237,
+        "chg": {
+          "st": [
+            [
+              5,
+              2
+            ],
+            [
+              7,
+              2
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          3845,
+          80,
+          "Soft-soled Linen Boots",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4313,
+        "n": "Red Woolen Boots",
+        "q": 2,
+        "il": 20,
+        "rl": 15,
+        "c": 4,
+        "sc": 1,
+        "inv": 8,
+        "ic": 132543,
+        "src": "f",
+        "st": [
+          [
+            6,
+            5
+          ],
+          [
+            45,
+            4
+          ]
+        ],
+        "ar": 23,
+        "b": 2,
+        "sell": 416
+      },
+      "recipes": [
+        [
+          "tailoring",
+          3847,
+          75,
+          "Red Woolen Boots",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4314,
+        "n": "Double-Stitched Woolen Shoulders",
+        "q": 2,
+        "il": 22,
+        "rl": 17,
+        "c": 4,
+        "sc": 1,
+        "inv": 3,
+        "ic": 135037,
+        "src": "f",
+        "st": [
+          [
+            45,
+            4
+          ],
+          [
+            7,
+            4
+          ]
+        ],
+        "ar": 27,
+        "b": 2,
+        "sell": 331,
+        "chg": {
+          "name": "Double-stitched Woolen Shoulders",
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          3848,
+          110,
+          "Double-stitched Woolen Shoulders",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4315,
+        "n": "Reinforced Woolen Shoulders",
+        "q": 2,
+        "il": 24,
+        "rl": 19,
+        "c": 4,
+        "sc": 1,
+        "inv": 3,
+        "ic": 135040,
+        "src": "f",
+        "st": [
+          [
+            5,
+            4
+          ],
+          [
+            45,
+            5
+          ]
+        ],
+        "ar": 28,
+        "b": 2,
+        "sell": 425,
+        "chg": {
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          3849,
+          95,
+          "Reinforced Woolen Shoulders",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4316,
+        "n": "Heavy Woolen Pants",
+        "q": 2,
+        "il": 22,
+        "rl": 17,
+        "c": 4,
+        "sc": 1,
+        "inv": 7,
+        "ic": 134581,
+        "src": "f",
+        "st": [
+          [
+            6,
+            6
+          ],
+          [
+            45,
+            3
+          ]
+        ],
+        "ar": 31,
+        "b": 2,
+        "sell": 743,
+        "chg": {
+          "st": [
+            [
+              5,
+              3
+            ],
+            [
+              6,
+              6
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          3850,
+          110,
+          "Heavy Woolen Pants",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4318,
+        "n": "Gloves of Meditation",
+        "q": 2,
+        "il": 26,
+        "rl": 21,
+        "c": 4,
+        "sc": 1,
+        "inv": 10,
+        "ic": 132939,
+        "src": "f",
+        "st": [
+          [
+            6,
+            7
+          ],
+          [
+            45,
+            5
+          ]
+        ],
+        "ar": 25,
+        "b": 2,
+        "sell": 610
+      },
+      "recipes": [
+        [
+          "tailoring",
+          3852,
+          130,
+          "Gloves of Meditation",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4320,
+        "n": "Spidersilk Boots",
+        "q": 3,
+        "il": 25,
+        "rl": 20,
+        "c": 4,
+        "sc": 1,
+        "inv": 8,
+        "ic": 132539,
+        "src": "f",
+        "st": [
+          [
+            45,
+            7
+          ],
+          [
+            5,
+            4
+          ],
+          [
+            7,
+            4
+          ]
+        ],
+        "ar": 29,
+        "b": 2,
+        "sell": 979,
+        "chg": {
+          "st": [
+            [
+              5,
+              4
+            ],
+            [
+              6,
+              7
+            ],
+            [
+              7,
+              4
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          3855,
+          125,
+          "Spidersilk Boots",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4321,
+        "n": "Spider Silk Slippers",
+        "q": 2,
+        "il": 28,
+        "rl": 23,
+        "c": 4,
+        "sc": 1,
+        "inv": 8,
+        "ic": 132537,
+        "src": "f",
+        "st": [
+          [
+            6,
+            7
+          ],
+          [
+            45,
+            3
+          ]
+        ],
+        "ar": 29,
+        "b": 2,
+        "sell": 1120,
+        "chg": {
+          "st": [
+            [
+              3,
+              3
+            ],
+            [
+              6,
+              7
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          3856,
+          115,
+          "Spider Silk Slippers",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4322,
+        "n": "Enchanter's Cowl",
+        "q": 2,
+        "il": 33,
+        "rl": 28,
+        "c": 4,
+        "sc": 1,
+        "inv": 1,
+        "ic": 133133,
+        "src": "f",
+        "st": [
+          [
+            5,
+            10
+          ],
+          [
+            45,
+            6
+          ]
+        ],
+        "ar": 37,
+        "b": 2,
+        "sell": 1810,
+        "chg": {
+          "st": [
+            [
+              5,
+              10
+            ],
+            [
+              6,
+              6
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          3857,
+          130,
+          "Enchanter's Cowl",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4325,
+        "n": "Boots of the Enchanter",
+        "q": 2,
+        "il": 35,
+        "rl": 30,
+        "c": 4,
+        "sc": 1,
+        "inv": 8,
+        "ic": 132539,
+        "src": "f",
+        "st": [
+          [
+            6,
+            8
+          ],
+          [
+            45,
+            5
+          ]
+        ],
+        "ar": 32,
+        "b": 2,
+        "sell": 2272,
+        "chg": {
+          "st": [
+            [
+              5,
+              5
+            ],
+            [
+              6,
+              8
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          3860,
+          140,
+          "Boots of the Enchanter",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4343,
+        "n": "Brown Linen Pants",
+        "q": 2,
+        "il": 10,
+        "rl": 5,
+        "c": 4,
+        "sc": 1,
+        "inv": 7,
+        "ic": 134586,
+        "src": "f",
+        "st": [
+          [
+            45,
+            1
+          ]
+        ],
+        "ar": 17,
+        "b": 2,
+        "sell": 60,
+        "chg": {
+          "q": 1
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          3914,
+          30,
+          "Brown Linen Pants",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4455,
+        "n": "Raptor Hide Harness",
+        "q": 2,
+        "il": 33,
+        "rl": 28,
+        "c": 4,
+        "sc": 2,
+        "inv": 5,
+        "ic": 132719,
+        "src": "f",
+        "st": [
+          [
+            7,
+            13
+          ]
+        ],
+        "ar": 98,
+        "b": 2,
+        "sell": 3096
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          4096,
+          140,
+          "Raptor Hide Harness",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 4456,
+        "n": "Raptor Hide Belt",
+        "q": 2,
+        "il": 33,
+        "rl": 28,
+        "c": 4,
+        "sc": 2,
+        "inv": 6,
+        "ic": 132491,
+        "src": "f",
+        "st": [
+          [
+            4,
+            6
+          ],
+          [
+            7,
+            6
+          ]
+        ],
+        "ar": 55,
+        "b": 2,
+        "sell": 1553
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          4097,
+          140,
+          "Raptor Hide Belt",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 5542,
+        "n": "Pearl-clasped Cloak",
+        "q": 2,
+        "il": 19,
+        "rl": 14,
+        "c": 4,
+        "sc": 1,
+        "inv": 16,
+        "ic": 133763,
+        "src": "f",
+        "st": [
+          [
+            5,
+            3
+          ],
+          [
+            45,
+            2
+          ]
+        ],
+        "ar": 16,
+        "b": 2,
+        "sell": 370
+      },
+      "recipes": [
+        [
+          "tailoring",
+          6521,
+          90,
+          "Pearl-clasped Cloak",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 5766,
+        "n": "Lesser Wizard's Robe",
+        "q": 2,
+        "il": 27,
+        "rl": 22,
+        "c": 4,
+        "sc": 1,
+        "inv": 20,
+        "ic": 132658,
+        "src": "f",
+        "st": [
+          [
+            5,
+            8
+          ],
+          [
+            45,
+            5
+          ]
+        ],
+        "ar": 41,
+        "b": 2,
+        "sell": 1338,
+        "chg": {
+          "st": [
+            [
+              5,
+              8
+            ],
+            [
+              6,
+              5
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          6690,
+          135,
+          "Lesser Wizard's Robe",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 5770,
+        "n": "Robes of Arcana",
+        "q": 2,
+        "il": 30,
+        "rl": 25,
+        "c": 4,
+        "sc": 1,
+        "inv": 20,
+        "ic": 132670,
+        "src": "f",
+        "st": [
+          [
+            45,
+            8
+          ],
+          [
+            6,
+            7
+          ]
+        ],
+        "ar": 43,
+        "b": 2,
+        "sell": 1807,
+        "chg": {
+          "st": [
+            [
+              5,
+              8
+            ],
+            [
+              6,
+              7
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          6692,
+          125,
+          "Robes of Arcana",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 5780,
+        "n": "Murloc Scale Belt",
+        "q": 2,
+        "il": 18,
+        "rl": 13,
+        "c": 4,
+        "sc": 2,
+        "inv": 6,
+        "ic": 132491,
+        "src": "f",
+        "st": [
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            2
+          ]
+        ],
+        "ar": 42,
+        "b": 2,
+        "sell": 260
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          6702,
+          65,
+          "Murloc Scale Belt",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 5781,
+        "n": "Murloc Scale Breastplate",
+        "q": 2,
+        "il": 19,
+        "rl": 14,
+        "c": 4,
+        "sc": 2,
+        "inv": 5,
+        "ic": 132634,
+        "src": "f",
+        "st": [
+          [
+            4,
+            5
+          ],
+          [
+            3,
+            3
+          ]
+        ],
+        "ar": 76,
+        "b": 2,
+        "sell": 601
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          6703,
+          70,
+          "Murloc Scale Breastplate",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 5782,
+        "n": "Thick Murloc Armor",
+        "q": 2,
+        "il": 34,
+        "rl": 29,
+        "c": 4,
+        "sc": 2,
+        "inv": 5,
+        "ic": 132634,
+        "src": "f",
+        "st": [
+          [
+            4,
+            9
+          ],
+          [
+            7,
+            8
+          ]
+        ],
+        "ar": 100,
+        "b": 2,
+        "sell": 3211
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          6704,
+          145,
+          "Thick Murloc Armor",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 5957,
+        "n": "Handstitched Leather Vest",
+        "q": 2,
+        "il": 10,
+        "rl": 3,
+        "c": 4,
+        "sc": 2,
+        "inv": 5,
+        "ic": 132760,
+        "src": "f",
+        "st": [
+          [
+            3,
+            1
+          ]
+        ],
+        "ar": 55,
+        "b": 2,
+        "sell": 40,
+        "chg": {
+          "il": 8,
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          7126,
+          1,
+          "Handstitched Leather Vest",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 5958,
+        "n": "Fine Leather Pants",
+        "q": 2,
+        "il": 21,
+        "rl": 16,
+        "c": 4,
+        "sc": 2,
+        "inv": 7,
+        "ic": 134582,
+        "src": "f",
+        "st": [
+          [
+            5,
+            5
+          ],
+          [
+            6,
+            4
+          ]
+        ],
+        "ar": 69,
+        "b": 2,
+        "sell": 829
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          7133,
+          80,
+          "Fine Leather Pants",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 5961,
+        "n": "Dark Leather Pants",
+        "q": 2,
+        "il": 23,
+        "rl": 18,
+        "c": 4,
+        "sc": 2,
+        "inv": 7,
+        "ic": 134589,
+        "src": "f",
+        "st": [
+          [
+            3,
+            8
+          ]
+        ],
+        "ar": 72,
+        "b": 2,
+        "sell": 1089
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          7135,
+          115,
+          "Dark Leather Pants",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 5962,
+        "n": "Guardian Pants",
+        "q": 2,
+        "il": 32,
+        "rl": 27,
+        "c": 4,
+        "sc": 2,
+        "inv": 7,
+        "ic": 134582,
+        "src": "f",
+        "st": [
+          [
+            5,
+            8
+          ],
+          [
+            45,
+            8
+          ]
+        ],
+        "ar": 85,
+        "b": 2,
+        "sell": 2794,
+        "chg": {
+          "st": [
+            [
+              5,
+              8
+            ],
+            [
+              6,
+              8
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          7147,
+          160,
+          "Guardian Pants",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 5963,
+        "n": "Barbaric Leggings",
+        "q": 2,
+        "il": 34,
+        "rl": 29,
+        "c": 4,
+        "sc": 2,
+        "inv": 7,
+        "ic": 134592,
+        "src": "f",
+        "st": [
+          [
+            7,
+            7
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            3,
+            7
+          ]
+        ],
+        "ar": 87,
+        "b": 2,
+        "sell": 3151,
+        "chg": {
+          "st": [
+            [
+              3,
+              7
+            ],
+            [
+              6,
+              7
+            ],
+            [
+              7,
+              7
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          7149,
+          145,
+          "Barbaric Leggings",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 5964,
+        "n": "Barbaric Shoulders",
+        "q": 2,
+        "il": 35,
+        "rl": 30,
+        "c": 4,
+        "sc": 2,
+        "inv": 3,
+        "ic": 135039,
+        "src": "f",
+        "st": [
+          [
+            7,
+            6
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            3,
+            5
+          ]
+        ],
+        "ar": 76,
+        "b": 2,
+        "sell": 2609,
+        "chg": {
+          "st": [
+            [
+              3,
+              5
+            ],
+            [
+              6,
+              5
+            ],
+            [
+              7,
+              6
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          7151,
+          175,
+          "Barbaric Shoulders",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 6238,
+        "n": "Brown Linen Robe",
+        "q": 2,
+        "il": 10,
+        "rl": 5,
+        "c": 4,
+        "sc": 1,
+        "inv": 20,
+        "ic": 132662,
+        "src": "f",
+        "st": [
+          [
+            6,
+            1
+          ]
+        ],
+        "ar": 19,
+        "b": 2,
+        "sell": 98
+      },
+      "recipes": [
+        [
+          "tailoring",
+          7623,
+          30,
+          "Brown Linen Robe",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 6239,
+        "n": "Red Linen Vest",
+        "q": 2,
+        "il": 12,
+        "rl": 7,
+        "c": 4,
+        "sc": 1,
+        "inv": 5,
+        "ic": 132681,
+        "src": "f",
+        "st": [
+          [
+            5,
+            2
+          ],
+          [
+            45,
+            1
+          ]
+        ],
+        "ar": 23,
+        "b": 2,
+        "sell": 160,
+        "chg": {
+          "st": [
+            [
+              6,
+              2
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          7629,
+          35,
+          "Red Linen Vest",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 6240,
+        "n": "Blue Linen Vest",
+        "q": 2,
+        "il": 12,
+        "rl": 7,
+        "c": 4,
+        "sc": 1,
+        "inv": 5,
+        "ic": 132678,
+        "src": "f",
+        "st": [
+          [
+            6,
+            2
+          ],
+          [
+            45,
+            1
+          ]
+        ],
+        "ar": 23,
+        "b": 2,
+        "sell": 161
+      },
+      "recipes": [
+        [
+          "tailoring",
+          7630,
+          35,
+          "Blue Linen Vest",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 6241,
+        "n": "White Linen Robe",
+        "q": 2,
+        "il": 10,
+        "rl": 5,
+        "c": 4,
+        "sc": 1,
+        "inv": 20,
+        "ic": 132645,
+        "src": "f",
+        "st": [
+          [
+            5,
+            1
+          ]
+        ],
+        "ar": 19,
+        "b": 2,
+        "sell": 99
+      },
+      "recipes": [
+        [
+          "tailoring",
+          7624,
+          30,
+          "White Linen Robe",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 6242,
+        "n": "Blue Linen Robe",
+        "q": 2,
+        "il": 14,
+        "rl": 9,
+        "c": 4,
+        "sc": 1,
+        "inv": 20,
+        "ic": 132664,
+        "src": "f",
+        "st": [
+          [
+            6,
+            3
+          ],
+          [
+            45,
+            2
+          ]
+        ],
+        "ar": 26,
+        "b": 2,
+        "sell": 243
+      },
+      "recipes": [
+        [
+          "tailoring",
+          7633,
+          45,
+          "Blue Linen Robe",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 6243,
+        "n": "Green Woolen Robe",
+        "q": 2,
+        "il": 18,
+        "rl": 13,
+        "c": 4,
+        "sc": 1,
+        "inv": 20,
+        "ic": 132663,
+        "src": "f",
+        "st": [
+          [
+            5,
+            3
+          ],
+          [
+            45,
+            3
+          ]
+        ],
+        "ar": 32,
+        "b": 2,
+        "sell": 445,
+        "chg": {
+          "st": [
+            [
+              5,
+              3
+            ],
+            [
+              6,
+              3
+            ],
+            [
+              7,
+              2
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          7636,
+          90,
+          "Green Woolen Robe",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 6263,
+        "n": "Blue Overalls",
+        "q": 2,
+        "il": 20,
+        "rl": 15,
+        "c": 4,
+        "sc": 1,
+        "inv": 20,
+        "ic": 135017,
+        "src": "f",
+        "st": [
+          [
+            4,
+            4
+          ],
+          [
+            7,
+            4
+          ]
+        ],
+        "ar": 34,
+        "b": 2,
+        "sell": 589
+      },
+      "recipes": [
+        [
+          "tailoring",
+          7639,
+          75,
+          "Blue Overalls",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 6264,
+        "n": "Greater Adept's Robe",
+        "q": 2,
+        "il": 23,
+        "rl": 18,
+        "c": 4,
+        "sc": 1,
+        "inv": 20,
+        "ic": 132665,
+        "src": "f",
+        "st": [
+          [
+            45,
+            1
+          ],
+          [
+            5,
+            2
+          ],
+          [
+            6,
+            7
+          ]
+        ],
+        "ar": 37,
+        "b": 2,
+        "sell": 884,
+        "chg": {
+          "st": [
+            [
+              5,
+              2
+            ],
+            [
+              6,
+              7
+            ],
+            [
+              7,
+              1
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          7643,
+          90,
+          "Greater Adept's Robe",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 6350,
+        "n": "Rough Bronze Boots",
+        "q": 2,
+        "il": 18,
+        "rl": 13,
+        "c": 4,
+        "sc": 3,
+        "inv": 8,
+        "ic": 132535,
+        "src": "f",
+        "st": [
+          [
+            4,
+            2
+          ],
+          [
+            7,
+            3
+          ]
+        ],
+        "ar": 111,
+        "b": 2,
+        "sell": 295,
+        "chg": {
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          7817,
+          95,
+          "Rough Bronze Boots",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 6466,
+        "n": "Deviate Scale Cloak",
+        "q": 2,
+        "il": 18,
+        "rl": 13,
+        "c": 4,
+        "sc": 1,
+        "inv": 16,
+        "ic": 134305,
+        "src": "f",
+        "st": [
+          [
+            7,
+            2
+          ],
+          [
+            3,
+            2
+          ]
+        ],
+        "ar": 16,
+        "b": 2,
+        "sell": 413
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          7953,
+          65,
+          "Deviate Scale Cloak",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 6467,
+        "n": "Deviate Scale Gloves",
+        "q": 2,
+        "il": 21,
+        "rl": 16,
+        "c": 4,
+        "sc": 2,
+        "inv": 10,
+        "ic": 132939,
+        "src": "f",
+        "st": [
+          [
+            7,
+            3
+          ],
+          [
+            3,
+            3
+          ]
+        ],
+        "ar": 49,
+        "b": 2,
+        "sell": 420
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          7954,
+          80,
+          "Deviate Scale Gloves",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 6468,
+        "n": "Deviate Scale Belt",
+        "q": 3,
+        "il": 23,
+        "rl": 18,
+        "c": 4,
+        "sc": 2,
+        "inv": 6,
+        "ic": 132498,
+        "src": "f",
+        "st": [
+          [
+            7,
+            6
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            3
+          ]
+        ],
+        "ar": 51,
+        "b": 2,
+        "sell": 658,
+        "chg": {
+          "st": [
+            [
+              3,
+              5
+            ],
+            [
+              6,
+              3
+            ],
+            [
+              7,
+              6
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          7955,
+          90,
+          "Deviate Scale Belt",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 6709,
+        "n": "Moonglow Vest",
+        "q": 2,
+        "il": 18,
+        "rl": 13,
+        "c": 4,
+        "sc": 2,
+        "inv": 5,
+        "ic": 132724,
+        "src": "f",
+        "st": [
+          [
+            45,
+            4
+          ],
+          [
+            5,
+            3
+          ]
+        ],
+        "ar": 74,
+        "b": 2,
+        "sell": 545,
+        "chg": {
+          "st": [
+            [
+              5,
+              3
+            ],
+            [
+              6,
+              4
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          8322,
+          65,
+          "Moonglow Vest",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 6730,
+        "n": "Ironforge Chain",
+        "q": 2,
+        "il": 16,
+        "rl": 11,
+        "c": 4,
+        "sc": 3,
+        "inv": 5,
+        "ic": 132624,
+        "src": "f",
+        "st": [
+          [
+            7,
+            4
+          ]
+        ],
+        "ar": 151,
+        "b": 2,
+        "sell": 496
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          8366,
+          80,
+          "Ironforge Chain",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 6787,
+        "n": "White Woolen Dress",
+        "q": 2,
+        "il": 22,
+        "rl": 17,
+        "c": 4,
+        "sc": 1,
+        "inv": 20,
+        "ic": 135016,
+        "src": "f",
+        "st": [
+          [
+            6,
+            4
+          ],
+          [
+            7,
+            5
+          ]
+        ],
+        "ar": 36,
+        "b": 2,
+        "sell": 466,
+        "chg": {
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          8467,
+          110,
+          "White Woolen Dress",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 7049,
+        "n": "Truefaith Gloves",
+        "q": 2,
+        "il": 30,
+        "rl": 25,
+        "c": 4,
+        "sc": 1,
+        "inv": 10,
+        "ic": 132950,
+        "src": "f",
+        "st": [
+          [
+            5,
+            3
+          ],
+          [
+            41,
+            15
+          ],
+          [
+            42,
+            5
+          ]
+        ],
+        "ar": 27,
+        "b": 2,
+        "sell": 914
+      },
+      "recipes": [
+        [
+          "tailoring",
+          8782,
+          125,
+          "Truefaith Gloves",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 7050,
+        "n": "Silk Headband",
+        "q": 2,
+        "il": 32,
+        "rl": 27,
+        "c": 4,
+        "sc": 1,
+        "inv": 1,
+        "ic": 133693,
+        "src": "f",
+        "st": [
+          [
+            45,
+            9
+          ],
+          [
+            7,
+            8
+          ]
+        ],
+        "ar": 36,
+        "b": 2,
+        "sell": 999,
+        "chg": {
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          8762,
+          160,
+          "Silk Headband",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 7051,
+        "n": "Earthen Vest",
+        "q": 2,
+        "il": 34,
+        "rl": 29,
+        "c": 4,
+        "sc": 1,
+        "inv": 5,
+        "ic": 135008,
+        "src": "f",
+        "st": [
+          [
+            6,
+            10
+          ],
+          [
+            7,
+            6
+          ]
+        ],
+        "ar": 46,
+        "b": 2,
+        "sell": 2696
+      },
+      "recipes": [
+        [
+          "tailoring",
+          8764,
+          170,
+          "Earthen Vest",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 7055,
+        "n": "Crimson Silk Belt",
+        "q": 2,
+        "il": 35,
+        "rl": 30,
+        "c": 4,
+        "sc": 1,
+        "inv": 6,
+        "ic": 132493,
+        "src": "f",
+        "st": [
+          [
+            5,
+            7
+          ],
+          [
+            45,
+            6
+          ]
+        ],
+        "ar": 26,
+        "b": 2,
+        "sell": 1503,
+        "chg": {
+          "st": [
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              6
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          8772,
+          175,
+          "Crimson Silk Belt",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 7065,
+        "n": "Green Silk Armor",
+        "q": 2,
+        "il": 33,
+        "rl": 28,
+        "c": 4,
+        "sc": 1,
+        "inv": 5,
+        "ic": 132647,
+        "src": "f",
+        "st": [
+          [
+            5,
+            13
+          ],
+          [
+            45,
+            9
+          ]
+        ],
+        "ar": 45,
+        "b": 2,
+        "sell": 2398
+      },
+      "recipes": [
+        [
+          "tailoring",
+          8784,
+          130,
+          "Green Silk Armor",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 7280,
+        "n": "Rugged Leather Pants",
+        "q": 2,
+        "il": 11,
+        "rl": 6,
+        "c": 4,
+        "sc": 2,
+        "inv": 7,
+        "ic": 134582,
+        "src": "f",
+        "st": [
+          [
+            7,
+            1
+          ]
+        ],
+        "ar": 51,
+        "b": 2,
+        "sell": 162
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          9064,
+          30,
+          "Rugged Leather Pants",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 7281,
+        "n": "Light Leather Bracers",
+        "q": 2,
+        "il": 14,
+        "rl": 9,
+        "c": 4,
+        "sc": 2,
+        "inv": 9,
+        "ic": 132603,
+        "src": "f",
+        "st": [
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            1
+          ]
+        ],
+        "ar": 30,
+        "b": 2,
+        "sell": 84,
+        "chg": {
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          9065,
+          70,
+          "Light Leather Bracers",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 7282,
+        "n": "Light Leather Pants",
+        "q": 2,
+        "il": 19,
+        "rl": 14,
+        "c": 4,
+        "sc": 2,
+        "inv": 7,
+        "ic": 134582,
+        "src": "f",
+        "st": [
+          [
+            3,
+            5
+          ],
+          [
+            7,
+            3
+          ]
+        ],
+        "ar": 66,
+        "b": 2,
+        "sell": 599,
+        "chg": {
+          "st": [
+            [
+              3,
+              5
+            ],
+            [
+              6,
+              3
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          9068,
+          95,
+          "Light Leather Pants",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 7283,
+        "n": "Black Whelp Cloak",
+        "q": 2,
+        "il": 20,
+        "rl": 15,
+        "c": 4,
+        "sc": 1,
+        "inv": 16,
+        "ic": 134305,
+        "src": "f",
+        "st": [
+          [
+            45,
+            3
+          ]
+        ],
+        "ar": 17,
+        "b": 2,
+        "sell": 519,
+        "chg": {
+          "st": [
+            [
+              7,
+              3
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          9070,
+          75,
+          "Black Whelp Cloak",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 7285,
+        "n": "Nimble Leather Gloves",
+        "q": 2,
+        "il": 24,
+        "rl": 19,
+        "c": 4,
+        "sc": 2,
+        "inv": 10,
+        "ic": 132939,
+        "src": "f",
+        "st": [
+          [
+            3,
+            4
+          ],
+          [
+            7,
+            4
+          ]
+        ],
+        "ar": 52,
+        "b": 2,
+        "sell": 588,
+        "chg": {
+          "st": [
+            [
+              3,
+              4
+            ],
+            [
+              6,
+              4
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          9074,
+          120,
+          "Nimble Leather Gloves",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 7352,
+        "n": "Earthen Leather Shoulders",
+        "q": 2,
+        "il": 27,
+        "rl": 22,
+        "c": 4,
+        "sc": 2,
+        "inv": 3,
+        "ic": 135037,
+        "src": "f",
+        "st": [
+          [
+            7,
+            7
+          ]
+        ],
+        "ar": 67,
+        "b": 2,
+        "sell": 1306
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          9147,
+          110,
+          "Earthen Leather Shoulders",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 7358,
+        "n": "Pilferer's Gloves",
+        "q": 2,
+        "il": 28,
+        "rl": 23,
+        "c": 4,
+        "sc": 2,
+        "inv": 10,
+        "ic": 132939,
+        "src": "f",
+        "st": [
+          [
+            3,
+            8
+          ]
+        ],
+        "ar": 56,
+        "b": 2,
+        "sell": 885
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          9148,
+          115,
+          "Pilferer's Gloves",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 7359,
+        "n": "Heavy Earthen Gloves",
+        "q": 2,
+        "il": 29,
+        "rl": 24,
+        "c": 4,
+        "sc": 2,
+        "inv": 10,
+        "ic": 132957,
+        "src": "f",
+        "st": [
+          [
+            38,
+            16
+          ]
+        ],
+        "ar": 57,
+        "b": 2,
+        "sell": 978
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          9149,
+          120,
+          "Heavy Earthen Gloves",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 7373,
+        "n": "Dusky Leather Leggings",
+        "q": 2,
+        "il": 33,
+        "rl": 28,
+        "c": 4,
+        "sc": 2,
+        "inv": 7,
+        "ic": 134587,
+        "src": "f",
+        "st": [
+          [
+            3,
+            13
+          ]
+        ],
+        "ar": 86,
+        "b": 2,
+        "sell": 3097
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          9195,
+          140,
+          "Dusky Leather Leggings",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 7374,
+        "n": "Dusky Leather Armor",
+        "q": 2,
+        "il": 35,
+        "rl": 30,
+        "c": 4,
+        "sc": 2,
+        "inv": 5,
+        "ic": 132718,
+        "src": "f",
+        "st": [
+          [
+            3,
+            14
+          ]
+        ],
+        "ar": 102,
+        "b": 2,
+        "sell": 3760
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          9196,
+          175,
+          "Dusky Leather Armor",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 7913,
+        "n": "Barbaric Iron Shoulders",
+        "q": 2,
+        "il": 32,
+        "rl": 27,
+        "c": 4,
+        "sc": 3,
+        "inv": 3,
+        "ic": 135054,
+        "src": "f",
+        "st": [
+          [
+            4,
+            6
+          ],
+          [
+            3,
+            6
+          ]
+        ],
+        "ar": 153,
+        "b": 2,
+        "sell": 2500
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          9811,
+          135,
+          "Barbaric Iron Shoulders",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 7914,
+        "n": "Barbaric Iron Breastplate",
+        "q": 2,
+        "il": 32,
+        "rl": 27,
+        "c": 4,
+        "sc": 3,
+        "inv": 5,
+        "ic": 132636,
+        "src": "f",
+        "st": [
+          [
+            4,
+            12
+          ]
+        ],
+        "ar": 204,
+        "b": 2,
+        "sell": 3330
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          9813,
+          135,
+          "Barbaric Iron Breastplate",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 7915,
+        "n": "Barbaric Iron Helm",
+        "q": 2,
+        "il": 35,
+        "rl": 30,
+        "c": 4,
+        "sc": 3,
+        "inv": 1,
+        "ic": 133127,
+        "src": "f",
+        "st": [
+          [
+            3,
+            9
+          ],
+          [
+            4,
+            9
+          ]
+        ],
+        "ar": 173,
+        "b": 2,
+        "sell": 3337
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          9814,
+          150,
+          "Barbaric Iron Helm",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 10047,
+        "n": "Simple Kilt",
+        "q": 2,
+        "il": 15,
+        "rl": 10,
+        "c": 4,
+        "sc": 1,
+        "inv": 7,
+        "ic": 134591,
+        "src": "f",
+        "st": [
+          [
+            7,
+            3
+          ],
+          [
+            45,
+            2
+          ]
+        ],
+        "ar": 24,
+        "b": 2,
+        "sell": 164,
+        "chg": {
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          12046,
+          75,
+          "Simple Kilt",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 10048,
+        "n": "Colorful Kilt",
+        "q": 2,
+        "il": 19,
+        "rl": 14,
+        "c": 4,
+        "sc": 1,
+        "inv": 7,
+        "ic": 134582,
+        "src": "f",
+        "st": [
+          [
+            45,
+            5
+          ],
+          [
+            6,
+            5
+          ]
+        ],
+        "ar": 29,
+        "b": 2,
+        "sell": 935,
+        "chg": {
+          "il": 24,
+          "st": [
+            [
+              3,
+              5
+            ],
+            [
+              6,
+              5
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "tailoring",
+          12047,
+          70,
+          "Colorful Kilt",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 10421,
+        "n": "Rough Copper Vest",
+        "q": 2,
+        "il": 10,
+        "rl": 2,
+        "c": 4,
+        "sc": 3,
+        "inv": 5,
+        "ic": 132624,
+        "src": "f",
+        "st": [
+          [
+            7,
+            1
+          ]
+        ],
+        "ar": 108,
+        "b": 2,
+        "sell": 32,
+        "chg": {
+          "il": 7,
+          "q": 1,
+          "st": []
+        }
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          12260,
+          1,
+          "Rough Copper Vest",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 10423,
+        "n": "Silvered Bronze Leggings",
+        "q": 2,
+        "il": 31,
+        "rl": 26,
+        "c": 4,
+        "sc": 3,
+        "inv": 7,
+        "ic": 134584,
+        "src": "f",
+        "st": [
+          [
+            4,
+            7
+          ],
+          [
+            7,
+            6
+          ],
+          [
+            6,
+            6
+          ]
+        ],
+        "ar": 176,
+        "b": 2,
+        "sell": 2842
+      },
+      "recipes": [
+        [
+          "blacksmithing",
+          12259,
+          130,
+          "Silvered Bronze Leggings",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 18948,
+        "n": "Barbaric Bracers",
+        "q": 3,
+        "il": 32,
+        "rl": 27,
+        "c": 4,
+        "sc": 2,
+        "inv": 9,
+        "ic": 132614,
+        "src": "f",
+        "st": [
+          [
+            7,
+            6
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "ar": 47,
+        "b": 2,
+        "sell": 1589,
+        "chg": {
+          "st": [
+            [
+              3,
+              4
+            ],
+            [
+              6,
+              4
+            ],
+            [
+              7,
+              6
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          23399,
+          130,
+          "Barbaric Bracers",
+          1
+        ]
+      ]
+    },
+    {
+      "item": {
+        "id": 20575,
+        "n": "Black Whelp Tunic",
+        "q": 2,
+        "il": 20,
+        "rl": 15,
+        "c": 4,
+        "sc": 2,
+        "inv": 5,
+        "ic": 132686,
+        "src": "f",
+        "st": [
+          [
+            5,
+            5
+          ],
+          [
+            45,
+            3
+          ]
+        ],
+        "ar": 78,
+        "b": 2,
+        "sell": 743,
+        "chg": {
+          "st": [
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              5
+            ]
+          ]
+        }
+      },
+      "recipes": [
+        [
+          "leatherworking",
+          24940,
+          75,
+          "Black Whelp Tunic",
+          1
+        ]
+      ]
+    }
+  ]
+}

@@ -230,14 +230,17 @@ function API.EquippedEnchants()
 end
 
 -- Raw stat tokens: { [slotID] = { ITEM_MOD_*_SHORT = n } or false (not readable yet) }
+-- Second return: item IDs from the same equipped links, for ownership filtering.
 API.GEAR_SLOTS = { 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 }
 function API.EquippedItemStats()
-  local out = {}
+  local out, owned = {}, {}
   local getStats = C_Item and C_Item.GetItemStats
   -- Still mark equipped slots unknown when the stats API is unavailable.
   for _, slot in ipairs(API.GEAR_SLOTS) do
     local link = API.clean(GetInventoryItemLink("player", slot))
     if type(link) == "string" then
+      local itemID = tonumber(link:match("item:(%d+)"))
+      if itemID then owned[itemID] = true end
       local ok, stats
       if getStats then ok, stats = pcall(getStats, link) end
       local clean, readable = {}, ok and type(stats) == "table"
@@ -257,7 +260,7 @@ function API.EquippedItemStats()
       end
     end
   end
-  return out
+  return out, owned
 end
 
 -- Talents ---------------------------------------------------------------------------------
