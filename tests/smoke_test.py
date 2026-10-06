@@ -71,7 +71,7 @@ gear = screen(L, ns, "gear")
 print("---- Rogue: Gear ----\n" + gear)
 has(gear, "Chest: Living Stats (+4 All stats) | |cff9d9d9denchanted|r",
     "Wrist: Superior Agility (+9 Agility) | |cffff4040missing|r", "Main hand: Agility (+15 Agility)",
-    "No upgrade list for your class yet")
+    "No upgrade sources for your class yet")
 
 cons = screen(L, ns, "consumables")
 print("---- Rogue: Consumables ----\n" + cons)

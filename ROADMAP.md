@@ -106,3 +106,17 @@ How every phase below gets done. Details in [AGENTS.md](AGENTS.md).
 - [x] Fix icon rims to enclose images; enlarge text, icons, window and controls
 - [x] Add saved size controls and automatic screen fitting outside combat
 - [ ] Live-check larger typography, rim geometry and size controls at different UI scales
+
+### Practical leveling gear
+
+- [x] Compare structured quest, crafted, vendor and drop routes by slot
+- [x] Keep one primary plus one meaningful alternative; label unknown access and future level
+- [x] Add observed-context guards and provisional small-gain/easier-route policy
+- [x] Show source, location, requirements and crafting access inline; bound large-catalog work
+- [ ] Establish an approved redistribution path for quest/crafting/source data
+- [ ] Import source-linked item stats with provenance and build/version checks
+- [ ] Add probe-confirmed live item usability, ownership, quest completion and access resolver
+- [ ] Validate two-slot rings/trinkets and weapon-pair changes before recommending swaps
+- [ ] Add quest pickup/chain guidance and map links backed by confirmed client APIs
+- [ ] Use known material/recipe availability and observed prices; never estimate costs from source kind
+- [ ] Live-test practical upgrades as players level; tune scoring/churn policy from results
