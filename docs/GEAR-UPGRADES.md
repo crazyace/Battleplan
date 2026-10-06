@@ -97,3 +97,25 @@ Before weapon swaps, model two-hand/off-hand changes and spec restrictions toget
 Before duplicate-slot suggestions, compare both rings/trinkets and ownership. Initial
 stat scores cannot faithfully value every proc, set bonus or weapon effect; those
 items need explicit model coverage before being called the best upgrade.
+
+## Full collection import
+
+The complete external JSON collection is preserved; 1,635 items currently have
+supported static armor stats, modeled slots, and at least one identified source.
+Quest, vendor, drop and craft routes share the same scoring model. Raw data also
+retains spells, talents, recipe ingredients, quest rewards and all source associations.
+Existing verified class/build data is not overwritten by external records.
+
+The runtime uses up to two representative routes per acquisition kind and faction;
+the full associations stay in the archive. Quest names, known prerequisite IDs,
+givers and locations are included where supplied. Faction and completed one-time
+quests are filtered only when the optional client read succeeds. Bind-on-pickup
+crafts say to craft the item yourself. Class-specific quests remain unconfirmed.
+Dungeon levels are provisional acquisition floors, not verified entrance rules.
+No drop rates, prices, travel-time estimates or recipe skill requirements are invented.
+
+Weapons, jewelry/trinket duplicate slots, set bonuses, proc effects, profession/class/
+reputation restrictions and missing source/level facts remain reference data until
+the model supports them. `data/external/catalog-report.json` accounts for every item.
+All imported recommendations remain Potential upgrades; these data do not prove
+source availability or equipment usability.

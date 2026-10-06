@@ -188,8 +188,11 @@ local function upgradeRow(rows, u, alternative)
     if route.location then source = source .. " — " .. route.location end
     note(rows, source, 2)
     if route.requirements then note(rows, route.requirements, 2) end
+    if route.faction then note(rows, route.faction .. " source; confirm faction eligibility.", 2) end
+    if route.sourceEvidence == "classic" then note(rows, "Classic-derived source; not confirmed on Forever.", 2) end
     if route.kind == "craft" and route.profession then
-      note(rows, "Find a crafter with " .. route.profession .. "; confirm the recipe, materials and price.", 2)
+      local action = route.wearerProfession and "Craft this yourself with " or "Find a crafter with "
+      note(rows, action .. route.profession .. "; confirm the recipe, materials and price.", 2)
     end
     if u.status == "unknown" then note(rows, "Source not confirmed. Check requirements before spending time or gold.", 2) end
     if u.status ~= "unknown" and (u.target._status ~= "verified" or route._status ~= "verified") then

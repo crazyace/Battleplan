@@ -248,3 +248,24 @@ The production change reuses existing item-count and equipped-link reads. Equipp
 IDs are extracted from the same cleaned links already used for stat comparisons;
 no new client API is introduced or declared verified. Bag/equipment ownership,
 source icons and source-side recipe details still need a live visual check.
+
+### Complete external snapshot — 2026-10-06
+
+The existing 2026-10-05 ForeverDB collection (item build 1.60.1.70205) is preserved
+in `data/external/full-snapshot.zip`, including all downloaded JSON and collection
+manifest files. The new member/archive SHA-256 manifest permits integrity checks.
+This supersedes the starter cohort's statement that no Classic source tables are
+bundled: the complete reference archive now retains their declarations and license.
+
+The importer emits 1,635 provisional armor/cloak records with quest/craft/vendor/
+drop associations. These are imported leads, never verified player access. Older
+talent data is archived but does not replace verified trees. The import excludes
+effects and unsupported wearer requirements instead of silently scoring them away.
+See the exclusion report and `data/external/NOTICE.md` for provenance/license details.
+
+`UnitFactionGroup` and `C_QuestLog.IsQuestFlaggedCompleted` are optional, unconfirmed
+live reads. Production wrappers feature-detect, pcall, clean and preserve unknown
+results; completion caches invalidate on supported quest events. The probe env now
+records API presence, player faction and a completion sample for quest 6. Synthetic
+tests exercise missing/error/secret values; they do not verify these APIs on Forever.
+After maintenance, `/bpp all` and `/bpp export` can confirm their actual behavior.

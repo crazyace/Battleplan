@@ -1,0 +1,19 @@
+{
+  "_status": "provisional",
+  "itemsPreserved": 22069,
+  "rankableItems": 1635,
+  "excludedFromRanking": {
+    "effects_or_wearer_requirements": 5011,
+    "invalid_stats": 2,
+    "legacy_or_test_record": 10,
+    "source_not_located": 703,
+    "unmodeled_slot_or_item_class": 14601,
+    "unsupported_stats": 107
+  },
+  "sourceKinds": {
+    "quest": 351,
+    "vendor": 565,
+    "drop": 1497,
+    "craft": 342
+  }
+}

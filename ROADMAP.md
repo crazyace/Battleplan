@@ -126,3 +126,12 @@ How every phase below gets done. Details in [AGENTS.md](AGENTS.md).
 - [x] Keep recipe profession separate from wearer requirements and skip restricted/effect items
 - [ ] Live-check starter Gear tab icons, ownership updates and imported stats on Forever
 - [ ] Expand source coverage with approved quest/vendor/drop feeds and verified access checks
+
+## Full collected data milestone
+
+- [x] Preserve every downloaded JSON record and collection manifest with checksums and upstream credits/licenses
+- [x] Generate a lazy provisional armor catalog with quest, crafting, vendor and drop routes
+- [x] Filter observed faction/completed quests and retain unknown access honestly
+- [ ] Confirm optional faction/quest APIs and new source details in a live probe capture
+- [ ] Model weapons, duplicate slots, effects and restricted items before ranking them
+- [ ] Verify acquisition effort, quest chains, crafter requirements and locations on Forever

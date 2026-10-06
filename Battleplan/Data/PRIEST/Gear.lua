@@ -1,6 +1,6 @@
 -- Priest enchants (Classic amounts, PROVISIONAL until an Enchanting capture
 -- lists the Forever healing and intellect recipes) and upgrade targets.
--- Empty class targets fall back to the provisional shared GearCatalog.
+-- Empty class targets fall back to the provisional shared FullGearCatalog.
 local _, ns = ...
 
 local CASTER = {

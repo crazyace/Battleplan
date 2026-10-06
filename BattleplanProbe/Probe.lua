@@ -100,6 +100,7 @@ end
 
 -- Environment ----------------------------------------------------------------------------
 local API_PATHS = {
+  "UnitFactionGroup", "C_QuestLog.IsQuestFlaggedCompleted",
   "C_TooltipInfo.GetTraitEntry", "C_Spell.RequestLoadSpellData",
   "C_ClassTalents.GetActiveConfigID", "C_Traits.GetConfigInfo", "C_Traits.GetTreeNodes",
   "C_Traits.GetNodeInfo", "C_Traits.GetEntryInfo", "C_Traits.GetDefinitionInfo", "C_Traits.GetConditionInfo",
@@ -127,6 +128,8 @@ function P.env()
   record("env", {
     build = build.values, project = sanitize(rawget(_G, "WOW_PROJECT_ID")),
     locale = sanitize(GetLocale and GetLocale()), apis = apis,
+    faction = capture("UnitFactionGroup", "player"),
+    questCompletionSample = capture("C_QuestLog.IsQuestFlaggedCompleted", 6),
   })
   local missing = 0
   for _, v in pairs(apis) do if v == "missing" then missing = missing + 1 end end

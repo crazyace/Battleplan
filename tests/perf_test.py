@@ -59,8 +59,11 @@ def rows(L, ns, label, runs=2000):
 ALLOC = """function(fn, n)
   collectgarbage("collect")
   collectgarbage("stop")
-  local before = collectgarbage("count")
-  for _ = 1, n do fn() end
+  local before
+  for i = 0, n do
+    if i == 1 then before = collectgarbage("count") end
+    fn() -- Iteration zero warms the same call site after collection shrinks VM stacks.
+  end
   local grew = collectgarbage("count") - before
   collectgarbage("restart")
   return grew
@@ -72,6 +75,7 @@ def allocations(L, ns):
     n = 10000
     # UNIT_AURA with the window closed: the handler returns at once.
     aura = L.eval("function() fire('UNIT_AURA', 'player') end")
+    aura()  # Warm the mock dispatcher stack before measuring the unchanged hot path.
     report(f"UNIT_AURA x{n}, window closed: memory", measure(aura, n), ALLOC_BUDGET_KB, "KB")
     # Real timers are asynchronous. The mock's default immediate timer recursively
     # runs the whole refresh inside the event and measures Lua stack growth instead.
@@ -139,6 +143,32 @@ while True:
     if status == 'dead':
         break
 report(f"3200 source candidates, worst of {count} slices", worst, SLICE_BUDGET_MS, "ms")
+
+# Actual generated data: a previously unused class must decode in bounded cold slices.
+L.execute("""
+  COLD_JOB=coroutine.create(function()
+    COLD_RESULT=GEAR_NS.Engine.Gear.CatalogTargets(GEAR_NS.Data.FullGearCatalog,"WARRIOR",60,coroutine.yield)
+  end)
+""")
+resume = L.eval("function() return coroutine.resume(COLD_JOB),coroutine.status(COLD_JOB) end")
+worst, count = 0.0, 0
+while True:
+    started = time.perf_counter()
+    ok, status = resume()
+    worst = max(worst, (time.perf_counter() - started) * 1000)
+    count += 1
+    assert ok, 'cold catalog coroutine failed'
+    if status == 'dead':
+        break
+report(f"cold full Warrior catalog, worst of {count} slices", worst, SLICE_BUDGET_MS, "ms")
+warm = L.eval('function() GEAR_NS.Engine.Gear.CatalogTargets(GEAR_NS.Data.FullGearCatalog,"WARRIOR",60) end')
+warm()
+report('cached catalog lookup x10000: memory', L.eval(ALLOC)(warm,10000), ALLOC_BUDGET_KB, 'KB')
+L.execute('C_Timer.After=function(_, fn) QUEST_TIMER=fn end')
+quest = L.eval('function() fire("QUEST_LOG_UPDATE") end')
+for _ in range(10):
+    quest()  # Warm both the initial queue and already-coalesced mock dispatcher paths.
+report('quest events x10000, coalesced: memory', L.eval(ALLOC)(quest,10000), ALLOC_BUDGET_KB, 'KB')
 
 if failures:
     print(f"\nperf test FAILED: {len(failures)} over budget")

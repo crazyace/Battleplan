@@ -1,0 +1,1888 @@
+{
+  "_status": "provisional",
+  "sourceBuild": "1.60.1.70205",
+  "retrievedAt": "2026-10-05T22:02:17.339901+00:00",
+  "archiveSha256": "70ec064cde2a9c84e3453c1e2b636fd5199cc3f89c6e1410ad6e6eb105e2bd4c",
+  "files": [
+    {
+      "path": "collection_manifest.json",
+      "bytes": 75496,
+      "sha256": "b020262fd1c454353394eda2b5f057125c1f247a5daacb09cd64d7fc60702dba"
+    },
+    {
+      "path": "extra_manifest.json",
+      "bytes": 42278,
+      "sha256": "81d4f461cba46e443d10b1cf2cb3a586625fb167902c6f8e8dfd216a93a3037c"
+    },
+    {
+      "path": "licenses/GPL-3.0.txt",
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    {
+      "path": "raw/foreverdb/bis/enhance.json",
+      "bytes": 110289,
+      "sha256": "6d1d276a31f1729ea4c873cf892de7fb2c4e97b61d95316a0c4c13a4bc2afbb5"
+    },
+    {
+      "path": "raw/foreverdb/changes.json",
+      "bytes": 420861,
+      "sha256": "ce54a82929d538c773cb6df69d176fe58b06335916ca0f0418b9a1333ada2700"
+    },
+    {
+      "path": "raw/foreverdb/classes.json",
+      "bytes": 371240,
+      "sha256": "c6f079376966af3a51f3e909a5aa90b1ceb705db68adaeee9d40953b55cfb05f"
+    },
+    {
+      "path": "raw/foreverdb/consumables.json",
+      "bytes": 185605,
+      "sha256": "0ab18a410b482f37b5b8e45ef6daf44231e1dd4f5151d40eaae408ba255e75f5"
+    },
+    {
+      "path": "raw/foreverdb/crafting/0.json",
+      "bytes": 11782,
+      "sha256": "30c1ba0d5acc9b28d04744f8c14c4163f855897884605f3978f7d347cca97def"
+    },
+    {
+      "path": "raw/foreverdb/crafting/1.json",
+      "bytes": 19003,
+      "sha256": "30a3bfc2286fca2c6cdb3aa8dbfbf6390e01e3f2962d29a489f41522ee086dcb"
+    },
+    {
+      "path": "raw/foreverdb/crafting/10.json",
+      "bytes": 27704,
+      "sha256": "5f78f0b93f2796ceffa18319a6052bf10422360f490f1e5e258fe2499f83655c"
+    },
+    {
+      "path": "raw/foreverdb/crafting/11.json",
+      "bytes": 15035,
+      "sha256": "947d3ebc93ee34ecdfeef3328b09f5b702e3d114d0b4874ff564120c73e7d835"
+    },
+    {
+      "path": "raw/foreverdb/crafting/12.json",
+      "bytes": 15768,
+      "sha256": "10bc4d932cac6255d084bca2019e4d247965d5ec252af3d892a7f6ce4930ce98"
+    },
+    {
+      "path": "raw/foreverdb/crafting/13.json",
+      "bytes": 7146,
+      "sha256": "19c8433730fe1c9241f492d13dc2a970aef499f1de0f18e36ec089405ab8c177"
+    },
+    {
+      "path": "raw/foreverdb/crafting/14.json",
+      "bytes": 17273,
+      "sha256": "febf2f6ffd34f454d0258a03b96bdabb6235c957e0ea374953f262bc9d976e04"
+    },
+    {
+      "path": "raw/foreverdb/crafting/15.json",
+      "bytes": 13197,
+      "sha256": "d1c25516ece8cb454506fe003814c8d6e6f0fa375ce3c46606fd4101ee451e0f"
+    },
+    {
+      "path": "raw/foreverdb/crafting/16.json",
+      "bytes": 21883,
+      "sha256": "fde79b75eaf4cb80f1207475b1e9cf6b239923c1e024d0bbc3aef58a81dd9bec"
+    },
+    {
+      "path": "raw/foreverdb/crafting/17.json",
+      "bytes": 26576,
+      "sha256": "8c01316a00dcb24f006f7a2d7f64e8721d62858f5bf135ad8f2349fe392791c7"
+    },
+    {
+      "path": "raw/foreverdb/crafting/18.json",
+      "bytes": 7993,
+      "sha256": "c925ff79f054c3006e3d5cc7364fb855501bd90225a553a38346523ba38ab045"
+    },
+    {
+      "path": "raw/foreverdb/crafting/19.json",
+      "bytes": 23819,
+      "sha256": "510cf62414f5fc6b35d79888b6c1d31b1c5ed56bc8fd7b44d1869c2b49a3c38d"
+    },
+    {
+      "path": "raw/foreverdb/crafting/2.json",
+      "bytes": 10270,
+      "sha256": "88bc5192e12bebe025a5be2e6f374355080c2708c3906408f550e4e067b6b854"
+    },
+    {
+      "path": "raw/foreverdb/crafting/20.json",
+      "bytes": 17840,
+      "sha256": "31c79776b02468125764447d7831656e5790d75261994cc0d9286a8732be362b"
+    },
+    {
+      "path": "raw/foreverdb/crafting/21.json",
+      "bytes": 12281,
+      "sha256": "7d669d74945667eaaf878dab4b92f57ab4eacb00adf7837a2e3b7b22a73c7e14"
+    },
+    {
+      "path": "raw/foreverdb/crafting/22.json",
+      "bytes": 14449,
+      "sha256": "279bd287750b11ac0f006e2de918d239bb1f33523482940e531f8705f6f8bb96"
+    },
+    {
+      "path": "raw/foreverdb/crafting/23.json",
+      "bytes": 21149,
+      "sha256": "a3cf9ba4785e5ece362d5b1dc4ce1bd98a5acc57e778ea61942f29afae6e7d54"
+    },
+    {
+      "path": "raw/foreverdb/crafting/24.json",
+      "bytes": 16439,
+      "sha256": "69f6c9da44eb18332f4058af8160ba2f1257d52aab624e88e0305b8f63d8d01d"
+    },
+    {
+      "path": "raw/foreverdb/crafting/25.json",
+      "bytes": 15641,
+      "sha256": "0fe2619c0a58b93c2cc6925393c790f20b63da82fd7d56568091d3d6d6759e5f"
+    },
+    {
+      "path": "raw/foreverdb/crafting/26.json",
+      "bytes": 14886,
+      "sha256": "56bf38030b827f0312ea238fecc55464622d0f5594fe172c93708a40aa6be9c0"
+    },
+    {
+      "path": "raw/foreverdb/crafting/27.json",
+      "bytes": 15225,
+      "sha256": "e149b2e59b2a2a994bc6ecc4bb9ad78349d6e7125165d1a596563f11f3a81d64"
+    },
+    {
+      "path": "raw/foreverdb/crafting/28.json",
+      "bytes": 10211,
+      "sha256": "555ffb43e4e6d2075fba4031695b580f0a49d4aad77019d5a297d79443b58647"
+    },
+    {
+      "path": "raw/foreverdb/crafting/29.json",
+      "bytes": 15644,
+      "sha256": "bf102d3cead30a84b59c1eb1f442e1bb6b243e4b3bdc9d07b214945ae2f8251a"
+    },
+    {
+      "path": "raw/foreverdb/crafting/3.json",
+      "bytes": 17170,
+      "sha256": "2371d3682bb31bcebc64ac8a9ec5b17e245f371e77487b09cb87dc2a902f93a0"
+    },
+    {
+      "path": "raw/foreverdb/crafting/30.json",
+      "bytes": 16716,
+      "sha256": "caea4a838ef1b59d01618034030dc7a4491dfe134f6c8da1efb5e1321cc45289"
+    },
+    {
+      "path": "raw/foreverdb/crafting/31.json",
+      "bytes": 9579,
+      "sha256": "3f968d875c3d4c9f9ca93482d1e040ea08d7b208ed709895afb224de077277c6"
+    },
+    {
+      "path": "raw/foreverdb/crafting/32.json",
+      "bytes": 18419,
+      "sha256": "f9b7d944a4d994629867a8fab67b2f64af1f85b3dcd3e1ac436cfb246850308a"
+    },
+    {
+      "path": "raw/foreverdb/crafting/33.json",
+      "bytes": 6094,
+      "sha256": "4673b3af76262c94e55ac1ffe568dda76c6229c4d3d245872388872b4279cbdd"
+    },
+    {
+      "path": "raw/foreverdb/crafting/34.json",
+      "bytes": 6297,
+      "sha256": "18df06aae25f8d91770ccb140b171cd2963003174641ac9954fa13aee40c35dd"
+    },
+    {
+      "path": "raw/foreverdb/crafting/35.json",
+      "bytes": 9390,
+      "sha256": "749ce0636ab475b4eff03bf4d1187fbc55a889db58a14dd666494cdc3a99a22a"
+    },
+    {
+      "path": "raw/foreverdb/crafting/36.json",
+      "bytes": 11250,
+      "sha256": "bef4e4c9e6dfce3f03a6b23bddbbc8c60c2cc488f0f892b279796ca160479191"
+    },
+    {
+      "path": "raw/foreverdb/crafting/37.json",
+      "bytes": 10569,
+      "sha256": "5f319daf1b5c31b2ee1c705bba3cd62feaa0a2f1eda161e1dbee0de8f53cd1ee"
+    },
+    {
+      "path": "raw/foreverdb/crafting/38.json",
+      "bytes": 13881,
+      "sha256": "8b1aabfd0d5d609ca622133f6a5f84c76c8917a508a351f8573595f2b67104ac"
+    },
+    {
+      "path": "raw/foreverdb/crafting/39.json",
+      "bytes": 9467,
+      "sha256": "1dffb47d714318eca1bfa2310f09b746b712ae9460ff35bc3766ab9bba8da8eb"
+    },
+    {
+      "path": "raw/foreverdb/crafting/4.json",
+      "bytes": 10164,
+      "sha256": "ef06103ae4a6ef5ed557431d6591be4d6f21229a6aeb6f2feb47cc511e9b2496"
+    },
+    {
+      "path": "raw/foreverdb/crafting/40.json",
+      "bytes": 13729,
+      "sha256": "d9a3a8738cdaf47cbb81b487e4328dee919658b1efca459534728dbc0078a304"
+    },
+    {
+      "path": "raw/foreverdb/crafting/41.json",
+      "bytes": 7997,
+      "sha256": "7568a898ef96b06a13862a20e9f0d94a834bd4714cf48d50b65ad5e9989a3b67"
+    },
+    {
+      "path": "raw/foreverdb/crafting/42.json",
+      "bytes": 25359,
+      "sha256": "d323b8223f04e91044d3580f2f186ef7879edf20491fca72173fbe10658911bd"
+    },
+    {
+      "path": "raw/foreverdb/crafting/43.json",
+      "bytes": 10530,
+      "sha256": "64fa0c1ade4a0de8bd4719b1eafa40519cbec1b5f7faa48508ea3e6f5d756190"
+    },
+    {
+      "path": "raw/foreverdb/crafting/44.json",
+      "bytes": 14679,
+      "sha256": "05da134f9813abec28ee8d666629c1639789e7f29618ce49d654ebe269ddc2d2"
+    },
+    {
+      "path": "raw/foreverdb/crafting/45.json",
+      "bytes": 8557,
+      "sha256": "6849c4ed5a12ebc5d930977b367a7ed6cc225b1c7e5907c2589d18795a9b9f0b"
+    },
+    {
+      "path": "raw/foreverdb/crafting/46.json",
+      "bytes": 14069,
+      "sha256": "e1b9291df5f252bf97cb252c516570fb080282a66197ab66fcad1346cbbd6132"
+    },
+    {
+      "path": "raw/foreverdb/crafting/47.json",
+      "bytes": 19829,
+      "sha256": "fdf8c64d35ae0df29ff64c93903e6a74bf9d231b3d902a786c86d1544b6afa43"
+    },
+    {
+      "path": "raw/foreverdb/crafting/48.json",
+      "bytes": 11649,
+      "sha256": "a9febb29bdaa4a457fd87c265147ad918517f1c92635d541f3513ff7f85b8512"
+    },
+    {
+      "path": "raw/foreverdb/crafting/49.json",
+      "bytes": 5479,
+      "sha256": "1ec6445f08967bef118c44adfe57166ecc0db2b30321f8a8a29e9ce82e2c6484"
+    },
+    {
+      "path": "raw/foreverdb/crafting/5.json",
+      "bytes": 27410,
+      "sha256": "0d4085c8dbb6c873d8bb478732ce7f2659d172d857fc2da8cc7e40e344a67527"
+    },
+    {
+      "path": "raw/foreverdb/crafting/50.json",
+      "bytes": 9793,
+      "sha256": "8d1097303da2ce755b74894d2e3691d8dce4a1ed071a81c935b0533d322d5840"
+    },
+    {
+      "path": "raw/foreverdb/crafting/51.json",
+      "bytes": 11650,
+      "sha256": "74d219c9cc978466a2f0b45d107e155e96ce230b93eafb93c8823bf4c3e738dd"
+    },
+    {
+      "path": "raw/foreverdb/crafting/52.json",
+      "bytes": 12944,
+      "sha256": "1cbe26c3e49329930bd93c713a46fde93202a93fbcbe8a3b390bbd52e88d51b1"
+    },
+    {
+      "path": "raw/foreverdb/crafting/53.json",
+      "bytes": 13484,
+      "sha256": "b11aee20757bf844aedd369e913626ba1138abfdf940ed40ce0de8cbd9c017cd"
+    },
+    {
+      "path": "raw/foreverdb/crafting/54.json",
+      "bytes": 12845,
+      "sha256": "adaf76601fce62ffc9cfd46a9d4b0ca6d436d7ef32643cd8bb8c8b163e4f7b54"
+    },
+    {
+      "path": "raw/foreverdb/crafting/55.json",
+      "bytes": 9365,
+      "sha256": "56715a068aa7854e8b51c8159fa0e39653fba1d66416753dd165b79e00f8faa5"
+    },
+    {
+      "path": "raw/foreverdb/crafting/56.json",
+      "bytes": 8602,
+      "sha256": "bf502c6b7baaad06643cd39a365460e999f6896296d7bdb556deaa6a6b3cd2eb"
+    },
+    {
+      "path": "raw/foreverdb/crafting/57.json",
+      "bytes": 14783,
+      "sha256": "3fa2ffed0d0b61954f28d52257861aadc2225a3da8538f2d3b6ce8338f79c9e1"
+    },
+    {
+      "path": "raw/foreverdb/crafting/58.json",
+      "bytes": 15446,
+      "sha256": "eb06b1d2322ccff6cbeb105243fb20ce3af300cdebc552cfe638b8391bf89ba5"
+    },
+    {
+      "path": "raw/foreverdb/crafting/59.json",
+      "bytes": 6050,
+      "sha256": "b27fbd14e5637d760bb62a423f1f0fcdd11847088d863417f563260ae2659659"
+    },
+    {
+      "path": "raw/foreverdb/crafting/6.json",
+      "bytes": 13544,
+      "sha256": "0983fac6737882b61583107c259d645d7e24b096d18e8b6e80acc44812bbd747"
+    },
+    {
+      "path": "raw/foreverdb/crafting/60.json",
+      "bytes": 10805,
+      "sha256": "fb87fcefab3c6985703a5ca4953195020ab1cdbed26a74c8ad73d8b6fc814355"
+    },
+    {
+      "path": "raw/foreverdb/crafting/61.json",
+      "bytes": 5841,
+      "sha256": "739fd657587107f6ea874d9ea028b1e306d953a51cdb50cf9dbfe785e25afbbd"
+    },
+    {
+      "path": "raw/foreverdb/crafting/62.json",
+      "bytes": 10203,
+      "sha256": "0137158ddaa8d2f413f34f1ebd20ba3d76f64715eff2a39cd289323c5e2b434c"
+    },
+    {
+      "path": "raw/foreverdb/crafting/63.json",
+      "bytes": 10506,
+      "sha256": "1f900878d97b7a963aeb43a28bdc4326f1e7afd453a7458ca1631d4827444b01"
+    },
+    {
+      "path": "raw/foreverdb/crafting/7.json",
+      "bytes": 23507,
+      "sha256": "6a9ca9b7f7ac8359fbfa1c304e072159392492527f8f8f28dfe181c56cb10e38"
+    },
+    {
+      "path": "raw/foreverdb/crafting/8.json",
+      "bytes": 18396,
+      "sha256": "279dc2b3c158633c6065eb17202e2d5c10e48b12bd54407887942caea81c197e"
+    },
+    {
+      "path": "raw/foreverdb/crafting/9.json",
+      "bytes": 14079,
+      "sha256": "8170b397ad25f4aa0abb077db9f3e20014126993af566d1f3754f540a4e43d9a"
+    },
+    {
+      "path": "raw/foreverdb/datamine.json",
+      "bytes": 76691,
+      "sha256": "97601b734e8dbe61ed0a6dd8e0535f25ce39b3ef1c590cf705d68513bf2e0193"
+    },
+    {
+      "path": "raw/foreverdb/dungeons.json",
+      "bytes": 20387,
+      "sha256": "445ceb862eee98a9a941bc44451485242b0905d16814b47a40330bab555c5731"
+    },
+    {
+      "path": "raw/foreverdb/enchants.json",
+      "bytes": 58031,
+      "sha256": "9b14f70bc24e9e487b288e029971c082fedb764b594fc5b7409d7ac14cdd9ced"
+    },
+    {
+      "path": "raw/foreverdb/itemmeta.json",
+      "bytes": 2094,
+      "sha256": "44b11004e698f74a49b828176f50f1857c95ab80478e89573cc4fad1b70c4483"
+    },
+    {
+      "path": "raw/foreverdb/items.json",
+      "bytes": 4263599,
+      "sha256": "aba322ef0f01ccf5c73c1c99485bdcd27cc9657e310db0e42a45f1846319e521"
+    },
+    {
+      "path": "raw/foreverdb/itemsets.json",
+      "bytes": 224629,
+      "sha256": "9fc8af63e101090dc4ee3babb38f0b3d176897874e5d700797360d1670dd23c8"
+    },
+    {
+      "path": "raw/foreverdb/professions.json",
+      "bytes": 25149,
+      "sha256": "ef5bcd44d8479b89e14dedcbbabbc7eca247bf4248c20d3b79de3dca32d92068"
+    },
+    {
+      "path": "raw/foreverdb/professions/alchemy.json",
+      "bytes": 58359,
+      "sha256": "bdb8cdfd2ea7f2313a1049be870c36735b1ec9f561962f5f73d9e3949c349161"
+    },
+    {
+      "path": "raw/foreverdb/professions/blacksmithing.json",
+      "bytes": 168842,
+      "sha256": "caa4e3a9761c925091934a3dca0ee1db35f4fd8b1d66719b87788c837e616d89"
+    },
+    {
+      "path": "raw/foreverdb/professions/cooking.json",
+      "bytes": 41666,
+      "sha256": "c88d6d23d6c11ffe59c7fef493d78f30aeccb1b2e56ab9997f917ed7f7213055"
+    },
+    {
+      "path": "raw/foreverdb/professions/enchanting.json",
+      "bytes": 78489,
+      "sha256": "288024e33c12a93f21f9f47c1e229abb6676780d038acdf117362a4c100e5260"
+    },
+    {
+      "path": "raw/foreverdb/professions/engineering.json",
+      "bytes": 90272,
+      "sha256": "4b2f349b69620fe6bae1a2508702419ddd7f1caac9525de25c13b398976980ab"
+    },
+    {
+      "path": "raw/foreverdb/professions/first-aid.json",
+      "bytes": 10384,
+      "sha256": "76a382098453872362c344f822a0164795922d8c5c35523d54ac96c714401a86"
+    },
+    {
+      "path": "raw/foreverdb/professions/fishing.json",
+      "bytes": 3608,
+      "sha256": "3fc279315b613ddf4be0c5cbb707b82549dff03824b7515f6a7e7ba10f2a0aa5"
+    },
+    {
+      "path": "raw/foreverdb/professions/herbalism.json",
+      "bytes": 3700,
+      "sha256": "687498d4ffb3b09e60aeb7c1980cd8d02c4ef4533bf9fe7bd9b2d2a709c77871"
+    },
+    {
+      "path": "raw/foreverdb/professions/leatherworking.json",
+      "bytes": 181714,
+      "sha256": "38c45f70a4b6755755f396bfd12ab13c41e3409cb8fbd81054021544f234ee36"
+    },
+    {
+      "path": "raw/foreverdb/professions/mining.json",
+      "bytes": 5935,
+      "sha256": "b77910f0a3747af0651e054913e8f1b29e88e3c4e38332e7e82f27cdf76e871d"
+    },
+    {
+      "path": "raw/foreverdb/professions/skinning.json",
+      "bytes": 2833,
+      "sha256": "1a7d3c6b4299943ac263542dc45c29c074298dd222228f7f86f1e0970979f0e3"
+    },
+    {
+      "path": "raw/foreverdb/professions/tailoring.json",
+      "bytes": 143408,
+      "sha256": "218dedfd6ba0de8b7daf70b26c5e0cda219dcec7f31a629a0d00446fb394dc62"
+    },
+    {
+      "path": "raw/foreverdb/quests.json",
+      "bytes": 143524,
+      "sha256": "16cef65ceb5f5cbcfa6439fee146a8149b3d7db0616a5b24a9676e11c5e306ed"
+    },
+    {
+      "path": "raw/foreverdb/races.json",
+      "bytes": 17897,
+      "sha256": "4dcd0b78c94e4b4d7f20087f7f2105c5534f4957fa297bc7cafe92a34484e2b3"
+    },
+    {
+      "path": "raw/foreverdb/ratings.json",
+      "bytes": 510,
+      "sha256": "ba2f156e8e7bfae8d073fa6f49cbda9f7dd306fb60727bc0c328beaf896b32e6"
+    },
+    {
+      "path": "raw/foreverdb/scrolls.json",
+      "bytes": 10252,
+      "sha256": "840497be2c6fccb639b9d054ccee239c88dee10f41df977e21b58ae65a9df5d2"
+    },
+    {
+      "path": "raw/foreverdb/seen/0.json",
+      "bytes": 976,
+      "sha256": "f89341e903a59ef6db27848490fa66a00fc662631ddff204f504bf60d3efddf0"
+    },
+    {
+      "path": "raw/foreverdb/seen/1.json",
+      "bytes": 1085,
+      "sha256": "a3f37b55abea2d9e0132fa4e3ddabeab3a1568df78c15c019802d9466606e70b"
+    },
+    {
+      "path": "raw/foreverdb/seen/10.json",
+      "bytes": 954,
+      "sha256": "d318c4fdd887a451c2819b17f315b54ed5df79e682cbb47835ad455ecc8d00cf"
+    },
+    {
+      "path": "raw/foreverdb/seen/11.json",
+      "bytes": 1290,
+      "sha256": "a6636d398bc99e227101eaf8541d80500b5a4be5a4e86c73f6803ae23060634f"
+    },
+    {
+      "path": "raw/foreverdb/seen/12.json",
+      "bytes": 1410,
+      "sha256": "f7564976e3d22ecb11892a4842ed8b8165688ec5194f6aedd5657aead28c6c46"
+    },
+    {
+      "path": "raw/foreverdb/seen/13.json",
+      "bytes": 523,
+      "sha256": "f350ee72525931d18f7cb4e68f256615b613b6bed108be8e8937e6add25c6239"
+    },
+    {
+      "path": "raw/foreverdb/seen/14.json",
+      "bytes": 907,
+      "sha256": "fb628a34ca9479f2d9e6336c0996c005904c7fe88481f9de3402e7474de9f675"
+    },
+    {
+      "path": "raw/foreverdb/seen/15.json",
+      "bytes": 1057,
+      "sha256": "4de9db33ad76fc03c319b7d0eefc27faef544bdb077701608abfdbc6b2ad205a"
+    },
+    {
+      "path": "raw/foreverdb/seen/16.json",
+      "bytes": 874,
+      "sha256": "6fbef995f46ff43be92e47eb3959d945a982dc8a29312eeba31000f732639502"
+    },
+    {
+      "path": "raw/foreverdb/seen/17.json",
+      "bytes": 734,
+      "sha256": "92decfc16342652bd68dfa340991e47cff2032db7335b0e2983472bd9d2303e9"
+    },
+    {
+      "path": "raw/foreverdb/seen/18.json",
+      "bytes": 961,
+      "sha256": "0ba4fcf234aef4d63e87f84e31cd47ec0fb1d4425e3110b74254c05e13fc9e8e"
+    },
+    {
+      "path": "raw/foreverdb/seen/19.json",
+      "bytes": 926,
+      "sha256": "c2caf9aeaa1c82a7f21081ec6abfd940c6ba36f86df46d886f578c57083a174c"
+    },
+    {
+      "path": "raw/foreverdb/seen/2.json",
+      "bytes": 638,
+      "sha256": "cf80d647c08971f3627149eaeb0df3ee814bd7d6fef6a2d1bc0a49eb3b112ba9"
+    },
+    {
+      "path": "raw/foreverdb/seen/20.json",
+      "bytes": 887,
+      "sha256": "26514b44f691b50cba4fcc8636d44fd63784d174222307e6c8df84dab63099e9"
+    },
+    {
+      "path": "raw/foreverdb/seen/21.json",
+      "bytes": 882,
+      "sha256": "7f7eef325f0dae5cb6d264ab38df9bcdcd2590da59f57e9d549f2ec5d2b716ef"
+    },
+    {
+      "path": "raw/foreverdb/seen/22.json",
+      "bytes": 1501,
+      "sha256": "3b62f15112b926cf31aba501e4d83adaaec052de0a901110ef56ffae31ed322d"
+    },
+    {
+      "path": "raw/foreverdb/seen/23.json",
+      "bytes": 1400,
+      "sha256": "64623befc29c1f95a238175c7b29f26735c769628af361845615eb3eb59898b6"
+    },
+    {
+      "path": "raw/foreverdb/seen/24.json",
+      "bytes": 1022,
+      "sha256": "379f8f92a2bfa64df365058cb1dbd6b8074c8a953a52bbe4c739a1ca49efcea5"
+    },
+    {
+      "path": "raw/foreverdb/seen/25.json",
+      "bytes": 1839,
+      "sha256": "999212ad1ac83645f73657d1e51bcade59b0a8c5e222c64e4ffcc126f981dee5"
+    },
+    {
+      "path": "raw/foreverdb/seen/26.json",
+      "bytes": 2262,
+      "sha256": "7778f794722a9e5a27ad18616de8d85c602186ebba52c9b08452353094631de7"
+    },
+    {
+      "path": "raw/foreverdb/seen/27.json",
+      "bytes": 1330,
+      "sha256": "6d8f65630e4f2e1fb6e84b67ea4131d419e2e2640fe8f1fa23d54f903cd573fa"
+    },
+    {
+      "path": "raw/foreverdb/seen/28.json",
+      "bytes": 1205,
+      "sha256": "c7eb73a9bcc7f78b0b6080932af88fb6b88dc11fa68f863eb702a2d71629a4c3"
+    },
+    {
+      "path": "raw/foreverdb/seen/29.json",
+      "bytes": 1391,
+      "sha256": "fed44376adedf72621a12d72fdc13128c7ac59062f4151822788b9aca58f28ce"
+    },
+    {
+      "path": "raw/foreverdb/seen/3.json",
+      "bytes": 1029,
+      "sha256": "326f11e307405ca51aae96a62afdc69ab1ef7828031c305dcb208ecb7fe8a0ce"
+    },
+    {
+      "path": "raw/foreverdb/seen/30.json",
+      "bytes": 1187,
+      "sha256": "d92be18b32575cb0a0adc3a1f1fc9d2caec2f8d46e3568815f7c2699c7ffcdc7"
+    },
+    {
+      "path": "raw/foreverdb/seen/31.json",
+      "bytes": 2081,
+      "sha256": "99b4159944c7eb2af0a5ef66aa955de3946cd385b68fc5b1c63db6a2e4677ef7"
+    },
+    {
+      "path": "raw/foreverdb/seen/32.json",
+      "bytes": 1015,
+      "sha256": "3de42f166c23bccf7f7cb4cdebb2c461c0cc5989933fab0a04fd99a4c2444bf6"
+    },
+    {
+      "path": "raw/foreverdb/seen/33.json",
+      "bytes": 1854,
+      "sha256": "9cb66d67823057736d823b2a512a278b9f101a2eea9d00be334953e67bda9d78"
+    },
+    {
+      "path": "raw/foreverdb/seen/34.json",
+      "bytes": 1411,
+      "sha256": "9e1c0f50b87ffc38b14226e79f83613f067353cbec6b7031743e4470f606a01f"
+    },
+    {
+      "path": "raw/foreverdb/seen/35.json",
+      "bytes": 981,
+      "sha256": "b8b8afbff2a6f4724d9b8b39ebe1f36adc41dbba60f468056b724a0183315492"
+    },
+    {
+      "path": "raw/foreverdb/seen/36.json",
+      "bytes": 1349,
+      "sha256": "426bff7476422beff171aacca30962092c1c9088308635dd67e9dcdb201b2d68"
+    },
+    {
+      "path": "raw/foreverdb/seen/37.json",
+      "bytes": 839,
+      "sha256": "7cb4beec240e1485d422d8ca45b66089f2671a7fcef3ce25c66f3a26fac0179d"
+    },
+    {
+      "path": "raw/foreverdb/seen/38.json",
+      "bytes": 1065,
+      "sha256": "00799b9673459cddc6c46fd9c57f486587a9aeeb3d22b80deb2391caac152207"
+    },
+    {
+      "path": "raw/foreverdb/seen/39.json",
+      "bytes": 885,
+      "sha256": "600c27ee36cc0e30411d7f9d3fa7ade9366e7117df8ccb9f2a2069aaa845839a"
+    },
+    {
+      "path": "raw/foreverdb/seen/4.json",
+      "bytes": 682,
+      "sha256": "0f95eb42fbc66d9dff69209fe0dcf3e2d13869e62d39e7ea4f97fe5b542c156c"
+    },
+    {
+      "path": "raw/foreverdb/seen/40.json",
+      "bytes": 842,
+      "sha256": "d9f3cfd11de477c88a00e66a2399d4b0a2aafc94afff62fce3aa593659e07ba4"
+    },
+    {
+      "path": "raw/foreverdb/seen/41.json",
+      "bytes": 1282,
+      "sha256": "7d968d0c4edc27421990fb19b6daa9564d7770a489bdde148f1b9861511c0741"
+    },
+    {
+      "path": "raw/foreverdb/seen/42.json",
+      "bytes": 418,
+      "sha256": "84b76c85cbcaca99668cddc7f657dfaae0cc2e566b3595a5d20b606643b29f6f"
+    },
+    {
+      "path": "raw/foreverdb/seen/43.json",
+      "bytes": 841,
+      "sha256": "42b0fae66bf64c86630878cd79e58c0fa4c5411c3db80ae3137398e70452c1fa"
+    },
+    {
+      "path": "raw/foreverdb/seen/44.json",
+      "bytes": 676,
+      "sha256": "bf0d49201883623a935ebe24368eff098fc25159480a1230df2fbfbedbe3deff"
+    },
+    {
+      "path": "raw/foreverdb/seen/45.json",
+      "bytes": 1028,
+      "sha256": "cc07d22335ec9a0350a189761453bfd24b054e91a576648d9e3918ff9afd002b"
+    },
+    {
+      "path": "raw/foreverdb/seen/46.json",
+      "bytes": 1398,
+      "sha256": "58d2dc06650facf0815868b24d930b281e7372063122c6c6529f4b0507989aa0"
+    },
+    {
+      "path": "raw/foreverdb/seen/47.json",
+      "bytes": 1232,
+      "sha256": "357ee8632dd9c9883245e1962c665ccb08eef7b2ed7c54f7f384ac6dbefc1870"
+    },
+    {
+      "path": "raw/foreverdb/seen/48.json",
+      "bytes": 605,
+      "sha256": "c752d556bbe6243ed685a0dc6f95ec16b211afbf8979fc8e3d464d9fd2c30c5d"
+    },
+    {
+      "path": "raw/foreverdb/seen/49.json",
+      "bytes": 533,
+      "sha256": "523147b73fce373978b04a88ffb9bb196b7e4120c62771ff0a517efd8cc4f6e4"
+    },
+    {
+      "path": "raw/foreverdb/seen/5.json",
+      "bytes": 1839,
+      "sha256": "b31489cd88a696c1278a57b8aef9725e0364530e51d7c3045bfef2f984f60f28"
+    },
+    {
+      "path": "raw/foreverdb/seen/50.json",
+      "bytes": 1094,
+      "sha256": "a470865e9818aac7abd651c99146c6d25eb49dcdba820cddaa616d7e46493996"
+    },
+    {
+      "path": "raw/foreverdb/seen/51.json",
+      "bytes": 324,
+      "sha256": "c5c1caf4d3904c30c8deb91da4ce2e4bb1989b95823f10d077b23124fb0b5837"
+    },
+    {
+      "path": "raw/foreverdb/seen/52.json",
+      "bytes": 148,
+      "sha256": "817e55527345286a926d055aadc7fea99736121ce1e640ad3f0a8aadd8ea1dd8"
+    },
+    {
+      "path": "raw/foreverdb/seen/53.json",
+      "bytes": 494,
+      "sha256": "a0bcb8867882b8e2011eabbb28e7062bec246e33c64d72763921f85f356bc18c"
+    },
+    {
+      "path": "raw/foreverdb/seen/54.json",
+      "bytes": 514,
+      "sha256": "d7d46e0262bc40a695793ece898bb65801f80ca57d539239850ae866e1f7d969"
+    },
+    {
+      "path": "raw/foreverdb/seen/55.json",
+      "bytes": 1289,
+      "sha256": "69c92ad07f4bb93ce1e3bbc2c823b62a8bfc39f67be882a8c16266768db7777d"
+    },
+    {
+      "path": "raw/foreverdb/seen/56.json",
+      "bytes": 277,
+      "sha256": "80dc45855c6fc6dfbacc123107e226fdbf1e493f8ea144d3445b91874f6ac313"
+    },
+    {
+      "path": "raw/foreverdb/seen/57.json",
+      "bytes": 873,
+      "sha256": "78c16d6d31789ac4b9e33562fc3e27406c532eb16f996ee2d4c05b62d916f97e"
+    },
+    {
+      "path": "raw/foreverdb/seen/58.json",
+      "bytes": 665,
+      "sha256": "b7acf8e21ac828c92ffbb4d529bdd282a97b81230f578f28794a37eb0ed40d52"
+    },
+    {
+      "path": "raw/foreverdb/seen/59.json",
+      "bytes": 558,
+      "sha256": "d9dcc7b94d8a74d7450cf839b9271e2b3a954a3efae2cf998fc1f05f5f21e778"
+    },
+    {
+      "path": "raw/foreverdb/seen/6.json",
+      "bytes": 1104,
+      "sha256": "c848cbf1589a1d232e34a0306cdfcbc5475357ed1478fe11c1cfc9c4fa496056"
+    },
+    {
+      "path": "raw/foreverdb/seen/60.json",
+      "bytes": 666,
+      "sha256": "9c5a6e6415204cf4e4a2068a981b92b3bfb8f6e946666985af7be459293a4c3c"
+    },
+    {
+      "path": "raw/foreverdb/seen/61.json",
+      "bytes": 331,
+      "sha256": "0bba5394f564959bf8a1877e2a29fc1243e32b1d73e40428ca7c97237e03341a"
+    },
+    {
+      "path": "raw/foreverdb/seen/62.json",
+      "bytes": 1170,
+      "sha256": "9f448c5ecc9d6f22043bff41c543e5d38d333bd5f0d0f9f8a8b377a92a426a5d"
+    },
+    {
+      "path": "raw/foreverdb/seen/63.json",
+      "bytes": 229,
+      "sha256": "67c1e73adcace232b81fe91e19fbd90f9ec59359db68a86c932378c3d0c2ce88"
+    },
+    {
+      "path": "raw/foreverdb/seen/7.json",
+      "bytes": 740,
+      "sha256": "f17af8573c56522b7bd00871cff4e7da59b6b7f0089b827184e2251e7c93dae1"
+    },
+    {
+      "path": "raw/foreverdb/seen/8.json",
+      "bytes": 919,
+      "sha256": "84d9e400f1c2d1e2602b8c58ddf5b2ce03df787cde9066840c02b1887c2096fd"
+    },
+    {
+      "path": "raw/foreverdb/seen/9.json",
+      "bytes": 1083,
+      "sha256": "d44d04ec3d022ec47b1e548d0ab49234cc79890e597beaaab48ac97309a6e112"
+    },
+    {
+      "path": "raw/foreverdb/sold/0.json",
+      "bytes": 14140,
+      "sha256": "9b3e98d4eded53665f6bfb50f105be99c62c98ef15b5032b9d1f1ca5753b37ba"
+    },
+    {
+      "path": "raw/foreverdb/sold/1.json",
+      "bytes": 15257,
+      "sha256": "16875e055d43d753195907e3f1b96188b2f68008f367b2b13000a65b30308771"
+    },
+    {
+      "path": "raw/foreverdb/sold/10.json",
+      "bytes": 14316,
+      "sha256": "2e3c4f22d6984dbd8dd8d904eae5b75c88f1fd3470479ea4e080b8d9f316c50b"
+    },
+    {
+      "path": "raw/foreverdb/sold/11.json",
+      "bytes": 15209,
+      "sha256": "889027dd4d90cc3c2a55e06fa21f5e4d946169bb2c76358da14804e5a6c9f0c2"
+    },
+    {
+      "path": "raw/foreverdb/sold/12.json",
+      "bytes": 11091,
+      "sha256": "e1b7274da5a5bf55f5685f9bfb848dc388529a129636c82caefdf945ca2d8565"
+    },
+    {
+      "path": "raw/foreverdb/sold/13.json",
+      "bytes": 12274,
+      "sha256": "145b1e8e4290435358ef00f2c5d117419ef6fef4f0888cb5fe322e9958510685"
+    },
+    {
+      "path": "raw/foreverdb/sold/14.json",
+      "bytes": 12107,
+      "sha256": "a8fd688f697c23e41087854e96a03fad34d31db4622e5c7b5b4973be3d47ba4c"
+    },
+    {
+      "path": "raw/foreverdb/sold/15.json",
+      "bytes": 9501,
+      "sha256": "b706577918804ec2d5bb8b7bc919163aeb5e0f7074be5550c9b8593e37bb8117"
+    },
+    {
+      "path": "raw/foreverdb/sold/16.json",
+      "bytes": 16370,
+      "sha256": "085c0f391551d876640b7aaf8801731e58e1fa9bb65bfb2e5b990f04224a271b"
+    },
+    {
+      "path": "raw/foreverdb/sold/17.json",
+      "bytes": 14156,
+      "sha256": "6678cbdc2ffa3d477b0766069337dce009f94e8c25f866f021a95ff315b352e4"
+    },
+    {
+      "path": "raw/foreverdb/sold/18.json",
+      "bytes": 11270,
+      "sha256": "d0831027bbc9d4a47a90e51fc039495af3b5c9ab854ba344775c7d4fe2ec28d0"
+    },
+    {
+      "path": "raw/foreverdb/sold/19.json",
+      "bytes": 16342,
+      "sha256": "c4e611aa55905b11644e627c1f218bab61379a191b4939dbbce184462d58e335"
+    },
+    {
+      "path": "raw/foreverdb/sold/2.json",
+      "bytes": 12615,
+      "sha256": "0c6c58689059a40a22600e2fd7d6b2850786ec34795d776b98b69190e31633f7"
+    },
+    {
+      "path": "raw/foreverdb/sold/20.json",
+      "bytes": 12919,
+      "sha256": "71664108d0e81854d0dfde3ee7ebef67efb21b77b9f289222cf950b3503ce519"
+    },
+    {
+      "path": "raw/foreverdb/sold/21.json",
+      "bytes": 12438,
+      "sha256": "afae7fe758b29bdb5e758d3de040fedfdefb0220076744a31072a167a425c8aa"
+    },
+    {
+      "path": "raw/foreverdb/sold/22.json",
+      "bytes": 12389,
+      "sha256": "74b0213b985e17120a3068c451d430f3fe31f7a5614c3592730d50d4b1c6aafe"
+    },
+    {
+      "path": "raw/foreverdb/sold/23.json",
+      "bytes": 12209,
+      "sha256": "0992d9f24ad57c6f6e7140aad7e4452d94f390debcb1caacd41b1ea362eeff90"
+    },
+    {
+      "path": "raw/foreverdb/sold/24.json",
+      "bytes": 16220,
+      "sha256": "1a0acc14a34d047cffdf9767a3ecada617a7859a95752f6a6d98aed821be5031"
+    },
+    {
+      "path": "raw/foreverdb/sold/25.json",
+      "bytes": 13183,
+      "sha256": "6f386edfa25959b406bd99485639f28469b1b1bda8e727ff0a875bbad7216ec3"
+    },
+    {
+      "path": "raw/foreverdb/sold/26.json",
+      "bytes": 14961,
+      "sha256": "798b8313add3cabc2925961c4a014f6f83d05627f23fd0be3c600868ed0e1320"
+    },
+    {
+      "path": "raw/foreverdb/sold/27.json",
+      "bytes": 21687,
+      "sha256": "88feaf0eb781b49ae3cfcb6e9e50f38636996f5e9c367f57c75570b2528e7d82"
+    },
+    {
+      "path": "raw/foreverdb/sold/28.json",
+      "bytes": 16172,
+      "sha256": "8e785d32b34cfa50052f316cf86bb714802dc5af53de1d271ad6ce5f4902848f"
+    },
+    {
+      "path": "raw/foreverdb/sold/29.json",
+      "bytes": 22249,
+      "sha256": "298eae62a71e943647da77f65c498222c861f295a0dba8ad0fad2e0898c2c00b"
+    },
+    {
+      "path": "raw/foreverdb/sold/3.json",
+      "bytes": 13805,
+      "sha256": "066b5e8e182fbe0d0d9cf6dc59cda8d093bea249ecde78bf15ade5412a91b967"
+    },
+    {
+      "path": "raw/foreverdb/sold/30.json",
+      "bytes": 20221,
+      "sha256": "96d4c97efa792e4f5f30dac54a5e4d789dd1d89d859dd4238cdafcbb0567d81f"
+    },
+    {
+      "path": "raw/foreverdb/sold/31.json",
+      "bytes": 19740,
+      "sha256": "4dac825dba7d536de056bcef3c8db9a55796d910967bfee6caa5e105c1609a9f"
+    },
+    {
+      "path": "raw/foreverdb/sold/32.json",
+      "bytes": 15672,
+      "sha256": "4d173d64013c619c9a07411737c8a9517004eb5db41633d1c6be094052061a75"
+    },
+    {
+      "path": "raw/foreverdb/sold/33.json",
+      "bytes": 15888,
+      "sha256": "ed32db37b580d5870984e29638a89a7db77566c4544dd5cbd0747c5e7ad90ebe"
+    },
+    {
+      "path": "raw/foreverdb/sold/34.json",
+      "bytes": 10420,
+      "sha256": "efb54cb2b073fb7718321b663b87d519d7c0793bacc712d107b09c3535068920"
+    },
+    {
+      "path": "raw/foreverdb/sold/35.json",
+      "bytes": 17495,
+      "sha256": "60e1af50d4e03e672732ee658461e386400b575e747a42b946bf47ca38ba5805"
+    },
+    {
+      "path": "raw/foreverdb/sold/36.json",
+      "bytes": 15107,
+      "sha256": "2f2be9c333e3900d336cb1b7fdf3c08ebac6b5322fd0b6fcd29bd39768be0428"
+    },
+    {
+      "path": "raw/foreverdb/sold/37.json",
+      "bytes": 13090,
+      "sha256": "f4980fd15f71ae1a22df1c0eccbf0f1f74d22f0f8b870c409438a7aa8259bd4c"
+    },
+    {
+      "path": "raw/foreverdb/sold/38.json",
+      "bytes": 17525,
+      "sha256": "18604625176bdfd0032baee64107a26b08bc1809f4a563d7085eebd82457b7c0"
+    },
+    {
+      "path": "raw/foreverdb/sold/39.json",
+      "bytes": 14544,
+      "sha256": "66d425eccbcb72c1d6812bc774f0301c26504db101782b35bdb3cfba2b109844"
+    },
+    {
+      "path": "raw/foreverdb/sold/4.json",
+      "bytes": 16517,
+      "sha256": "e8eaa19404041f8bba155f6fe00ce3e0bd050ec291ed2426be9b90e9f8ee475c"
+    },
+    {
+      "path": "raw/foreverdb/sold/40.json",
+      "bytes": 12675,
+      "sha256": "b9a1e2c4f95ecfbd81e13d20c8987c7ef158875c003229597fede7990c29430a"
+    },
+    {
+      "path": "raw/foreverdb/sold/41.json",
+      "bytes": 13487,
+      "sha256": "5bf1a03a6c8e3babc50b00ef6524d13c7ef749bba7ef5d6cfbc00c56762a7a52"
+    },
+    {
+      "path": "raw/foreverdb/sold/42.json",
+      "bytes": 13315,
+      "sha256": "0daa16497bf54ff809f366a7ef5ca676667b5b92637b121bca75cc7732c95b18"
+    },
+    {
+      "path": "raw/foreverdb/sold/43.json",
+      "bytes": 13547,
+      "sha256": "0d234db4936f9ce767b053de33e9b2c68a6c54ec80bcbcd3360f1b2675d8b7f5"
+    },
+    {
+      "path": "raw/foreverdb/sold/44.json",
+      "bytes": 17214,
+      "sha256": "aa4eb65b130deb1d8ca47ece4b3d6ac1af03183c2dc1c7cfedd1d137ea8774be"
+    },
+    {
+      "path": "raw/foreverdb/sold/45.json",
+      "bytes": 12455,
+      "sha256": "943fc273702bde972476dafdb5aa895853cb4137c82519565535a57041de8b21"
+    },
+    {
+      "path": "raw/foreverdb/sold/46.json",
+      "bytes": 13556,
+      "sha256": "eab1e940acad6c97700da1b4b1975f3e08177cdc80bcb066a9128eab2b15b969"
+    },
+    {
+      "path": "raw/foreverdb/sold/47.json",
+      "bytes": 12219,
+      "sha256": "712a3196d8b6d89e837e18b40ba598623a3425923b4c246432a1320b54640775"
+    },
+    {
+      "path": "raw/foreverdb/sold/48.json",
+      "bytes": 16530,
+      "sha256": "b876f0c2b34b6d7ee2f3effb58692a3357abc0f1d1c8e454009e2f6955b5547a"
+    },
+    {
+      "path": "raw/foreverdb/sold/49.json",
+      "bytes": 8361,
+      "sha256": "884f0de6eb8c44cd6d18854f376699caec338c7f3e56c63a6576ff85714f29d5"
+    },
+    {
+      "path": "raw/foreverdb/sold/5.json",
+      "bytes": 21873,
+      "sha256": "86d4e0a08e3587b72f8aed2af651258ca6c0d7efa8b2017a1385c253085cafe6"
+    },
+    {
+      "path": "raw/foreverdb/sold/50.json",
+      "bytes": 14230,
+      "sha256": "821696dd12d845798a0aaed47b7b18cb0a055f8a615d5c1ca6c59ddec5f0b129"
+    },
+    {
+      "path": "raw/foreverdb/sold/51.json",
+      "bytes": 8241,
+      "sha256": "6aeb9319f2b4beae61e69d8ce8480caa2fa71779c859fd1a7298bfcc7ae4295e"
+    },
+    {
+      "path": "raw/foreverdb/sold/52.json",
+      "bytes": 16255,
+      "sha256": "9ceef57e721563a1ca43f872057e8712d8f95edfb741a53be39c6071f3e05c26"
+    },
+    {
+      "path": "raw/foreverdb/sold/53.json",
+      "bytes": 19354,
+      "sha256": "69469d07d4c9432979b2dff8f7f92845c19ec385d5f72cde69b762566c3b1ce0"
+    },
+    {
+      "path": "raw/foreverdb/sold/54.json",
+      "bytes": 17461,
+      "sha256": "34db5cc3ffde315a584bc2ba177816192e272ac2679c5e6b85f6dc4f35c153e8"
+    },
+    {
+      "path": "raw/foreverdb/sold/55.json",
+      "bytes": 10705,
+      "sha256": "e5eda657587882229431322de265bde90feaaf71d67166f983a387346c81b723"
+    },
+    {
+      "path": "raw/foreverdb/sold/56.json",
+      "bytes": 13687,
+      "sha256": "01b2c26c3218fac581583faa600f9cb20beed9c4bd82b3e00270a2e288ed3755"
+    },
+    {
+      "path": "raw/foreverdb/sold/57.json",
+      "bytes": 18303,
+      "sha256": "2748bdb3872861974de9c0bfc24f25e806f9b089bc05f97e6bf2e2a47fd315f2"
+    },
+    {
+      "path": "raw/foreverdb/sold/58.json",
+      "bytes": 18315,
+      "sha256": "9bccce357b10fce6e4d88eff5c66e65a2e8b84a174e775b08f62dca5f7be6f99"
+    },
+    {
+      "path": "raw/foreverdb/sold/59.json",
+      "bytes": 16214,
+      "sha256": "e817b3aaf260f5c86493c6c5f9d6b6c58c06fbf5ae207df0d40887c4b0906b51"
+    },
+    {
+      "path": "raw/foreverdb/sold/6.json",
+      "bytes": 12994,
+      "sha256": "ac860de33518a728334490a954f67ea55b01e951cc68ea48e063fa8a3ad9bcec"
+    },
+    {
+      "path": "raw/foreverdb/sold/60.json",
+      "bytes": 20683,
+      "sha256": "876f97d08f2081850a838250b67b2fdeabbbaa617cd623014ec783b9db3238b4"
+    },
+    {
+      "path": "raw/foreverdb/sold/61.json",
+      "bytes": 21209,
+      "sha256": "0790b8830896ad1865bf68430b01752061948752a96c9b8a2c03a9ef111c4580"
+    },
+    {
+      "path": "raw/foreverdb/sold/62.json",
+      "bytes": 14470,
+      "sha256": "c7be83adb7950ce8de90d09927d2866f519002aac877b283e4411f32f4632135"
+    },
+    {
+      "path": "raw/foreverdb/sold/63.json",
+      "bytes": 14576,
+      "sha256": "455715a02749c8e482f182521dab9c502b0996d8011f2ab1ebc58905d6feb5da"
+    },
+    {
+      "path": "raw/foreverdb/sold/7.json",
+      "bytes": 13338,
+      "sha256": "911c7956579c5f56d29c1096ced0513aa4f5202d7dad327870b909eb2c26218e"
+    },
+    {
+      "path": "raw/foreverdb/sold/8.json",
+      "bytes": 16302,
+      "sha256": "11d29e021b0e5ff3656a6c4b227810a3486f9aa8efc411f93757cb5f8b8abea3"
+    },
+    {
+      "path": "raw/foreverdb/sold/9.json",
+      "bytes": 15563,
+      "sha256": "e99ccc08451ed7ca471fbc2a1dfc1f07da2347bade3dd6de16e98af718a8e2ad"
+    },
+    {
+      "path": "raw/foreverdb/sources/0.json",
+      "bytes": 38933,
+      "sha256": "dac53ceb1edd7349bbd7cd18f691d9c22536b8df3eff6366ff98f755225a9be1"
+    },
+    {
+      "path": "raw/foreverdb/sources/1.json",
+      "bytes": 35264,
+      "sha256": "fdb9fe7123237df623e2aa3a63836239fee2c037eb4b3704ee02fd09005a1e9b"
+    },
+    {
+      "path": "raw/foreverdb/sources/10.json",
+      "bytes": 39116,
+      "sha256": "d584bd69525d7e317b53aa327c0d8fe0b91872898fee91ccf2de501b44405078"
+    },
+    {
+      "path": "raw/foreverdb/sources/11.json",
+      "bytes": 43050,
+      "sha256": "cebe5fd7f962147288fcf706e489ecd3d2767fa4df26ebbc0b4998b7e43e44c7"
+    },
+    {
+      "path": "raw/foreverdb/sources/12.json",
+      "bytes": 39000,
+      "sha256": "e8a21301b8ba26141da969cc6599f629e3dbbb11dcc64d0d9f1f0c8530d63303"
+    },
+    {
+      "path": "raw/foreverdb/sources/13.json",
+      "bytes": 37134,
+      "sha256": "ff7f320a44626666192b2576b7e748a6d23b09cfc379f3b584e31d070c6538b4"
+    },
+    {
+      "path": "raw/foreverdb/sources/14.json",
+      "bytes": 36023,
+      "sha256": "78c70bbc41ecb0ca5e8d7f88308d7ef49b9727958d618fed5626e7d8f2d58f2d"
+    },
+    {
+      "path": "raw/foreverdb/sources/15.json",
+      "bytes": 39733,
+      "sha256": "c9db418a9e86c3bd76b726c6dc59742e12f305eeacd4f98a51da62e098dc750e"
+    },
+    {
+      "path": "raw/foreverdb/sources/16.json",
+      "bytes": 34493,
+      "sha256": "070bfc7e2d8a7c4e509724774ef505d284775feaf423c6bed4fb85582f7ca712"
+    },
+    {
+      "path": "raw/foreverdb/sources/17.json",
+      "bytes": 38140,
+      "sha256": "e6da1fb13c1282dd803d047fc39b3940d6f90114cf6a9432a859cd57443fb158"
+    },
+    {
+      "path": "raw/foreverdb/sources/18.json",
+      "bytes": 35975,
+      "sha256": "131d436c76ae7bdbea050a763b84048dc6e88ccf7e25f935f6b060d1c8be216f"
+    },
+    {
+      "path": "raw/foreverdb/sources/19.json",
+      "bytes": 36558,
+      "sha256": "522f1faf03463047cb3f3d767c13415fbea76c336e6e92337b42d78846cb4178"
+    },
+    {
+      "path": "raw/foreverdb/sources/2.json",
+      "bytes": 36197,
+      "sha256": "48187444248abc1cfd8b97e5e5efb38823fa6b9f7e0d7964b1aff646bc55d2cc"
+    },
+    {
+      "path": "raw/foreverdb/sources/20.json",
+      "bytes": 35628,
+      "sha256": "23df015656fe88e387f504a6830cfa73546332cd7a3b97df3de09baccecf5b53"
+    },
+    {
+      "path": "raw/foreverdb/sources/21.json",
+      "bytes": 35792,
+      "sha256": "908d7935fbf2584679a44a849fd61febe9208f2570bdb77b87f7b6588b579051"
+    },
+    {
+      "path": "raw/foreverdb/sources/22.json",
+      "bytes": 35576,
+      "sha256": "dc683ef72a113c20501166d2f2687c03645ae3dc42bee8643b5f985a188e7d3e"
+    },
+    {
+      "path": "raw/foreverdb/sources/23.json",
+      "bytes": 38554,
+      "sha256": "0af023b762df170d5cc14930b9c90261286f22e43e5ca23f2a505b43fe4d01e3"
+    },
+    {
+      "path": "raw/foreverdb/sources/24.json",
+      "bytes": 40242,
+      "sha256": "34a7e619832df2030bc6bf8d4371ed60da3f7cc646b202f7ebff85cd470c2029"
+    },
+    {
+      "path": "raw/foreverdb/sources/25.json",
+      "bytes": 39331,
+      "sha256": "c363f262f6b781efb199c1f63a64092747037941e5d5271f4dff47379a6afb85"
+    },
+    {
+      "path": "raw/foreverdb/sources/26.json",
+      "bytes": 38792,
+      "sha256": "4c3a20016659ac60886e564bd5f308a91bf1ee82dc7484fa56a4dc1b1256c0d6"
+    },
+    {
+      "path": "raw/foreverdb/sources/27.json",
+      "bytes": 37450,
+      "sha256": "41726386bbe2c5f453f44a42dda89b9efabc28d75a623755788dab4fc4a968de"
+    },
+    {
+      "path": "raw/foreverdb/sources/28.json",
+      "bytes": 38028,
+      "sha256": "4441bbac695cc151c41879d5744635f71a507a11f4bb53e960c1eaa5eeee08cd"
+    },
+    {
+      "path": "raw/foreverdb/sources/29.json",
+      "bytes": 40372,
+      "sha256": "7edc488d2ab02bca3a16bf13a435213b601679a43fc1c7d5dfddba14117b1f09"
+    },
+    {
+      "path": "raw/foreverdb/sources/3.json",
+      "bytes": 37616,
+      "sha256": "dcefed7e0edbdd9f0e7cf4a198a890e8e0354679ccc219b1d03d5537a53f0016"
+    },
+    {
+      "path": "raw/foreverdb/sources/30.json",
+      "bytes": 37105,
+      "sha256": "7bcb15a42c3160a62fb99d5958597ce19729b6dc85c5b49741f16c8d26465010"
+    },
+    {
+      "path": "raw/foreverdb/sources/31.json",
+      "bytes": 39890,
+      "sha256": "0331b420e311e810341f3e7f57a94d39edea2347f28abe750e9e996bac279ad4"
+    },
+    {
+      "path": "raw/foreverdb/sources/32.json",
+      "bytes": 37216,
+      "sha256": "d023cd9825f7a079db655c454658c6cc08615aa8e5ea17b757a1ebf62f3359fc"
+    },
+    {
+      "path": "raw/foreverdb/sources/33.json",
+      "bytes": 36942,
+      "sha256": "76a52f8be2c72eb73df1f56d26c43ffe0716c8b2f95002d29988cb4b4925cf7f"
+    },
+    {
+      "path": "raw/foreverdb/sources/34.json",
+      "bytes": 34634,
+      "sha256": "c749a0f212141e6e207b1283bcc75fa8a48164676209bf122efa8fee8fcce8f9"
+    },
+    {
+      "path": "raw/foreverdb/sources/35.json",
+      "bytes": 33661,
+      "sha256": "c025a8d1e80e08a9a4b45365a0590c105dd4c5926e70393c897a1ced48dbc862"
+    },
+    {
+      "path": "raw/foreverdb/sources/36.json",
+      "bytes": 35994,
+      "sha256": "9bff8172dbfc7b6b33656fddd4b8970b1d359183eb15b146ae637408aa2c472b"
+    },
+    {
+      "path": "raw/foreverdb/sources/37.json",
+      "bytes": 37463,
+      "sha256": "934c659d7656fe7aa926a0bed0a6099ee527098a2502acbf52c9163cf8bb6ab1"
+    },
+    {
+      "path": "raw/foreverdb/sources/38.json",
+      "bytes": 37120,
+      "sha256": "610681431a82e866105d193d82be94558c78e0a97510981f16ac81fa2084bc9e"
+    },
+    {
+      "path": "raw/foreverdb/sources/39.json",
+      "bytes": 36434,
+      "sha256": "2d23950d7a04c3c0e3ced9dcc2debcb9621ca70c65a307fd24c1a37318f36d3f"
+    },
+    {
+      "path": "raw/foreverdb/sources/4.json",
+      "bytes": 34857,
+      "sha256": "d6d1b493a9016a5bffe4408b0e3b847ca62ca463ba0ae2df779281114c26e246"
+    },
+    {
+      "path": "raw/foreverdb/sources/40.json",
+      "bytes": 37577,
+      "sha256": "f4309e2dd3846a2ade0affed40a7e9891cc4200c27d486c9fb4e7458975a5012"
+    },
+    {
+      "path": "raw/foreverdb/sources/41.json",
+      "bytes": 36613,
+      "sha256": "2f38e9837833f7f97bc271a330ad555dd58d54199de240a3865bc540ca4d2adf"
+    },
+    {
+      "path": "raw/foreverdb/sources/42.json",
+      "bytes": 37876,
+      "sha256": "fa1139147ee7655dd41d227db6a4fe8c7a121e41c1b6dd58566ea8ece3e464a7"
+    },
+    {
+      "path": "raw/foreverdb/sources/43.json",
+      "bytes": 37884,
+      "sha256": "aad1f63cce13c62c047218311e93548e492745b3622c68f92990f261e2c4d61a"
+    },
+    {
+      "path": "raw/foreverdb/sources/44.json",
+      "bytes": 42536,
+      "sha256": "c35795adf23f784e410317d10f6af04d5a6647bb9dd2c4f8b7e767081aaf308e"
+    },
+    {
+      "path": "raw/foreverdb/sources/45.json",
+      "bytes": 36674,
+      "sha256": "005e81661cb444f1d5e2193d6051546e24ab3a21a555fe90151660b810ecb556"
+    },
+    {
+      "path": "raw/foreverdb/sources/46.json",
+      "bytes": 36588,
+      "sha256": "5d31576ae158e43736d6ec788519b527ef6e91e22e4273d231c1154ea48c110f"
+    },
+    {
+      "path": "raw/foreverdb/sources/47.json",
+      "bytes": 35122,
+      "sha256": "b26ac606414b6c8c0d2f37a330755ecef232cdc8ff0e10d4c3ebdcfbaf27a1a2"
+    },
+    {
+      "path": "raw/foreverdb/sources/48.json",
+      "bytes": 37294,
+      "sha256": "c8d2c2c06ee5db7b12eddedf9fe223330936fcbf7622b97b54b9d1b3242437c0"
+    },
+    {
+      "path": "raw/foreverdb/sources/49.json",
+      "bytes": 33956,
+      "sha256": "52e4f61488db0c409c653cfef78f49fc347a1b7bc39a4628a425587c4fca8860"
+    },
+    {
+      "path": "raw/foreverdb/sources/5.json",
+      "bytes": 39441,
+      "sha256": "c4890dceac3af18c3904c2c35e74bc5db9d7b54f28748b0dec26cf01e22df090"
+    },
+    {
+      "path": "raw/foreverdb/sources/50.json",
+      "bytes": 35619,
+      "sha256": "979c706e87312d26129b9b67fff49e9850b652dd40e5ed21623926b011547ef7"
+    },
+    {
+      "path": "raw/foreverdb/sources/51.json",
+      "bytes": 33304,
+      "sha256": "be8530eb6b91fb834db902aa877d10d11bfe311e1d19d43015066de557b8c38d"
+    },
+    {
+      "path": "raw/foreverdb/sources/52.json",
+      "bytes": 35931,
+      "sha256": "0d53fbae37515d1603db4e91667ec1e7f7d258cb69390a931898aece638a12da"
+    },
+    {
+      "path": "raw/foreverdb/sources/53.json",
+      "bytes": 38081,
+      "sha256": "571223ad45f2da84087508acfd9382692cf86b195fa63f129e5c52d494aa79c2"
+    },
+    {
+      "path": "raw/foreverdb/sources/54.json",
+      "bytes": 42670,
+      "sha256": "eb92b1e23971b1ebd12dcf5a37b037e58b5cd7f02dce8092af4281fa67f28251"
+    },
+    {
+      "path": "raw/foreverdb/sources/55.json",
+      "bytes": 36967,
+      "sha256": "34f7c582bb711f891a32c492232cf292b8d34dae5c25cfc342013ab2604b1c69"
+    },
+    {
+      "path": "raw/foreverdb/sources/56.json",
+      "bytes": 37590,
+      "sha256": "497b141317501431365f7c51aa28c58a64c8232549ee5eec4b81760c6bbdcf47"
+    },
+    {
+      "path": "raw/foreverdb/sources/57.json",
+      "bytes": 40210,
+      "sha256": "4bf920e2c4b22ecc4bba59f12fb8bbffc5e7d4cb08a86ad655f32171c7dc59f5"
+    },
+    {
+      "path": "raw/foreverdb/sources/58.json",
+      "bytes": 41476,
+      "sha256": "c9456641266c0c7e45f598575848c8d16ff7ad2db67daa219902fd230942bcce"
+    },
+    {
+      "path": "raw/foreverdb/sources/59.json",
+      "bytes": 38665,
+      "sha256": "3bc4d3c608dd0eec3d3c5637fc54890b98e69e1e4e61d1631f9354249a7d5884"
+    },
+    {
+      "path": "raw/foreverdb/sources/6.json",
+      "bytes": 44259,
+      "sha256": "a545caaf62f0626fec15b89bf72bf985e8d2cabd121dd6455c49c4bc8fdee0ee"
+    },
+    {
+      "path": "raw/foreverdb/sources/60.json",
+      "bytes": 41085,
+      "sha256": "bf352661eac559980c10f3e29feb9b5c5872b6dfa3491b9916c044a096f79d55"
+    },
+    {
+      "path": "raw/foreverdb/sources/61.json",
+      "bytes": 39128,
+      "sha256": "2645fc33ecf9d1c9c53197384d95cb04880924f555e9148eefe3b6d59c43e1fb"
+    },
+    {
+      "path": "raw/foreverdb/sources/62.json",
+      "bytes": 36369,
+      "sha256": "aef0280c07a4ed345ac86bbbb4e9134283781b5922b7d0c3fba76f17ff270160"
+    },
+    {
+      "path": "raw/foreverdb/sources/63.json",
+      "bytes": 36898,
+      "sha256": "1666009614142a8fd088a843190c654834aab4945b409b9ac9e640a5f9bfc7d2"
+    },
+    {
+      "path": "raw/foreverdb/sources/7.json",
+      "bytes": 36060,
+      "sha256": "5e2e5c6ad764999971f71cd0731dae5920c643315cfe0d26b38b1f680cf91b7b"
+    },
+    {
+      "path": "raw/foreverdb/sources/8.json",
+      "bytes": 38824,
+      "sha256": "171d5c81ba9a8bf345805e112f894872e8ac2b2fbe6e70f204f9844fbfc1f6ed"
+    },
+    {
+      "path": "raw/foreverdb/sources/9.json",
+      "bytes": 39292,
+      "sha256": "cd31b8139d568d75000302f4059ece665042adc9aad8d6507040d2ce8e98e1f3"
+    },
+    {
+      "path": "raw/foreverdb/spelleffects.json",
+      "bytes": 4065,
+      "sha256": "82a7b6f3430208207a109e9efedaf46c58f4cc1cc1d051f4c6ba4b1bd41c4c5d"
+    },
+    {
+      "path": "raw/foreverdb/spells.json",
+      "bytes": 1458136,
+      "sha256": "4a5d9f8fff334c706a3ed159bf590b6f211c3cd6cd9f57281bf22e64dd58f167"
+    },
+    {
+      "path": "raw/foreverdb/spells/0.json",
+      "bytes": 134504,
+      "sha256": "3ce198619377fdd3bb9263879e2a2538b0f5fc99c62b006a29f5bcb05cc1026e"
+    },
+    {
+      "path": "raw/foreverdb/spells/1.json",
+      "bytes": 130334,
+      "sha256": "fd414f94c0642eb6808a06bb634c296e325808c93213ec9a62e862676cfd0daa"
+    },
+    {
+      "path": "raw/foreverdb/spells/10.json",
+      "bytes": 125194,
+      "sha256": "a0a659ac42cdb620ce4b44a33331f4be136e7c70fc527a1fdb069914df58310c"
+    },
+    {
+      "path": "raw/foreverdb/spells/11.json",
+      "bytes": 123670,
+      "sha256": "2df931245181be3e8cb10356d022563291a0a4d595e7514c8ce0fc6b294f0aae"
+    },
+    {
+      "path": "raw/foreverdb/spells/12.json",
+      "bytes": 130762,
+      "sha256": "14fe94db063c02139ba7ceaf65997dca64ea0ecc1a496336c40449c0102e8d7f"
+    },
+    {
+      "path": "raw/foreverdb/spells/13.json",
+      "bytes": 127891,
+      "sha256": "8b98be5a271b18d0a54a76ea3eb7fb26598b774b59529a2d162fa533e7bab5c0"
+    },
+    {
+      "path": "raw/foreverdb/spells/14.json",
+      "bytes": 121909,
+      "sha256": "816437e12eb4aff9ebc3cce6b6baceb88056add4d3d59ba04ef349cd39d62091"
+    },
+    {
+      "path": "raw/foreverdb/spells/15.json",
+      "bytes": 126287,
+      "sha256": "4ff920b10bcdd119b614a3101852ee141473a393c71664d6e85da5ab96dfcaaf"
+    },
+    {
+      "path": "raw/foreverdb/spells/16.json",
+      "bytes": 126468,
+      "sha256": "6cefdf6a1734737c45358d500e38efa27efe6228a1e567dc87409e369bdca1c9"
+    },
+    {
+      "path": "raw/foreverdb/spells/17.json",
+      "bytes": 130152,
+      "sha256": "63a6a1e110320e2ddba55fcbb4bebbbbd46a301a22735e01cc6de4a0b0543733"
+    },
+    {
+      "path": "raw/foreverdb/spells/18.json",
+      "bytes": 128966,
+      "sha256": "7cfde8b30c86d1f46f4280bbd0d771d854f031b33b3fcc5cecc509f05837a8e7"
+    },
+    {
+      "path": "raw/foreverdb/spells/19.json",
+      "bytes": 119591,
+      "sha256": "164660e99e2ec0c42d6c2e69e78e33ff1eeb633b7c8d0ba5e6f70fcd3ddc360f"
+    },
+    {
+      "path": "raw/foreverdb/spells/2.json",
+      "bytes": 134291,
+      "sha256": "eabe3a965067287c941a7ea3e984b79a2bb8594969f5c51fb6f442ca819d8f1f"
+    },
+    {
+      "path": "raw/foreverdb/spells/20.json",
+      "bytes": 128871,
+      "sha256": "bf98f65d8f03ddac72c2ca5ed051d522c3f28f25569799ad8a1014dd3acfb8c2"
+    },
+    {
+      "path": "raw/foreverdb/spells/21.json",
+      "bytes": 122775,
+      "sha256": "45ee9771e717423644fb1eb5b0ac955e70e756c92857a2dc7cab7c60d4277d6f"
+    },
+    {
+      "path": "raw/foreverdb/spells/22.json",
+      "bytes": 123445,
+      "sha256": "c219403e40aacc66173ac6d93bd3d840a4b4ed61c1c0a14d30a07aac79fcea19"
+    },
+    {
+      "path": "raw/foreverdb/spells/23.json",
+      "bytes": 127260,
+      "sha256": "9ab87a27408536d43b7c98b0aad0e57c292d82908e48cb09063d3efe4c5dbc1e"
+    },
+    {
+      "path": "raw/foreverdb/spells/24.json",
+      "bytes": 130770,
+      "sha256": "1ca3057e4757603001093b70fc80b3a3eab711fcaa14907397625b8d6724700e"
+    },
+    {
+      "path": "raw/foreverdb/spells/25.json",
+      "bytes": 128120,
+      "sha256": "46c3ab7c4adc7ac9c97231c797e38f5e0e8c4e043102137edf957d9ce194f3c2"
+    },
+    {
+      "path": "raw/foreverdb/spells/26.json",
+      "bytes": 129260,
+      "sha256": "2e7a5f6ded664f748d994b46db78aa2cd33cb91261068568f5196d28279f40c7"
+    },
+    {
+      "path": "raw/foreverdb/spells/27.json",
+      "bytes": 129836,
+      "sha256": "06c6054fb0bc2b7cb49a65d73433bcf03e00c072930859bf2c5dfd6e71b1fdc1"
+    },
+    {
+      "path": "raw/foreverdb/spells/28.json",
+      "bytes": 127293,
+      "sha256": "13d485c9e89dac47000980da3eed8209007ea2014566b2a5a95a6ea5664bcf00"
+    },
+    {
+      "path": "raw/foreverdb/spells/29.json",
+      "bytes": 126082,
+      "sha256": "88acab713c36feb8fa5650a55559eb9a53d6294e808ca9992179da77855cf5fd"
+    },
+    {
+      "path": "raw/foreverdb/spells/3.json",
+      "bytes": 131953,
+      "sha256": "f0e7c49be123ba9787af5ec3cc3f5646f37b41495ac457b19b014023231b7c2f"
+    },
+    {
+      "path": "raw/foreverdb/spells/30.json",
+      "bytes": 123218,
+      "sha256": "40f521f4bd94b2dfeb57b551c0ab70813dd1898164b49051f16cf906e31739eb"
+    },
+    {
+      "path": "raw/foreverdb/spells/31.json",
+      "bytes": 131088,
+      "sha256": "8251826979ba58fb80ea6dab1c11044ca9f46ef0e167b099d03e2c4988ea032f"
+    },
+    {
+      "path": "raw/foreverdb/spells/32.json",
+      "bytes": 131881,
+      "sha256": "7ea28b28917557f5e72481dbcbcef591ead51ef50423ef35fc49e85b2043c76f"
+    },
+    {
+      "path": "raw/foreverdb/spells/33.json",
+      "bytes": 121789,
+      "sha256": "58c166d7ff96f9248d05d8b8ed6676a60f25e0def471f33384f30175861bba12"
+    },
+    {
+      "path": "raw/foreverdb/spells/34.json",
+      "bytes": 132369,
+      "sha256": "1088c24fba6eb850e19042e0bce58e00ce8ab1cb1ac9c8c3af28e190d4a89211"
+    },
+    {
+      "path": "raw/foreverdb/spells/35.json",
+      "bytes": 130387,
+      "sha256": "3c59d359c768c3385730b7eaebc9b3d37e36fb5e6ed2bd83007cd8aceb2d031b"
+    },
+    {
+      "path": "raw/foreverdb/spells/36.json",
+      "bytes": 118676,
+      "sha256": "93bbe94573d8fd2a3986018271ab4ef7d7f30dd7e06cc87b65fec9e2b47096ea"
+    },
+    {
+      "path": "raw/foreverdb/spells/37.json",
+      "bytes": 116287,
+      "sha256": "1c2d582df756efb4573e1c76434209f6fde7b728e9e2c3ab3e3332e0688fbfa1"
+    },
+    {
+      "path": "raw/foreverdb/spells/38.json",
+      "bytes": 118454,
+      "sha256": "589d74c7d0741edb175655bc32a5e1883a7c67647d2ac7bd42487136e6a2c2d7"
+    },
+    {
+      "path": "raw/foreverdb/spells/39.json",
+      "bytes": 124258,
+      "sha256": "80dce64c99dedae6f7091eb7437687d1a0c41e541fdea3f2aeda39d1c87c05e4"
+    },
+    {
+      "path": "raw/foreverdb/spells/4.json",
+      "bytes": 131913,
+      "sha256": "cf096cfda2e6e69239afc713a6e8e1e971c5f5d25eb52f00a8c84822e333dad0"
+    },
+    {
+      "path": "raw/foreverdb/spells/40.json",
+      "bytes": 130452,
+      "sha256": "032503095c4739ba85684b41b4dadd892b3bbe85b78ec532eb4a0adb6b5af84f"
+    },
+    {
+      "path": "raw/foreverdb/spells/41.json",
+      "bytes": 118070,
+      "sha256": "d6d4f890f84e4d1dbc50e7819d77e3d2e76dc11ca69adaacb5663e1a45aeb2f7"
+    },
+    {
+      "path": "raw/foreverdb/spells/42.json",
+      "bytes": 124144,
+      "sha256": "8687507bd2983c9a700416503bd4ed88efd12ab7cddc094ae81ae43621ed717b"
+    },
+    {
+      "path": "raw/foreverdb/spells/43.json",
+      "bytes": 123829,
+      "sha256": "ec1fb4af248205850978bd882fdec890b05271620cb43e10d081726aa9c6af91"
+    },
+    {
+      "path": "raw/foreverdb/spells/44.json",
+      "bytes": 136890,
+      "sha256": "f081c78e5dbb946a052f9cad687d322b866add5f394b4daa22f552f76b220b86"
+    },
+    {
+      "path": "raw/foreverdb/spells/45.json",
+      "bytes": 121552,
+      "sha256": "78dac6d526023f8d5057bc1d5fd47dcce15363e8d81585ac826879fddad7eb06"
+    },
+    {
+      "path": "raw/foreverdb/spells/46.json",
+      "bytes": 126988,
+      "sha256": "7a5c779380277b93f2a097c5e78bf5ec93e01b0d436de7b5e97b1d4bb8aeb8bb"
+    },
+    {
+      "path": "raw/foreverdb/spells/47.json",
+      "bytes": 131800,
+      "sha256": "27ec9763c563756802d157684caeef651507dc21bf5f3a9a68bcf4f8e67a71b3"
+    },
+    {
+      "path": "raw/foreverdb/spells/48.json",
+      "bytes": 127354,
+      "sha256": "7904b1e35029add2b220b9f8cd1889e7809d556446f50f1ae5dbb5eae8bed5f9"
+    },
+    {
+      "path": "raw/foreverdb/spells/49.json",
+      "bytes": 119686,
+      "sha256": "f37052125713003add63d32645a6df3a27787037a2f0b7ba2a0173adb4556a46"
+    },
+    {
+      "path": "raw/foreverdb/spells/5.json",
+      "bytes": 132267,
+      "sha256": "904b1c4fd966097ee8db03346ca3091c18770af808b284c0a563c53f3f3b9fa2"
+    },
+    {
+      "path": "raw/foreverdb/spells/50.json",
+      "bytes": 128473,
+      "sha256": "7fb57592b014e159ee944651111fa866090a6e0c8d21616ddc42005cca73dfb8"
+    },
+    {
+      "path": "raw/foreverdb/spells/51.json",
+      "bytes": 128150,
+      "sha256": "627f4319becff485cefe8607c5a942614e93bd8062947cc2ece4bc0cd780d3b5"
+    },
+    {
+      "path": "raw/foreverdb/spells/52.json",
+      "bytes": 121201,
+      "sha256": "47a27ce1f313397b4da47633afa081e7172763e1fe2fb6f61c72c59f4eec48cc"
+    },
+    {
+      "path": "raw/foreverdb/spells/53.json",
+      "bytes": 119929,
+      "sha256": "366dbcaa69b4e1f00eb150cac1d3febaba4474d01e74878f4777e89d0966fc9a"
+    },
+    {
+      "path": "raw/foreverdb/spells/54.json",
+      "bytes": 131522,
+      "sha256": "75c10ddc23d017cc57d5e1113843fd703c8b7e0567a08009a0e778a1ca42e0fa"
+    },
+    {
+      "path": "raw/foreverdb/spells/55.json",
+      "bytes": 119770,
+      "sha256": "296b28ddf3eeda11f862c3ff6aa57aa3bbe8ec116649b627dcc99d19011836de"
+    },
+    {
+      "path": "raw/foreverdb/spells/56.json",
+      "bytes": 122043,
+      "sha256": "3d544a9ccbe2b650a1058ecc621a8d06b863ac34ec14593ae63572ebdcec4c35"
+    },
+    {
+      "path": "raw/foreverdb/spells/57.json",
+      "bytes": 117603,
+      "sha256": "10725a7d99ca20bad340499941a37b2360c47107e5a28c8448af7b9eec0eccee"
+    },
+    {
+      "path": "raw/foreverdb/spells/58.json",
+      "bytes": 125315,
+      "sha256": "e269fd6ded098c457c48f9eb54c49fae23072404b22d708f4a2308648679427c"
+    },
+    {
+      "path": "raw/foreverdb/spells/59.json",
+      "bytes": 126483,
+      "sha256": "f9e9632a608e1ee4df36384b22ef41eebf6616baebc98fa37254f2d72a48c2f4"
+    },
+    {
+      "path": "raw/foreverdb/spells/6.json",
+      "bytes": 126238,
+      "sha256": "ba3fa106c4a05134fc542467b7500ff9189256640b2c0113796551363679884b"
+    },
+    {
+      "path": "raw/foreverdb/spells/60.json",
+      "bytes": 137241,
+      "sha256": "8b1eeac082235015cd280e8b8c20ab21bef7745c349dc3465ac01a7f9ed44e35"
+    },
+    {
+      "path": "raw/foreverdb/spells/61.json",
+      "bytes": 120876,
+      "sha256": "5fe71f0ad174e8a772f71872eeb3f0ae1416f49fc7d544b2655d35d2324a2f0f"
+    },
+    {
+      "path": "raw/foreverdb/spells/62.json",
+      "bytes": 129133,
+      "sha256": "41bdbf50aad33e471ed0ea3b582fcb7764904deff60aba185a7658af68dc9e6f"
+    },
+    {
+      "path": "raw/foreverdb/spells/63.json",
+      "bytes": 137653,
+      "sha256": "a39795b1ab1b1a0490625f482ef39ba251ace532db61282fe7b8a1aa4357584c"
+    },
+    {
+      "path": "raw/foreverdb/spells/7.json",
+      "bytes": 127468,
+      "sha256": "470aadc3b5644dad9b1634a4155ae556406eca80858cbea678791c2ee06d3ac3"
+    },
+    {
+      "path": "raw/foreverdb/spells/8.json",
+      "bytes": 123540,
+      "sha256": "75ebfbda372526dff14f97250b5e185ed0be74a46ecc264e73e0508094dbff44"
+    },
+    {
+      "path": "raw/foreverdb/spells/9.json",
+      "bytes": 117226,
+      "sha256": "b332bfc54fde7b0b088c1c1330245ff87b159fb3bdfbebd977dd9d09f45efac5"
+    },
+    {
+      "path": "raw/foreverdb/stats-explained.json",
+      "bytes": 19636,
+      "sha256": "3807985bc588c4c23a342866dec2532c6cdba87dd4d769fd0cc5723150298a18"
+    },
+    {
+      "path": "raw/foreverdb/stats.json",
+      "bytes": 3585,
+      "sha256": "51ac5f28acc41ccf1b9519de1291acbd757f296e5a14bd8bc354217386e10c1c"
+    },
+    {
+      "path": "raw/foreverdb/talentcalc/druid.json",
+      "bytes": 10821,
+      "sha256": "dd5e29c19b281c275dadbd2bb5acb2f60722820450e4664130b62abcf94f6389"
+    },
+    {
+      "path": "raw/foreverdb/talentcalc/hunter.json",
+      "bytes": 9315,
+      "sha256": "52f59a36cea34f6ada1e1682d1bcb3dea61ae96217287d698c05d0e771aa58f6"
+    },
+    {
+      "path": "raw/foreverdb/talentcalc/mage.json",
+      "bytes": 10160,
+      "sha256": "2ceaf2154915ecaba3370777dac32dc1f2559b6d3ba8117a05dc4a62438011c1"
+    },
+    {
+      "path": "raw/foreverdb/talentcalc/paladin.json",
+      "bytes": 10492,
+      "sha256": "40b9ff420f73c3bb4f8433bb710327940fab24d52fbbd992e289e10945273a57"
+    },
+    {
+      "path": "raw/foreverdb/talentcalc/priest.json",
+      "bytes": 10435,
+      "sha256": "68e67f896ee2e9f61b74d529ad7f5136dac4fa7ce8c563edb6c4b71d6f6851f6"
+    },
+    {
+      "path": "raw/foreverdb/talentcalc/rogue.json",
+      "bytes": 10205,
+      "sha256": "635e2c5c2134f534d56f95d53e455c460d241dd55d8eac36d6a4030785a6aefe"
+    },
+    {
+      "path": "raw/foreverdb/talentcalc/shaman.json",
+      "bytes": 10129,
+      "sha256": "61572138b39c83249e1b294f9a4be15c6f7c64f2947dcdeeadc400a8245ad5b0"
+    },
+    {
+      "path": "raw/foreverdb/talentcalc/warlock.json",
+      "bytes": 12705,
+      "sha256": "7566b3770bbb0e1ee333a7633d34500f3c8802aee9c9a067615c1ba5c3c3b6b4"
+    },
+    {
+      "path": "raw/foreverdb/talentcalc/warrior.json",
+      "bytes": 10265,
+      "sha256": "cbe77f0c22b9df1e3e9f3791aa845fa8a4d6313718bb5ac1d1895a3b933bcd6b"
+    },
+    {
+      "path": "raw/foreverdb/trainers.json",
+      "bytes": 30809,
+      "sha256": "84df47a86a4016e7fa868f153c39b66e0a2a20d1339b6fa8c02736d6064d4292"
+    },
+    {
+      "path": "raw/foreverdb/vendors.json",
+      "bytes": 434889,
+      "sha256": "bb5ffefcec8b94d154defed1d8cf69e63c865eb43b9d76294d7be2efe52b8712"
+    },
+    {
+      "path": "raw/talents_druid.json",
+      "bytes": 309193,
+      "sha256": "3054964e8bc14cbf487c2276e1fc1920aa362ad39d67453e3f51b522c8eb472e"
+    },
+    {
+      "path": "raw/talents_hunter.json",
+      "bytes": 349087,
+      "sha256": "2f048e19adeb7dfcdbe0cb5acf7611295f7dfaabc9920599b2833cb5b243a5cb"
+    },
+    {
+      "path": "raw/talents_mage.json",
+      "bytes": 293218,
+      "sha256": "8b206fb6c601fff8f4a68e927fbf150f8137d91c55464a00a826b8257464e798"
+    },
+    {
+      "path": "raw/talents_paladin.json",
+      "bytes": 280198,
+      "sha256": "9ae527eeb96c174f62f9bfa29d3f5fd9b483fb23793f88cbb819470480d7693c"
+    },
+    {
+      "path": "raw/talents_priest.json",
+      "bytes": 334954,
+      "sha256": "3aa421850bf62d42fe89cf75f1549b3117559837ef1f8dff51b58b59f8c1b669"
+    },
+    {
+      "path": "raw/talents_rogue.json",
+      "bytes": 244842,
+      "sha256": "44ac260cdf105dd8a7a8c141e3c7431f91faa53b93ab5748ae9413c115f028d8"
+    },
+    {
+      "path": "raw/talents_shaman.json",
+      "bytes": 297410,
+      "sha256": "20eab6dff705eace5ceeef6bd4e99d2212198a0c609bfaf9018d197778005f53"
+    },
+    {
+      "path": "raw/talents_warlock.json",
+      "bytes": 346854,
+      "sha256": "227e8bdaca665ec4d38e4d488d4e4d1e87e7b0c9bdb83a0fa2d267dc1dd70f05"
+    },
+    {
+      "path": "raw/talents_warrior.json",
+      "bytes": 245192,
+      "sha256": "b20d80c76fe34d684d4f1dd45060e843271d58042f79e6544f41949e711ae25a"
+    },
+    {
+      "path": "repair_manifest.json",
+      "bytes": 738,
+      "sha256": "cc7fef3b97c137833eea01ead9aca7ba18b8508596df4220cf9b3d7312a471da"
+    },
+    {
+      "path": "validation.json",
+      "bytes": 1218,
+      "sha256": "0d739253b018bfbfc7bd9fbb2a06467daf989637d0f20ba34255426cae82ba7c"
+    }
+  ]
+}

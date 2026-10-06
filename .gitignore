@@ -5,4 +5,5 @@ Thumbs.db
 .vscode/
 .idea/
 *.zip
+!data/external/full-snapshot.zip
 .release/

@@ -2,6 +2,7 @@
 -- keeps the result in ns.state for the UI. It runs as a scheduler job that
 -- yields between steps, only out of combat, and only when something changed.
 local _, ns = ...
+local EMPTY = {}
 
 local Planner = {}
 ns.Planner = Planner
@@ -148,19 +149,53 @@ local function compute()
   -- Gear
   s.enchants = E.Gear.EnchantAdvice(data.Gear and data.Gear.enchants, API.EquippedEnchants(), s.weights)
   local targets = data.Gear and data.Gear.targets
-  if not targets or #targets == 0 then targets = ns.Data.GearCatalog and ns.Data.GearCatalog[s.class] end
+  if not targets or #targets == 0 then
+    targets = E.Gear.CatalogTargets(ns.Data.FullGearCatalog, s.class, s.level, yieldGear)
+  end
   s.upgrades = {}
   if targets and #targets > 0 then
     local scores, owned
     scores, s.gearUnknown, owned = equippedScores(s.weights)
+    local context = { class = s.class, owned = owned, faction = API.PlayerFaction(), completedQuests = {} }
+    local queried, reads = {}, 0
     for i, target in ipairs(targets) do
       if (target.minLevel or 0) <= s.level + 5 and not owned[target.itemID] then
         local count = API.ItemCount(target.itemID)
         if type(count) == "number" and count > 0 then owned[target.itemID] = true end
       end
+      if (target.minLevel or 0) <= s.level + 5 then
+        if target.routeData then
+          for _, id in ipairs(target.questIDs or EMPTY) do
+            if not queried[id] then
+              queried[id] = true
+              context.completedQuests[id] = API.QuestCompleted(id)
+              reads = reads + 1
+              if reads % 4 == 0 then coroutine.yield() end
+            end
+          end
+        else
+          for _, route in E.Gear.Routes(target) do
+            local id = route.questID
+            if id and not queried[id] then
+              queried[id] = true
+              context.completedQuests[id] = API.QuestCompleted(id)
+              reads = reads + 1
+              if reads % 4 == 0 then coroutine.yield() end
+            end
+            for _, previous in ipairs(route.prerequisites or EMPTY) do
+              if not queried[previous] then
+                queried[previous] = true
+                context.completedQuests[previous] = API.QuestCompleted(previous)
+                reads = reads + 1
+                if reads % 4 == 0 then coroutine.yield() end
+              end
+            end
+          end
+        end
+      end
       if i % 4 == 0 then coroutine.yield() end
     end
-    s.upgrades = E.Gear.NextUpgrades(targets, s.level, s.weights, scores, { class = s.class, owned = owned }, yieldGear)
+    s.upgrades = E.Gear.NextUpgrades(targets, s.level, s.weights, scores, context, yieldGear)
   end
   s.hasUpgradeData = targets ~= nil and #targets > 0
   coroutine.yield()
@@ -288,6 +323,11 @@ local function announceMissing()
   ns.util.print("before the pull: no %s.", table.concat(parts, ", "))
 end
 
+local function questsChanged()
+  API.ForgetQuestStates()
+  Planner.Queue()
+end
+
 local function bagsChanged()
   Planner.CheckCounts()
   -- Ownership comparisons run in the existing sliced job, only while visible.
@@ -306,6 +346,8 @@ function Planner.Start()
     Events:On(event, function() API.ForgetTalents(); Planner.Queue() end, "talents")
   end
   Events:On("PLAYER_EQUIPMENT_CHANGED", Planner.Queue, "gear")
+  Events:On("QUEST_TURNED_IN", questsChanged, "quests")
+  Events:On("QUEST_LOG_UPDATE", questsChanged, "quests")
   Events:On("GET_ITEM_INFO_RECEIVED", Planner.Queue, "item-data")
   Events:On("ITEM_DATA_LOAD_RESULT", Planner.Queue, "item-data")
   local function bagRefresh() ns.Refresh("bags", 0.2, bagsChanged) end
