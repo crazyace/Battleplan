@@ -73,6 +73,11 @@ only for the latter. Its third return, equipped links by slot, becomes
 Rows stay plain tables: an item row carries `itemID` and `hyperlink` (`"item:<id>"`).
 `UI/List.lua` shows `GameTooltip:SetHyperlink(hyperlink)` with the row's `tip` under it,
 and shift-click (`IsModifiedClick("CHATLINK")`) inserts `API.ItemLink(itemID)` in chat.
+`List:SetData` re-shows the tooltip for the row still under the mouse, so a replan
+doesn't close it. `API.RequestItem` asks for each item once, and item-load events
+(`GET_ITEM_INFO_RECEIVED`, `ITEM_DATA_LOAD_RESULT`) replan only while the last plan
+waits on item data (unreadable equipped stats or elixir names): a request per plan
+used to answer itself with another replan, closing the tooltip within a second.
 
 ## Imported structural talent data
 

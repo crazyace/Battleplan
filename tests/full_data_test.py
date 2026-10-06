@@ -85,7 +85,7 @@ L.execute('''
 ''')
 drain(L, ns)
 check(ns.state.version > L.globals().BEFORE, 'quest refresh deferred until out of combat')
-check('Source not confirmed' in screen(L, ns, 'gear'), 'import is never access proof')
+check('Source not confirmed' in screen(L, ns, 'gear', tips=True), 'import is never access proof')
 L.execute('''
   BP.UI.Show(); C.faction="Horde"; UnitFactionGroup=function() return C.faction end
   C_QuestLog.IsQuestFlaggedCompleted=function() return true end

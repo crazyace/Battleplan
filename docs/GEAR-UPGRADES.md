@@ -24,8 +24,10 @@ candidate set. A craftable item does not require the wearer to be its crafter.
 6. Show one primary and at most one alternative per slot. Keep a materially stronger
    item when an easier item wins, otherwise the strongest different acquisition
    kind at the same availability/level status. Do not duplicate the same item.
-7. Display source/location, requirements, provisional provenance and availability
-   inline. Future gear shows its required level; unknown access says Potential upgrade, with Source not confirmed and a requirements warning.
+7. Show a compact row (slot, name, one-line source, gain) and put source/location,
+   requirements, provisional provenance and availability in the hover under the item
+   tooltip. Future gear shows its required level; unknown access shows "unconfirmed" on
+   the row, and the hover says Source not confirmed with a requirements warning.
 
 A deterministic item ID / route-key tie break prevents catalog ordering from changing
 recommendations. Catalog collection and selection yield in batches of 32. The engine

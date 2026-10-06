@@ -81,11 +81,16 @@ end
 -- Every elixir's buff name, for the buff check. Item data can arrive late,
 -- so names fill in over several refreshes.
 local elixirAuras = {}
+-- Whether the last plan still waits on item data (unreadable equipped stats or
+-- elixir names). Only then does an item arriving replan: hovering a suggested
+-- item loads it, and a replan while hovering redraws the list under the mouse.
+local elixirsPending, gearPending = true, true
 local function elixirAuraNames()
+  elixirsPending = false
   for _, e in ipairs(ns.Data.Consumables) do
     if e.kind == "elixir" then
       local name = API.ItemBuffName(e.itemID)
-      if name then elixirAuras[name] = true end
+      if name then elixirAuras[name] = true else elixirsPending = true end
     end
   end
   return elixirAuras
@@ -157,10 +162,11 @@ local function compute()
   if not targets or #targets == 0 then
     targets = E.Gear.CatalogTargets(ns.Data.FullGearCatalog, s.class, s.level, yieldGear)
   end
-  s.upgrades, s.equippedLinks = {}, {}
+  s.upgrades, s.equippedLinks, gearPending = {}, {}, false
   if targets and #targets > 0 then
     local scores, owned, details
     scores, s.gearUnknown, owned, details, s.equippedLinks = equippedScores(s.weights)
+    gearPending = s.gearUnknown
     local context = { class = s.class, owned = owned, faction = API.PlayerFaction(), completedQuests = {}, equippedStats = details }
     local queried, reads = {}, 0
     for i, target in ipairs(targets) do
@@ -318,6 +324,10 @@ function Planner.Queue()
   ns.Refresh("plan", 0.2, start)
 end
 
+local function itemDataArrived()
+  if gearPending or elixirsPending then Planner.Queue() end
+end
+
 -- In a dungeon or raid: name what's missing, once per zone-in.
 local function announceMissing()
   local s = state
@@ -358,8 +368,8 @@ function Planner.Start()
   Events:On("PLAYER_EQUIPMENT_CHANGED", Planner.Queue, "gear")
   Events:On("QUEST_TURNED_IN", questsChanged, "quests")
   Events:On("QUEST_LOG_UPDATE", questsChanged, "quests")
-  Events:On("GET_ITEM_INFO_RECEIVED", Planner.Queue, "item-data")
-  Events:On("ITEM_DATA_LOAD_RESULT", Planner.Queue, "item-data")
+  Events:On("GET_ITEM_INFO_RECEIVED", itemDataArrived, "item-data")
+  Events:On("ITEM_DATA_LOAD_RESULT", itemDataArrived, "item-data")
   local function bagRefresh() ns.Refresh("bags", 0.2, bagsChanged) end
   Events:On("BAG_UPDATE_DELAYED", bagRefresh, "bags")
   Events:On("BAG_UPDATE", bagRefresh, "bags")

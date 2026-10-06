@@ -180,14 +180,12 @@ function build.rotation(s, rows)
 end
 
 local SOURCE_NAMES = { quest = "Quest", craft = "Crafting", vendor = "Vendor", drop = "Drop" }
-local function comparisonRows(rows, u)
-  local details = u.comparison
-  if not details then return end
-  local estimate = ("Estimated stat-score gain: +%.1f"):format(u.gain)
-  if details.gainFraction then estimate = estimate .. (" (%.1f%%)"):format(details.gainFraction * 100) end
-  note(rows, estimate .. ".", 2)
-  if details.empty then note(rows, "This slot is empty.", 2) end
-  if not details.changes then return end
+
+-- Gear rows follow Gearwright's item rows: one compact row per item (slot and
+-- name, where it comes from, the gain) and everything else on hover, under the
+-- client's own item tooltip.
+local function statChanges(details, lines)
+  if not details or not details.changes then return end
   local gains, losses = {}, {}
   for _, change in ipairs(details.changes) do
     local name = Stats.names[change.stat] or change.stat
@@ -198,50 +196,66 @@ local function comparisonRows(rows, u)
     local list = change.delta > 0 and gains or losses
     list[#list + 1] = text
   end
-  if #gains > 0 then note(rows, "Gains: " .. table.concat(gains, ", "), 2) end
-  if #losses > 0 then note(rows, "Losses: " .. table.concat(losses, ", "), 2) end
+  if #gains > 0 then lines[#lines + 1] = util.color("green", "Gains: " .. table.concat(gains, ", ")) end
+  if #losses > 0 then lines[#lines + 1] = util.color("red", "Losses: " .. table.concat(losses, ", ")) end
 end
 
--- Hover text under the item's own tooltip: what Battleplan adds to it.
--- Like Gearwright's item rows: the gain, what it replaces, how to link it.
+-- One short line under the item name: where it comes from.
+local function sourceLine(u)
+  local route = u.route
+  if not route then return type(u.target.source) == "string" and u.target.source or nil end
+  if route.kind == "craft" and route.profession then return "Crafted with " .. route.profession end
+  local text = (SOURCE_NAMES[route.kind] or "Source") .. ": " .. (route.name or "details unavailable")
+  if route.location then text = text .. ", " .. route.location end
+  return text
+end
+
+-- Hover text under the item's own tooltip.
 local function itemTip(u, equipped)
-  local lines = { util.color("green", ("Battleplan: +%.1f score in %s"):format(u.gain, u.slotName)) }
+  local details = u.comparison
+  local gain = ("Battleplan: +%.1f score"):format(u.gain)
+  if details and details.gainFraction then gain = gain .. (" (%.1f%%)"):format(details.gainFraction * 100) end
+  local lines = { util.color("green", gain .. " in " .. u.slotName) }
   if not u.now then lines[#lines + 1] = ("Usable at level %d."):format(u.requiredLevel or u.target.minLevel or 0) end
-  local current = equipped and equipped[u.slot]
+  local current = not (details and details.empty) and equipped and equipped[u.slot]
   lines[#lines + 1] = current and ("Replaces " .. current) or ("Your " .. u.slotName .. " slot is empty.")
-  if type(u.target.source) == "string" then lines[#lines + 1] = u.target.source end
+  statChanges(details, lines)
+  if u.selectedForEase then lines[#lines + 1] = "Easier to get, and keeps most of the stronger option's gain." end
+  local route = u.route
+  if route then
+    local source = (SOURCE_NAMES[route.kind] or "Source") .. ": " .. (route.name or "Details unavailable")
+    if route.location then source = source .. " — " .. route.location end
+    lines[#lines + 1] = " "
+    lines[#lines + 1] = source
+    if route.requirements then lines[#lines + 1] = route.requirements end
+    if route.faction then lines[#lines + 1] = route.faction .. " source; confirm faction eligibility." end
+    if route.kind == "craft" and route.profession then
+      local action = route.wearerProfession and "Craft this yourself with " or "Find a crafter with "
+      lines[#lines + 1] = action .. route.profession .. "; confirm the recipe, materials and price."
+    end
+    if route.sourceEvidence == "classic" then lines[#lines + 1] = "Classic-derived source; not confirmed on Forever." end
+    if u.status == "unknown" then
+      lines[#lines + 1] = "Source not confirmed. Check requirements before spending time or gold."
+    elseif u.target._status ~= "verified" or route._status ~= "verified" then
+      lines[#lines + 1] = "Source data is provisional."
+    end
+  elseif type(u.target.source) == "string" then
+    lines[#lines + 1] = u.target.source
+  end
   lines[#lines + 1] = util.color("gray", "Shift-click to link it in chat.")
   return table.concat(lines, "\n")
 end
 
 local function upgradeRow(rows, u, alternative, equipped)
-  local when
-  if not u.now then when = ("Level %d"):format(u.requiredLevel or u.target.minLevel or 0)
-  elseif u.status == "unknown" then when = "Potential upgrade"
-  else when = util.color("green", ("+%.1f score"):format(u.gain)) end
-  local prefix = alternative and "Alternative: " or (u.slotName .. ": ")
-  row(rows, prefix .. u.target.name, when, itemTip(u, equipped), 1, u.target.icon)
+  local value = util.color("green", ("+%.1f"):format(u.gain))
+  if not u.now then value = value .. "\n" .. util.color("gray", ("level %d"):format(u.requiredLevel or u.target.minLevel or 0))
+  elseif u.status == "unknown" then value = value .. "\n" .. util.color("gray", "unconfirmed") end
+  local text = (alternative and "Or: " or (u.slotName .. ": ")) .. u.target.name
+  local source = sourceLine(u)
+  if source then text = text .. "\n" .. util.color("gray", source) end
+  row(rows, text, value, itemTip(u, equipped), alternative and 2 or 1, u.target.icon)
   local itemID = u.target.itemID
   if itemID then rows[#rows].itemID, rows[#rows].hyperlink = itemID, "item:" .. itemID end
-  comparisonRows(rows, u)
-  if u.selectedForEase then note(rows, "Easier to obtain while keeping most of the stronger option's score gain.", 2) end
-  local route = u.route
-  if route then
-    local source = (SOURCE_NAMES[route.kind] or "Source") .. ": " .. (route.name or "Details unavailable")
-    if route.location then source = source .. " — " .. route.location end
-    note(rows, source, 2)
-    if route.requirements then note(rows, route.requirements, 2) end
-    if route.faction then note(rows, route.faction .. " source; confirm faction eligibility.", 2) end
-    if route.sourceEvidence == "classic" then note(rows, "Classic-derived source; not confirmed on Forever.", 2) end
-    if route.kind == "craft" and route.profession then
-      local action = route.wearerProfession and "Craft this yourself with " or "Find a crafter with "
-      note(rows, action .. route.profession .. "; confirm the recipe, materials and price.", 2)
-    end
-    if u.status == "unknown" then note(rows, "Source not confirmed. Check requirements before spending time or gold.", 2) end
-    if u.status ~= "unknown" and (u.target._status ~= "verified" or route._status ~= "verified") then
-      note(rows, "Source data is provisional.", 2)
-    end
-  end
 end
 
 function build.gear(s, rows)
@@ -256,8 +270,8 @@ function build.gear(s, rows)
   blank(rows)
   header(rows, "Next upgrades")
   if s.hasUpgradeData then
-    note(rows, "Stat-score estimates; recipe availability and item requirements may be unconfirmed.")
-    note(rows, "Static stats only; effects and set bonuses are not included. Score gain is not a damage or healing percentage.")
+    note(rows, "Score from item stats only (no effects or set bonuses), not a damage or healing percentage. "
+      .. "Hover an item for details.")
   end
   if not s.hasUpgradeData then
     note(rows, "No upgrade sources for your class yet. Quest, crafted, vendor and drop options need confirmed data.")

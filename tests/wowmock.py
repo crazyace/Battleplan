@@ -80,6 +80,12 @@ function CreateFrame(kind, name, parent, template)
   end
   f.SetScript = function(self, k, fn) self["_" .. k] = fn end
   f.GetScript = function(self, k) return self["_" .. k] end
+  f.GetParent = function(self) return self._parent end
+  -- Hover: tests set f._mouseOver; tooltips remember their owner.
+  f.IsMouseOver = function(self) return self._mouseOver == true end
+  f.IsVisible = function(self) return self._shown end
+  f.SetOwner = function(self, owner) self._owner = owner end
+  f.GetOwner = function(self) return rawget(self, "_owner") end
   f.IsShown = function(self) return self._shown end
   f.Show = function(self)
     local was = self._shown
@@ -277,15 +283,16 @@ def printed(L):
     return [p[i] for i in range(1, len(p) + 1)]
 
 
-def screen(L, ns, tab):
-    """Every row of a tab as 'text | value' lines."""
-    return L.eval("""function(ns, tab)
+def screen(L, ns, tab, tips=False):
+    """Every row of a tab as 'text | value' lines; tips=True adds item rows' hover text."""
+    return L.eval("""function(ns, tab, tips)
       local out = {}
       for _, r in ipairs(ns.UI.BuildRows(tab, ns.state)) do
         out[#out + 1] = (r.text or "") .. " | " .. (r.value or "")
+        if tips and r.itemID and r.tip then out[#out + 1] = "  hover: " .. r.tip end
       end
       return table.concat(out, "\\n")
-    end""")(ns, tab)
+    end""")(ns, tab, tips)
 
 
 # Characters -------------------------------------------------------------------------

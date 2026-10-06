@@ -256,8 +256,13 @@ end
 
 -- Ask the server for an item now, so its tooltip is complete when hovered
 -- (the first read of an uncached item has no "Use:" line; see BETA-FINDINGS).
+-- Once per item: the answer fires item events, and asking on every plan kept
+-- replanning and hid the hover tooltip within a second.
+local requestedItems = {}
 function API.RequestItem(itemID)
-  if itemID and C_Item and C_Item.RequestLoadItemDataByID then pcall(C_Item.RequestLoadItemDataByID, itemID) end
+  if not itemID or requestedItems[itemID] then return end
+  requestedItems[itemID] = true
+  if C_Item and C_Item.RequestLoadItemDataByID then pcall(C_Item.RequestLoadItemDataByID, itemID) end
 end
 
 -- Equipped enchants: { [slotID] = enchantID (0 = none) } for slots with an item.

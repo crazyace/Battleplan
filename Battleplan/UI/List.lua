@@ -182,11 +182,17 @@ function List:Rebind()
   end
 end
 
+-- A replan redraws the list; the row under the mouse keeps its tooltip,
+-- refreshed with that row's new data.
 function List:SetData(rows)
+  local owner = GameTooltip.GetOwner and GameTooltip:GetOwner()
   GameTooltip:Hide()
   self.data = rows
   self:Measure()
   self:Rebind()
+  if owner and owner.data and owner:GetParent() == self and owner:IsVisible() and owner:IsMouseOver() then
+    onEnter(owner)
+  end
 end
 function List:Scroll(delta)
   if ns.InCombat() then return end
