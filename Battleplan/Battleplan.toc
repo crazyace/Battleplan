@@ -54,6 +54,7 @@ Core\Planner.lua
 UI\Animations.lua
 UI\List.lua
 UI\Tabs.lua
+UI\GearPicker.lua
 UI\MainWindow.lua
 
 Core\Commands.lua

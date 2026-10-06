@@ -217,6 +217,32 @@ local function comparison(option, scores, equipped)
   return result
 end
 
+-- Every distinct item kept for a slot, best first (each with its best route),
+-- so the player can pick a quest, crafted, vendor or drop option themselves.
+-- The recommendation is always included; at most MAX_OPTIONS in all.
+Gear.MAX_OPTIONS = 12
+local function slotOptions(candidates, recommended)
+  local options, at = {}, {}
+  for _, option in ipairs(candidates) do
+    local id = option.target.itemID
+    local index = id and at[id]
+    if not index then
+      options[#options + 1] = option
+      if id then at[id] = #options end
+    elseif better(option, options[index]) then options[index] = option end
+  end
+  table.sort(options, better)
+  for i = #options, Gear.MAX_OPTIONS + 1, -1 do
+    if options[i] ~= recommended then table.remove(options, i) end
+  end
+  if #options > Gear.MAX_OPTIONS then
+    for i = #options, 1, -1 do
+      if options[i] ~= recommended then table.remove(options, i); break end
+    end
+  end
+  return options
+end
+
 -- Structured targets use routes with stable keys, source names/locations and requirements.
 -- Context contains observed access, usability, owned items and quest completion only.
 -- Legacy text sources keep their existing behavior until migrated to structured routes.
@@ -290,8 +316,13 @@ function Gear.NextUpgrades(targets, level, weights, equippedScores, context, wor
       end
       practical.selectedForEase = practical ~= strongest
       practical.alternative = alternative
-      practical.comparison = comparison(practical, equippedScores, ctx.equippedStats)
-      if alternative then alternative.comparison = comparison(alternative, equippedScores, ctx.equippedStats) end
+      practical.options = slotOptions(candidates, practical)
+      for _, option in ipairs(practical.options) do
+        option.comparison = comparison(option, equippedScores, ctx.equippedStats)
+      end
+      if alternative and not alternative.comparison then
+        alternative.comparison = comparison(alternative, equippedScores, ctx.equippedStats)
+      end
       rows[#rows + 1] = practical
       if workTick then workTick() end
     end

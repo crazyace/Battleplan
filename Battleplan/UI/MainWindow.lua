@@ -50,6 +50,7 @@ local function selectTab(key)
   if ns.InCombat() then return end
   currentTab = key
   menu:Hide()
+  UI.CloseGearPicker()
   paintTabs()
   if list.pulse then list.pulse:Play() end
   list:ScrollToTop()
@@ -230,8 +231,8 @@ local function create()
     menu.options[i] = option
   end
   menu:Hide()
-  f:SetScript("OnMouseDown", function() menu:Hide() end)
-  f:SetScript("OnHide", function() menu:Hide(); GameTooltip:Hide() end)
+  f:SetScript("OnMouseDown", function() menu:Hide(); UI.CloseGearPicker() end)
+  f:SetScript("OnHide", function() menu:Hide(); UI.CloseGearPicker(); GameTooltip:Hide() end)
   f:SetScript("OnShow", function() ns.Planner.Queue(); UI.Refresh(true) end)
   f:Hide()
   tinsert(UISpecialFrames, "BattleplanFrame")

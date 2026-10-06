@@ -40,12 +40,17 @@ local function onEnter(row)
 end
 local function onLeave() GameTooltip:Hide() end
 
--- Shift-click (the player's chat-link binding) puts an item row's link in chat.
+-- Shift-click (the player's chat-link binding) puts an item row's link in chat;
+-- a plain click on a Gear row with several options opens that slot's picker.
 local function onClick(row)
   local d = row.data
-  if not (d and d.itemID and IsModifiedClick and IsModifiedClick("CHATLINK") and ChatEdit_InsertLink) then return end
-  local link = ns.API.ItemLink(d.itemID)
-  if link then ChatEdit_InsertLink(link) end
+  if not d then return end
+  if d.itemID and IsModifiedClick and IsModifiedClick("CHATLINK") and ChatEdit_InsertLink then
+    local link = ns.API.ItemLink(d.itemID)
+    if link then ChatEdit_InsertLink(link) end
+  elseif d.choices then
+    UI.OpenGearPicker(row, d)
+  end
 end
 
 local function makeRow(list)
@@ -197,6 +202,7 @@ end
 function List:Scroll(delta)
   if ns.InCombat() then return end
   GameTooltip:Hide()
+  UI.CloseGearPicker()
   self.offset = self.offset + delta * MIN_HEIGHT
   self:Rebind()
 end

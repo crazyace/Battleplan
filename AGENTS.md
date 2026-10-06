@@ -59,7 +59,7 @@ a warning; install it (`luarocks install luacheck`) rather than living with the 
 | `Battleplan/Data/` | Static tables, one folder per class | Every file has `_status` |
 | `Battleplan/Engine/` | Pure logic | No WoW calls at all |
 | `Battleplan/UI/Tabs.lua` | Rows each tab shows | No frames: rows only, so tests can read them |
-| `Battleplan/UI/MainWindow.lua`, `List.lua`, `Animations.lua` | Frames | Built lazily, reused, never rebuilt per refresh |
+| `Battleplan/UI/MainWindow.lua`, `List.lua`, `GearPicker.lua`, `Animations.lua` | Frames | Built lazily, reused, never rebuilt per refresh |
 | `BattleplanProbe/` | Dev-only data collector | Never shipped, never required by Battleplan |
 | `tools/` | Python helpers (stat lab, ID lists) | Standard library only |
 | `tests/wowmock.py` | Mock client and test characters | Mirrors confirmed client behaviour |

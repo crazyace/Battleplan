@@ -22,6 +22,7 @@ TESTS = [
     ("gear advice test", "tests/gear_advice_test.py"),
     ("gear comparison test", "tests/gear_comparison_test.py"),
     ("gear tooltip test", "tests/gear_tooltip_test.py"),
+    ("gear picker test", "tests/gear_picker_test.py"),
     ("gear catalog test", "tests/gear_catalog_test.py"),
     ("full data test", "tests/full_data_test.py"),
     ("class data test", "tests/class_data_test.py"),

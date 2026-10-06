@@ -83,7 +83,7 @@ L.execute('''
   BP.state.upgrades=RESULT;BP.state.hasUpgradeData=true;BP.state.gearUnknown=false
 ''')
 text = screen(L, ns, 'gear', tips=True)
-for phrase in ('Test crafted chest', 'Or: Test quest chest', 'Crafting: Test recipe',
+for phrase in ('Test crafted chest', 'choice: Test quest chest', 'Crafting: Test recipe',
                'Find a crafter with Blacksmithing', 'Quest: Test quest', 'Test zone', 'score', 'provisional'):
     check(phrase in text, 'source-aware presentation: ' + phrase)
 L.execute('CTX.access.q1="blocked";CTX.access.c1="unknown";choose();BP.state.upgrades=RESULT')

@@ -259,9 +259,17 @@ talent or ability that Forever removed.
 
 Gear suggestions are laid out like Gearwright's: one compact row per item with the
 slot and name, a one-line source ("Crafted with Blacksmithing", "Quest: ..."), and the
-score gain (with "level N" or "unconfirmed" under it when that applies). The second
-choice for a slot sits under it as "Or: ...". These estimates describe modeled static
-stats, not DPS/healing gains; unavailable equipped stats block comparisons.
+score gain (with "level N" or "unconfirmed" under it when that applies). These
+estimates describe modeled static stats, not DPS/healing gains; unavailable equipped
+stats block comparisons.
+
+Each slot shows one row. When a slot has more than one option, click the row to open
+its picker: every option for that slot (up to 12), grouped under Quests, Crafted,
+Vendors and Drops, each with its gain, and the recommendation marked. Hover an option
+for its tooltip; click one to chase it instead. The row then shows your pick, saved per
+slot by item ID; pick the recommendation again to go back. A saved pick that stops
+being an option (you got it, or it's no longer an upgrade) falls back to the
+recommendation.
 
 Hover a suggested item for the game's own item tooltip, with Battleplan's details under
 it: score gain and percentage, the item it replaces (or that the slot is empty), stat

@@ -246,16 +246,42 @@ local function itemTip(u, equipped)
   return table.concat(lines, "\n")
 end
 
-local function upgradeRow(rows, u, alternative, equipped)
+-- "+15.6", with "level 17" or "unconfirmed" under it when that applies.
+function UI.GearValue(u, oneLine)
   local value = util.color("green", ("+%.1f"):format(u.gain))
-  if not u.now then value = value .. "\n" .. util.color("gray", ("level %d"):format(u.requiredLevel or u.target.minLevel or 0))
-  elseif u.status == "unknown" then value = value .. "\n" .. util.color("gray", "unconfirmed") end
-  local text = (alternative and "Or: " or (u.slotName .. ": ")) .. u.target.name
-  local source = sourceLine(u)
+  local sep = oneLine and "  " or "\n"
+  if not u.now then value = value .. sep .. util.color("gray", ("level %d"):format(u.requiredLevel or u.target.minLevel or 0))
+  elseif u.status == "unknown" then value = value .. sep .. util.color("gray", "unconfirmed") end
+  return value
+end
+UI.GearItemTip, UI.GearSourceLine = itemTip, sourceLine
+
+-- The option the player picked for this slot (saved by item ID), or the recommendation.
+local function picked(u, picks)
+  local id = picks and picks[u.slot]
+  if not id or not u.options then return u end
+  for _, option in ipairs(u.options) do
+    if option.target.itemID == id then return option end
+  end
+  return u
+end
+
+-- One row per slot. With more than one option, clicking it opens the slot's
+-- picker (UI/GearPicker.lua): quest, crafted, vendor and drop options side by side.
+local function upgradeRow(rows, u, equipped, picks)
+  local shown = picked(u, picks)
+  local text = u.slotName .. ": " .. shown.target.name
+  local source = sourceLine(shown)
+  local count = u.options and #u.options or 1
+  local more = count > 1 and ("%d options, click to choose"):format(count) or nil
+  if shown ~= u then more = "your pick; " .. (more or "") end
+  if source and more then source = source .. "  |  " .. more else source = source or more end
   if source then text = text .. "\n" .. util.color("gray", source) end
-  row(rows, text, value, itemTip(u, equipped), alternative and 2 or 1, u.target.icon)
-  local itemID = u.target.itemID
-  if itemID then rows[#rows].itemID, rows[#rows].hyperlink = itemID, "item:" .. itemID end
+  row(rows, text, UI.GearValue(shown), itemTip(shown, equipped), 1, shown.target.icon)
+  local r = rows[#rows]
+  local itemID = shown.target.itemID
+  if itemID then r.itemID, r.hyperlink = itemID, "item:" .. itemID end
+  if count > 1 then r.slot, r.choices, r.recommended, r.picked = u.slot, u.options, u, shown end
 end
 
 function build.gear(s, rows)
@@ -271,7 +297,7 @@ function build.gear(s, rows)
   header(rows, "Next upgrades")
   if s.hasUpgradeData then
     note(rows, "Score from item stats only (no effects or set bonuses), not a damage or healing percentage. "
-      .. "Hover an item for details.")
+      .. "Hover an item for details; click it to see every option for that slot.")
   end
   if not s.hasUpgradeData then
     note(rows, "No upgrade sources for your class yet. Quest, crafted, vendor and drop options need confirmed data.")
@@ -281,8 +307,7 @@ function build.gear(s, rows)
     note(rows, "No suitable upgrade found in the current catalog. Unknown or blocked options may be excluded.")
   end
   for _, u in ipairs(s.upgrades) do
-    upgradeRow(rows, u, false, s.equippedLinks)
-    if u.alternative then upgradeRow(rows, u.alternative, true, s.equippedLinks) end
+    upgradeRow(rows, u, s.equippedLinks, ns.db and ns.db.gearPicks)
   end
 end
 

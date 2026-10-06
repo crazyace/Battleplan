@@ -43,7 +43,7 @@ check('+3.0 score (8.8%) in Chest' in text, 'unknown-access item still shows est
 check('Gains: +5 Agility, +30 Armor' in text and 'Losses: -0.50% Hit, -10 Strength' in text, 'tradeoffs visible')
 check('unconfirmed' in text and 'Source not confirmed' in text, 'availability warnings retained')
 check('not a damage or healing percentage' in text, 'percent scope explicit')
-check('Or: Alternative chest' in text, 'alternative remains visible')
+check('choice: Alternative chest' in text, 'alternative remains visible')
 
 L.execute('TARGETS={TARGET};BASE={};CTX={equippedStats={}}')
 r = L.globals().choose()[1]
