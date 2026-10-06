@@ -192,3 +192,13 @@ This is a documented lead, not a captured icon result. The probe now records
 `iconID` in spell and talent spell metadata; production reads it defensively by ID
 and verifies the returned name. Missing icon data leaves the text visible. No icon
 constants or talent-rule statuses are promoted from documentation or synthetic tests.
+
+
+### Live UI feedback — 2026-10-05 19:05
+
+The screenshot `image(20261006-000510).png` shows spell/talent icons rendering
+(including Shield Specialization, Anticipation, Bastion and Cruelty), but the custom
+blue window styling does not fit WoW. Title/context text is also obscured by the
+opaque child header. The window now returns to the native panel/button artwork
+previously seen in the live client, and explicitly layers content/title/close controls.
+The restored layout needs a fresh visual check; numeric icon IDs still await a probe.

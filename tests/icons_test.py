@@ -69,10 +69,11 @@ L.execute('''
 row = ns.UI.list.rows[1]
 check(row.icon._shown and row.icon.texture == 987001 and L.globals().iconHeight >= 34, 'icon visible with enough height')
 L.execute('BP.UI.list:SetData({{text="No icon available"}})')
-check(not row.icon._shown and L.eval("function(row) return rawget(row, 'iconID') == nil end")(row) and row.left.width > L.globals().iconWidth,
+check(not row.icon._shown and not row.iconBorder._shown and L.eval("function(row) return rawget(row, 'iconID') == nil end")(row) and row.left.width > L.globals().iconWidth,
       'text-only row hides stale icon and reclaims width')
 L.execute('BP.UI.list:SetData({{text="Another spell",icon=987002}})')
 check(row.icon.texture == 987002, 'recycled texture updates correctly')
+check(row.iconBorder._shown, 'native icon border follows visible icon')
 L.execute('C_Spell.GetSpellInfo=nil;fire("SPELLS_CHANGED")')
 drain(L, ns)
 check(ns.state.icons['Heroic Strike'] is None, 'planner remains usable without icon API')

@@ -63,9 +63,13 @@ local function animGroup(owner)
   g.SetScript = function(self, k, fn) self["_" .. k] = fn end
   return g
 end
-function CreateFrame(kind, name, parent)
+function CreateFrame(kind, name, parent, template)
   local f = stub()
   f._kind, f._events, f._shown, f._height = kind, {}, true, 400
+  f._parent, f._template = parent, template
+  f._frameLevel = parent and rawget(parent, "_frameLevel") and parent._frameLevel + 1 or 0
+  f.GetFrameLevel = function(self) return self._frameLevel end
+  f.SetFrameLevel = function(self, level) self._frameLevel = level end
   f.RegisterEvent = function(self, e)
     -- Like the real client: an event it doesn't have is an error.
     if MISSING_EVENTS[e] then error("Attempt to register unknown event \"" .. e .. "\"") end
@@ -88,7 +92,7 @@ function CreateFrame(kind, name, parent)
   f.SetHeight = function(self, h) self._height = h end
   f.SetText = function(self, t) self.text = t end
   f.GetPoint = function() return "CENTER", nil, "CENTER", 0, 0 end
-  f.CreateFontString = function() return fontString() end
+  f.CreateFontString = function() local fs=fontString(); fs._parent=f; return fs end
   f.CreateTexture = function()
     local t = stub()
     t._shown = true
@@ -101,6 +105,9 @@ function CreateFrame(kind, name, parent)
   f.CreateAnimationGroup = function(self) return animGroup(self) end
   f.LockHighlight = function(self) self.highlit = true end
   f.UnlockHighlight = function(self) self.highlit = false end
+  if template == "BasicFrameTemplateWithInset" then
+    f.CloseButton = CreateFrame("Button", nil, f, "UIPanelCloseButton")
+  end
   frames[#frames + 1] = f
   if name then _G[name] = f end
   return f

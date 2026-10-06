@@ -191,3 +191,6 @@ Spell rows and the next talent point show the client's icon beside the text when
 is available. Full build details also show talent icons. Missing icon data keeps a
 text-only row; names and ranks remain visible. Update BattleplanProbe as well to
 include icon IDs in future `/bpp spells` and `/bpp talents` exports.
+
+The window uses Blizzard’s framed panel, red buttons, gold headings, close button
+and icon borders so it fits the WoW UI. Readable wrapping and direct controls remain.
