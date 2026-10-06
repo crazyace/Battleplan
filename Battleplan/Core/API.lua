@@ -32,6 +32,29 @@ function API.PlayerLevel()
   return API.clean(UnitLevel("player")) or 1
 end
 
+-- Optional reads; presence/value captures are added to the probe, still unconfirmed live.
+function API.PlayerFaction()
+  if ns.InCombat() or not UnitFactionGroup then return nil end
+  local ok, value = pcall(UnitFactionGroup, "player")
+  value = ok and API.clean(value) or nil
+  if value == "Alliance" or value == "Horde" then return value end
+end
+
+local questValues, questEpochs, questEpoch = {}, {}, 0
+function API.QuestCompleted(id)
+  if ns.InCombat() or type(id) ~= "number" or id <= 0 then return nil end
+  if questEpochs[id] == questEpoch then return questValues[id] end
+  local fn = C_QuestLog and C_QuestLog.IsQuestFlaggedCompleted
+  if not fn then return nil end
+  local ok, value = pcall(fn, id)
+  if not ok then return nil end
+  value = API.clean(value)
+  if type(value) ~= "boolean" then return nil end
+  questValues[id], questEpochs[id] = value, questEpoch
+  return value
+end
+function API.ForgetQuestStates() questEpoch = questEpoch + 1 end
+
 function API.InInstance()
   if not IsInInstance then return false, nil end
   local inside, kind = IsInInstance()

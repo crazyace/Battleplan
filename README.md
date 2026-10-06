@@ -10,7 +10,7 @@ Battleplan is an out-of-combat planner. It reads your talents, spells and gear a
   level 22 character sees a level 22 rotation. When you learn something, it says where
   it goes.
 - **Gear**: the best enchant for each slot and which ones you're missing, and the next
-  upgrade to chase (once the upgrade lists are filled in).
+  potential upgrade to chase, with quest, crafter, vendor or drop leads.
 - **Consumables**: the best elixir, weapon stone or oil, food and potions for your spec,
   level and situation, what's in your bags, and which buffs are missing before a pull.
 - **Healers**: which heal for which situation, a healing-per-mana table built from your own
@@ -115,7 +115,8 @@ Gearwright's beta findings.
 
 ## License
 
-MIT - see [LICENSE](LICENSE).
+Authored code: MIT - see [LICENSE](LICENSE). Imported external data retains its
+upstream terms; see [data/external/NOTICE.md](data/external/NOTICE.md).
 
 ## Talent catalog and refresh validation
 
@@ -226,3 +227,16 @@ unknown stats and unmodeled item effects. It is a starter list, not a complete b
 catalog. Open `/bplan` and choose **Gear**; updates after equipment/level changes and
 visible-window bag changes run outside combat. Regenerate with
 `python tools/import_gear_catalog.py`; use `--check` to check the committed output.
+
+## Full downloaded data
+
+The complete downloaded JSON snapshot is preserved in `data/external/full-snapshot.zip`.
+The Gear tab now draws provisional quest, crafting, vendor and drop options from
+1,635 supported armor/cloak items across the three supported classes. All 22,069
+item records remain available to developers; weapons, duplicate slots, effects and
+unmodeled restrictions are excluded from ranking. Source access and live usability
+still need confirmation. Classic-derived routes are explicitly labeled.
+
+Run `python tools/import_full_data.py --check` to verify checksums and generation;
+`python tools/import_full_data.py` regenerates the catalog from the preserved ZIP.
+See [data provenance and licensing](data/external/NOTICE.md).

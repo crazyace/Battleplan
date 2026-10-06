@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / 'data/gear/client-crafting.json'
-OUTPUT = ROOT / 'Battleplan/Data/GearCatalog.lua'
+OUTPUT = ROOT / 'data/gear/starter-catalog.lua'
 SLOTS = {1: 1, 3: 3, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 16: 15, 20: 5}
 ARMOR_CLASS = {1: 'PRIEST', 2: 'ROGUE', 3: 'WARRIOR'}
 PROFESSIONS = {'blacksmithing': 'Blacksmithing', 'leatherworking': 'Leatherworking', 'tailoring': 'Tailoring'}

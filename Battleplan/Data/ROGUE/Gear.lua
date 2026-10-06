@@ -5,7 +5,7 @@
 -- amounts otherwise (marked "classic"). Slot IDs are inventory slots.
 -- targets: the next item to chase per slot. Empty until the probe's loot log
 -- and the stat lab give us real items (see ROADMAP.md).
--- Empty class targets fall back to the provisional shared GearCatalog.
+-- Empty class targets fall back to the provisional shared FullGearCatalog.
 local _, ns = ...
 
 local AGI_ENCHANTS = {

@@ -17,7 +17,7 @@ Core\Scheduler.lua
 Core\API.lua
 
 Data\Stats.lua
-Data\GearCatalog.lua
+Data\FullGearCatalog.lua
 Data\TalentRules.lua
 Data\Consumables.lua
 Data\ROGUE\Specs.lua

@@ -242,3 +242,30 @@ coalesced callback; while visible it also queues the sliced planner so acquired
 items disappear. A closed window refreshes when reopened. Combat remains dormant.
 Catalog regeneration, importer validation and visible planning/ownership behavior
 are enforced in `gear_catalog_test.py`; the existing perf suite includes real catalog plans.
+
+### Complete reference snapshot and lazy gear catalog
+
+`data/external/full-snapshot.zip` retains every downloaded raw JSON member and the
+collection manifests, with independent archive/member checksums. It is not loaded
+by the addon. `tools/import_full_data.py` generates `Data/FullGearCatalog.lua` and
+a report of exclusions from scoring. Imported acquisition data retains upstream
+licensing separately from authored code; see `data/external/NOTICE.md`.
+
+The runtime catalog stores compact strings in 16-item chunks. `Engine.Gear.CatalogTargets`
+decodes only class/level-relevant chunks inside the existing sliced plan job, and
+caches the results. Selection retains two distinct items per equivalent source/
+availability/effort band instead of allocating one candidate per route. Planner
+yields during ownership, quest-state reads and route selection. Optional faction
+and quest-completion APIs are feature-detected, cleaned, cached and unconfirmed live.
+Quest events invalidate completion caches and queue work through the refresh gate.
+
+The previous generated starter cohort is retained in `data/gear/starter-catalog.lua`
+for reproducibility and is no longer loaded alongside the larger catalog.
+
+Acquisition strings stay packed in cached targets. `Gear.Routes` decodes source
+records as they are scanned; only selected route tables survive the plan. This
+keeps the persistent table graph small enough for Lua 5.1 garbage collection.
+
+Decoded sources use a weak memo cache; unused records can be reclaimed. Quest
+IDs are extracted once when a chunk loads, so repeated planning does not decode
+full source records merely to read quest completion.

@@ -127,6 +127,8 @@ function fire(event, ...)
     if f._events[event] and f._OnEvent then f._OnEvent(f, event, ...) end
   end
 end
+function UnitFactionGroup() return C.faction end
+C_QuestLog = {IsQuestFlaggedCompleted=function(id) return C.completedQuests and C.completedQuests[id] == true or false end}
 UIParent = CreateFrame("Frame"); UIParent:SetSize(1920, 1080); UISpecialFrames = {}; GameTooltip = CreateFrame("Frame")
 SlashCmdList = {}
 C_Timer = { After = function(_, fn) fn() end }

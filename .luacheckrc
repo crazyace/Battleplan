@@ -13,13 +13,13 @@ globals = {
 -- The WoW API Battleplan reads (Forever beta 1.60.1, Mainline-style).
 read_globals = {
   "C_AddOns", "C_AddOnProfiler", "C_ClassTalents", "C_Item", "C_Spell", "C_SpellBook", "C_Timer",
-  "C_TooltipInfo", "C_Traits", "C_UnitAuras", "Enum", "WOW_PROJECT_ID",
+  "C_TooltipInfo", "C_QuestLog", "C_Traits", "C_UnitAuras", "Enum", "WOW_PROJECT_ID",
   "CreateFrame", "UIParent", "UISpecialFrames", "GameTooltip", "ChatFontNormal",
   "GetAddOnMetadata", "GetBuildInfo", "GetLocale", "GetRealZoneText", "IsInInstance",
   "GetInventoryItemLink", "GetItemSpell", "GetItemCount", "GetWeaponEnchantInfo",
   "GetNumSpellTabs", "GetSpellTabInfo", "GetSpellBookItemName", "GetSpellBookItemInfo", "GetSpellInfo",
   "GetSpellPowerCost", "GetNumTalentTabs", "GetNumTalents", "GetTalentInfo",
-  "UnitClass", "UnitRace", "UnitLevel", "UnitFullName", "UnitName", "UnitExists", "UnitBuff",
+  "UnitClass", "UnitFactionGroup", "UnitRace", "UnitLevel", "UnitFullName", "UnitName", "UnitExists", "UnitBuff",
   "GetCombatRating", "GetCombatRatingBonus",
   "InCombatLockdown", "issecretvalue", "geterrorhandler", "debugprofilestop", "date", "tinsert",
 }
