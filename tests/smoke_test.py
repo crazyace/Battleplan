@@ -177,7 +177,7 @@ has(screen(L, ns, "talents"), "Protection: shield leveling", "Provisional", "Imp
 tank = screen(L, ns, "tanking")
 print("---- Warrior: Tanking ----\n" + tank)
 has(tank, "One target", "1. Revenge", "2. Sunder Armor", "3. Heroic Strike | Rank 3", "A pack", "Thunder Clap",
-    "Shield Block", "Pull plan", "Mark a kill target", "Setup", "Coming up", "Shield Slam | talent",
+    "Shield Block", "Pull plan", "Mark a kill target", "Before you pull", "Coming up", "Shield Slam | talent",
     "Demoralizing Shout | |cff40ff40train now|r", "Shield Wall | level 28")
 has(screen(L, ns, "rotation"), "Starter guide", "Sunder Armor", "Heroic Strike | Rank 3", "Taunt")
 

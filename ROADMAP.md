@@ -98,3 +98,7 @@ How every phase below gets done. Details in [AGENTS.md](AGENTS.md).
 
 - [x] Restore native WoW frame/buttons and fix header layering; retain icons and wrapping
 - [ ] Verify the restored native window, title/context and menu appearance in the client
+
+- [x] Resolve client icons for upcoming Warrior abilities without marking them learned
+- [x] Replace Safe/Threat setup prose with preparation filtered to learned abilities
+- [ ] Live-check upcoming ability icons and level-appropriate tank preparation

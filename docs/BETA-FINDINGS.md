@@ -202,3 +202,30 @@ blue window styling does not fit WoW. Title/context text is also obscured by the
 opaque child header. The window now returns to the native panel/button artwork
 previously seen in the live client, and explicitly layers content/title/close controls.
 The restored layout needs a fresh visual check; numeric icon IDs still await a probe.
+
+
+### Tank setup / upcoming icon feedback — 2026-10-05 19:12
+
+`image(20261006-001238).png` shows Last Stand and Shield Slam icons, but no icons for
+five unlearned non-talent abilities. The planner previously resolved only known
+spells and talents in its build. Upcoming rows now carry lookup candidates and the
+planner queries their client icons, still checking names and leaving unknown data
+text-only. The local Forever database snapshot supplies these provisional leads:
+
+| Ability | Candidate spell ID |
+|---|---:|
+| Revenge | 6572 |
+| Demoralizing Shout | 1160 |
+| Shield Block | 2565 |
+| Cleave | 845 |
+| Shield Wall | 871 |
+
+Source: `https://foreverdb.net/data/spells.json`, existing 1.60.1.70205 snapshot.
+These are icon lookup candidates, not proof of trainer levels or availability.
+Client rendering for these new lookups still needs confirmation.
+
+The same screenshot exposes inappropriate Safe/Threat setup prose for a level-12
+Warrior: unlearned cooldowns described as ready, and an unmodeled Stamina-for-hit
+trade. These choices are replaced by a pre-pull checklist with known-spell filtering;
+pull instructions also omit unlearned ability names. Shield Slam advice no longer
+asserts an unmodeled best threat-per-Rage ranking.

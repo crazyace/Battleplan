@@ -271,16 +271,19 @@ function build.tanking(s, rows)
     note(rows, "No tank guide for this spec yet.", 0)
     return
   end
+  if t.setup and #t.setup > 0 then
+    blank(rows); header(rows, "Before you pull")
+    for _, step in ipairs(t.setup) do
+      row(rows, step.label, step.spell, nil, 1, s.icons and step.spell and s.icons[step.spell])
+      note(rows, step.note, 2)
+    end
+  end
+  blank(rows)
   header(rows, "One target"); spellRows(rows, t.single, true, s.icons)
   blank(rows); header(rows, "A pack"); spellRows(rows, t.multi, true, s.icons)
   blank(rows); header(rows, "Cooldowns"); spellRows(rows, t.cooldowns, false, s.icons)
   blank(rows); header(rows, "Pull plan")
   for i, line in ipairs(t.pullPlan) do note(rows, ("%d. %s"):format(i, line)) end
-  if t.setups then
-    blank(rows); header(rows, "Setup")
-    row(rows, "Safe", nil, t.setups.safe, 1); note(rows, t.setups.safe, 2)
-    row(rows, "Threat", nil, t.setups.threat, 1); note(rows, t.setups.threat, 2)
-  end
   upcomingRows(rows, t.upcoming, s.icons)
 end
 

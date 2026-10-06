@@ -84,4 +84,48 @@ load(P, 'BattleplanProbe', 'BattleplanProbe.toc')
 P.globals().SlashCmdList.BATTLEPLANPROBE('spells')
 spells = json.loads(P.globals().BattleplanProbe.export())['captures']['spells'][-1]['data']['spells']
 check(any(s.get('iconID') == 987001 for s in spells), 'future probe exports include observed icon IDs')
+# Level-12 upcoming abilities are not in the spellbook, but candidate IDs can
+# resolve optional icons without labeling the abilities as learned.
+Q = runtime("""{class="WARRIOR",className="Warrior",level=12,
+  nodes={{11670,"Shield Specialization",3,9000}},
+  book={{"Defensive Stance",nil,71},{"Bloodrage",nil,2687},{"Sunder Armor",1,7386},{"Thunder Clap",1,6343}}} """)
+Q.execute("""
+  local original=C_Spell.GetSpellInfo
+  C_Spell.GetSpellInfo=function(id)
+    local names={[6572]="Revenge",[1160]="Demoralizing Shout",[2565]="Shield Block",[845]="Cleave",[871]="Shield Wall"}
+    if names[id] then return {name=names[id],iconID=990000+id} end
+    return original(id)
+  end
+""")
+addon = start_battleplan(Q)
+addon.UI.Show()
+addon.UI.SelectTab('tanking')
+future = {addon.state.tanking.upcoming[i].spell: addon.state.tanking.upcoming[i]
+          for i in range(1, len(addon.state.tanking.upcoming) + 1)}
+for name, sid in [('Revenge', 6572), ('Demoralizing Shout', 1160), ('Shield Block', 2565), ('Cleave', 845), ('Shield Wall', 871)]:
+    check(future[name].spellID == sid and addon.state.known[name] is None,
+          f'{name}: explicit candidate ID never makes it learned')
+    check(any(addon.UI.list.data[i].text == name and addon.UI.list.data[i].icon == 990000 + sid
+              for i in range(1, len(addon.UI.list.data) + 1)), f'{name}: upcoming row gets client icon')
+setup = addon.state.tanking.setup
+check(any(setup[i].spell == 'Defensive Stance' for i in range(1, len(setup) + 1)), 'known stance included in preparation')
+check(any(setup[i].spell == 'Bloodrage' for i in range(1, len(setup) + 1)), 'known Rage option included in preparation')
+from wowmock import screen
+text = screen(Q, addon, 'tanking')
+check('Before you pull' in text and 'trade some Stamina' not in text and 'Shield Wall ready' not in text,
+      'level-twelve setup avoids unmodeled gear trades and unlearned cooldowns')
+check(not any('Revenge' in addon.state.tanking.pullPlan[i] or 'Demoralizing Shout' in addon.state.tanking.pullPlan[i]
+              or 'Mocking Blow' in addon.state.tanking.pullPlan[i] for i in range(1, len(addon.state.tanking.pullPlan) + 1)),
+      'pull instructions omit unlearned abilities')
+# Learning changes active advice while preserving the icon.
+Q.execute('C.book[#C.book+1]={"Revenge",1,6572};fire("SPELLS_CHANGED")')
+drain(Q, addon)
+check(any(addon.state.tanking.single[i].spell == 'Revenge' for i in range(1, len(addon.state.tanking.single) + 1)),
+      'learned ability moves into usable advice')
+check(not any(addon.state.tanking.upcoming[i].spell == 'Revenge' for i in range(1, len(addon.state.tanking.upcoming) + 1)),
+      'learned ability leaves upcoming list')
+# The pure setup engine makes missing preparation explicit, not assumed ready.
+empty = addon.Engine.Tanking.Build(addon.Data.WARRIOR.Tanking, 'protection', Q.table(), 12)
+check(any('not learned' in empty.setup[i].note for i in range(1, len(empty.setup) + 1)), 'missing stance is explicit')
+check(not any(empty.setup[i].spell == 'Bloodrage' for i in range(1, len(empty.setup) + 1)), 'missing Rage ability omitted')
 print(f'icons test passed: {checks} checks')
