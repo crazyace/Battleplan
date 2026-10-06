@@ -86,3 +86,8 @@ with the item name and amount, e.g. `+15 agility`).
 - [ ] Show/Hide build details works; the next talent and rank stay easy to find.
 - [ ] Scroll to the end of Rotation/Tanking/Healing; no missing bottom rows.
 - [ ] Hover Next point for captured rank text, drag the title bar, and close with Escape.
+
+- [ ] Check icons on Next point, full talent details, Rotation and Tanking/Healing;
+      names/ranks stay visible and no previous row's icon persists after scrolling.
+- [ ] Update BattleplanProbe and export `/bpp spells` / `/bpp talents` with icon IDs
+      when convenient; icon metadata remains pending live confirmation.

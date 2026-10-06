@@ -25,8 +25,8 @@ function UI.TabsFor(state)
 end
 
 local function header(rows, text) rows[#rows + 1] = { kind = "header", text = text } end
-local function row(rows, text, value, tip, indent)
-  rows[#rows + 1] = { kind = "row", text = text, value = value, tip = tip, indent = indent }
+local function row(rows, text, value, tip, indent, icon)
+  rows[#rows + 1] = { kind = "row", text = text, value = value, tip = tip, indent = indent, icon = icon }
 end
 local function note(rows, text, indent) rows[#rows + 1] = { kind = "note", text = text, indent = indent or 1 } end
 local function blank(rows) rows[#rows + 1] = { kind = "blank" } end
@@ -100,7 +100,10 @@ function build.talents(s, rows, details)
   end
   local nextRow
   for _, r in ipairs(rows) do if r.text == "Next point" then nextRow = r end end
-  if nextRow then nextRow.emphasis = true end
+  if nextRow then
+    nextRow.emphasis = true
+    nextRow.icon = s.icons and p.upcoming and s.icons[p.upcoming.name]
+  end
   if p.upcoming then
     row(rows, "Target rank", tostring(p.upcoming.rank), nil, 1)
     local reason = s.build.why and s.build.why[p.upcoming.name]
@@ -111,8 +114,12 @@ function build.talents(s, rows, details)
   if not p.onPlan then
     blank(rows)
     header(rows, "Different from the plan")
-    for _, m in ipairs(p.missing) do row(rows, m.name, ("%d / %d"):format(m.have, m.want), "The plan wants more points here.", 1) end
-    for _, x in ipairs(p.extra) do row(rows, x.name, ("%d (plan: %d)"):format(x.have, x.want), "Points the plan puts elsewhere.", 1) end
+    for _, m in ipairs(p.missing) do
+      row(rows, m.name, ("%d / %d"):format(m.have, m.want), "The plan wants more points here.", 1, s.icons and s.icons[m.name])
+    end
+    for _, x in ipairs(p.extra) do
+      row(rows, x.name, ("%d (plan: %d)"):format(x.have, x.want), "Points the plan puts elsewhere.", 1, s.icons and s.icons[x.name])
+    end
   end
   if details and s.build.why then
     blank(rows)
@@ -121,25 +128,25 @@ function build.talents(s, rows, details)
     for name in pairs(s.build.why) do names[#names + 1] = name end
     table.sort(names)
     for _, name in ipairs(names) do
-      row(rows, name, nil, s.build.why[name], 1)
+      row(rows, name, nil, s.build.why[name], 1, s.icons and s.icons[name])
       note(rows, s.build.why[name], 2)
     end
   end
 end
 
-local function spellRows(rows, list, numbered)
+local function spellRows(rows, list, numbered, icons)
   for i, r in ipairs(list) do
     local text = numbered and ("%d. %s"):format(i, r.spell) or r.spell
     local tip = r.note
     if r.reference and r.reference.description and r.reference.description ~= "" then
       tip = (tip or "") .. "\n\nCaptured spell text (level " .. r.reference.observedAtLevel .. "): " .. r.reference.description
     end
-    row(rows, text, rankText(r.rank), tip, 1)
+    row(rows, text, rankText(r.rank), tip, 1, icons and icons[r.spell])
     if r.note then note(rows, r.note, 2) end
   end
 end
 
-local function upcomingRows(rows, upcoming)
+local function upcomingRows(rows, upcoming, icons)
   if #upcoming == 0 then return end
   blank(rows)
   header(rows, "Coming up")
@@ -147,7 +154,7 @@ local function upcomingRows(rows, upcoming)
     local when = u.talent and "talent"
       or u.trainable and util.color("green", "train now")
       or u.minLevel and ("level %d"):format(u.minLevel) or ""
-    row(rows, u.spell, when, u.note, 1)
+    row(rows, u.spell, when, u.note, 1, icons and icons[u.spell])
   end
 end
 
@@ -158,12 +165,12 @@ function build.rotation(s, rows)
     return
   end
   if r.scopeNote then note(rows, r.scopeNote, 0); blank(rows) end
-  if #r.opener > 0 then header(rows, "Opener"); spellRows(rows, r.opener, true); blank(rows) end
+  if #r.opener > 0 then header(rows, "Opener"); spellRows(rows, r.opener, true, s.icons); blank(rows) end
   header(rows, "Priority")
   if #r.priority == 0 then note(rows, "Nothing from this list is learned yet.") end
-  spellRows(rows, r.priority, true)
-  if #r.utility > 0 then blank(rows); header(rows, "Also"); spellRows(rows, r.utility, false) end
-  upcomingRows(rows, r.upcoming)
+  spellRows(rows, r.priority, true, s.icons)
+  if #r.utility > 0 then blank(rows); header(rows, "Also"); spellRows(rows, r.utility, false, s.icons) end
+  upcomingRows(rows, r.upcoming, s.icons)
 end
 
 function build.gear(s, rows)
@@ -228,7 +235,7 @@ function build.healing(s, rows)
     local what = p.row and (p.row.name .. (p.row.rank > 1 and (" (Rank %d)"):format(p.row.rank) or ""))
       or util.color("gray", "not learned yet")
     local value = p.row and p.row.hpm and ("%.1f per mana"):format(p.row.hpm) or ""
-    row(rows, ("%s: %s"):format(p.label, what), value, p.note, 1)
+    row(rows, ("%s: %s"):format(p.label, what), value, p.note, 1, p.row and s.icons and s.icons[p.row.name])
     if p.note then note(rows, p.note, 2) end
   end
   blank(rows)
@@ -246,7 +253,7 @@ function build.healing(s, rows)
     local name = r.name .. (r.rank > 1 and (" (Rank %d)"):format(r.rank) or "")
     if r.targets then name = name .. (" x%d"):format(r.targets) end
     local tip = r.targets and ("Counted for %d targets: the whole party."):format(r.targets) or nil
-    row(rows, name, value, tip, 1)
+    row(rows, name, value, tip, 1, s.icons and s.icons[r.name])
   end
   blank(rows)
   header(rows, "Mana plan")
@@ -254,7 +261,7 @@ function build.healing(s, rows)
   if #h.cooldowns > 0 then
     blank(rows)
     header(rows, "Cooldowns")
-    spellRows(rows, h.cooldowns, false)
+    spellRows(rows, h.cooldowns, false, s.icons)
   end
 end
 
@@ -264,9 +271,9 @@ function build.tanking(s, rows)
     note(rows, "No tank guide for this spec yet.", 0)
     return
   end
-  header(rows, "One target"); spellRows(rows, t.single, true)
-  blank(rows); header(rows, "A pack"); spellRows(rows, t.multi, true)
-  blank(rows); header(rows, "Cooldowns"); spellRows(rows, t.cooldowns, false)
+  header(rows, "One target"); spellRows(rows, t.single, true, s.icons)
+  blank(rows); header(rows, "A pack"); spellRows(rows, t.multi, true, s.icons)
+  blank(rows); header(rows, "Cooldowns"); spellRows(rows, t.cooldowns, false, s.icons)
   blank(rows); header(rows, "Pull plan")
   for i, line in ipairs(t.pullPlan) do note(rows, ("%d. %s"):format(i, line)) end
   if t.setups then
@@ -274,7 +281,7 @@ function build.tanking(s, rows)
     row(rows, "Safe", nil, t.setups.safe, 1); note(rows, t.setups.safe, 2)
     row(rows, "Threat", nil, t.setups.threat, 1); note(rows, t.setups.threat, 2)
   end
-  upcomingRows(rows, t.upcoming)
+  upcomingRows(rows, t.upcoming, s.icons)
 end
 
 -- All rows for one tab.

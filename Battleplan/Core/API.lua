@@ -106,8 +106,31 @@ function API.KnownSpells()
   return out
 end
 
-function API.ForgetSpells() spellCache = nil end
-API.SPELL_EVENTS = { "SPELLS_CHANGED", "LEARNED_SPELL_IN_TAB", "PLAYER_LEVEL_UP" }
+local iconCache = {}
+
+-- Optional iconID from the existing GetSpellInfo read. Check identity before
+-- showing an imported talent's icon; missing/secret data stays text-only.
+function API.SpellIcon(spellID, expectedName)
+  if ns.InCombat() then return nil end
+  spellID, expectedName = API.clean(spellID), API.clean(expectedName)
+  if type(spellID) ~= "number" or spellID <= 0 or spellID >= math.huge or spellID % 1 ~= 0
+    or type(expectedName) ~= "string" then return nil end
+  local cached = iconCache[spellID]
+  if cached then return cached.name == expectedName and cached.icon or nil end
+  if not (C_Spell and C_Spell.GetSpellInfo) then return nil end
+  local ok, info = pcall(C_Spell.GetSpellInfo, spellID)
+  if not ok or type(info) ~= "table" then return nil end
+  local name, icon = API.clean(info.name), API.clean(info.iconID)
+  if name ~= expectedName or type(icon) ~= "number" or icon <= 0 or icon >= math.huge or icon % 1 ~= 0 then return nil end
+  iconCache[spellID] = { name = name, icon = icon }
+  return icon
+end
+
+function API.ForgetSpells()
+  spellCache = nil
+  for id in pairs(iconCache) do iconCache[id] = nil end
+end
+API.SPELL_EVENTS = { "SPELLS_CHANGED", "LEARNED_SPELL_IN_TAB", "PLAYER_LEVEL_UP", "SPELL_DATA_LOAD_RESULT" }
 
 -- What a heal or ability costs and does, for the healing table:
 -- { cost=, power=, castMs=, min=, max=, overSeconds= }  (nil fields when unknown)

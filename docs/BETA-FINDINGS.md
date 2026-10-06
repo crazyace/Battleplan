@@ -180,3 +180,15 @@ against the imported gates, rank limits and prerequisites. This validates the or
 under those rules, not optimal performance or full live prerequisite semantics.
 The global `TalentRules` status remains provisional. Raid builds and damage/mitigation
 optimization still require a model and play tests.
+
+
+### Icon display — awaiting live confirmation
+
+The existing captures confirm `C_Spell.GetSpellInfo` exists, but the probe previously
+omitted its optional icon field. The Forever generated API documentation lists
+`SpellInfo.iconID` as a texture file ID:
+[SpellDocumentation.lua](https://github.com/Gethe/wow-ui-source/blob/forever/Interface/AddOns/Blizzard_APIDocumentationGenerated/SpellDocumentation.lua).
+This is a documented lead, not a captured icon result. The probe now records
+`iconID` in spell and talent spell metadata; production reads it defensively by ID
+and verifies the returned name. Missing icon data leaves the text visible. No icon
+constants or talent-rule statuses are promoted from documentation or synthetic tests.

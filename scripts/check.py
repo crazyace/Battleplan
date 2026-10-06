@@ -17,6 +17,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 TESTS = [
     ("smoke test", "tests/smoke_test.py"),
+    ("icons test", "tests/icons_test.py"),
     ("UI test", "tests/ui_test.py"),
     ("perf test", "tests/perf_test.py"),
     ("regression test", "tests/regression_test.py"),
