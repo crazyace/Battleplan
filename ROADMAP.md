@@ -120,3 +120,9 @@ How every phase below gets done. Details in [AGENTS.md](AGENTS.md).
 - [ ] Add quest pickup/chain guidance and map links backed by confirmed client APIs
 - [ ] Use known material/recipe availability and observed prices; never estimate costs from source kind
 - [ ] Live-test practical upgrades as players level; tune scoring/churn policy from results
+
+- [x] Connect a dated provisional client-derived crafted armor/cloak starter catalog
+- [x] Label potential upgrades and unconfirmed sources; filter equipped/bag ownership
+- [x] Keep recipe profession separate from wearer requirements and skip restricted/effect items
+- [ ] Live-check starter Gear tab icons, ownership updates and imported stats on Forever
+- [ ] Expand source coverage with approved quest/vendor/drop feeds and verified access checks

@@ -25,7 +25,7 @@ candidate set. A craftable item does not require the wearer to be its crafter.
    item when an easier item wins, otherwise the strongest different acquisition
    kind at the same availability/level status. Do not duplicate the same item.
 7. Display source/location, requirements, provisional provenance and availability
-   inline. Future gear shows its required level; unknown access says Check requirements.
+   inline. Future gear shows its required level; unknown access says Potential upgrade, with Source not confirmed and a requirements warning.
 
 A deterministic item ID / route-key tie break prevents catalog ordering from changing
 recommendations. Catalog collection and selection yield in batches of 32. The engine
@@ -64,9 +64,13 @@ They should not be used to bypass the checks for newly imported source data.
 
 ## Work required before real quest/crafting recommendations
 
-The current planner passes class context only. Existing class target lists are empty;
-this milestone implements ranking and display, tested with synthetic fixtures.
-It does not claim to know a player's quest completion, recipe access, material costs,
+The planner passes class and observed equipped/bag ownership. The shared catalog
+contains 133 provisional crafted armor/cloak items for the three supported classes
+through level 30 (44 Warrior, 60 Rogue and 49 Priest entries, with shared cloaks).
+Usual armor-type selection is a conservative cohort filter, not a live usability claim.
+It excludes weapons, duplicate slots, bind-on-pickup crafting, wearer profession or
+specialization restrictions, new/test candidates, unsupported stats and item effects.
+It does not claim to know quest completion, recipe access, material costs,
 item usability or actual acquisition time.
 
 The cached ForeverDB quest JSON contains 293 quests, 134 with item rewards and 187
@@ -76,8 +80,15 @@ redistribution path is required under this repository's MIT-compatible source po
 Most cached records are Classic-derived and need Forever confirmation. Other feeds
 must be reviewed individually rather than assumed to share item-data licensing.
 
-Next milestones must import source-linked item records with version/provenance,
-confirm APIs with the probe for ownership/usability/completion, then wire observed
+The crafted cohort uses client-derived items.json and crafting shard facts only;
+recipe skill values are deliberately omitted because snapshot fields conflict.
+It imports no Classic quest/loot source records or website/addon code. The input
+preserves selected original item records and recipe tuples, build/date and source
+hashes. Regenerate with tools/import_gear_catalog.py; no external source file is
+needed for CI. The default generation cannot promote the data to verified.
+
+Next milestones must expand source-linked records with version/provenance,
+confirm APIs with the probe for usability/completion, then wire observed
 context through Core/API and the planner. Quest pickup/chain/map guidance follows
 confirmed client support. Costs and effort stay unknown until supported by evidence.
 Do not classify all crafting as expensive or all quest rewards as free/easy.

@@ -66,11 +66,12 @@ end
 
 local function equippedScores(weights)
   local out, unknown = {}, false
-  for slot, raw in pairs(API.EquippedItemStats()) do
+  local equipped, owned = API.EquippedItemStats()
+  for slot, raw in pairs(equipped) do
     if raw == false then out[slot], unknown = false, true
     else out[slot] = E.Score.Stats(E.Score.FromTokens(raw), weights) end
   end
-  return out, unknown
+  return out, unknown, owned
 end
 
 -- Every elixir's buff name, for the buff check. Item data can arrive late,
@@ -147,11 +148,19 @@ local function compute()
   -- Gear
   s.enchants = E.Gear.EnchantAdvice(data.Gear and data.Gear.enchants, API.EquippedEnchants(), s.weights)
   local targets = data.Gear and data.Gear.targets
+  if not targets or #targets == 0 then targets = ns.Data.GearCatalog and ns.Data.GearCatalog[s.class] end
   s.upgrades = {}
   if targets and #targets > 0 then
-    local scores
-    scores, s.gearUnknown = equippedScores(s.weights)
-    s.upgrades = E.Gear.NextUpgrades(targets, s.level, s.weights, scores, { class = s.class }, yieldGear)
+    local scores, owned
+    scores, s.gearUnknown, owned = equippedScores(s.weights)
+    for i, target in ipairs(targets) do
+      if (target.minLevel or 0) <= s.level + 5 and not owned[target.itemID] then
+        local count = API.ItemCount(target.itemID)
+        if type(count) == "number" and count > 0 then owned[target.itemID] = true end
+      end
+      if i % 4 == 0 then coroutine.yield() end
+    end
+    s.upgrades = E.Gear.NextUpgrades(targets, s.level, s.weights, scores, { class = s.class, owned = owned }, yieldGear)
   end
   s.hasUpgradeData = targets ~= nil and #targets > 0
   coroutine.yield()
@@ -279,6 +288,12 @@ local function announceMissing()
   ns.util.print("before the pull: no %s.", table.concat(parts, ", "))
 end
 
+local function bagsChanged()
+  Planner.CheckCounts()
+  -- Ownership comparisons run in the existing sliced job, only while visible.
+  if ns.UI.IsShown and ns.UI.IsShown() then Planner.Queue() end
+end
+
 local started = false
 function Planner.Start()
   if started then return end
@@ -293,7 +308,7 @@ function Planner.Start()
   Events:On("PLAYER_EQUIPMENT_CHANGED", Planner.Queue, "gear")
   Events:On("GET_ITEM_INFO_RECEIVED", Planner.Queue, "item-data")
   Events:On("ITEM_DATA_LOAD_RESULT", Planner.Queue, "item-data")
-  local function bagRefresh() ns.Refresh("bags", 0.2, Planner.CheckCounts) end
+  local function bagRefresh() ns.Refresh("bags", 0.2, bagsChanged) end
   Events:On("BAG_UPDATE_DELAYED", bagRefresh, "bags")
   Events:On("BAG_UPDATE", bagRefresh, "bags")
   -- UNIT_AURA fires constantly: player only, only while the window is open,
